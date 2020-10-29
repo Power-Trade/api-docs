@@ -899,130 +899,72 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#position_consistency_marker">2.10.5. position_consistency_marker</a></li>
 </ul>
 </li>
-<li><a href="#_account_management_requests">2.11. Account Management Requests</a>
+<li><a href="#_structures">2.11. Structures</a>
 <ul class="sectlevel3">
-<li><a href="#add_account_lt_simple_account_lt_">2.11.1. add_account&lt;simple_account&gt;</a></li>
-<li><a href="#remove_account_lt_account_id_lt_">2.11.2. remove_account&lt;account_id&gt;</a></li>
-<li><a href="#remove_account_lt_account_token_lt_">2.11.3. remove_account&lt;account_token&gt;</a></li>
-<li><a href="#suspend_account_lt_account_id_lt_">2.11.4. suspend_account&lt;account_id&gt;</a></li>
-<li><a href="#suspend_account_lt_account_token_lt_">2.11.5. suspend_account&lt;account_token&gt;</a></li>
-<li><a href="#unsuspend_account_lt_account_id_lt_">2.11.6. unsuspend_account&lt;account_id&gt;</a></li>
-<li><a href="#unsuspend_account_lt_account_token_lt_">2.11.7. unsuspend_account&lt;account_token&gt;</a></li>
-<li><a href="#add_account_lt_mobile_app_account_lt_">2.11.8. add_account&lt;mobile_app_account&gt;</a></li>
-<li><a href="#update_account_lt_account_id_comma_mobile_app_account_lt_">2.11.9. update_account&lt;account_id,mobile_app_account&gt;</a></li>
-<li><a href="#update_account_lt_account_token_comma_mobile_app_account_lt_">2.11.10. update_account&lt;account_token,mobile_app_account&gt;</a></li>
+<li><a href="#date">2.11.1. date</a></li>
+<li><a href="#exchange_token">2.11.2. exchange_token</a></li>
+<li><a href="#fiat_currency">2.11.3. fiat_currency</a></li>
+<li><a href="#future">2.11.4. future</a></li>
+<li><a href="#fx_spot">2.11.5. fx_spot</a></li>
+<li><a href="#option">2.11.6. option</a></li>
+<li><a href="#quote_side">2.11.7. quote_side</a></li>
+<li><a href="#quote_side_status">2.11.8. quote_side_status</a></li>
+<li><a href="#quote_status">2.11.9. quote_status</a></li>
+<li><a href="#simple_market">2.11.10. simple_market</a></li>
+<li><a href="#simple_order_lt_account_id_lt_">2.11.11. simple_order&lt;account_id&gt;</a></li>
+<li><a href="#simple_quote">2.11.12. simple_quote</a></li>
+<li><a href="#simple_quotes">2.11.13. simple_quotes</a></li>
+<li><a href="#stable_token">2.11.14. stable_token</a></li>
 </ul>
 </li>
-<li><a href="#_account_management_responses">2.12. Account Management Responses</a>
+<li><a href="#_types">2.12. Types</a>
 <ul class="sectlevel3">
-<li><a href="#account_added_lt_simple_account_lt_">2.12.1. account_added&lt;simple_account&gt;</a></li>
-<li><a href="#account_removed">2.12.2. account_removed</a></li>
-<li><a href="#account_suspended">2.12.3. account_suspended</a></li>
-<li><a href="#account_unsuspended">2.12.4. account_unsuspended</a></li>
-<li><a href="#account_added_lt_mobile_app_account_lt_">2.12.5. account_added&lt;mobile_app_account&gt;</a></li>
-<li><a href="#account_updated_lt_mobile_app_account_lt_">2.12.6. account_updated&lt;mobile_app_account&gt;</a></li>
-<li><a href="#account_action_rejected_lt_add_account_lt_simple_account_lt__lt_">2.12.7. account_action_rejected&lt;add_account&lt;simple_account&gt;&gt;</a></li>
-<li><a href="#account_action_rejected_lt_remove_account_lt_account_id_lt__lt_">2.12.8. account_action_rejected&lt;remove_account&lt;account_id&gt;&gt;</a></li>
-<li><a href="#account_action_rejected_lt_remove_account_lt_account_token_lt__lt_">2.12.9. account_action_rejected&lt;remove_account&lt;account_token&gt;&gt;</a></li>
-<li><a href="#account_action_rejected_lt_suspend_account_lt_account_id_lt__lt_">2.12.10. account_action_rejected&lt;suspend_account&lt;account_id&gt;&gt;</a></li>
-<li><a href="#account_action_rejected_lt_suspend_account_lt_account_token_lt__lt_">2.12.11. account_action_rejected&lt;suspend_account&lt;account_token&gt;&gt;</a></li>
-<li><a href="#account_action_rejected_lt_unsuspend_account_lt_account_id_lt__lt_">2.12.12. account_action_rejected&lt;unsuspend_account&lt;account_id&gt;&gt;</a></li>
-<li><a href="#account_action_rejected_lt_unsuspend_account_lt_account_token_lt__lt_">2.12.13. account_action_rejected&lt;unsuspend_account&lt;account_token&gt;&gt;</a></li>
-<li><a href="#account_action_rejected_lt_add_account_lt_mobile_app_account_lt__lt_">2.12.14. account_action_rejected&lt;add_account&lt;mobile_app_account&gt;&gt;</a></li>
-<li><a href="#account_action_rejected_lt_update_account_lt_account_id_comma_mobile_app_account_lt__lt_">2.12.15. account_action_rejected&lt;update_account&lt;account_id,mobile_app_account&gt;&gt;</a></li>
-<li><a href="#account_action_rejected_lt_update_account_lt_account_token_comma_mobile_app_account_lt__lt_">2.12.16. account_action_rejected&lt;update_account&lt;account_token,mobile_app_account&gt;&gt;</a></li>
-</ul>
-</li>
-<li><a href="#_funds_management_requests">2.13. Funds Management Requests</a>
-<ul class="sectlevel3">
-<li><a href="#deposit_funds">2.13.1. deposit_funds</a></li>
-<li><a href="#withdraw_funds">2.13.2. withdraw_funds</a></li>
-</ul>
-</li>
-<li><a href="#_funds_management_responses">2.14. Funds Management Responses</a>
-<ul class="sectlevel3">
-<li><a href="#funds_deposit_pending">2.14.1. funds_deposit_pending</a></li>
-<li><a href="#funds_withdrawal_processed">2.14.2. funds_withdrawal_processed</a></li>
-<li><a href="#funds_withdrawal_pending">2.14.3. funds_withdrawal_pending</a></li>
-<li><a href="#funds_deposit_processed">2.14.4. funds_deposit_processed</a></li>
-<li><a href="#funds_action_rejected_lt_deposit_funds_lt_">2.14.5. funds_action_rejected&lt;deposit_funds&gt;</a></li>
-<li><a href="#funds_action_rejected_lt_withdraw_funds_lt_">2.14.6. funds_action_rejected&lt;withdraw_funds&gt;</a></li>
-</ul>
-</li>
-<li><a href="#_structures">2.15. Structures</a>
-<ul class="sectlevel3">
-<li><a href="#date">2.15.1. date</a></li>
-<li><a href="#exchange_token">2.15.2. exchange_token</a></li>
-<li><a href="#fiat_currency">2.15.3. fiat_currency</a></li>
-<li><a href="#future">2.15.4. future</a></li>
-<li><a href="#fx_spot">2.15.5. fx_spot</a></li>
-<li><a href="#mobile_app_account">2.15.6. mobile_app_account</a></li>
-<li><a href="#option">2.15.7. option</a></li>
-<li><a href="#quote_side">2.15.8. quote_side</a></li>
-<li><a href="#quote_side_status">2.15.9. quote_side_status</a></li>
-<li><a href="#quote_status">2.15.10. quote_status</a></li>
-<li><a href="#simple_account">2.15.11. simple_account</a></li>
-<li><a href="#simple_market">2.15.12. simple_market</a></li>
-<li><a href="#simple_order_lt_account_id_lt_">2.15.13. simple_order&lt;account_id&gt;</a></li>
-<li><a href="#simple_quote">2.15.14. simple_quote</a></li>
-<li><a href="#simple_quotes">2.15.15. simple_quotes</a></li>
-<li><a href="#stable_token">2.15.16. stable_token</a></li>
-</ul>
-</li>
-<li><a href="#_types">2.16. Types</a>
-<ul class="sectlevel3">
-<li><a href="#account_id">2.16.1. account_id</a></li>
-<li><a href="#account_token">2.16.2. account_token</a></li>
-<li><a href="#cancelled_reason">2.16.3. cancelled_reason</a></li>
-<li><a href="#channel_id">2.16.4. channel_id</a></li>
-<li><a href="#contract_size">2.16.5. contract_size</a></li>
-<li><a href="#day">2.16.6. day</a></li>
-<li><a href="#decimal_places">2.16.7. decimal_places</a></li>
-<li><a href="#deliverable_id">2.16.8. deliverable_id</a></li>
-<li><a href="#display_order_id">2.16.9. display_order_id</a></li>
-<li><a href="#funds_id">2.16.10. funds_id</a></li>
-<li><a href="#funds_result">2.16.11. funds_result</a></li>
-<li><a href="#funds_token">2.16.12. funds_token</a></li>
-<li><a href="#iso4217_currency_number">2.16.13. iso4217_currency_number</a></li>
-<li><a href="#liquidity_flag">2.16.14. liquidity_flag</a></li>
-<li><a href="#market_id">2.16.15. market_id</a></li>
-<li><a href="#month">2.16.16. month</a></li>
-<li><a href="#option_closing_type">2.16.17. option_closing_type</a></li>
-<li><a href="#option_delivery_style">2.16.18. option_delivery_style</a></li>
-<li><a href="#option_exercise_style">2.16.19. option_exercise_style</a></li>
-<li><a href="#option_source">2.16.20. option_source</a></li>
-<li><a href="#option_type">2.16.21. option_type</a></li>
-<li><a href="#option_valuation_approach">2.16.22. option_valuation_approach</a></li>
-<li><a href="#order_id">2.16.23. order_id</a></li>
-<li><a href="#order_state">2.16.24. order_state</a></li>
-<li><a href="#order_token">2.16.25. order_token</a></li>
-<li><a href="#participant_id">2.16.26. participant_id</a></li>
-<li><a href="#position_id">2.16.27. position_id</a></li>
-<li><a href="#position_kind">2.16.28. position_kind</a></li>
-<li><a href="#position_type">2.16.29. position_type</a></li>
-<li><a href="#price">2.16.30. price</a></li>
-<li><a href="#quantity">2.16.31. quantity</a></li>
-<li><a href="#quote_reject_status">2.16.32. quote_reject_status</a></li>
-<li><a href="#quote_step">2.16.33. quote_step</a></li>
-<li><a href="#quote_token">2.16.34. quote_token</a></li>
-<li><a href="#quotes_id">2.16.35. quotes_id</a></li>
-<li><a href="#reference_price_type">2.16.36. reference_price_type</a></li>
-<li><a href="#reject_reason">2.16.37. reject_reason</a></li>
-<li><a href="#sequence_number">2.16.38. sequence_number</a></li>
-<li><a href="#session_id">2.16.39. session_id</a></li>
-<li><a href="#side">2.16.40. side</a></li>
-<li><a href="#stabilisation_approach">2.16.41. stabilisation_approach</a></li>
-<li><a href="#stream_id">2.16.42. stream_id</a></li>
-<li><a href="#stream_reject_reason">2.16.43. stream_reject_reason</a></li>
-<li><a href="#time_in_force">2.16.44. time_in_force</a></li>
-<li><a href="#time_to_live">2.16.45. time_to_live</a></li>
-<li><a href="#trade_id">2.16.46. trade_id</a></li>
-<li><a href="#tradeability">2.16.47. tradeability</a></li>
-<li><a href="#tradeable_entity_id">2.16.48. tradeable_entity_id</a></li>
-<li><a href="#utc_timestamp">2.16.49. utc_timestamp</a></li>
-<li><a href="#value">2.16.50. value</a></li>
-<li><a href="#withdrawal_instructions">2.16.51. withdrawal_instructions</a></li>
-<li><a href="#year">2.16.52. year</a></li>
+<li><a href="#account_id">2.12.1. account_id</a></li>
+<li><a href="#cancelled_reason">2.12.2. cancelled_reason</a></li>
+<li><a href="#channel_id">2.12.3. channel_id</a></li>
+<li><a href="#contract_size">2.12.4. contract_size</a></li>
+<li><a href="#day">2.12.5. day</a></li>
+<li><a href="#decimal_places">2.12.6. decimal_places</a></li>
+<li><a href="#deliverable_id">2.12.7. deliverable_id</a></li>
+<li><a href="#display_order_id">2.12.8. display_order_id</a></li>
+<li><a href="#iso4217_currency_number">2.12.9. iso4217_currency_number</a></li>
+<li><a href="#liquidity_flag">2.12.10. liquidity_flag</a></li>
+<li><a href="#market_id">2.12.11. market_id</a></li>
+<li><a href="#month">2.12.12. month</a></li>
+<li><a href="#option_closing_type">2.12.13. option_closing_type</a></li>
+<li><a href="#option_delivery_style">2.12.14. option_delivery_style</a></li>
+<li><a href="#option_exercise_style">2.12.15. option_exercise_style</a></li>
+<li><a href="#option_source">2.12.16. option_source</a></li>
+<li><a href="#option_type">2.12.17. option_type</a></li>
+<li><a href="#option_valuation_approach">2.12.18. option_valuation_approach</a></li>
+<li><a href="#order_id">2.12.19. order_id</a></li>
+<li><a href="#order_state">2.12.20. order_state</a></li>
+<li><a href="#order_token">2.12.21. order_token</a></li>
+<li><a href="#position_id">2.12.22. position_id</a></li>
+<li><a href="#position_kind">2.12.23. position_kind</a></li>
+<li><a href="#position_type">2.12.24. position_type</a></li>
+<li><a href="#price">2.12.25. price</a></li>
+<li><a href="#quantity">2.12.26. quantity</a></li>
+<li><a href="#quote_reject_status">2.12.27. quote_reject_status</a></li>
+<li><a href="#quote_step">2.12.28. quote_step</a></li>
+<li><a href="#quote_token">2.12.29. quote_token</a></li>
+<li><a href="#quotes_id">2.12.30. quotes_id</a></li>
+<li><a href="#reference_price_type">2.12.31. reference_price_type</a></li>
+<li><a href="#reject_reason">2.12.32. reject_reason</a></li>
+<li><a href="#sequence_number">2.12.33. sequence_number</a></li>
+<li><a href="#session_id">2.12.34. session_id</a></li>
+<li><a href="#side">2.12.35. side</a></li>
+<li><a href="#stabilisation_approach">2.12.36. stabilisation_approach</a></li>
+<li><a href="#stream_id">2.12.37. stream_id</a></li>
+<li><a href="#stream_reject_reason">2.12.38. stream_reject_reason</a></li>
+<li><a href="#time_in_force">2.12.39. time_in_force</a></li>
+<li><a href="#time_to_live">2.12.40. time_to_live</a></li>
+<li><a href="#trade_id">2.12.41. trade_id</a></li>
+<li><a href="#tradeability">2.12.42. tradeability</a></li>
+<li><a href="#tradeable_entity_id">2.12.43. tradeable_entity_id</a></li>
+<li><a href="#utc_timestamp">2.12.44. utc_timestamp</a></li>
+<li><a href="#value">2.12.45. value</a></li>
+<li><a href="#year">2.12.46. year</a></li>
 </ul>
 </li>
 </ul>
@@ -6559,2480 +6501,7 @@ its having a higher <code>display_order_id</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_account_management_requests">2.11. Account Management Requests</h3>
-<div class="paragraph">
-<p>This message set includes the following messages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#add_account_lt_simple_account_lt_">add_account&lt;simple_account</a>&gt;</p>
-</li>
-<li>
-<p><a href="#remove_account_lt_account_id_lt_">remove_account&lt;account_id</a>&gt;</p>
-</li>
-<li>
-<p><a href="#remove_account_lt_account_token_lt_">remove_account&lt;account_token</a>&gt;</p>
-</li>
-<li>
-<p><a href="#suspend_account_lt_account_id_lt_">suspend_account&lt;account_id</a>&gt;</p>
-</li>
-<li>
-<p><a href="#suspend_account_lt_account_token_lt_">suspend_account&lt;account_token</a>&gt;</p>
-</li>
-<li>
-<p><a href="#unsuspend_account_lt_account_id_lt_">unsuspend_account&lt;account_id</a>&gt;</p>
-</li>
-<li>
-<p><a href="#unsuspend_account_lt_account_token_lt_">unsuspend_account&lt;account_token</a>&gt;</p>
-</li>
-<li>
-<p><a href="#add_account_lt_mobile_app_account_lt_">add_account&lt;mobile_app_account</a>&gt;</p>
-</li>
-<li>
-<p><a href="#update_account_lt_account_id_comma_mobile_app_account_lt_">update_account&lt;account_id,mobile_app_account</a>&gt;</p>
-</li>
-<li>
-<p><a href="#update_account_lt_account_token_comma_mobile_app_account_lt_">update_account&lt;account_token,mobile_app_account</a>&gt;</p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="add_account_lt_simple_account_lt_">2.11.1. add_account&lt;simple_account&gt;</h4>
-<div class="paragraph">
-<p>Adds a new simple account.</p>
-</div>
-<div class="paragraph">
-<p>Requests creation of a new account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 55. add_account&lt;simple_account&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated unique account identifier.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"simple_account"</code> of type <a href="#simple_account">simple_account</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New account attributes.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_57">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "add_account":{
-        "account_token":123,
-        "account":{
-            "simple_account":{
-                "participant_id":123
-            }
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="remove_account_lt_account_id_lt_">2.11.2. remove_account&lt;account_id&gt;</h4>
-<div class="paragraph">
-<p>Removes an account using the exchange-generated unique account identifier.</p>
-</div>
-<div class="paragraph">
-<p>Requests removal of an existing account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 56. remove_account&lt;account_id&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing_account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_id"</code> of type <a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the account to be removed.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_58">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "remove_account":{
-        "existing_account":{
-            "account_id":123
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="remove_account_lt_account_token_lt_">2.11.3. remove_account&lt;account_token&gt;</h4>
-<div class="paragraph">
-<p>Removes an account using the client-generated unique account token.</p>
-</div>
-<div class="paragraph">
-<p>Requests removal of an existing account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 57. remove_account&lt;account_token&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing_account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_token"</code> of type <a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the account to be removed.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_59">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "remove_account":{
-        "existing_account":{
-            "account_token":123
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="suspend_account_lt_account_id_lt_">2.11.4. suspend_account&lt;account_id&gt;</h4>
-<div class="paragraph">
-<p>Suspends an account using the exchange-generated unique account identifier.</p>
-</div>
-<div class="paragraph">
-<p>Requests suspension of an existing account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 58. suspend_account&lt;account_id&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing_account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_id"</code> of type <a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the account to be suspended.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>replacement_account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New token to be applied to the account on success.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_60">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "suspend_account":{
-        "existing_account":{
-            "account_id":123
-        },
-        "replacement_account_token":123
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="suspend_account_lt_account_token_lt_">2.11.5. suspend_account&lt;account_token&gt;</h4>
-<div class="paragraph">
-<p>Suspends an account using the client-generated unique account token.</p>
-</div>
-<div class="paragraph">
-<p>Requests suspension of an existing account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 59. suspend_account&lt;account_token&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing_account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_token"</code> of type <a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the account to be suspended.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>replacement_account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New token to be applied to the account on success.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_61">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "suspend_account":{
-        "existing_account":{
-            "account_token":123
-        },
-        "replacement_account_token":123
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="unsuspend_account_lt_account_id_lt_">2.11.6. unsuspend_account&lt;account_id&gt;</h4>
-<div class="paragraph">
-<p>Unsuspends an account using the exchange-generated unique account identifier.</p>
-</div>
-<div class="paragraph">
-<p>Requests unsuspension of an existing account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 60. unsuspend_account&lt;account_id&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing_account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_id"</code> of type <a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the account to be unsuspended.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>replacement_account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New token to be applied to the account on success.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_62">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "unsuspend_account":{
-        "existing_account":{
-            "account_id":123
-        },
-        "replacement_account_token":123
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="unsuspend_account_lt_account_token_lt_">2.11.7. unsuspend_account&lt;account_token&gt;</h4>
-<div class="paragraph">
-<p>Unsuspends an account using the client-generated unique account token.</p>
-</div>
-<div class="paragraph">
-<p>Requests unsuspension of an existing account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 61. unsuspend_account&lt;account_token&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing_account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_token"</code> of type <a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the account to be unsuspended.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>replacement_account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New token to be applied to the account on success.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_63">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "unsuspend_account":{
-        "existing_account":{
-            "account_token":123
-        },
-        "replacement_account_token":123
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="add_account_lt_mobile_app_account_lt_">2.11.8. add_account&lt;mobile_app_account&gt;</h4>
-<div class="paragraph">
-<p>Adds a new mobile app account.</p>
-</div>
-<div class="paragraph">
-<p>Requests creation of a new account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 62. add_account&lt;mobile_app_account&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated unique account identifier.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"mobile_app_account"</code> of type <a href="#mobile_app_account">mobile_app_account</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New account attributes.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_64">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "add_account":{
-        "account_token":123,
-        "account":{
-            "mobile_app_account":{
-                "username":"A",
-                "api_key":"A",
-                "public_key":"0x00"
-            }
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="update_account_lt_account_id_comma_mobile_app_account_lt_">2.11.9. update_account&lt;account_id,mobile_app_account&gt;</h4>
-<div class="paragraph">
-<p>Updates an existing mobile app account using the exchange-generated unique account identifier.</p>
-</div>
-<div class="paragraph">
-<p>Requests update of an account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 63. update_account&lt;account_id,mobile_app_account&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing_account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_id"</code> of type <a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the account to be updated.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>replacement_account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New token to be applied to the account on success.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"mobile_app_account"</code> of type <a href="#mobile_app_account">mobile_app_account</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Account attributes used to update the existing account.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_65">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "update_account":{
-        "existing_account":{
-            "account_id":123
-        },
-        "replacement_account_token":123,
-        "account":{
-            "mobile_app_account":{
-                "username":"A",
-                "api_key":"A",
-                "public_key":"0x00"
-            }
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="update_account_lt_account_token_comma_mobile_app_account_lt_">2.11.10. update_account&lt;account_token,mobile_app_account&gt;</h4>
-<div class="paragraph">
-<p>Updates an existing mobile app account using the client-generated unique account token.</p>
-</div>
-<div class="paragraph">
-<p>Requests update of an account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 64. update_account&lt;account_token,mobile_app_account&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>existing_account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_token"</code> of type <a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the account to be updated.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>replacement_account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New token to be applied to the account on success.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"mobile_app_account"</code> of type <a href="#mobile_app_account">mobile_app_account</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Account attributes used to update the existing account.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_66">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "update_account":{
-        "existing_account":{
-            "account_token":123
-        },
-        "replacement_account_token":123,
-        "account":{
-            "mobile_app_account":{
-                "username":"A",
-                "api_key":"A",
-                "public_key":"0x00"
-            }
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_account_management_responses">2.12. Account Management Responses</h3>
-<div class="paragraph">
-<p>This message set includes the following messages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#cycle_starting">cycle_starting</a></p>
-</li>
-<li>
-<p><a href="#cycle_started">cycle_started</a></p>
-</li>
-<li>
-<p><a href="#cycle_ending">cycle_ending</a></p>
-</li>
-<li>
-<p><a href="#cycle_ended">cycle_ended</a></p>
-</li>
-<li>
-<p><a href="#deliverable_lt_fx_spot_lt_">deliverable&lt;fx_spot</a>&gt;</p>
-</li>
-<li>
-<p><a href="#deliverable_lt_future_lt_">deliverable&lt;future</a>&gt;</p>
-</li>
-<li>
-<p><a href="#deliverable_lt_option_lt_">deliverable&lt;option</a>&gt;</p>
-</li>
-<li>
-<p><a href="#deliverable_lt_exchange_token_lt_">deliverable&lt;exchange_token</a>&gt;</p>
-</li>
-<li>
-<p><a href="#deliverable_lt_stable_token_lt_">deliverable&lt;stable_token</a>&gt;</p>
-</li>
-<li>
-<p><a href="#deliverable_lt_fiat_currency_lt_">deliverable&lt;fiat_currency</a>&gt;</p>
-</li>
-<li>
-<p><a href="#tradeable_entity_lt_simple_market_lt_">tradeable_entity&lt;simple_market</a>&gt;</p>
-</li>
-<li>
-<p><a href="#trading_rule">trading_rule</a></p>
-</li>
-<li>
-<p><a href="#account_added_lt_simple_account_lt_">account_added&lt;simple_account</a>&gt;</p>
-</li>
-<li>
-<p><a href="#account_removed">account_removed</a></p>
-</li>
-<li>
-<p><a href="#account_suspended">account_suspended</a></p>
-</li>
-<li>
-<p><a href="#account_unsuspended">account_unsuspended</a></p>
-</li>
-<li>
-<p><a href="#account_added_lt_mobile_app_account_lt_">account_added&lt;mobile_app_account</a>&gt;</p>
-</li>
-<li>
-<p><a href="#account_updated_lt_mobile_app_account_lt_">account_updated&lt;mobile_app_account</a>&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_add_account_lt_simple_account_lt__lt_">account_action_rejected&lt;add_account&lt;simple_account</a>&gt;&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_remove_account_lt_account_id_lt__lt_">account_action_rejected&lt;remove_account&lt;account_id</a>&gt;&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_remove_account_lt_account_token_lt__lt_">account_action_rejected&lt;remove_account&lt;account_token</a>&gt;&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_suspend_account_lt_account_id_lt__lt_">account_action_rejected&lt;suspend_account&lt;account_id</a>&gt;&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_suspend_account_lt_account_token_lt__lt_">account_action_rejected&lt;suspend_account&lt;account_token</a>&gt;&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_unsuspend_account_lt_account_id_lt__lt_">account_action_rejected&lt;unsuspend_account&lt;account_id</a>&gt;&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_unsuspend_account_lt_account_token_lt__lt_">account_action_rejected&lt;unsuspend_account&lt;account_token</a>&gt;&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_add_account_lt_mobile_app_account_lt__lt_">account_action_rejected&lt;add_account&lt;mobile_app_account</a>&gt;&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_update_account_lt_account_id_comma_mobile_app_account_lt__lt_">account_action_rejected&lt;update_account&lt;account_id,mobile_app_account</a>&gt;&gt;</p>
-</li>
-<li>
-<p><a href="#account_action_rejected_lt_update_account_lt_account_token_comma_mobile_app_account_lt__lt_">account_action_rejected&lt;update_account&lt;account_token,mobile_app_account</a>&gt;&gt;</p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="account_added_lt_simple_account_lt_">2.12.1. account_added&lt;simple_account&gt;</h4>
-<div class="paragraph">
-<p>Notification that a new account was added.</p>
-</div>
-<div class="paragraph">
-<p>Generated in response to <a href="#add_account">[add_account]</a> as well as other events that trigger account creation.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 65. account_added&lt;simple_account&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account was added.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The client-generated unique identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"simple_account"</code> of type <a href="#simple_account">simple_account</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The new account attributes.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_67">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_added":{
-        "timestamp":123,
-        "account_id":123,
-        "account_token":123,
-        "account":{
-            "simple_account":{
-                "participant_id":123
-            }
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_removed">2.12.2. account_removed</h4>
-<div class="paragraph">
-<p>Notification that an existing account was removed.</p>
-</div>
-<div class="paragraph">
-<p>Generated in response to <a href="#remove_account">[remove_account]</a> as well as other events that trigger account removal.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 66. account_removed fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account was cancelled.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The client-generated unique identifier for the account.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_68">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_removed":{
-        "timestamp":123,
-        "account_id":123,
-        "account_token":123
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_suspended">2.12.3. account_suspended</h4>
-<div class="paragraph">
-<p>Notification that an existing account was suspended.</p>
-</div>
-<div class="paragraph">
-<p>Generated in response to <a href="#remove_account">[remove_account]</a> as well as other events that trigger account removal.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 67. account_suspended fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account was cancelled.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The previous client-generated unique identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>replacement_account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The new client-generated unique identifier for the account.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_69">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_suspended":{
-        "timestamp":123,
-        "account_id":123,
-        "account_token":123,
-        "replacement_account_token":123
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_unsuspended">2.12.4. account_unsuspended</h4>
-<div class="paragraph">
-<p>Notification that an existing account was unsuspended.</p>
-</div>
-<div class="paragraph">
-<p>Generated in response to <a href="#remove_account">[remove_account]</a> as well as other events that trigger account removal.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 68. account_unsuspended fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account was cancelled.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The previous client-generated unique identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>replacement_account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The new client-generated unique identifier for the account.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_70">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_unsuspended":{
-        "timestamp":123,
-        "account_id":123,
-        "account_token":123,
-        "replacement_account_token":123
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_added_lt_mobile_app_account_lt_">2.12.5. account_added&lt;mobile_app_account&gt;</h4>
-<div class="paragraph">
-<p>Notification that a new mobile app account was added.</p>
-</div>
-<div class="paragraph">
-<p>Generated in response to <a href="#add_account">[add_account]</a> as well as other events that trigger account creation.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 69. account_added&lt;mobile_app_account&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account was added.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The client-generated unique identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"mobile_app_account"</code> of type <a href="#mobile_app_account">mobile_app_account</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The new account attributes.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_71">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_added":{
-        "timestamp":123,
-        "account_id":123,
-        "account_token":123,
-        "account":{
-            "mobile_app_account":{
-                "username":"A",
-                "api_key":"A",
-                "public_key":"0x00"
-            }
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_updated_lt_mobile_app_account_lt_">2.12.6. account_updated&lt;mobile_app_account&gt;</h4>
-<div class="paragraph">
-<p>Notification that an update was made to a mobile app account.</p>
-</div>
-<div class="paragraph">
-<p>Generated in response to <a href="#update_account">[update_account]</a> as well as other events that trigger account modification.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 70. account_updated&lt;mobile_app_account&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account was updated.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The client-generated unique identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>replacement_account_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_token">account_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The new client-generated unique identifier for the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"mobile_app_account"</code> of type <a href="#mobile_app_account">mobile_app_account</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The new account attributes.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_72">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_updated":{
-        "timestamp":123,
-        "account_id":123,
-        "account_token":123,
-        "replacement_account_token":123,
-        "account":{
-            "mobile_app_account":{
-                "username":"A",
-                "api_key":"A",
-                "public_key":"0x00"
-            }
-        }
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_add_account_lt_simple_account_lt__lt_">2.12.7. account_action_rejected&lt;add_account&lt;simple_account&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects addition of a simple account.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 71. account_action_rejected&lt;add_account&lt;simple_account&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"add_account"</code> of type <a href="#add_account_lt_simple_account_lt_">add_account&lt;simple_account&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_73">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "add_account":{
-                "account_token":123,
-                "account":{
-                    "simple_account":{
-                        "participant_id":123
-                    }
-                }
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_remove_account_lt_account_id_lt__lt_">2.12.8. account_action_rejected&lt;remove_account&lt;account_id&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects removal of an account using the exchange-generated unique account identifier.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 72. account_action_rejected&lt;remove_account&lt;account_id&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"remove_account"</code> of type <a href="#remove_account_lt_account_id_lt_">remove_account&lt;account_id&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_74">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "remove_account":{
-                "existing_account":{
-                    "account_id":123
-                }
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_remove_account_lt_account_token_lt__lt_">2.12.9. account_action_rejected&lt;remove_account&lt;account_token&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects removal of an account using the client-generated unique account token.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 73. account_action_rejected&lt;remove_account&lt;account_token&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"remove_account"</code> of type <a href="#remove_account_lt_account_token_lt_">remove_account&lt;account_token&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_75">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "remove_account":{
-                "existing_account":{
-                    "account_token":123
-                }
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_suspend_account_lt_account_id_lt__lt_">2.12.10. account_action_rejected&lt;suspend_account&lt;account_id&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects suspension of an account using the exchange-generated unique account identifier.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 74. account_action_rejected&lt;suspend_account&lt;account_id&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"suspend_account"</code> of type <a href="#suspend_account_lt_account_id_lt_">suspend_account&lt;account_id&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_76">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "suspend_account":{
-                "existing_account":{
-                    "account_id":123
-                },
-                "replacement_account_token":123
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_suspend_account_lt_account_token_lt__lt_">2.12.11. account_action_rejected&lt;suspend_account&lt;account_token&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects suspension of an account using the client-generated unique account token.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 75. account_action_rejected&lt;suspend_account&lt;account_token&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"suspend_account"</code> of type <a href="#suspend_account_lt_account_token_lt_">suspend_account&lt;account_token&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_77">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "suspend_account":{
-                "existing_account":{
-                    "account_token":123
-                },
-                "replacement_account_token":123
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_unsuspend_account_lt_account_id_lt__lt_">2.12.12. account_action_rejected&lt;unsuspend_account&lt;account_id&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects unsuspension of an account using the exchange-generated unique account identifier.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 76. account_action_rejected&lt;unsuspend_account&lt;account_id&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"unsuspend_account"</code> of type <a href="#unsuspend_account_lt_account_id_lt_">unsuspend_account&lt;account_id&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_78">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "unsuspend_account":{
-                "existing_account":{
-                    "account_id":123
-                },
-                "replacement_account_token":123
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_unsuspend_account_lt_account_token_lt__lt_">2.12.13. account_action_rejected&lt;unsuspend_account&lt;account_token&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects unsuspension of an account using the client-generated unique account token.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 77. account_action_rejected&lt;unsuspend_account&lt;account_token&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"unsuspend_account"</code> of type <a href="#unsuspend_account_lt_account_token_lt_">unsuspend_account&lt;account_token&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_79">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "unsuspend_account":{
-                "existing_account":{
-                    "account_token":123
-                },
-                "replacement_account_token":123
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_add_account_lt_mobile_app_account_lt__lt_">2.12.14. account_action_rejected&lt;add_account&lt;mobile_app_account&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects addition of a mobile app account.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 78. account_action_rejected&lt;add_account&lt;mobile_app_account&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"add_account"</code> of type <a href="#add_account_lt_mobile_app_account_lt_">add_account&lt;mobile_app_account&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_80">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "add_account":{
-                "account_token":123,
-                "account":{
-                    "mobile_app_account":{
-                        "username":"A",
-                        "api_key":"A",
-                        "public_key":"0x00"
-                    }
-                }
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_update_account_lt_account_id_comma_mobile_app_account_lt__lt_">2.12.15. account_action_rejected&lt;update_account&lt;account_id,mobile_app_account&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects update of a mobile app account using the exchange-generated unique account identifier.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 79. account_action_rejected&lt;update_account&lt;account_id,mobile_app_account&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"update_account"</code> of type <a href="#update_account_lt_account_id_comma_mobile_app_account_lt_">update_account&lt;account_id,mobile_app_account&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_81">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "update_account":{
-                "existing_account":{
-                    "account_id":123
-                },
-                "replacement_account_token":123,
-                "account":{
-                    "mobile_app_account":{
-                        "username":"A",
-                        "api_key":"A",
-                        "public_key":"0x00"
-                    }
-                }
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="account_action_rejected_lt_update_account_lt_account_token_comma_mobile_app_account_lt__lt_">2.12.16. account_action_rejected&lt;update_account&lt;account_token,mobile_app_account&gt;&gt;</h4>
-<div class="paragraph">
-<p>Rejects update of a mobile app account using the client-generated unique account token.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 80. account_action_rejected&lt;update_account&lt;account_token,mobile_app_account&gt;&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the account action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"update_account"</code> of type <a href="#update_account_lt_account_token_comma_mobile_app_account_lt_">update_account&lt;account_token,mobile_app_account&gt;</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the account action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the account action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_82">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "account_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "update_account":{
-                "existing_account":{
-                    "account_token":123
-                },
-                "replacement_account_token":123,
-                "account":{
-                    "mobile_app_account":{
-                        "username":"A",
-                        "api_key":"A",
-                        "public_key":"0x00"
-                    }
-                }
-            }
-        },
-        "reason":"unknown_account"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_funds_management_requests">2.13. Funds Management Requests</h3>
-<div class="paragraph">
-<p>This message set includes the following messages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#deposit_funds">deposit_funds</a></p>
-</li>
-<li>
-<p><a href="#withdraw_funds">withdraw_funds</a></p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="deposit_funds">2.13.1. deposit_funds</h4>
-<div class="paragraph">
-<p>Request to deposit funds for an account and deliverable.</p>
-</div>
-<div class="paragraph">
-<p>Request deposit funds for an account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 81. deposit_funds fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The account_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deliverable_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_id">deliverable_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The deliverable_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quantity</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#quantity">quantity</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of the funds being deposited.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_token">funds_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated unique funds_management identifier.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_hash</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The associated hash relating to the funds transaction.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_reference</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The funds_reference associated with the deposit.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_83">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "deposit_funds":{
-        "account_id":123,
-        "deliverable_id":123,
-        "quantity":123,
-        "funds_token":123,
-        "funds_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
-        "funds_reference":"0x00"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="withdraw_funds">2.13.2. withdraw_funds</h4>
-<div class="paragraph">
-<p>Request to withdraw funds for an account and deliverable.</p>
-</div>
-<div class="paragraph">
-<p>Request the withdrawal of funds for an account.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 82. withdraw_funds fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The account_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deliverable_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_id">deliverable_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The deliverable_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>withdrawal_instructions</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#withdrawal_instructions">withdrawal_instructions</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how the withdrawal should be done.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quantity</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#quantity">quantity</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of the funds being deposited.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_token">funds_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated unique funds_management identifier.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_hash</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The associated hash relating to the funds transaction.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_reference</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The funds_reference associated with the deposit.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_84">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "withdraw_funds":{
-        "account_id":123,
-        "deliverable_id":123,
-        "withdrawal_instructions":"withdraw_exactly",
-        "quantity":123,
-        "funds_token":123,
-        "funds_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
-        "funds_reference":"0x00"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_funds_management_responses">2.14. Funds Management Responses</h3>
-<div class="paragraph">
-<p>This message set includes the following messages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#account_added_lt_simple_account_lt_">account_added&lt;simple_account</a>&gt;</p>
-</li>
-<li>
-<p><a href="#account_removed">account_removed</a></p>
-</li>
-<li>
-<p><a href="#account_suspended">account_suspended</a></p>
-</li>
-<li>
-<p><a href="#account_unsuspended">account_unsuspended</a></p>
-</li>
-<li>
-<p><a href="#account_added_lt_mobile_app_account_lt_">account_added&lt;mobile_app_account</a>&gt;</p>
-</li>
-<li>
-<p><a href="#account_updated_lt_mobile_app_account_lt_">account_updated&lt;mobile_app_account</a>&gt;</p>
-</li>
-<li>
-<p><a href="#funds_deposit_pending">funds_deposit_pending</a></p>
-</li>
-<li>
-<p><a href="#funds_withdrawal_processed">funds_withdrawal_processed</a></p>
-</li>
-<li>
-<p><a href="#funds_withdrawal_pending">funds_withdrawal_pending</a></p>
-</li>
-<li>
-<p><a href="#funds_deposit_processed">funds_deposit_processed</a></p>
-</li>
-<li>
-<p><a href="#funds_action_rejected_lt_deposit_funds_lt_">funds_action_rejected&lt;deposit_funds</a>&gt;</p>
-</li>
-<li>
-<p><a href="#funds_action_rejected_lt_withdraw_funds_lt_">funds_action_rejected&lt;withdraw_funds</a>&gt;</p>
-</li>
-</ul>
-</div>
-<div class="sect3">
-<h4 id="funds_deposit_pending">2.14.1. funds_deposit_pending</h4>
-<div class="paragraph">
-<p>Notification that a funds deposit is pending.</p>
-</div>
-<div class="paragraph">
-<p>Pending response to a deposit funds request.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 83. funds_deposit_pending fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_id">funds_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the funds deposit.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The account_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deliverable_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_id">deliverable_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The deliverable_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quantity</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#quantity">quantity</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of the funds being deposited.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_token">funds_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated unique funds_management identifier.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_hash</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The associated hash relating to the funds transaction.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_reference</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The funds_reference associated with the deposit.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_85">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "funds_deposit_pending":{
-        "funds_id":123,
-        "account_id":123,
-        "deliverable_id":123,
-        "quantity":123,
-        "funds_token":123,
-        "funds_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
-        "funds_reference":"0x00"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="funds_withdrawal_processed">2.14.2. funds_withdrawal_processed</h4>
-<div class="paragraph">
-<p>Notification that a funds deposit has been processed.</p>
-</div>
-<div class="paragraph">
-<p>Response to a deposit funds request.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 84. funds_withdrawal_processed fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_id">funds_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the funds deposit.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The account_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deliverable_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_id">deliverable_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The deliverable_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quantity</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#quantity">quantity</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of the funds being deposited.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_token">funds_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated unique funds_management identifier.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_hash</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The associated hash relating to the funds transaction.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_reference</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The funds_reference associated with the deposit.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_result</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_result">funds_result</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The result of the deposit funds transaction.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_86">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "funds_deposit_processed":{
-        "funds_id":123,
-        "account_id":123,
-        "deliverable_id":123,
-        "quantity":123,
-        "funds_token":123,
-        "funds_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
-        "funds_reference":"0x00",
-        "funds_result":"success"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="funds_withdrawal_pending">2.14.3. funds_withdrawal_pending</h4>
-<div class="paragraph">
-<p>Notification that a funds withdrawal is pending.</p>
-</div>
-<div class="paragraph">
-<p>Pending response to a withdraw funds request.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 85. funds_withdrawal_pending fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_id">funds_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the funds withdrawal.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The account_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deliverable_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_id">deliverable_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The deliverable_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>withdrawal_instructions</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#withdrawal_instructions">withdrawal_instructions</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The associated withdrawal instructions from the withdraw_funds request.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quantity</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#quantity">quantity</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of funds requested to be withdrawn.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_token">funds_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated unique funds_management identifier.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_hash</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The associated hash relating to the funds transaction.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_reference</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The funds_reference associated with the withdrawal.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_87">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "funds_withdrawal_pending":{
-        "funds_id":123,
-        "account_id":123,
-        "deliverable_id":123,
-        "withdrawal_instructions":"withdraw_exactly",
-        "quantity":123,
-        "funds_token":123,
-        "funds_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
-        "funds_reference":"0x00"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="funds_deposit_processed">2.14.4. funds_deposit_processed</h4>
-<div class="paragraph">
-<p>Notification that a funds withdrawal has been processed.</p>
-</div>
-<div class="paragraph">
-<p>Response of a withdraw funds request.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 86. funds_deposit_processed fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_id">funds_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the funds withdrawal.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_id">account_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The account_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deliverable_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_id">deliverable_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The deliverable_id that the funds should be associated with.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>withdrawal_instructions</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#withdrawal_instructions">withdrawal_instructions</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The associated withdrawal instructions from the withdraw_funds request.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quantity</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#quantity">quantity</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of funds requested to be withdrawn.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_token">funds_token</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated unique funds_management identifier.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_hash</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The associated hash relating to the funds transaction.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_reference</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The funds_reference associated with the withdrawal.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>funds_result</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_result">funds_result</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The result associated with the withdrawal request.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quantity_withdrawn</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#quantity">quantity</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The actual quantity that has been withdrawn from an account.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_88">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "funds_withdrawal_processed":{
-        "funds_id":123,
-        "account_id":123,
-        "deliverable_id":123,
-        "withdrawal_instructions":"withdraw_exactly",
-        "quantity":123,
-        "funds_token":123,
-        "funds_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
-        "funds_reference":"0x00",
-        "funds_result":"success",
-        "quantity_withdrawn":123
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="funds_action_rejected_lt_deposit_funds_lt_">2.14.5. funds_action_rejected&lt;deposit_funds&gt;</h4>
-<div class="paragraph">
-<p>Rejects a funds deposit.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 87. funds_action_rejected&lt;deposit_funds&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the funds action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"deposit_funds"</code> of type <a href="#deposit_funds">deposit_funds</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the funds action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the funds action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_89">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "funds_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "deposit_funds":{
-                "account_id":123,
-                "deliverable_id":123,
-                "quantity":123,
-                "funds_token":123,
-                "funds_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
-                "funds_reference":"0x00"
-            }
-        },
-        "reason":"invalid_account_id"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="funds_action_rejected_lt_withdraw_funds_lt_">2.14.6. funds_action_rejected&lt;withdraw_funds&gt;</h4>
-<div class="paragraph">
-<p>Rejects a funds withdrawal.</p>
-</div>
-<div class="paragraph">
-<p>Generated as a response to indicate an action was rejected.</p>
-</div>
-<div class="paragraph">
-<p>This message defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 88. funds_action_rejected&lt;withdraw_funds&gt; fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the funds action was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"withdraw_funds"</code> of type <a href="#withdraw_funds">withdraw_funds</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the funds action that was rejected.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reject_reason">reject_reason</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the funds action was rejected.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect4">
-<h5 id="_json_example_90">JSON Example</h5>
-<div class="listingblock">
-<div class="content">
-<pre>{
-    "funds_action_rejected":{
-        "timestamp":123,
-        "action":{
-            "withdraw_funds":{
-                "account_id":123,
-                "deliverable_id":123,
-                "withdrawal_instructions":"withdraw_exactly",
-                "quantity":123,
-                "funds_token":123,
-                "funds_hash":"0x0000000000000000000000000000000000000000000000000000000000000000",
-                "funds_reference":"0x00"
-            }
-        },
-        "reason":"invalid_account_id"
-    }
-}</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_structures">2.15. Structures</h3>
+<h3 id="_structures">2.11. Structures</h3>
 <div class="paragraph">
 <p>This section describes the following structures:</p>
 </div>
@@ -9054,9 +6523,6 @@ its having a higher <code>display_order_id</code>.</p>
 <p><a href="#fx_spot">fx_spot</a></p>
 </li>
 <li>
-<p><a href="#mobile_app_account">mobile_app_account</a></p>
-</li>
-<li>
 <p><a href="#option">option</a></p>
 </li>
 <li>
@@ -9067,9 +6533,6 @@ its having a higher <code>display_order_id</code>.</p>
 </li>
 <li>
 <p><a href="#quote_status">quote_status</a></p>
-</li>
-<li>
-<p><a href="#simple_account">simple_account</a></p>
 </li>
 <li>
 <p><a href="#simple_market">simple_market</a></p>
@@ -9089,7 +6552,7 @@ its having a higher <code>display_order_id</code>.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="date">2.15.1. date</h4>
+<h4 id="date">2.11.1. date</h4>
 <div class="paragraph">
 <p>Represents a calendar date.</p>
 </div>
@@ -9097,7 +6560,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 89. date fields</caption>
+<caption class="title">Table 55. date fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9130,7 +6593,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="exchange_token">2.15.2. exchange_token</h4>
+<h4 id="exchange_token">2.11.2. exchange_token</h4>
 <div class="paragraph">
 <p>Contains reference data associated with an exchange token.</p>
 </div>
@@ -9138,7 +6601,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 90. exchange_token fields</caption>
+<caption class="title">Table 56. exchange_token fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9171,7 +6634,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="fiat_currency">2.15.3. fiat_currency</h4>
+<h4 id="fiat_currency">2.11.3. fiat_currency</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a fiat currency.</p>
 </div>
@@ -9179,7 +6642,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 91. fiat_currency fields</caption>
+<caption class="title">Table 57. fiat_currency fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9217,7 +6680,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="future">2.15.4. future</h4>
+<h4 id="future">2.11.4. future</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single future entity.</p>
 </div>
@@ -9225,7 +6688,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 92. future fields</caption>
+<caption class="title">Table 58. future fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9273,7 +6736,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="fx_spot">2.15.5. fx_spot</h4>
+<h4 id="fx_spot">2.11.5. fx_spot</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single fx_spot entity.</p>
 </div>
@@ -9281,7 +6744,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 93. fx_spot fields</caption>
+<caption class="title">Table 59. fx_spot fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9314,48 +6777,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="mobile_app_account">2.15.6. mobile_app_account</h4>
-<div class="paragraph">
-<p>Attributes of a mobile app account.</p>
-</div>
-<div class="paragraph">
-<p>This structure defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 94. mobile_app_account fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>username</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the username that owns the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api_key</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the api key owned by the account.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>public_key</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the public key owned by the account.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="option">2.15.7. option</h4>
+<h4 id="option">2.11.6. option</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single option entity.</p>
 </div>
@@ -9363,7 +6785,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 95. option fields</caption>
+<caption class="title">Table 60. option fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9446,7 +6868,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="quote_side">2.15.8. quote_side</h4>
+<h4 id="quote_side">2.11.7. quote_side</h4>
 <div class="paragraph">
 <p>Attributes used to capture a quote side.</p>
 </div>
@@ -9454,7 +6876,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 96. quote_side fields</caption>
+<caption class="title">Table 61. quote_side fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9487,7 +6909,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="quote_side_status">2.15.9. quote_side_status</h4>
+<h4 id="quote_side_status">2.11.8. quote_side_status</h4>
 <div class="paragraph">
 <p>This captures the order ids and other information associated with the entered quote.</p>
 </div>
@@ -9495,7 +6917,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 97. quote_side_status fields</caption>
+<caption class="title">Table 62. quote_side_status fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9523,7 +6945,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="quote_status">2.15.10. quote_status</h4>
+<h4 id="quote_status">2.11.9. quote_status</h4>
 <div class="paragraph">
 <p>This captures the quote status that reflects the status of any entered quote.</p>
 </div>
@@ -9531,7 +6953,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 98. quote_status fields</caption>
+<caption class="title">Table 63. quote_status fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9564,38 +6986,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="simple_account">2.15.11. simple_account</h4>
-<div class="paragraph">
-<p>Attributes of a simple account.</p>
-</div>
-<div class="paragraph">
-<p>This structure defines the following fields:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 99. simple_account fields</caption>
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>participant_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#participant_id">participant_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the participant that owns the account.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="simple_market">2.15.12. simple_market</h4>
+<h4 id="simple_market">2.11.10. simple_market</h4>
 <div class="paragraph">
 <p>Describes a simple, single market for trading in a tradeable entity.</p>
 </div>
@@ -9603,7 +6994,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 100. simple_market fields</caption>
+<caption class="title">Table 64. simple_market fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9631,7 +7022,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="simple_order_lt_account_id_lt_">2.15.13. simple_order&lt;account_id&gt;</h4>
+<h4 id="simple_order_lt_account_id_lt_">2.11.11. simple_order&lt;account_id&gt;</h4>
 <div class="paragraph">
 <p>Attributes used for simple order entry.</p>
 </div>
@@ -9639,7 +7030,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 101. simple_order&lt;account_id&gt; fields</caption>
+<caption class="title">Table 65. simple_order&lt;account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9697,7 +7088,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="simple_quote">2.15.14. simple_quote</h4>
+<h4 id="simple_quote">2.11.12. simple_quote</h4>
 <div class="paragraph">
 <p>Attributes used for simple quote entry.</p>
 </div>
@@ -9705,7 +7096,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 102. simple_quote fields</caption>
+<caption class="title">Table 66. simple_quote fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9748,13 +7139,13 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="simple_quotes">2.15.15. simple_quotes</h4>
+<h4 id="simple_quotes">2.11.13. simple_quotes</h4>
 <div class="paragraph">
 <p><code>simple_quotes</code> is an array with elements of type <a href="#simple_quote">simple_quote</a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="stable_token">2.15.16. stable_token</h4>
+<h4 id="stable_token">2.11.14. stable_token</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single stable_token entity.</p>
 </div>
@@ -9762,7 +7153,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 103. stable_token fields</caption>
+<caption class="title">Table 67. stable_token fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9811,7 +7202,7 @@ its having a higher <code>display_order_id</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_types">2.16. Types</h3>
+<h3 id="_types">2.12. Types</h3>
 <div class="paragraph">
 <p>This section describes the following types:</p>
 </div>
@@ -9819,9 +7210,6 @@ its having a higher <code>display_order_id</code>.</p>
 <ul>
 <li>
 <p><a href="#account_id">account_id</a></p>
-</li>
-<li>
-<p><a href="#account_token">account_token</a></p>
 </li>
 <li>
 <p><a href="#cancelled_reason">cancelled_reason</a></p>
@@ -9843,15 +7231,6 @@ its having a higher <code>display_order_id</code>.</p>
 </li>
 <li>
 <p><a href="#display_order_id">display_order_id</a></p>
-</li>
-<li>
-<p><a href="#funds_id">funds_id</a></p>
-</li>
-<li>
-<p><a href="#funds_result">funds_result</a></p>
-</li>
-<li>
-<p><a href="#funds_token">funds_token</a></p>
 </li>
 <li>
 <p><a href="#iso4217_currency_number">iso4217_currency_number</a></p>
@@ -9891,9 +7270,6 @@ its having a higher <code>display_order_id</code>.</p>
 </li>
 <li>
 <p><a href="#order_token">order_token</a></p>
-</li>
-<li>
-<p><a href="#participant_id">participant_id</a></p>
 </li>
 <li>
 <p><a href="#position_id">position_id</a></p>
@@ -9968,15 +7344,12 @@ its having a higher <code>display_order_id</code>.</p>
 <p><a href="#value">value</a></p>
 </li>
 <li>
-<p><a href="#withdrawal_instructions">withdrawal_instructions</a></p>
-</li>
-<li>
 <p><a href="#year">year</a></p>
 </li>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="account_id">2.16.1. account_id</h4>
+<h4 id="account_id">2.12.1. account_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies an account.</p>
 </div>
@@ -9984,7 +7357,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 104. account_id constants</caption>
+<caption class="title">Table 68. account_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10004,35 +7377,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="account_token">2.16.2. account_token</h4>
-<div class="paragraph">
-<p>A 64-bit client-generated ID to uniquely identify an account. Must be increased for each inbound account management request. The top 8 bits are reserved and must be 0.</p>
-</div>
-<div class="paragraph">
-<p>This type defines the following well-known constants:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 105. account_token constants</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>none</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no account token.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="cancelled_reason">2.16.3. cancelled_reason</h4>
+<h4 id="cancelled_reason">2.12.2. cancelled_reason</h4>
 <div class="paragraph">
 <p>Specifies why the quotes were cancelled.</p>
 </div>
@@ -10040,7 +7385,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 106. cancelled_reason constants</caption>
+<caption class="title">Table 69. cancelled_reason constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10064,7 +7409,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="channel_id">2.16.4. channel_id</h4>
+<h4 id="channel_id">2.12.3. channel_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a channel.</p>
 </div>
@@ -10072,7 +7417,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 107. channel_id constants</caption>
+<caption class="title">Table 70. channel_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10092,7 +7437,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="contract_size">2.16.5. contract_size</h4>
+<h4 id="contract_size">2.12.4. contract_size</h4>
 <div class="paragraph">
 <p>Specifies the contract size.</p>
 </div>
@@ -10100,7 +7445,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 108. contract_size constants</caption>
+<caption class="title">Table 71. contract_size constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10120,7 +7465,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="day">2.16.6. day</h4>
+<h4 id="day">2.12.5. day</h4>
 <div class="paragraph">
 <p>Day of the month (1-31).</p>
 </div>
@@ -10128,7 +7473,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 109. day constants</caption>
+<caption class="title">Table 72. day constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10148,7 +7493,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="decimal_places">2.16.7. decimal_places</h4>
+<h4 id="decimal_places">2.12.6. decimal_places</h4>
 <div class="paragraph">
 <p>Uniquely identifies a market.</p>
 </div>
@@ -10156,7 +7501,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 110. decimal_places constants</caption>
+<caption class="title">Table 73. decimal_places constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10176,7 +7521,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="deliverable_id">2.16.8. deliverable_id</h4>
+<h4 id="deliverable_id">2.12.7. deliverable_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a deliverable.</p>
 </div>
@@ -10184,7 +7529,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 111. deliverable_id constants</caption>
+<caption class="title">Table 74. deliverable_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10204,7 +7549,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="display_order_id">2.16.9. display_order_id</h4>
+<h4 id="display_order_id">2.12.8. display_order_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a display order.</p>
 </div>
@@ -10212,7 +7557,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 112. display_order_id constants</caption>
+<caption class="title">Table 75. display_order_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10232,95 +7577,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="funds_id">2.16.10. funds_id</h4>
-<div class="paragraph">
-<p>Uniquely identifies a funds_management message.</p>
-</div>
-<div class="paragraph">
-<p>This type defines the following well-known constants:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 113. funds_id constants</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>none</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no funds ID.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="funds_result">2.16.11. funds_result</h4>
-<div class="paragraph">
-<p>Specifies whether deposit funds was successful or not.</p>
-</div>
-<div class="paragraph">
-<p>This type defines the following well-known constants:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 114. funds_result constants</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>success</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Successful deposit.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>failure</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unsuccessful deposit.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="funds_token">2.16.12. funds_token</h4>
-<div class="paragraph">
-<p>A 64-bit client-generated ID to uniquely identify a funds_management message. Must be increased for each inbound account management request. The top 8 bits are reserved and must be 0.</p>
-</div>
-<div class="paragraph">
-<p>This type defines the following well-known constants:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 115. funds_token constants</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>none</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no account token.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="iso4217_currency_number">2.16.13. iso4217_currency_number</h4>
+<h4 id="iso4217_currency_number">2.12.9. iso4217_currency_number</h4>
 <div class="paragraph">
 <p>Unique numeric identifier for a currency according to the ISO4217 standard.</p>
 </div>
@@ -10328,7 +7585,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 116. iso4217_currency_number constants</caption>
+<caption class="title">Table 76. iso4217_currency_number constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10348,7 +7605,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="liquidity_flag">2.16.14. liquidity_flag</h4>
+<h4 id="liquidity_flag">2.12.10. liquidity_flag</h4>
 <div class="paragraph">
 <p>Specifies how an order affects liquidity.</p>
 </div>
@@ -10356,7 +7613,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 117. liquidity_flag constants</caption>
+<caption class="title">Table 77. liquidity_flag constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10380,7 +7637,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="market_id">2.16.15. market_id</h4>
+<h4 id="market_id">2.12.11. market_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a market.</p>
 </div>
@@ -10388,7 +7645,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 118. market_id constants</caption>
+<caption class="title">Table 78. market_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10408,7 +7665,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="month">2.16.16. month</h4>
+<h4 id="month">2.12.12. month</h4>
 <div class="paragraph">
 <p>Month (1-12).</p>
 </div>
@@ -10416,7 +7673,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 119. month constants</caption>
+<caption class="title">Table 79. month constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10436,7 +7693,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="option_closing_type">2.16.17. option_closing_type</h4>
+<h4 id="option_closing_type">2.12.13. option_closing_type</h4>
 <div class="paragraph">
 <p>Denotes which system event is used to trigger the option closing process.</p>
 </div>
@@ -10444,7 +7701,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 120. option_closing_type constants</caption>
+<caption class="title">Table 80. option_closing_type constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10468,7 +7725,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="option_delivery_style">2.16.18. option_delivery_style</h4>
+<h4 id="option_delivery_style">2.12.14. option_delivery_style</h4>
 <div class="paragraph">
 <p>Specifies how option delivery will occur.</p>
 </div>
@@ -10476,7 +7733,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 121. option_delivery_style constants</caption>
+<caption class="title">Table 81. option_delivery_style constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10508,7 +7765,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="option_exercise_style">2.16.19. option_exercise_style</h4>
+<h4 id="option_exercise_style">2.12.15. option_exercise_style</h4>
 <div class="paragraph">
 <p>Specifies how the option may be exercised.</p>
 </div>
@@ -10516,7 +7773,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 122. option_exercise_style constants</caption>
+<caption class="title">Table 82. option_exercise_style constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10544,7 +7801,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="option_source">2.16.20. option_source</h4>
+<h4 id="option_source">2.12.16. option_source</h4>
 <div class="paragraph">
 <p>Identifies the source of the option.</p>
 </div>
@@ -10552,7 +7809,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 123. option_source constants</caption>
+<caption class="title">Table 83. option_source constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10572,7 +7829,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="option_type">2.16.21. option_type</h4>
+<h4 id="option_type">2.12.17. option_type</h4>
 <div class="paragraph">
 <p>Specifies whether option is a call or put.</p>
 </div>
@@ -10580,7 +7837,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 124. option_type constants</caption>
+<caption class="title">Table 84. option_type constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10604,7 +7861,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="option_valuation_approach">2.16.22. option_valuation_approach</h4>
+<h4 id="option_valuation_approach">2.12.18. option_valuation_approach</h4>
 <div class="paragraph">
 <p>Specifies the general approach used to value the option.</p>
 </div>
@@ -10612,7 +7869,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 125. option_valuation_approach constants</caption>
+<caption class="title">Table 85. option_valuation_approach constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10652,7 +7909,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="order_id">2.16.23. order_id</h4>
+<h4 id="order_id">2.12.19. order_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies an order.</p>
 </div>
@@ -10660,7 +7917,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 126. order_id constants</caption>
+<caption class="title">Table 86. order_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10680,7 +7937,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="order_state">2.16.24. order_state</h4>
+<h4 id="order_state">2.12.20. order_state</h4>
 <div class="paragraph">
 <p>Specifies state of an order following <a href="#order_entered">[order_entered]</a>.</p>
 </div>
@@ -10688,7 +7945,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 127. order_state constants</caption>
+<caption class="title">Table 87. order_state constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10716,7 +7973,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="order_token">2.16.25. order_token</h4>
+<h4 id="order_token">2.12.21. order_token</h4>
 <div class="paragraph">
 <p>A 64-bit client-generated ID to uniquely identify an order. Must be increased for each inbound order management request. The top 8 bits are reserved and must be 0.</p>
 </div>
@@ -10724,7 +7981,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 128. order_token constants</caption>
+<caption class="title">Table 88. order_token constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10744,35 +8001,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="participant_id">2.16.26. participant_id</h4>
-<div class="paragraph">
-<p>Uniquely identifies a participant.</p>
-</div>
-<div class="paragraph">
-<p>This type defines the following well-known constants:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 129. participant_id constants</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>none</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no participant ID.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="position_id">2.16.27. position_id</h4>
+<h4 id="position_id">2.12.22. position_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a position.</p>
 </div>
@@ -10780,7 +8009,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 130. position_id constants</caption>
+<caption class="title">Table 89. position_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10800,7 +8029,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="position_kind">2.16.28. position_kind</h4>
+<h4 id="position_kind">2.12.23. position_kind</h4>
 <div class="paragraph">
 <p>Specifies the type of position being added.</p>
 </div>
@@ -10808,7 +8037,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 131. position_kind constants</caption>
+<caption class="title">Table 90. position_kind constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10836,7 +8065,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="position_type">2.16.29. position_type</h4>
+<h4 id="position_type">2.12.24. position_type</h4>
 <div class="paragraph">
 <p>Specifies whether position is long or short.</p>
 </div>
@@ -10844,7 +8073,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 132. position_type constants</caption>
+<caption class="title">Table 91. position_type constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10868,7 +8097,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="price">2.16.30. price</h4>
+<h4 id="price">2.12.25. price</h4>
 <div class="paragraph">
 <p>A price.</p>
 </div>
@@ -10876,7 +8105,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 133. price constants</caption>
+<caption class="title">Table 92. price constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10896,7 +8125,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="quantity">2.16.31. quantity</h4>
+<h4 id="quantity">2.12.26. quantity</h4>
 <div class="paragraph">
 <p>A quantity.</p>
 </div>
@@ -10904,7 +8133,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 134. quantity constants</caption>
+<caption class="title">Table 93. quantity constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10924,7 +8153,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="quote_reject_status">2.16.32. quote_reject_status</h4>
+<h4 id="quote_reject_status">2.12.27. quote_reject_status</h4>
 <div class="paragraph">
 <p>Specifies why a quote was rejected.</p>
 </div>
@@ -10932,7 +8161,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 135. quote_reject_status constants</caption>
+<caption class="title">Table 94. quote_reject_status constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -10988,7 +8217,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="quote_step">2.16.33. quote_step</h4>
+<h4 id="quote_step">2.12.28. quote_step</h4>
 <div class="paragraph">
 <p>The number quote steps that are to be listed for an associated tradeable entity. This allows a market maker to specify a quote ladder. The size of the steps will be determined by the tick size of the tradeable entity.</p>
 </div>
@@ -10996,7 +8225,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 136. quote_step constants</caption>
+<caption class="title">Table 95. quote_step constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11016,7 +8245,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="quote_token">2.16.34. quote_token</h4>
+<h4 id="quote_token">2.12.29. quote_token</h4>
 <div class="paragraph">
 <p>A 64-bit client-generated ID to uniquely identify a quote. Must be increased for each inbound quote management request. The top 8 bits are reserved and must be 0.</p>
 </div>
@@ -11024,7 +8253,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 137. quote_token constants</caption>
+<caption class="title">Table 96. quote_token constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11044,7 +8273,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="quotes_id">2.16.35. quotes_id</h4>
+<h4 id="quotes_id">2.12.30. quotes_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a set of quotes.</p>
 </div>
@@ -11052,7 +8281,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 138. quotes_id constants</caption>
+<caption class="title">Table 97. quotes_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11072,7 +8301,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="reference_price_type">2.16.36. reference_price_type</h4>
+<h4 id="reference_price_type">2.12.31. reference_price_type</h4>
 <div class="paragraph">
 <p>Specifies the type of reference price.</p>
 </div>
@@ -11080,7 +8309,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 139. reference_price_type constants</caption>
+<caption class="title">Table 98. reference_price_type constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11104,15 +8333,15 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="reject_reason">2.16.37. reject_reason</h4>
+<h4 id="reject_reason">2.12.32. reject_reason</h4>
 <div class="paragraph">
-<p>Specifies why a funds change was rejected.</p>
+<p>Specifies why a quotes action was rejected.</p>
 </div>
 <div class="paragraph">
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 140. reject_reason constants</caption>
+<caption class="title">Table 99. reject_reason constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11125,30 +8354,22 @@ its having a higher <code>display_order_id</code>.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>invalid_account_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid account ID.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>invalid_fields</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid fields</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>invalid_funds_token</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The new or replacement funds token is invalid.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>invalid_participant</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid participant</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>invalid_deliverable_id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid deliverable ID.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>invalid_quantity</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid quantity.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>insufficient_balance</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insufficient balance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>invalid_account</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Invalid account</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="sequence_number">2.16.38. sequence_number</h4>
+<h4 id="sequence_number">2.12.33. sequence_number</h4>
 <div class="paragraph">
 <p>A message sequence number.</p>
 </div>
@@ -11156,7 +8377,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 141. sequence_number constants</caption>
+<caption class="title">Table 100. sequence_number constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11176,7 +8397,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="session_id">2.16.39. session_id</h4>
+<h4 id="session_id">2.12.34. session_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a session.</p>
 </div>
@@ -11184,7 +8405,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 142. session_id constants</caption>
+<caption class="title">Table 101. session_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11204,7 +8425,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="side">2.16.40. side</h4>
+<h4 id="side">2.12.35. side</h4>
 <div class="paragraph">
 <p>Specifies whether order is a buy or sell.</p>
 </div>
@@ -11212,7 +8433,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 143. side constants</caption>
+<caption class="title">Table 102. side constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11236,7 +8457,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stabilisation_approach">2.16.41. stabilisation_approach</h4>
+<h4 id="stabilisation_approach">2.12.36. stabilisation_approach</h4>
 <div class="paragraph">
 <p>Specifies the general approach used to stabilise the token.</p>
 </div>
@@ -11244,7 +8465,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 144. stabilisation_approach constants</caption>
+<caption class="title">Table 103. stabilisation_approach constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11276,7 +8497,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stream_id">2.16.42. stream_id</h4>
+<h4 id="stream_id">2.12.37. stream_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a stream.</p>
 </div>
@@ -11284,7 +8505,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 145. stream_id constants</caption>
+<caption class="title">Table 104. stream_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11304,7 +8525,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stream_reject_reason">2.16.43. stream_reject_reason</h4>
+<h4 id="stream_reject_reason">2.12.38. stream_reject_reason</h4>
 <div class="paragraph">
 <p>Specifies why a stream request was rejected.</p>
 </div>
@@ -11312,7 +8533,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 146. stream_reject_reason constants</caption>
+<caption class="title">Table 105. stream_reject_reason constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11344,7 +8565,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="time_in_force">2.16.44. time_in_force</h4>
+<h4 id="time_in_force">2.12.39. time_in_force</h4>
 <div class="paragraph">
 <p>Specifies the duration of the order.</p>
 </div>
@@ -11352,7 +8573,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 147. time_in_force constants</caption>
+<caption class="title">Table 106. time_in_force constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11376,7 +8597,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="time_to_live">2.16.45. time_to_live</h4>
+<h4 id="time_to_live">2.12.40. time_to_live</h4>
 <div class="paragraph">
 <p>Used in conjunction with <a href="#time_in_force">time_in_force</a> to specify an order&#8217;s lifetime.</p>
 </div>
@@ -11384,7 +8605,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 148. time_to_live constants</caption>
+<caption class="title">Table 107. time_to_live constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11404,7 +8625,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="trade_id">2.16.46. trade_id</h4>
+<h4 id="trade_id">2.12.41. trade_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a trade.</p>
 </div>
@@ -11412,7 +8633,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 149. trade_id constants</caption>
+<caption class="title">Table 108. trade_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11432,7 +8653,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="tradeability">2.16.47. tradeability</h4>
+<h4 id="tradeability">2.12.42. tradeability</h4>
 <div class="paragraph">
 <p>Specifies the tradeability of a tradeable_entity.</p>
 </div>
@@ -11440,7 +8661,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 150. tradeability constants</caption>
+<caption class="title">Table 109. tradeability constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11468,7 +8689,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="tradeable_entity_id">2.16.48. tradeable_entity_id</h4>
+<h4 id="tradeable_entity_id">2.12.43. tradeable_entity_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a tradeable entity.</p>
 </div>
@@ -11476,7 +8697,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 151. tradeable_entity_id constants</caption>
+<caption class="title">Table 110. tradeable_entity_id constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11496,7 +8717,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="utc_timestamp">2.16.49. utc_timestamp</h4>
+<h4 id="utc_timestamp">2.12.44. utc_timestamp</h4>
 <div class="paragraph">
 <p>A UTC timestamp expressed in nanoseconds since the epoch (1970-01-01 00:00:00).</p>
 </div>
@@ -11504,7 +8725,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 152. utc_timestamp constants</caption>
+<caption class="title">Table 111. utc_timestamp constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11524,7 +8745,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="value">2.16.50. value</h4>
+<h4 id="value">2.12.45. value</h4>
 <div class="paragraph">
 <p>A value.</p>
 </div>
@@ -11532,7 +8753,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 153. value constants</caption>
+<caption class="title">Table 112. value constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -11552,47 +8773,7 @@ its having a higher <code>display_order_id</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="withdrawal_instructions">2.16.51. withdrawal_instructions</h4>
-<div class="paragraph">
-<p>Specifies the type of funds withdrawal.</p>
-</div>
-<div class="paragraph">
-<p>This type defines the following well-known constants:</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 154. withdrawal_instructions constants</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Value</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>withdraw_exactly</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Withdraw an exact amount.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>withdraw_at_most</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Withdraw at least this amount.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>withdraw_all</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Withdraw all funds.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>withdraw_force_all</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Force a withdrawal of all funds.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="year">2.16.52. year</h4>
+<h4 id="year">2.12.46. year</h4>
 <div class="paragraph">
 <p>The year (YYYY).</p>
 </div>
@@ -11600,7 +8781,7 @@ its having a higher <code>display_order_id</code>.</p>
 <p>This type defines the following well-known constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 155. year constants</caption>
+<caption class="title">Table 113. year constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
