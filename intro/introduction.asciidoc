@@ -15,19 +15,19 @@ The WebSocket API is an advanced technology that makes it possible to open a two
 | Market Data
 | <<Service_Guide_Market_Data,Market Data Guide>>
 | <<Market_Data_Messages,Market Data Messages>>
-| `wss://pt-test.clearpool.dev:35443`
+| `TBD`
 | *yes*
 
 | Market Data Demo
 | <<Service_Guide_Market_Data,Market Data Guide>>
 | <<Market_Data_Messages,Market Data Messages>>
-| `wss://pt-test.clearpool.dev:62443`
+| `TBD`
 | *no*
 
 | Order Management
 | <<Service_Guide_Order_Management,Order Management Guide>>
 | <<Order_Management_Requests,Order Management Requests>>/<<Order_Management_Responses,Responses>>
-| `wss://pt-test.clearpool.dev:65443`
+| `TBD`
 | *yes*
 
 | Quote Management
@@ -39,7 +39,7 @@ The WebSocket API is an advanced technology that makes it possible to open a two
 | Position Data
 | <<Service_Guide_Position_Data,Position Data Guide>>
 | <<Position_Data_Messages,Position Data Messages>>
-| `wss://pt-test.clearpool.dev:45443`
+| `TBD`
 | *yes*
 
 ifeval::[{for_internal_use} == true]
@@ -67,19 +67,19 @@ endif::[]
 | Service | URI in Sandbox
 
 | Market Data
-| `TBD`
+| `wss://pt-test.clearpool.dev:35443`
 
 | Market Data Demo
-| `TBD`
+| `wss://pt-test.clearpool.dev:62443`
 
 | Order Management
-| `TBD`
+| `wss://pt-test.clearpool.dev:65443`
 
 | Quote Management
 | `TBD`
 
 | Position Data
-| `TBD`
+| `wss://pt-test.clearpool.dev:45443`
 
 ifeval::[{for_internal_use} == true]
 
