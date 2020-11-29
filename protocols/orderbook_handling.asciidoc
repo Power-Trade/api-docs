@@ -1,0 +1,827 @@
+=== Order Book Handling
+
+In this section we will examine how the market data messages
+<<display_order_added>>, <<display_order_deleted>>, <<display_order_executed>>,
+and <<display_order_updated>> are used to incrementally build and maintain an
+order book view for display.
+
+==== Order Book Identification
+
+An order book is identified by the combination of the `tradeable_entity_id` and
+`market_id` fields. When processing the market data messages, use these fields
+to determine which order book must be updated.
+
+==== Displaying an Order Book
+
+An order book may be viewed as _market by order_ or _market by price_.
+
+A _market by order_ view shows the individual orders in the display. For
+example:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+|[.sell.price]#1350#
+|[.sell.quantity]#50#
+|[.sell.order_id]#4#
+|[.sell.timestamp]#2020-09-25T02:19:21.968567#
+
+|[.buy.timestamp]#2020-09-25T02:21:20.132500#
+|[.buy.order_id]#5#
+|[.buy.quantity]#300#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+A _market by price_ view shows the aggregated quantity at each price level in
+the display. For example:
+
+[.summary_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.price_level]#Lvl#
+|[.header.order_count]#Orders#
+|[.header.aggregate_quantity]#AggQty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.aggregate_quantity]#AggQty#
+|[.header.order_count]#Orders#
+|[.header.price_level]#Lvl#
+
+|[.buy.price_level]#1#
+|[.buy.order_count]#2#
+|[.buy.aggregate_quantity]#400#
+|[.buy.price]#1300#
+|[.sell.price]#1350#
+|[.sell.aggregate_quantity]#50#
+|[.sell.order_count]#1#
+|[.sell.price_level]#1#
+
+|[.buy.price_level]#2#
+|[.buy.order_count]#1#
+|[.buy.aggregate_quantity]#150#
+|[.buy.price]#1200#
+|[.sell.price]#1400#
+|[.sell.aggregate_quantity]#200#
+|[.sell.order_count]#1#
+|[.sell.price_level]#2#
+|==============================================
+
+==== Sorting Orders in an Order Book
+
+Orders in a _market by order_ view are sorted in price-time priority.
+
+The `price` field of an order is the major sort key. Orders with a `side` value
+of `buy` are sorted from highest (best) to lowest, and `sell` orders are sorted
+from lowest (best) to highest.
+
+The `display_order_id` is used as the minor sort key for orders at the same
+price level. This value represents the time of an order relative to another,
+with higher values representing newer orders.
+
+==== Processing display_order_added
+
+The <<display_order_added>> message is used to indicate that a new order should be added to the book.
+
+Let us begin with an empty order book:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+|==============================================
+
+A <<display_order_added>> message arrives for a new `buy` order with price `1300` and quantity `100`:
+
+[source,json]
+{
+    "display_order_added": {
+        "timestamp": 1600999860839906000,
+        "tradeable_entity_id": 2,
+        "market_id": 0,
+        "side": "buy",
+        "display_order_id": 1,
+        "display_price": 1300,
+        "display_quantity": 100
+    }
+}
+
+After processing this message, the order book will look like this:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+| | | |
+|==============================================
+
+We then receive another <<display_order_added>> message for a `buy` order, this time with price `1200` and quantity `150`:
+
+[source,json]
+{
+    "display_order_added": {
+        "timestamp": 1601000073287232000,
+        "tradeable_entity_id": 2,
+        "market_id": 0,
+        "side": "buy",
+        "display_order_id": 2,
+        "display_price": 1200,
+        "display_quantity": 150
+    }
+}
+
+This price is worse (lower) than the existing `buy` order, so the new order is
+added below it in the book:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+| | | |
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+Next we receive a <<display_order_added>> for a `sell` order at price `1400`
+and quantity `200`:
+
+[source,json]
+{
+    "display_order_added": {
+        "timestamp": 1601000194942338000,
+        "tradeable_entity_id": 2,
+        "market_id": 0,
+        "side": "sell",
+        "display_order_id": 3,
+        "display_price": 1400,
+        "display_quantity": 200
+    }
+}
+
+This order is inserted on the other side of the book:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+Another `sell` order arrives, this time at price `1350` and quantity `50`.
+
+[source,json]
+{
+    "display_order_added": {
+        "timestamp": 1601000361968567000,
+        "tradeable_entity_id": 2,
+        "market_id": 0,
+        "side": "sell",
+        "display_order_id": 4,
+        "display_price": 1350,
+        "display_quantity": 50
+    }
+}
+
+For sell orders, a lower price is better, so this new order will be inserted at
+the top of the sell side of the book:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+|[.sell.price]#1350#
+|[.sell.quantity]#50#
+|[.sell.order_id]#4#
+|[.sell.timestamp]#2020-09-25T02:19:21.968567#
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+|==============================================
+
+Finally a `buy` order arrives with price `1300` and quantity `300`:
+
+[source,json]
+{
+    "display_order_added": {
+        "timestamp": 1601000480132500000,
+        "tradeable_entity_id": 2,
+        "market_id": 0,
+        "side": "buy",
+        "display_order_id": 5,
+        "display_price": 1300,
+        "display_quantity": 300
+    }
+}
+
+There is already an order at this price level. The new order `5` is inserted
+below the existing order `1` because it is newer, as indicated by its having a
+higher `display_order_id`.
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+|[.sell.price]#1350#
+|[.sell.quantity]#50#
+|[.sell.order_id]#4#
+|[.sell.timestamp]#2020-09-25T02:19:21.968567#
+
+|[.buy.timestamp]#2020-09-25T02:21:20.132500#
+|[.buy.order_id]#5#
+|[.buy.quantity]#300#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+With two orders at the same price level, we can now see how the _market by
+price_ view differs. It shows a single level for price `1300` containing two
+orders and an aggregated quantity of `400`.
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header]#Lvl#
+|[.header.order_count]#Orders#
+|[.header.aggregate_quantity]#AggQty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.aggregate_quantity]#AggQty#
+|[.header.order_count]#Orders#
+|[.header]#Lvl#
+
+|[.buy.timestamp]#1#
+|[.buy.order_id]#2#
+|[.buy.quantity]#400#
+|[.buy.price]#1300#
+|[.sell.price]#1350#
+|[.sell.quantity]#50#
+|[.sell.order_id]#1#
+|[.sell.timestamp]#1#
+
+|[.buy.timestamp]#2#
+|[.buy.order_id]#1#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#1#
+|[.sell.timestamp]#2#
+|==============================================
+
+==== Processing display_order_deleted
+
+The <<display_order_deleted>> message is used to remove an individual order
+from the book.
+
+Let us continue with the order book that was constructed in the preceding
+section:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+|[.sell.price]#1350#
+|[.sell.quantity]#50#
+|[.sell.order_id]#4#
+|[.sell.timestamp]#2020-09-25T02:19:21.968567#
+
+|[.buy.timestamp]#2020-09-25T02:21:20.132500#
+|[.buy.order_id]#5#
+|[.buy.quantity]#300#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+A <<display_order_deleted>> message arrives for the existing `sell` order `4`.
+
+[source,json]
+{
+    "display_order_deleted": {
+        "timestamp": 1601002113866061000,
+        "tradeable_entity_id": 2,
+        "market_id": 0,
+        "side": "sell",
+        "display_order_id": 4
+    }
+}
+
+This order is removed, which leaves the book looking like this:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:21:20.132500#
+|[.buy.order_id]#5#
+|[.buy.quantity]#300#
+|[.buy.price]#1300#
+| | | |
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+As this was the only `sell` order at price `1350`, the corresponding level is
+removed from the _market by price_ view.
+
+[.summary_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.price_level]#Lvl#
+|[.header.order_count]#Orders#
+|[.header.aggregate_quantity]#AggQty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.aggregate_quantity]#AggQty#
+|[.header.order_count]#Orders#
+|[.header.price_level]#Lvl#
+
+|[.buy.price_level]#1#
+|[.buy.order_count]#2#
+|[.buy.aggregate_quantity]#400#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.aggregate_quantity]#200#
+|[.sell.order_count]#1#
+|[.sell.price_level]#1#
+
+|[.buy.price_level]#2#
+|[.buy.order_count]#1#
+|[.buy.aggregate_quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+==== Processing display_order_executed
+
+The <<display_order_executed>> message indicates that an order executed some or
+all of its remaining quantity. If all remaining quantity executed, the order
+should be removed from the book.
+
+Let us continue with the order book that was constructed in the preceding section:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:21:20.132500#
+|[.buy.order_id]#5#
+|[.buy.quantity]#300#
+|[.buy.price]#1300#
+| | | |
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+A <<display_order_executed>> message arrives which shows that quantity `60` of
+order `1` has executed.
+
+[source,json]
+{
+    "display_order_executed": {
+        "timestamp": 1601002482430470000,
+        "tradeable_entity_id": 2,
+        "market_id": 0,
+        "side": "buy",
+        "display_order_id": 1,
+        "executed_price": 1300,
+        "executed_quantity": 60,
+        "trade_id": 1
+    }
+}
+
+Prior to this message, order `1` had remaining quantity of `100` on display. As
+`60` has now executed, this leaves us with a remaining quantity of `40`.
+Consequently, the order remains open and is left in the book:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:54:42.430470#
+|[.buy.order_id]#1#
+|[.buy.quantity]#40#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:21:20.132500#
+|[.buy.order_id]#5#
+|[.buy.quantity]#300#
+|[.buy.price]#1300#
+| | | |
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+Another <<display_order_executed>> message arrives for order `1`, this time
+showing that quantity `40` has executed.
+
+[source,json]
+{
+    "display_order_executed": {
+        "timestamp": 1601002572694660000,
+        "tradeable_entity_id": 2,
+        "market_id": 0,
+        "side": "buy",
+        "display_order_id": 1,
+        "executed_price": 1300,
+        "executed_quantity": 40,
+        "trade_id": 2
+    }
+}
+
+This time order `1` started with a remaining quantity `40`, and this quantity
+has fully executed. With no remaining quantity the order is removed from the
+book:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:21:20.132500#
+|[.buy.order_id]#5#
+|[.buy.quantity]#300#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+The _market by price_ view now shows that there is a single `buy` order at
+price `1300`.
+
+[.summary_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.price_level]#Lvl#
+|[.header.order_count]#Orders#
+|[.header.aggregate_quantity]#AggQty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.aggregate_quantity]#AggQty#
+|[.header.order_count]#Orders#
+|[.header.price_level]#Lvl#
+
+|[.buy.price_level]#1#
+|[.buy.order_count]#1#
+|[.buy.aggregate_quantity]#300#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.aggregate_quantity]#200#
+|[.sell.order_count]#1#
+|[.sell.price_level]#1#
+
+|[.buy.price_level]#2#
+|[.buy.order_count]#1#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+==== Processing display_order_updated
+
+A <<display_order_updated>> message is used to apply an update to an existing
+order in the book. This may require the orders in the book to be re-sorted.
+
+Let us start with an orderbook as follows:
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:11:00.839906#
+|[.buy.order_id]#1#
+|[.buy.quantity]#100#
+|[.buy.price]#1300#
+|[.sell.price]#1350#
+|[.sell.quantity]#50#
+|[.sell.order_id]#4#
+|[.sell.timestamp]#2020-09-25T02:19:21.968567#
+
+|[.buy.timestamp]#2020-09-25T02:21:20.132500#
+|[.buy.order_id]#5#
+|[.buy.quantity]#300#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================
+
+A <<display_order_updated>> message arrives to update the details for order
+`1`. Following the update, it will be identified as order `9`.
+
+[source,json]
+{
+    "display_order_updated": {
+        "timestamp": 1601002492430970000,
+        "tradeable_entity_id": 2,
+        "market_id": 0,
+        "side": "buy",
+        "old_display_order_id": 1,
+        "new_display_order_id": 9,
+        "display_price": 1300,
+        "display_quantity": 120
+    }
+}
+
+The existing entry for order `1` is removed and a new entry for order `9` is
+inserted. There is another order at the price level, so the updated order `9`
+is inserted below the existing order `5` because it is newer, as indicated by
+its having a higher `display_order_id`.
+
+[.full_orderbook, width="80%", cols="^,^,^,^,^,^,^,^"]
+|==============================================
+4+|[.side.buyside]#BUY#
+4+|[.side.sellside]#SELL#
+
+|[.header.timestamp]#Timestamp#
+|[.header.orderid]#Id#
+|[.header.quantity]#Qty#
+|[.header.price]#Price#
+|[.header.price]#Price#
+|[.header.quantity]#Qty#
+|[.header.orderid]#Id#
+|[.header.timestamp]#Timestamp#
+
+|[.buy.timestamp]#2020-09-25T02:21:20.132500#
+|[.buy.order_id]#5#
+|[.buy.quantity]#300#
+|[.buy.price]#1300#
+|[.sell.price]#1350#
+|[.sell.quantity]#50#
+|[.sell.order_id]#4#
+|[.sell.timestamp]#2020-09-25T02:19:21.968567#
+
+|[.buy.timestamp]#2020-09-25T02:54:52.430970#
+|[.buy.order_id]#9#
+|[.buy.quantity]#120#
+|[.buy.price]#1300#
+|[.sell.price]#1400#
+|[.sell.quantity]#200#
+|[.sell.order_id]#3#
+|[.sell.timestamp]#2020-09-25T02:16:34.942338#
+
+|[.buy.timestamp]#2020-09-25T02:14:33.287232#
+|[.buy.order_id]#2#
+|[.buy.quantity]#150#
+|[.buy.price]#1200#
+| | | |
+|==============================================

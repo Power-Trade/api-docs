@@ -1,0 +1,53 @@
+=== Protocols Overview
+
+All API services listed in Table <<WS_API_Services,PowerTrade WebSocket API services>> are based on session control protocol, as described in details in section <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>>.
+
+The session control protocol is essentially a synchronious protocol, because all its stages required to be passed by client in the predefined order with confirmation from server sent in form of corresponding responses. After session becomes properly established, the communication follows service-specific protocol, essential for a particular service, e.g. for Market Data service the protocol is one-way (read-only, listen-only) where a client receives market data updates from a service as market changes happen. In case of Order Management service, the service-specific protocols is two-ways, so a client can control his/her orders by sending requests and receiving corresponding confirmation from a service in form of responses.
+
+[[WS_API_Service_Protocols]]
+.*Protocols of PowerTrade WebSocket API Services*:
+
+[width="95%",options="header"]
+|=================================
+| Service            | Protocols
+
+| Market Data Demo
+| <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>> *without authentication*
+
++ <<Market_Data_Messages,Market Data Messages>>
+
+| Market Data
+| <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>> *with authentication*
+
++ <<Market_Data_Messages,Market Data Messages>>
+
+| Order Management
+| <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>> *with authentication*
+
++ <<Order_Management_Requests,Order Management Requests>>/<<Order_Management_Responses,Responses>>
+
+| Quote Management
+| <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>> *with authentication*
+
++ <<Quote_Management_Requests,Quote Management Requests>>/<<Quote_Management_Responses,Responses>>
+
+| Position Data
+| <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>> *with authentication*
+
++ <<Position_Data_Messages,Position Data Messages>>
+
+ifeval::[{for_internal_use} == true]
+
+| Accounts Management
+| <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>> *with authentication*
+
++ <<Account_Management_Requests,Account Management Requests>>/<<Account_Management_Responses,Responses>>
+
+| Funds Management
+| <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>> *with authentication*
+
++ <<Funds_Management_Requests,Funds Management Requests>>/<<Funds_Management_Responses,Responses>>
+
+endif::[]
+|=================================
+

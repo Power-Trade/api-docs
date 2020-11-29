@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' contentScriptType='application/ecmascript' contentStyleType='text/css' height='1112px' preserveAspectRatio='none' style='width:534px;height:1112px;' version='1.1' viewBox='0 0 534 1112' width='534px' zoomAndPan='magnify'>
+  <defs>
+    <filter height='300%' id='f1y17hbxi35x3s' width='300%' x='-1' y='-1'>
+      <feGaussianBlur result='blurOut' stdDeviation='2.0'/>
+      <feColorMatrix in='blurOut' result='blurOut2' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0'/>
+      <feOffset dx='4.0' dy='4.0' in='blurOut2' result='blurOut3'/>
+      <feBlend in='SourceGraphic' in2='blurOut3' mode='normal'/>
+    </filter>
+  </defs>
+  <g>
+    <rect fill='#FFFFFF' filter='url(#f1y17hbxi35x3s)' height='958.875' style='stroke: #000000; stroke-width: 2.0;' width='499.5' x='13' y='72.6211'/>
+    <rect fill='#FFFFFF' filter='url(#f1y17hbxi35x3s)' height='804.6992' style='stroke: #000000; stroke-width: 2.0;' width='479.5' x='23' y='219.7969'/>
+    <rect fill='#FFFFFF' filter='url(#f1y17hbxi35x3s)' height='732.4336' style='stroke: #000000; stroke-width: 2.0;' width='459.5' x='33' y='244.1074'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='55.6211' y2='89.9316'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='89.9316' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='130.8867' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='130.8867' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='171.8418' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='171.8418' y2='212.7969'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='212.7969' y2='512.2813'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='512.2813' y2='553.2363'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='553.2363' y2='611.8574'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='611.8574' y2='652.8125'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='652.8125' y2='682.123'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='682.123' y2='723.0781'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='723.0781' y2='781.6992'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='781.6992' y2='822.6543'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='822.6543' y2='851.9648'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='851.9648' y2='892.9199'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='892.9199' y2='983.541'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='983.541' y2='1024.4961'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='1024.4961' y2='1048.4961'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='55.6211' y2='89.9316'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='451.5' x2='451.5' y1='89.9316' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='130.8867' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='451.5' x2='451.5' y1='130.8867' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='171.8418' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='451.5' x2='451.5' y1='171.8418' y2='212.7969'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='212.7969' y2='512.2813'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='451.5' x2='451.5' y1='512.2813' y2='553.2363'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='553.2363' y2='611.8574'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='451.5' x2='451.5' y1='611.8574' y2='652.8125'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='652.8125' y2='682.123'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='451.5' x2='451.5' y1='682.123' y2='723.0781'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='723.0781' y2='781.6992'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='451.5' x2='451.5' y1='781.6992' y2='822.6543'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='822.6543' y2='851.9648'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='451.5' x2='451.5' y1='851.9648' y2='892.9199'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='892.9199' y2='983.541'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='451.5' x2='451.5' y1='983.541' y2='1024.4961'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='451.5' x2='451.5' y1='1024.4961' y2='1048.4961'/>
+    <rect fill='#FEFECE' filter='url(#f1y17hbxi35x3s)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='43' y='20.1328'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='50' y='40.668'>
+      Client
+    </text>
+    <rect fill='#FEFECE' filter='url(#f1y17hbxi35x3s)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='43' y='1047.4961'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='50' y='1068.0313'>
+      Client
+    </text>
+    <rect fill='#FEFECE' filter='url(#f1y17hbxi35x3s)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='421.5' y='20.1328'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='428.5' y='40.668'>
+      Server
+    </text>
+    <rect fill='#FEFECE' filter='url(#f1y17hbxi35x3s)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='421.5' y='1047.4961'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='428.5' y='1068.0313'>
+      Server
+    </text>
+    <path d='M13,72.6211 L219,72.6211 L219,79.6211 L209,89.6211 L13,89.6211 L13,72.6211 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='958.875' style='stroke: #000000; stroke-width: 2.0;' width='499.5' x='13' y='72.6211'/>
+    <a href='#session_control_with_auth' xlink:href='#session_control_with_auth' target='_top' title='#session_control_with_auth' xlink:title='#session_control_with_auth' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='161' x='28' y='86.1895'>
+        Session Control Protocol
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='174.5' y='114.5664'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='25' x='174.5' y='114.5664'>
+      Note
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='150' x='199.5' y='114.5664'>
+      : for simplicity, heartbeating
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='138' x='168' y='155.5215'>
+      is not shown here but it is
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='47' x='309' y='155.5215'>
+      required
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='359' y='155.5215'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='203' y='196.4766'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='118' x='203' y='196.4766'>
+      to keep session alive
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='324' y='196.4766'/>
+    <path d='M23,219.7969 L259,219.7969 L259,226.7969 L249,236.7969 L23,236.7969 L23,219.7969 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='804.6992' style='stroke: #000000; stroke-width: 2.0;' width='479.5' x='23' y='219.7969'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='191' x='38' y='233.3652'>
+      Order Management Protocol
+    </text>
+    <path d='M33,244.1074 L126,244.1074 L126,251.1074 L116,261.1074 L33,261.1074 L33,244.1074 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='732.4336' style='stroke: #000000; stroke-width: 2.0;' width='459.5' x='33' y='244.1074'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='48' x='48' y='257.6758'>
+      i-Cycle
+    </text>
+    <polygon fill='#A80036' points='83,278.7285,73,282.7285,83,286.7285,79,282.7285' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='282.7285' y2='282.7285'/>
+    <a href='#cycle_starting' xlink:href='#cycle_starting' target='_top' title='#cycle_starting' xlink:title='#cycle_starting' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='94' x='215' y='277.9863'>
+        cycle_starting
+      </text>
+    </a>
+    <polygon fill='#A80036' points='83,308.0391,73,312.0391,83,316.0391,79,312.0391' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='312.0391' y2='312.0391'/>
+    <a href='#cycle_started' xlink:href='#cycle_started' target='_top' title='#cycle_started' xlink:title='#cycle_started' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='217.5' y='307.2969'>
+        cycle_started
+      </text>
+    </a>
+    <polygon fill='#A80036' points='440,362.3496,450,366.3496,440,370.3496,444,366.3496' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='446' y1='366.3496' y2='366.3496'/>
+    <a href='#enter_order_ltsimple_order_ltaccount_id_gt_gt' xlink:href='#enter_order_ltsimple_order_ltaccount_id_gt_gt' target='_top' title='#enter_order_ltsimple_order_ltaccount_id_gt_gt' xlink:title='#enter_order_ltsimple_order_ltaccount_id_gt_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='282' x='121' y='361.6074'>
+        enter_order&lt;simple_order&lt;account_id&gt;&gt;
+      </text>
+    </a>
+    <polygon fill='#A80036' points='83,391.6602,73,395.6602,83,399.6602,79,395.6602' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='395.6602' y2='395.6602'/>
+    <a href='#order_entered_ltsimple_order_ltaccount_id_gt_gt' xlink:href='#order_entered_ltsimple_order_ltaccount_id_gt_gt' target='_top' title='#order_entered_ltsimple_order_ltaccount_id_gt_gt' xlink:title='#order_entered_ltsimple_order_ltaccount_id_gt_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='299' x='112.5' y='390.918'>
+        order_entered&lt;simple_order&lt;account_id&gt;&gt;
+      </text>
+    </a>
+    <polygon fill='#A80036' points='83,420.9707,73,424.9707,83,428.9707,79,424.9707' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='424.9707' y2='424.9707'/>
+    <a href='#order_executed' xlink:href='#order_executed' target='_top' title='#order_executed' xlink:title='#order_executed' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='106' x='209' y='420.2285'>
+        order_executed
+      </text>
+    </a>
+    <polygon fill='#A80036' points='83,475.2813,73,479.2813,83,483.2813,79,479.2813' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='479.2813' y2='479.2813'/>
+    <a href='#order_updated' xlink:href='#order_updated' target='_top' title='#order_updated' xlink:title='#order_updated' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='101' x='211.5' y='474.5391'>
+        order_updated
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='109' x='173' y='536.916'>
+      using known client's
+    </text>
+    <a href='#order_token' xlink:href='#order_token' target='_top' title='#order_token' xlink:title='#order_token' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='66' x='285' y='536.916'>
+        order_token
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='354' y='536.916'/>
+    <polygon fill='#A80036' points='440,570.5469,450,574.5469,440,578.5469,444,574.5469' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='446' y1='574.5469' y2='574.5469'/>
+    <a href='#cancel_order_ltorder_token_gt' xlink:href='#cancel_order_ltorder_token_gt' target='_top' title='#cancel_order_ltorder_token_gt' xlink:title='#cancel_order_ltorder_token_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='189' x='167.5' y='569.8047'>
+        cancel_order&lt;order_token&gt;
+      </text>
+    </a>
+    <polygon fill='#A80036' points='83,599.8574,73,603.8574,83,607.8574,79,603.8574' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='603.8574' y2='603.8574'/>
+    <a href='#order_cancelled' xlink:href='#order_cancelled' target='_top' title='#order_cancelled' xlink:title='#order_cancelled' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='108' x='208' y='599.1152'>
+        order_cancelled
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='106' x='209' y='636.4922'>
+      or in case of failure:
+    </text>
+    <polygon fill='#A80036' points='83,670.123,73,674.123,83,678.123,79,674.123' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='674.123' y2='674.123'/>
+    <a href='#order_action_rejected_ltcancel_order_ltorder_token_gt_gt' xlink:href='#order_action_rejected_ltcancel_order_ltorder_token_gt_gt' target='_top' title='#order_action_rejected_ltcancel_order_ltorder_token_gt_gt' xlink:title='#order_action_rejected_ltcancel_order_ltorder_token_gt_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='356' x='84' y='669.3809'>
+        order_action_rejected&lt;cancel_order&lt;order_token&gt;&gt;
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='68' x='203.5' y='706.7578'>
+      using known
+    </text>
+    <a href='#order_id' xlink:href='#order_id' target='_top' title='#order_id' xlink:title='#order_id' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='46' x='274.5' y='706.7578'>
+        order_id
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='323.5' y='706.7578'/>
+    <polygon fill='#A80036' points='440,740.3887,450,744.3887,440,748.3887,444,744.3887' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='446' y1='744.3887' y2='744.3887'/>
+    <a href='#cancel_order_ltorder_id_gt' xlink:href='#cancel_order_ltorder_id_gt' target='_top' title='#cancel_order_ltorder_id_gt' xlink:title='#cancel_order_ltorder_id_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='164' x='180' y='739.6465'>
+        cancel_order&lt;order_id&gt;
+      </text>
+    </a>
+    <polygon fill='#A80036' points='83,769.6992,73,773.6992,83,777.6992,79,773.6992' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='773.6992' y2='773.6992'/>
+    <a href='#order_cancelled' xlink:href='#order_cancelled' target='_top' title='#order_cancelled' xlink:title='#order_cancelled' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='108' x='208' y='768.957'>
+        order_cancelled
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='106' x='209' y='806.334'>
+      or in case of failure:
+    </text>
+    <polygon fill='#A80036' points='83,839.9648,73,843.9648,83,847.9648,79,843.9648' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='843.9648' y2='843.9648'/>
+    <a href='#order_action_rejected_ltcancel_order_ltorder_id_gt_gt' xlink:href='#order_action_rejected_ltcancel_order_ltorder_id_gt_gt' target='_top' title='#order_action_rejected_ltcancel_order_ltorder_id_gt_gt' xlink:title='#order_action_rejected_ltcancel_order_ltorder_id_gt_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='331' x='96.5' y='839.2227'>
+        order_action_rejected&lt;cancel_order&lt;order_id&gt;&gt;
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='235.5' y='876.5996'>
+      and so on
+    </text>
+    <polygon fill='#A80036' points='83,935.2305,73,939.2305,83,943.2305,79,939.2305' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='939.2305' y2='939.2305'/>
+    <a href='#cycle_ending' xlink:href='#cycle_ending' target='_top' title='#cycle_ending' xlink:title='#cycle_ending' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='217.5' y='934.4883'>
+        cycle_ending
+      </text>
+    </a>
+    <polygon fill='#A80036' points='83,964.541,73,968.541,83,972.541,79,968.541' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='451' y1='968.541' y2='968.541'/>
+    <a href='#cycle_ended' xlink:href='#cycle_ended' target='_top' title='#cycle_ended' xlink:title='#cycle_ended' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='84' x='220' y='963.7988'>
+        cycle_ended
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='235.5' y='1008.1758'>
+      and so on
+    </text>
+    <path d='M276.594,6.1328 C276.534,6.1328 276.489,6.1768 276.469,6.2268 L273.531,13.0398 L273.5,13.2278 L273.5,14.0408 C273.5,14.1008 273.534,14.1348 273.594,14.1348 L280.407,14.1348 C280.467,14.1348 280.501,14.1008 280.501,14.0408 L280.501,13.2278 L280.47,13.0398 L277.532,6.2268 C277.512,6.1768 277.467,6.1328 277.407,6.1328 L276.594,6.1328 M276.5,9.1328 L277.5,9.1328 L277.5,11.1328 L276.5,11.1328 L276.5,9.1328 M276.5,12.1328 L277.5,12.1328 L277.5,13.1328 L276.5,13.1328 L276.5,12.1328 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
+    <text fill='#888888' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' textLength='186' x='282.5' y='14.6016'>
+      Do not test in production, test in
+    </text>
+    <a href='#WS_API_Services_Sandbox' xlink:href='#WS_API_Services_Sandbox' target='_top' title='#WS_API_Services_Sandbox' xlink:title='#WS_API_Services_Sandbox' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='50' x='472.5' y='14.6016'>
+        sandbox
+      </text>
+    </a>
+    <path d='M413.5,1086.9844 L409.75,1093.2344 L412.25,1093.2344 L412.25,1096.9844 L416,1090.7344 L413.5,1090.7344 L413.5,1086.9844 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
+    <text fill='#888888' font-family='sans-serif' font-size='10' lengthAdjust='spacingAndGlyphs' textLength='0' x='422.5' y='1098.625'/>
+    <a href='https://power.trade' xlink:href='https://power.trade' target='_top' title='https://power.trade' xlink:title='https://power.trade' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='9' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='100' x='422.5' y='1098.8359'>
+        PowerTrade Exchange
+      </text>
+    </a>
+    <!--MD5=[7cefa2347a66e6c5f5ab16f3c8d4e313]
+@startuml order_management_protocol
+
+
+
+skinparam sequenceMessageAlign center
+
+
+right header
+    <size:12><&warning>Do not test in production, test in [[#WS_API_Services_Sandbox sandbox]]</size>
+endheader
+
+right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Exchange]]</size>
+
+
+group <b>[[#session_control_with_auth Session Control Protocol]]</b>
+
+    ... <b>Note</b>: for simplicity, heartbeating ...
+    ... is not shown here but it is <b>required</b> ...
+    ... <b>to keep session alive</b> ...
+
+    group <b>Order Management Protocol</b>
+
+        group i-Cycle
+            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
+            |||
+            Client -> Server : <b>[[#enter_order_ltsimple_order_ltaccount_id_gt_gt enter_order<simple_order<account_id>>]]</b>
+            Client <- Server : <b>[[#order_entered_ltsimple_order_ltaccount_id_gt_gt order_entered<simple_order<account_id>>]]</b>
+            Client <- Server : <b>[[#order_executed order_executed]]</b>
+            |||
+            Client <- Server : <b>[[#order_updated order_updated]]</b>
+            |||
+            ... using known client's [[#order_token order_token]] ...
+            Client -> Server : <b>[[#cancel_order_ltorder_token_gt cancel_order<order_token>]]</b>
+            Client <- Server : <b>[[#order_cancelled order_cancelled]]</b>
+            ... or in case of failure: ...
+            Client <- Server : <b>[[#order_action_rejected_ltcancel_order_ltorder_token_gt_gt order_action_rejected<cancel_order<order_token>>]]</b>
+            ... using known [[#order_id order_id]] ...
+            Client -> Server : <b>[[#cancel_order_ltorder_id_gt cancel_order<order_id>]]</b>
+            Client <- Server : <b>[[#order_cancelled order_cancelled]]</b>
+            ... or in case of failure: ...
+            Client <- Server : <b>[[#order_action_rejected_ltcancel_order_ltorder_id_gt_gt order_action_rejected<cancel_order<order_id>>]]</b>
+
+            ... and so on ...
+            |||
+            Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+            Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
+        end
+        ... and so on ...
+    end
+end
+
+@enduml
+
+PlantUML version 1.2020.06(Sun Apr 05 21:38:32 JST 2020)
+(APACHE source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 15.0.1+9-18
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: JP
+-->
+  </g>
+</svg>

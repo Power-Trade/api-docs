@@ -1,0 +1,12 @@
+== *Products*
+In order to understand how product data is managed by the PowerTrade platform, it is important to understand two concepts: <<deliverable, *Deliverable Entity*>> and <<tradeable_entity, *Tradable Entity*>>.
+
+A Deliverable Entity is essentially a Product such as a specific Option contract (a BTC call with 20,000 strike price expiring in March 2021 for instance) or a Future contract (an ETH perpetual).
+
+Internally and in most of the API document, products are referred to as "Deliverable Entities" or "Deliverables" in short.
+
+Products can be quoted in different currencies (USDT in the case of PowerTrade at launch time). These quote currencies are also known as settlement currencies and this terminology may be used in later sections and other documents to refer to quote currencies (USDT, USD, GBP, etc.).
+
+In general, a product can be quoted in multiple currencies, each combination representing a trading market. This combination of Product + Settlement Currency is known as Tradable Entity. At this point, note that there is _a one-to-many relationship_ between Deliverable Entity and Tradable Entity.
+
+

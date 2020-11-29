@@ -1,0 +1,40 @@
+@startuml accounts_management_protocol
+
+' to support time duration and delays:
+'!pragma teoz true
+
+'skinparam handwritten true
+'skinparam shadowing false
+
+'skinparam monochrome true
+skinparam sequenceMessageAlign center
+
+'skinparam title {
+'    BorderRoundCorner 5
+'    BorderThickness 1
+'    BorderColor black
+'    BackgroundColor WhiteSmoke
+'}
+
+    '<font color=black>Warning:</font>
+right header
+    <size:12><&warning>Do not test in production, test in [[#WS_API_Services_Sandbox sandbox]]</size>
+endheader
+
+right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Exchange]]</size>
+
+'entity Client
+'entity Server
+
+group <b>[[#session_control_with_auth Session Control Protocol]]</b>
+
+'... <b>Note</b>: for simplicity, heartbeating ...
+'... is not shown here but it is <b>required</b> ...
+'... <b>to keep session alive</b> ...
+
+    group <b>Accounts Management Protocol</b>
+
+    end
+end
+
+@enduml

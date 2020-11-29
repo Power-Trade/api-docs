@@ -1,0 +1,82 @@
+@startuml market_data_protocol
+
+' to support time duration and delays:
+'!pragma teoz true
+
+'skinparam handwritten true
+'skinparam shadowing false
+
+'skinparam monochrome true
+skinparam sequenceMessageAlign center
+
+'skinparam title {
+'    BorderRoundCorner 5
+'    BorderThickness 1
+'    BorderColor black
+'    BackgroundColor WhiteSmoke
+'}
+
+    '<font color=black>Warning:</font>
+right header
+    <size:12><&warning>Do not test in production, test in [[#WS_API_Services_Sandbox sandbox]]</size>
+endheader
+
+right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Exchange]]</size>
+
+'entity Client
+'entity Server
+
+group <b>[[#session_control_with_auth Session Control Protocol]]</b>
+
+    ... <b>Note</b>: for simplicity, heartbeating ...
+    ... is not shown here but it is <b>required</b> ...
+    ... <b>to keep session alive</b> ...
+
+    group <b>Market Data Protocol</b>
+
+        group 1st Cycle
+            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
+            |||
+            Client <- Server : <b>[[#Reference_Data various Reference Data]]</b>
+            ... and so on ...
+            |||
+            Client <- Server : <b>various market data</b>:\n[[#trade trade]],\n[[#top_of_book top_of_book]],\n[[#display_order_added display_order_added]],\n[[#display_order_deleted display_order_deleted]],\n[[#display_order_updated display_order_updated]],..
+            ... and so on ...
+            |||
+            Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+            Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
+        end
+        |||
+        group 2nd Cycle
+            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
+            |||
+            Client <- Server : <b>[[#Reference_Data various Reference Data]]</b>
+            Client <- Server : <b>various market data</b>
+            ... and so on ...
+            |||
+            Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+            Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
+        end
+
+        ... and so on ...
+
+        group Nth Cycle
+            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
+            |||
+            Client <- Server : <b>[[#Reference_Data various Reference Data]]</b>
+            Client <- Server : <b>various market data</b>
+            ... and so on ...
+            |||
+            Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+            Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
+        end
+
+        ... and so on ...
+
+    end
+end
+
+@enduml

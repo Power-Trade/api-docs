@@ -1,0 +1,59 @@
+@startuml position_data_protocol
+
+' to support time duration and delays:
+'!pragma teoz true
+
+'skinparam handwritten true
+'skinparam shadowing false
+
+'skinparam monochrome true
+skinparam sequenceMessageAlign center
+
+'skinparam title {
+'    BorderRoundCorner 5
+'    BorderThickness 1
+'    BorderColor black
+'    BackgroundColor WhiteSmoke
+'}
+
+    '<font color=black>Warning:</font>
+right header
+    <size:12><&warning>Do not test in production, test in [[#WS_API_Services_Sandbox sandbox]]</size>
+endheader
+
+right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Exchange]]</size>
+
+'entity Client
+'entity Server
+
+group <b>[[#session_control_with_auth Session Control Protocol]]</b>
+
+    ... <b>Note</b>: for simplicity, heartbeating ...
+    ... is not shown here but it is <b>required</b> ...
+    ... <b>to keep session alive</b> ...
+
+    group <b>Position Data Protocol</b>
+
+        group i-Cycle
+            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
+            ... any time later ...
+            Client <- Server : <b>[[#position position]]</b>
+            ... any time later ...
+            Client <- Server : <b>[[#position position]]</b>
+            ... or consistency marker ...
+            Client <- Server : <b>[[#position_consistency_marker position_consistency_marker]]</b>
+            ... any time later ...
+            Client <- Server : <b>[[#position position]]</b>
+            ... or consistency marker ...
+            Client <- Server : <b>[[#position_consistency_marker position_consistency_marker]]</b>
+            ... and so on ...
+            |||
+            Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+            Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
+        end
+        ... and so on ...
+    end
+end
+
+@enduml

@@ -1,0 +1,60 @@
+@startuml quote_management_protocol
+
+' to support time duration and delays:
+'!pragma teoz true
+
+'skinparam handwritten true
+'skinparam shadowing false
+
+'skinparam monochrome true
+skinparam sequenceMessageAlign center
+
+'skinparam title {
+'    BorderRoundCorner 5
+'    BorderThickness 1
+'    BorderColor black
+'    BackgroundColor WhiteSmoke
+'}
+
+    '<font color=black>Warning:</font>
+right header
+    <size:12><&warning>Do not test in production, test in [[#WS_API_Services_Sandbox sandbox]]</size>
+endheader
+
+right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Exchange]]</size>
+
+'entity Client
+'entity Server
+
+group <b>[[#session_control_with_auth Session Control Protocol]]</b>
+
+    ... <b>Note</b>: for simplicity, heartbeating ...
+    ... is not shown here but it is <b>required</b> ...
+    ... <b>to keep session alive</b> ...
+
+    group <b>Quote Management Protocol</b>
+        group i-Cycle
+            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
+            |||
+            Client -> Server : <b>[[#cancel_all_quotes_ltaccount_id_gt cancel_all_quotes<account_id>]]</b>
+            Client <- Server : <b>[[#all_quotes_cancelled_ltaccount_id_gt all_quotes_cancelled<account_id>]]</b>
+            |||
+            Client -> Server : <b>[[#enter_quotes_ltsimple_quotes_commaaccount_id_gt enter_quotes<simple_quotes,account_id>]]</b>
+            Client <- Server : <b>[[#quotes_entered_ltsimple_quotes_commaaccount_id_gt quotes_entered<simple_quotes,account_id>]]</b>
+            ... or in case of failure: ...
+            Client <- Server : <b>[[#quotes_action_rejected_ltenter_quotes_ltsimple_quotes_commaaccount_id_gt_gt quotes_action_rejected<enter_quotes<simple_quotes,account_id>>]]</b>
+            ... example of quote execution: ...
+            Client -> Server : <b>[[#enter_quotes_ltsimple_quotes_commaaccount_id_gt enter_quotes<simple_quotes,account_id>]]</b>
+            Client <- Server : <b>[[#quotes_entered_ltsimple_quotes_commaaccount_id_gt quotes_entered<simple_quotes,account_id>]]</b>
+            Client <- Server : <b>[[#quote_executed quote_executed]]</b>
+            ... and so on ...
+            |||
+            Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+            Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
+        end
+        ... and so on ...
+    end
+end
+
+@enduml

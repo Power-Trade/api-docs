@@ -1,0 +1,4752 @@
+= Protocol Specification
+v0.1
+:toc: left
+:toclevels: 3
+:stylesheet: powertrade.css
+:source-highlighter: highlightjs
+
+:sectnums:
+
+include::userguide.asciidoc[]
+
+include::protocols.asciidoc[]
+
+== Reference
+=== Message Sets
+
+This section describes the following message sets:
+
+* <<Market_Data_Messages,Market Data Messages>>
+* <<Order_Management_Requests,Order Management Requests>>
+* <<Order_Management_Responses,Order Management Responses>>
+* <<Position_Data_Messages,Position Data Messages>>
+* <<Quote_Management_Requests,Quote Management Requests>>
+* <<Quote_Management_Responses,Quote Management Responses>>
+* <<Session_Protocol_Requests,Session Protocol Requests>>
+* <<Session_Protocol_Responses,Session Protocol Responses>>
+
+[[Market_Data_Messages]]
+==== Market Data Messages
+
+
+
+This message set includes the following messages:
+
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<cycle_starting,cycle_starting>>
+| Indicates a new cycle is starting.
+| <<cycle_started,cycle_started>>
+| Indicates a new cycle has started.
+| <<cycle_ending,cycle_ending>>
+| Indicates that the current cycle is ending soon.
+| <<cycle_ended,cycle_ended>>
+| Indicates that the current cycle has ended.
+| <<deliverable_ltfx_spot_gt,deliverable<fx_spot>>>
+| Reference data for a single spot deliverable.
+| <<deliverable_ltfuture_gt,deliverable<future>>>
+| Reference data for a single future deliverable.
+| <<deliverable_ltoption_gt,deliverable<option>>>
+| Reference data for a single option deliverable.
+| <<deliverable_ltexchange_token_gt,deliverable<exchange_token>>>
+| Reference data for an exchange token deliverable.
+| <<deliverable_ltstable_token_gt,deliverable<stable_token>>>
+| Reference data for a stable token deliverable.
+| <<deliverable_ltfiat_currency_gt,deliverable<fiat_currency>>>
+| Reference data for a fiat currency deliverable.
+| <<tradeable_entity_ltsimple_market_gt,tradeable_entity<simple_market>>>
+| Reference data for a tradeable entity that is traded using a simple, single market.
+| <<trading_rule,trading_rule>>
+| A trading rule that determines order and trade validation.
+| <<time,time>>
+| Notification of an update to system time.
+| <<display_order_added,display_order_added>>
+| Notification that a new display order was added.
+| <<display_order_deleted,display_order_deleted>>
+| Notification that an existing display order was deleted.
+| <<display_order_executed,display_order_executed>>
+| Notification that an existing display order executed.
+| <<display_order_updated,display_order_updated>>
+| Notification that an existing display order was updated.
+| <<top_of_book,top_of_book>>
+| Notification of a change in the best bid and offer.
+| <<trade,trade>>
+| Notification that a new trade was generated.
+| <<reference_price,reference_price>>
+| Notification of a reference price update.
+| <<settlement_price,settlement_price>>
+| Notification of a settlement price update.
+| <<trading_state,trading_state>>
+| Reflects the current state of trading in the tradeable entity and market.
+|=================================
+
+[[Order_Management_Requests]]
+==== Order Management Requests
+
+
+
+This message set includes the following messages:
+
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<cancel_order_ltorder_id_gt,cancel_order<order_id>>>
+| Cancels an order using the exchange-generated unique order ID.
+| <<cancel_order_ltorder_token_gt,cancel_order<order_token>>>
+| Cancels an order using the client-generated unique order token.
+| <<enter_order_ltsimple_order_ltaccount_id_gt_gt,enter_order<simple_order<account_id>>>>
+| Enters a new order.
+|=================================
+
+[[Order_Management_Responses]]
+==== Order Management Responses
+
+
+
+This message set includes the following messages:
+
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<cycle_starting,cycle_starting>>
+| Indicates a new cycle is starting.
+| <<cycle_started,cycle_started>>
+| Indicates a new cycle has started.
+| <<cycle_ending,cycle_ending>>
+| Indicates that the current cycle is ending soon.
+| <<cycle_ended,cycle_ended>>
+| Indicates that the current cycle has ended.
+| <<order_cancelled,order_cancelled>>
+| Notification that an existing order was cancelled.
+| <<order_executed,order_executed>>
+| Notification that an existing order executed.
+| <<order_updated,order_updated>>
+| Notification of an unsolicited change to an order's state.
+| <<order_entered_ltsimple_order_ltaccount_id_gt_gt,order_entered<simple_order<account_id>>>>
+| Notification that a new order was entered.
+| <<order_restated_ltsimple_order_ltaccount_id_gt_gt,order_restated<simple_order<account_id>>>>
+| Notification that an order was restated.
+| <<order_action_rejected_ltcancel_order_ltorder_id_gt_gt,order_action_rejected<cancel_order<order_id>>>>
+| Notification that an order cancel was rejected.
+| <<order_action_rejected_ltcancel_order_ltorder_token_gt_gt,order_action_rejected<cancel_order<order_token>>>>
+| Notification that an order cancel was rejected.
+| <<order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt,order_action_rejected<enter_order<simple_order<account_id>>>>>
+| Notification that a new order was rejected.
+|=================================
+
+[[Position_Data_Messages]]
+==== Position Data Messages
+
+
+
+This message set includes the following messages:
+
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<cycle_starting,cycle_starting>>
+| Indicates a new cycle is starting.
+| <<cycle_started,cycle_started>>
+| Indicates a new cycle has started.
+| <<cycle_ending,cycle_ending>>
+| Indicates that the current cycle is ending soon.
+| <<cycle_ended,cycle_ended>>
+| Indicates that the current cycle has ended.
+| <<position,position>>
+| Position data for an open position.
+| <<position_consistency_marker,position_consistency_marker>>
+| Notification that the position_priced messages are in a consistent state.
+|=================================
+
+[[Quote_Management_Requests]]
+==== Quote Management Requests
+
+
+
+This message set includes the following messages:
+
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<cancel_all_quotes_ltaccount_id_gt,cancel_all_quotes<account_id>>>
+| Cancels all quotes owned by the party identified by the supplied party data.
+| <<enter_quotes_ltsimple_quotes_commaaccount_id_gt,enter_quotes<simple_quotes,account_id>>>
+| Enters a dynamic array of new quotes.
+|=================================
+
+[[Quote_Management_Responses]]
+==== Quote Management Responses
+
+
+
+This message set includes the following messages:
+
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<cycle_starting,cycle_starting>>
+| Indicates a new cycle is starting.
+| <<cycle_started,cycle_started>>
+| Indicates a new cycle has started.
+| <<cycle_ending,cycle_ending>>
+| Indicates that the current cycle is ending soon.
+| <<cycle_ended,cycle_ended>>
+| Indicates that the current cycle has ended.
+| <<all_quotes_cancelled_ltaccount_id_gt,all_quotes_cancelled<account_id>>>
+| Notification that all quotes were cancelled.
+| <<quote_executed,quote_executed>>
+| Notification that an existing order executed.
+| <<quotes_entered_ltsimple_quotes_commaaccount_id_gt,quotes_entered<simple_quotes,account_id>>>
+| Notification that quotes were entered.
+| <<quotes_action_rejected_ltenter_quotes_ltsimple_quotes_commaaccount_id_gt_gt,quotes_action_rejected<enter_quotes<simple_quotes,account_id>>>>
+| Notification that an enter quotes message was rejected.
+|=================================
+
+[[Session_Protocol_Requests]]
+==== Session Protocol Requests
+
+
+
+This message set includes the following messages:
+
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<heartbeat,heartbeat>>
+| Heartbeat message used to keep a session alive.
+| <<login,login>>
+| Initiate user authentication.
+| <<logout,logout>>
+| End user authentication.
+| <<start_session,start_session>>
+| The first message on an authenticated session.
+| <<request_stream,request_stream>>
+| Request a new stream associated with a specified channel.
+|=================================
+
+[[Session_Protocol_Responses]]
+==== Session Protocol Responses
+
+
+
+This message set includes the following messages:
+
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<heartbeat,heartbeat>>
+| Heartbeat message used to keep a session alive.
+| <<login_accepted,login_accepted>>
+| Notification that a login was accepted.
+| <<login_rejected,login_rejected>>
+| Notification that a login was rejected.
+| <<session_started,session_started>>
+| Notification that a new session was started.
+| <<session_ended,session_ended>>
+| Notification that the current session was ended.
+| <<channel_added,channel_added>>
+| Notification that a new channel was added to the session.
+| <<channel_removed,channel_removed>>
+| Notification that a channel was removed from the session.
+| <<stream_started,stream_started>>
+| Notification that a stream has started.
+| <<stream_ended,stream_ended>>
+| Notification that a stream has ended.
+| <<stream_resumed,stream_resumed>>
+| Notification that a stream has resumed.
+| <<stream_rejected,stream_rejected>>
+| Notification that a stream request was rejected.
+|=================================
+
+=== Messages
+
+This section describes the following messages:
+
+* <<all_quotes_cancelled,all_quotes_cancelled>>
+* <<all_quotes_cancelled_ltaccount_id_gt,all_quotes_cancelled<account_id>>>
+* <<cancel_all_quotes,cancel_all_quotes>>
+* <<cancel_all_quotes_ltaccount_id_gt,cancel_all_quotes<account_id>>>
+* <<cancel_order,cancel_order>>
+* <<cancel_order_ltorder_id_gt,cancel_order<order_id>>>
+* <<cancel_order_ltorder_token_gt,cancel_order<order_token>>>
+* <<channel_added,channel_added>>
+* <<channel_removed,channel_removed>>
+* <<cycle_ended,cycle_ended>>
+* <<cycle_ending,cycle_ending>>
+* <<cycle_started,cycle_started>>
+* <<cycle_starting,cycle_starting>>
+* <<deliverable,deliverable>>
+* <<deliverable_ltexchange_token_gt,deliverable<exchange_token>>>
+* <<deliverable_ltfiat_currency_gt,deliverable<fiat_currency>>>
+* <<deliverable_ltfuture_gt,deliverable<future>>>
+* <<deliverable_ltfx_spot_gt,deliverable<fx_spot>>>
+* <<deliverable_ltoption_gt,deliverable<option>>>
+* <<deliverable_ltstable_token_gt,deliverable<stable_token>>>
+* <<display_order_added,display_order_added>>
+* <<display_order_deleted,display_order_deleted>>
+* <<display_order_executed,display_order_executed>>
+* <<display_order_updated,display_order_updated>>
+* <<enter_order,enter_order>>
+* <<enter_order_ltsimple_order_ltaccount_id_gt_gt,enter_order<simple_order<account_id>>>>
+* <<enter_quotes,enter_quotes>>
+* <<enter_quotes_ltsimple_quotes_commaaccount_id_gt,enter_quotes<simple_quotes,account_id>>>
+* <<heartbeat,heartbeat>>
+* <<login,login>>
+* <<login_accepted,login_accepted>>
+* <<login_rejected,login_rejected>>
+* <<logout,logout>>
+* <<order_action_rejected,order_action_rejected>>
+* <<order_action_rejected_ltcancel_order_ltorder_id_gt_gt,order_action_rejected<cancel_order<order_id>>>>
+* <<order_action_rejected_ltcancel_order_ltorder_token_gt_gt,order_action_rejected<cancel_order<order_token>>>>
+* <<order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt,order_action_rejected<enter_order<simple_order<account_id>>>>>
+* <<order_cancelled,order_cancelled>>
+* <<order_entered,order_entered>>
+* <<order_entered_ltsimple_order_ltaccount_id_gt_gt,order_entered<simple_order<account_id>>>>
+* <<order_executed,order_executed>>
+* <<order_restated,order_restated>>
+* <<order_restated_ltsimple_order_ltaccount_id_gt_gt,order_restated<simple_order<account_id>>>>
+* <<order_updated,order_updated>>
+* <<position,position>>
+* <<position_consistency_marker,position_consistency_marker>>
+* <<quote_executed,quote_executed>>
+* <<quotes_action_rejected,quotes_action_rejected>>
+* <<quotes_action_rejected_ltenter_quotes_ltsimple_quotes_commaaccount_id_gt_gt,quotes_action_rejected<enter_quotes<simple_quotes,account_id>>>>
+* <<quotes_entered,quotes_entered>>
+* <<quotes_entered_ltsimple_quotes_commaaccount_id_gt,quotes_entered<simple_quotes,account_id>>>
+* <<reference_price,reference_price>>
+* <<request_stream,request_stream>>
+* <<session_ended,session_ended>>
+* <<session_started,session_started>>
+* <<settlement_price,settlement_price>>
+* <<start_session,start_session>>
+* <<stream_ended,stream_ended>>
+* <<stream_rejected,stream_rejected>>
+* <<stream_resumed,stream_resumed>>
+* <<stream_started,stream_started>>
+* <<time,time>>
+* <<top_of_book,top_of_book>>
+* <<trade,trade>>
+* <<tradeable_entity,tradeable_entity>>
+* <<tradeable_entity_ltsimple_market_gt,tradeable_entity<simple_market>>>
+* <<trading_rule,trading_rule>>
+* <<trading_state,trading_state>>
+
+[[all_quotes_cancelled]]
+==== all_quotes_cancelled
+
+`all_quotes_cancelled` may refer to one of the following messages:
+
+* <<all_quotes_cancelled_ltaccount_id_gt,all_quotes_cancelled<account_id>>>
+
+[[all_quotes_cancelled_ltaccount_id_gt]]
+==== all_quotes_cancelled<account_id>
+
+Notification that all quotes were cancelled.
+
+Generated in response to <<cancel_all_quotes>> as well as other events that trigger quote cancellation.
+
+This message defines the following fields:
+
+.all_quotes_cancelled<account_id> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the quotes were cancelled.
+
+| `party_data`| object with a single field `"account_id"` of type <<account_id>>|
+Identifies the party data for which all quotes were cancelled.
+
+| `client_reference`| Bytes|
+The client-generated hash value that represents the client-side inputs to this quote transaction.
+
+| `reason`| <<cancelled_reason>>|
+The reason the quotes were cancelled.
+
+|=================================
+
+[[all_quotes_cancelled_ltaccount_id_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<all_quotes_cancelled_ltaccount_id_gt,"all_quotes_cancelled">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        "party_data":{
+            <<account_id,"account_id">>:123
+        },
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        <<cancelled_reason,"reason">>:"user_cancelled"
+    }
+}
+
+-------------------
+
+[[cancel_all_quotes]]
+==== cancel_all_quotes
+
+`cancel_all_quotes` may refer to one of the following messages:
+
+* <<cancel_all_quotes_ltaccount_id_gt,cancel_all_quotes<account_id>>>
+
+[[cancel_all_quotes_ltaccount_id_gt]]
+==== cancel_all_quotes<account_id>
+
+Cancels all quotes owned by the party identified by the supplied party data.
+
+Requests cancellation of quotes matching the supplied party data.
+
+This message defines the following fields:
+
+.cancel_all_quotes<account_id> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `quote_token`| <<quote_token>>|
+A client-generated unique quote identifier.
+
+| `party_data`| object with a single field `"account_id"` of type <<account_id>>|
+Identifies the party for which all quotes are to be cancelled.
+
+| `client_reference`| Bytes|
+A client-generated hash value that represents the client-side inputs to this quote transaction.
+
+|=================================
+
+[[cancel_all_quotes_ltaccount_id_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<cancel_all_quotes_ltaccount_id_gt,"cancel_all_quotes">>:{
+        <<quote_token,"quote_token">>:123,
+        "party_data":{
+            <<account_id,"account_id">>:123
+        },
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000"
+    }
+}
+
+-------------------
+
+[[cancel_order]]
+==== cancel_order
+
+`cancel_order` may refer to one of the following messages:
+
+* <<cancel_order_ltorder_id_gt,cancel_order<order_id>>>
+* <<cancel_order_ltorder_token_gt,cancel_order<order_token>>>
+
+[[cancel_order_ltorder_id_gt]]
+==== cancel_order<order_id>
+
+Cancels an order using the exchange-generated unique order ID.
+
+Requests cancellation of an order.
+
+This message defines the following fields:
+
+.cancel_order<order_id> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `existing_order`| object with a single field `"order_id"` of type <<order_id>>|
+Identifies the order to be cancelled.
+
+| `client_reference`| Bytes|
+A client-generated hash value that represents the client-side inputs to an order transaction.
+
+|=================================
+
+[[cancel_order_ltorder_id_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<cancel_order_ltorder_id_gt,"cancel_order">>:{
+        "existing_order":{
+            <<order_id,"order_id">>:123
+        },
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000"
+    }
+}
+
+-------------------
+
+[[cancel_order_ltorder_token_gt]]
+==== cancel_order<order_token>
+
+Cancels an order using the client-generated unique order token.
+
+Requests cancellation of an order.
+
+This message defines the following fields:
+
+.cancel_order<order_token> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `existing_order`| object with a single field `"order_token"` of type <<order_token>>|
+Identifies the order to be cancelled.
+
+| `client_reference`| Bytes|
+A client-generated hash value that represents the client-side inputs to an order transaction.
+
+|=================================
+
+[[cancel_order_ltorder_token_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<cancel_order_ltorder_token_gt,"cancel_order">>:{
+        "existing_order":{
+            <<order_token,"order_token">>:123
+        },
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000"
+    }
+}
+
+-------------------
+
+[[channel_added]]
+==== channel_added
+
+Notification that a new channel was added to the session.
+
+Generated whenever a channel is added to a session.
+
+This message defines the following fields:
+
+.channel_added fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the channel was added to the session.
+
+| `channel_id`| <<channel_id>>|
+The unique, server-assigned identifier for the channel.
+
+| `next_sequence_number`| <<sequence_number>>|
+The next sequence number for the next message to be generated on the channel.
+
+| `oldest_sequence_number`| <<sequence_number>>|
+The sequence number of the oldest message available on the channel.
+
+| `default_stream_id`| <<stream_id>>|
+Identifies the channel's default stream.
+
+|=================================
+
+[[channel_added_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<channel_added,"channel_added">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<channel_id,"channel_id">>:123,
+        <<sequence_number,"next_sequence_number">>:123,
+        <<sequence_number,"oldest_sequence_number">>:123,
+        <<stream_id,"default_stream_id">>:123
+    }
+}
+
+-------------------
+
+[[channel_removed]]
+==== channel_removed
+
+Notification that a channel was removed from the session.
+
+Generated whenever a channel is removed from a session.
+
+This message defines the following fields:
+
+.channel_removed fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the channel was removed from the session.
+
+| `channel_id`| <<channel_id>>|
+The unique, server-assigned identifier for the channel.
+
+|=================================
+
+[[channel_removed_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<channel_removed,"channel_removed">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<channel_id,"channel_id">>:123
+    }
+}
+
+-------------------
+
+[[cycle_ended]]
+==== cycle_ended
+
+Indicates that the current cycle has ended.
+
+Generated to indicate that the current cycle has ended.
+
+This message defines the following fields:
+
+.cycle_ended fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `cycle_id`| <<utc_timestamp>>|
+A timestamp that uniquely identifies the current cycle.
+
+|=================================
+
+[[cycle_ended_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<cycle_ended,"cycle_ended">>:{
+        <<utc_timestamp,"cycle_id">>:123
+    }
+}
+
+-------------------
+
+[[cycle_ending]]
+==== cycle_ending
+
+Indicates that the current cycle is ending soon.
+
+Generated to indicate that the current cycle will be ending soon.
+
+This message defines the following fields:
+
+.cycle_ending fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `cycle_id`| <<utc_timestamp>>|
+A timestamp that uniquely identifies the current cycle.
+
+| `next_cycle_id`| <<utc_timestamp>>|
+A timestamp that uniquely identifies the next cycle.
+
+|=================================
+
+[[cycle_ending_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<cycle_ending,"cycle_ending">>:{
+        <<utc_timestamp,"cycle_id">>:123,
+        <<utc_timestamp,"next_cycle_id">>:123
+    }
+}
+
+-------------------
+
+[[cycle_started]]
+==== cycle_started
+
+Indicates a new cycle has started.
+
+Generated to indicate that a new cycle has started.
+
+This message defines the following fields:
+
+.cycle_started fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `cycle_id`| <<utc_timestamp>>|
+A timestamp that uniquely identifies the current cycle.
+
+|=================================
+
+[[cycle_started_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<cycle_started,"cycle_started">>:{
+        <<utc_timestamp,"cycle_id">>:123
+    }
+}
+
+-------------------
+
+[[cycle_starting]]
+==== cycle_starting
+
+Indicates a new cycle is starting.
+
+Generated to indicate that a new cycle is starting.
+
+This message defines the following fields:
+
+.cycle_starting fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `cycle_id`| <<utc_timestamp>>|
+A timestamp that uniquely identifies the new cycle.
+
+|=================================
+
+[[cycle_starting_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<cycle_starting,"cycle_starting">>:{
+        <<utc_timestamp,"cycle_id">>:123
+    }
+}
+
+-------------------
+
+[[deliverable]]
+==== deliverable
+
+`deliverable` may refer to one of the following messages:
+
+* <<deliverable_ltexchange_token_gt,deliverable<exchange_token>>>
+* <<deliverable_ltfiat_currency_gt,deliverable<fiat_currency>>>
+* <<deliverable_ltfuture_gt,deliverable<future>>>
+* <<deliverable_ltfx_spot_gt,deliverable<fx_spot>>>
+* <<deliverable_ltoption_gt,deliverable<option>>>
+* <<deliverable_ltstable_token_gt,deliverable<stable_token>>>
+
+[[deliverable_ltexchange_token_gt]]
+==== deliverable<exchange_token>
+
+Reference data for an exchange token deliverable.
+
+Contains reference data associated with a single deliverable.
+
+This message defines the following fields:
+
+.deliverable<exchange_token> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `deliverable_id`| <<deliverable_id>>|
+The unique, exchange-assigned identifier for the deliverable.
+
+| `symbol`| String|
+A human-readable identifier for the deliverable.
+
+| `tags`| array of String|
+A collection of tags used for classifying the deliverable.
+
+| `decimal_places`| <<decimal_places>>|
+The number of decimal places used when expressing quantities and balances in terms of the deliverable.
+
+| `details`| object with a single field `"exchange_token"` of type <<exchange_token>>|
+Contains additional details describing the deliverable.
+
+|=================================
+
+[[deliverable_ltexchange_token_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<deliverable_ltexchange_token_gt,"deliverable">>:{
+        <<deliverable_id,"deliverable_id">>:123,
+        "symbol":"A",
+        "tags":[
+            "A"
+        ],
+        <<decimal_places,"decimal_places">>:123,
+        "details":{
+            <<exchange_token,"exchange_token">>:{
+                "common_name":"A",
+                "ledger_name":"A",
+                "ledger_address":"0x00",
+                <<decimal_places,"minor_units">>:123
+            }
+        }
+    }
+}
+
+-------------------
+
+[[deliverable_ltfiat_currency_gt]]
+==== deliverable<fiat_currency>
+
+Reference data for a fiat currency deliverable.
+
+Contains reference data associated with a single deliverable.
+
+This message defines the following fields:
+
+.deliverable<fiat_currency> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `deliverable_id`| <<deliverable_id>>|
+The unique, exchange-assigned identifier for the deliverable.
+
+| `symbol`| String|
+A human-readable identifier for the deliverable.
+
+| `tags`| array of String|
+A collection of tags used for classifying the deliverable.
+
+| `decimal_places`| <<decimal_places>>|
+The number of decimal places used when expressing quantities and balances in terms of the deliverable.
+
+| `details`| object with a single field `"fiat_currency"` of type <<fiat_currency>>|
+Contains additional details describing the deliverable.
+
+|=================================
+
+[[deliverable_ltfiat_currency_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<deliverable_ltfiat_currency_gt,"deliverable">>:{
+        <<deliverable_id,"deliverable_id">>:123,
+        "symbol":"A",
+        "tags":[
+            "A"
+        ],
+        <<decimal_places,"decimal_places">>:123,
+        "details":{
+            <<fiat_currency,"fiat_currency">>:{
+                "currency":"A",
+                "code":"A",
+                <<iso4217_currency_number,"number">>:123,
+                <<decimal_places,"minor_units">>:123
+            }
+        }
+    }
+}
+
+-------------------
+
+[[deliverable_ltfuture_gt]]
+==== deliverable<future>
+
+Reference data for a single future deliverable.
+
+Contains reference data associated with a single deliverable.
+
+This message defines the following fields:
+
+.deliverable<future> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `deliverable_id`| <<deliverable_id>>|
+The unique, exchange-assigned identifier for the deliverable.
+
+| `symbol`| String|
+A human-readable identifier for the deliverable.
+
+| `tags`| array of String|
+A collection of tags used for classifying the deliverable.
+
+| `decimal_places`| <<decimal_places>>|
+The number of decimal places used when expressing quantities and balances in terms of the deliverable.
+
+| `details`| object with a single field `"future"` of type <<future>>|
+Contains additional details describing the deliverable.
+
+|=================================
+
+[[deliverable_ltfuture_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<deliverable_ltfuture_gt,"deliverable">>:{
+        <<deliverable_id,"deliverable_id">>:123,
+        "symbol":"A",
+        "tags":[
+            "A"
+        ],
+        <<decimal_places,"decimal_places">>:123,
+        "details":{
+            <<future,"future">>:{
+                <<zoned_datetime,"expiry">>:{
+                    <<datetime,"datetime">>:{
+                        <<date,"date">>:{
+                            <<year,"year">>:123,
+                            <<month,"month">>:123,
+                            <<day,"day">>:123
+                        },
+                        <<time_of_day,"time">>:{
+                            <<hours,"hours">>:123,
+                            <<minutes,"minutes">>:123,
+                            <<seconds,"seconds">>:123,
+                            <<nanoseconds,"nanoseconds">>:123
+                        }
+                    },
+                    "timezone":"A"
+                },
+                <<delivery_style,"delivery_style">>:"physical",
+                <<deliverable_id,"underlying_deliverable_id">>:123,
+                <<deliverable_id,"contract_size_deliverable_id">>:123,
+                <<contract_size,"contract_size">>:123,
+                <<deliverable_id,"settlement_deliverable_id">>:123,
+                <<decimal_places,"settlement_decimal_places">>:123,
+                <<utc_timestamp,"utc_creation_time">>:123,
+                <<creation_source_id,"creation_source_id">>:123,
+                <<margin_spec_id,"margin_spec_id">>:123
+            }
+        }
+    }
+}
+
+-------------------
+
+[[deliverable_ltfx_spot_gt]]
+==== deliverable<fx_spot>
+
+Reference data for a single spot deliverable.
+
+Contains reference data associated with a single deliverable.
+
+This message defines the following fields:
+
+.deliverable<fx_spot> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `deliverable_id`| <<deliverable_id>>|
+The unique, exchange-assigned identifier for the deliverable.
+
+| `symbol`| String|
+A human-readable identifier for the deliverable.
+
+| `tags`| array of String|
+A collection of tags used for classifying the deliverable.
+
+| `decimal_places`| <<decimal_places>>|
+The number of decimal places used when expressing quantities and balances in terms of the deliverable.
+
+| `details`| object with a single field `"fx_spot"` of type <<fx_spot>>|
+Contains additional details describing the deliverable.
+
+|=================================
+
+[[deliverable_ltfx_spot_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<deliverable_ltfx_spot_gt,"deliverable">>:{
+        <<deliverable_id,"deliverable_id">>:123,
+        "symbol":"A",
+        "tags":[
+            "A"
+        ],
+        <<decimal_places,"decimal_places">>:123,
+        "details":{
+            <<fx_spot,"fx_spot">>:{
+                <<deliverable_id,"base_deliverable_id">>:123,
+                <<deliverable_id,"quote_deliverable_id">>:123,
+                <<contract_size,"contract_size">>:123
+            }
+        }
+    }
+}
+
+-------------------
+
+[[deliverable_ltoption_gt]]
+==== deliverable<option>
+
+Reference data for a single option deliverable.
+
+Contains reference data associated with a single deliverable.
+
+This message defines the following fields:
+
+.deliverable<option> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `deliverable_id`| <<deliverable_id>>|
+The unique, exchange-assigned identifier for the deliverable.
+
+| `symbol`| String|
+A human-readable identifier for the deliverable.
+
+| `tags`| array of String|
+A collection of tags used for classifying the deliverable.
+
+| `decimal_places`| <<decimal_places>>|
+The number of decimal places used when expressing quantities and balances in terms of the deliverable.
+
+| `details`| object with a single field `"option"` of type <<option>>|
+Contains additional details describing the deliverable.
+
+|=================================
+
+[[deliverable_ltoption_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<deliverable_ltoption_gt,"deliverable">>:{
+        <<deliverable_id,"deliverable_id">>:123,
+        "symbol":"A",
+        "tags":[
+            "A"
+        ],
+        <<decimal_places,"decimal_places">>:123,
+        "details":{
+            <<option,"option">>:{
+                <<zoned_datetime,"expiry">>:{
+                    <<datetime,"datetime">>:{
+                        <<date,"date">>:{
+                            <<year,"year">>:123,
+                            <<month,"month">>:123,
+                            <<day,"day">>:123
+                        },
+                        <<time_of_day,"time">>:{
+                            <<hours,"hours">>:123,
+                            <<minutes,"minutes">>:123,
+                            <<seconds,"seconds">>:123,
+                            <<nanoseconds,"nanoseconds">>:123
+                        }
+                    },
+                    "timezone":"A"
+                },
+                <<price,"strike_price">>:123,
+                <<option_type,"option_type">>:"call",
+                <<option_exercise_style,"exercise_style">>:"european",
+                <<option_valuation_approach,"valuation_approach">>:"vanilla",
+                <<delivery_style,"delivery_style">>:"physical",
+                <<deliverable_id,"underlying_deliverable_id">>:123,
+                <<deliverable_id,"contract_size_deliverable_id">>:123,
+                <<contract_size,"contract_size">>:123,
+                <<deliverable_id,"settlement_deliverable_id">>:123,
+                <<decimal_places,"settlement_decimal_places">>:123,
+                <<utc_timestamp,"utc_creation_time">>:123,
+                <<creation_source_id,"creation_source_id">>:123,
+                <<margin_spec_id,"margin_spec_id">>:123,
+                <<strikes_spec_id,"strikes_spec_id">>:123
+            }
+        }
+    }
+}
+
+-------------------
+
+[[deliverable_ltstable_token_gt]]
+==== deliverable<stable_token>
+
+Reference data for a stable token deliverable.
+
+Contains reference data associated with a single deliverable.
+
+This message defines the following fields:
+
+.deliverable<stable_token> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `deliverable_id`| <<deliverable_id>>|
+The unique, exchange-assigned identifier for the deliverable.
+
+| `symbol`| String|
+A human-readable identifier for the deliverable.
+
+| `tags`| array of String|
+A collection of tags used for classifying the deliverable.
+
+| `decimal_places`| <<decimal_places>>|
+The number of decimal places used when expressing quantities and balances in terms of the deliverable.
+
+| `details`| object with a single field `"stable_token"` of type <<stable_token>>|
+Contains additional details describing the deliverable.
+
+|=================================
+
+[[deliverable_ltstable_token_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<deliverable_ltstable_token_gt,"deliverable">>:{
+        <<deliverable_id,"deliverable_id">>:123,
+        "symbol":"A",
+        "tags":[
+            "A"
+        ],
+        <<decimal_places,"decimal_places">>:123,
+        "details":{
+            <<stable_token,"stable_token">>:{
+                "common_name":"A",
+                "ledger_name":"A",
+                "ledger_address":"0x00",
+                <<decimal_places,"minor_units">>:123,
+                <<stabilisation_approach,"stabilisation_approach">>:"fiat_backed",
+                <<deliverable_id,"backing_deliverable_id">>:123
+            }
+        }
+    }
+}
+
+-------------------
+
+[[display_order_added]]
+==== display_order_added
+
+Notification that a new display order was added.
+
+Represents the addition of a displayed order to the tradeable entity.
+
+This message defines the following fields:
+
+.display_order_added fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order was added.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+A unique, exchange-assigned identifier for the tradeable entity.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the order.
+
+| `side`| <<side>>|
+Whether the order is a buy or sell.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the displayed order.
+
+| `display_price`| <<price>>|
+The displayed price of the order. The number of decimal places is determined by the tradeable entity.
+
+| `display_quantity`| <<quantity>>|
+The displayed quantity of the order. The number of decimal places is determined by the tradeable entity.
+
+|=================================
+
+[[display_order_added_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<display_order_added,"display_order_added">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<side,"side">>:"buy",
+        <<display_order_id,"display_order_id">>:123,
+        <<price,"display_price">>:123,
+        <<quantity,"display_quantity">>:123
+    }
+}
+
+-------------------
+
+[[display_order_deleted]]
+==== display_order_deleted
+
+Notification that an existing display order was deleted.
+
+Represents the deletion of a displayed order from the tradeable entity.
+
+This message defines the following fields:
+
+.display_order_deleted fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order was deleted.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+A unique, exchange-assigned identifier for the tradeable entity.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the order.
+
+| `side`| <<side>>|
+Whether the order is a buy or sell.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the displayed order.
+
+|=================================
+
+[[display_order_deleted_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<display_order_deleted,"display_order_deleted">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<side,"side">>:"buy",
+        <<display_order_id,"display_order_id">>:123
+    }
+}
+
+-------------------
+
+[[display_order_executed]]
+==== display_order_executed
+
+Notification that an existing display order executed.
+
+Represents the addition of a displayed order to the tradeable entity.
+
+This message defines the following fields:
+
+.display_order_executed fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order was executed.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+A unique, exchange-assigned identifier for the tradeable entity.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the order.
+
+| `side`| <<side>>|
+Whether the order is a buy or sell.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the displayed order.
+
+| `executed_price`| <<price>>|
+The price of the trade. The number of decimal places is determined by the tradeable entity.
+
+| `executed_quantity`| <<quantity>>|
+The quantity of the trade. The number of decimal places is determined by the tradeable entity.
+
+| `trade_id`| <<trade_id>>|
+The unique, exchange-assigned identifier for the trade.
+
+|=================================
+
+[[display_order_executed_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<display_order_executed,"display_order_executed">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<side,"side">>:"buy",
+        <<display_order_id,"display_order_id">>:123,
+        <<price,"executed_price">>:123,
+        <<quantity,"executed_quantity">>:123,
+        <<trade_id,"trade_id">>:123
+    }
+}
+
+-------------------
+
+[[display_order_updated]]
+==== display_order_updated
+
+Notification that an existing display order was updated.
+
+Represents the update of a displayed order in a tradeable entity.
+
+This message defines the following fields:
+
+.display_order_updated fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order was updated.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+A unique, exchange-assigned identifier for the tradeable entity.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the order.
+
+| `side`| <<side>>|
+Whether the order is a buy or sell.
+
+| `old_display_order_id`| <<display_order_id>>|
+The current unique, exchange-assigned identifier for the displayed order.
+
+| `new_display_order_id`| <<display_order_id>>|
+The new unique, exchange-assigned identifier for the displayed order.
+
+| `display_price`| <<price>>|
+The displayed price of the order. The number of decimal places is determined by the tradeable entity.
+
+| `display_quantity`| <<quantity>>|
+The displayed quantity of the order. The number of decimal places is determined by the tradeable entity.
+
+|=================================
+
+[[display_order_updated_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<display_order_updated,"display_order_updated">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<side,"side">>:"buy",
+        <<display_order_id,"old_display_order_id">>:123,
+        <<display_order_id,"new_display_order_id">>:123,
+        <<price,"display_price">>:123,
+        <<quantity,"display_quantity">>:123
+    }
+}
+
+-------------------
+
+[[enter_order]]
+==== enter_order
+
+`enter_order` may refer to one of the following messages:
+
+* <<enter_order_ltsimple_order_ltaccount_id_gt_gt,enter_order<simple_order<account_id>>>>
+
+[[enter_order_ltsimple_order_ltaccount_id_gt_gt]]
+==== enter_order<simple_order<account_id>>
+
+Enters a new order.
+
+Requests entry of a new order.
+
+This message defines the following fields:
+
+.enter_order<simple_order<account_id>> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `order_token`| <<order_token>>|
+A client-generated unique order identifier.
+
+| `client_reference`| Bytes|
+A client-generated hash value that represents the client-side inputs to an order transaction.
+
+| `new_order`| object with a single field `"simple_order"` of type <<simple_order_ltaccount_id_gt>>|
+New order attributes.
+
+|=================================
+
+[[enter_order_ltsimple_order_ltaccount_id_gt_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<enter_order_ltsimple_order_ltaccount_id_gt_gt,"enter_order">>:{
+        <<order_token,"order_token">>:123,
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        "new_order":{
+            <<simple_order_ltaccount_id_gt,"simple_order">>:{
+                <<tradeable_entity_id,"tradeable_entity_id">>:123,
+                <<market_id,"market_id">>:123,
+                <<side,"side">>:"buy",
+                <<time_in_force,"time_in_force">>:"good_for_cycles",
+                <<time_to_live,"time_to_live">>:123,
+                <<quantity,"quantity">>:123,
+                <<price,"price">>:123,
+                "party_data":{
+                    <<account_id,"account_id">>:123
+                }
+            }
+        }
+    }
+}
+
+-------------------
+
+[[enter_quotes]]
+==== enter_quotes
+
+`enter_quotes` may refer to one of the following messages:
+
+* <<enter_quotes_ltsimple_quotes_commaaccount_id_gt,enter_quotes<simple_quotes,account_id>>>
+
+[[enter_quotes_ltsimple_quotes_commaaccount_id_gt]]
+==== enter_quotes<simple_quotes,account_id>
+
+Enters a dynamic array of new quotes.
+
+Requests entry of list of quotes.
+
+This message defines the following fields:
+
+.enter_quotes<simple_quotes,account_id> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `quote_token`| <<quote_token>>|
+A client-generated unique quote identifier.
+
+| `client_reference`| Bytes|
+A client-generated hash value that represents the client-side inputs to the enter quotes transaction.
+
+| `quotes`| object with a single field `"simple_quotes"` of type <<simple_quotes>>|
+A sequence of quotes.
+
+| `party_data`| object with a single field `"account_id"` of type <<account_id>>|
+Contains attributes identifying the party associated with the quotes.
+
+|=================================
+
+[[enter_quotes_ltsimple_quotes_commaaccount_id_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<enter_quotes_ltsimple_quotes_commaaccount_id_gt,"enter_quotes">>:{
+        <<quote_token,"quote_token">>:123,
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        "quotes":{
+            <<simple_quotes,"simple_quotes">>:[
+                {
+                    <<tradeable_entity_id,"tradeable_entity_id">>:123,
+                    <<market_id,"market_id">>:123,
+                    <<quote_step,"quote_step">>:123,
+                    <<quote_side,"buy">>:{
+                        <<quantity,"quantity">>:123,
+                        <<price,"price">>:123,
+                        "is_new_quantity":false
+                    },
+                    <<quote_side,"sell">>:{
+                        <<quantity,"quantity">>:123,
+                        <<price,"price">>:123,
+                        "is_new_quantity":false
+                    }
+                }
+            ]
+        },
+        "party_data":{
+            <<account_id,"account_id">>:123
+        }
+    }
+}
+
+-------------------
+
+[[heartbeat]]
+==== heartbeat
+
+Heartbeat message used to keep a session alive.
+
+Keeps the session alive.
+
+This message defines the following fields:
+
+.heartbeat fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the heartbeat was generated.
+
+|=================================
+
+[[heartbeat_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<heartbeat,"heartbeat">>:{
+        <<utc_timestamp,"timestamp">>:123
+    }
+}
+
+-------------------
+
+[[login]]
+==== login
+
+Initiate user authentication.
+
+Used to initiate user authentication.
+
+This message defines the following fields:
+
+.login fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `credentials`| String|
+Required credentials.
+
+| `credentials_secret`| String|
+Required credentials or none.
+
+|=================================
+
+[[login_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<login,"login">>:{
+        "credentials":"A",
+        "credentials_secret":"A"
+    }
+}
+
+-------------------
+
+[[login_accepted]]
+==== login_accepted
+
+Notification that a login was accepted.
+
+Generated in response to a successful <<login>>.
+
+This message defines the following fields:
+
+.login_accepted fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the login was accepted.
+
+|=================================
+
+[[login_accepted_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<login_accepted,"login_accepted">>:{
+        <<utc_timestamp,"timestamp">>:123
+    }
+}
+
+-------------------
+
+[[login_rejected]]
+==== login_rejected
+
+Notification that a login was rejected.
+
+Generated in response to a failed <<login>>.
+
+This message defines the following fields:
+
+.login_rejected fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the login was rejected.
+
+|=================================
+
+[[login_rejected_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<login_rejected,"login_rejected">>:{
+        <<utc_timestamp,"timestamp">>:123
+    }
+}
+
+-------------------
+
+[[logout]]
+==== logout
+
+End user authentication.
+
+Used to request the end of an authenticated session.
+
+This message contains no fields.
+
+
+[[logout_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<logout,"logout">>:{
+    }
+}
+
+-------------------
+
+[[order_action_rejected]]
+==== order_action_rejected
+
+`order_action_rejected` may refer to one of the following messages:
+
+* <<order_action_rejected_ltcancel_order_ltorder_id_gt_gt,order_action_rejected<cancel_order<order_id>>>>
+* <<order_action_rejected_ltcancel_order_ltorder_token_gt_gt,order_action_rejected<cancel_order<order_token>>>>
+* <<order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt,order_action_rejected<enter_order<simple_order<account_id>>>>>
+
+[[order_action_rejected_ltcancel_order_ltorder_id_gt_gt]]
+==== order_action_rejected<cancel_order<order_id>>
+
+Notification that an order cancel was rejected.
+
+Generated as a response to indicate an action was rejected.
+
+This message defines the following fields:
+
+.order_action_rejected<cancel_order<order_id>> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order action was rejected.
+
+| `action`| object with a single field `"cancel_order"` of type <<cancel_order_ltorder_id_gt>>|
+A copy of the order action that was rejected.
+
+| `reason`| <<reject_reason>>|
+The reason the order action was rejected.
+
+|=================================
+
+[[order_action_rejected_ltcancel_order_ltorder_id_gt_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<order_action_rejected_ltcancel_order_ltorder_id_gt_gt,"order_action_rejected">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        "action":{
+            <<cancel_order_ltorder_id_gt,"cancel_order">>:{
+                "existing_order":{
+                    <<order_id,"order_id">>:123
+                },
+                "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+        },
+        <<reject_reason,"reason">>:"invalid_tradeable_entity"
+    }
+}
+
+-------------------
+
+[[order_action_rejected_ltcancel_order_ltorder_token_gt_gt]]
+==== order_action_rejected<cancel_order<order_token>>
+
+Notification that an order cancel was rejected.
+
+Generated as a response to indicate an action was rejected.
+
+This message defines the following fields:
+
+.order_action_rejected<cancel_order<order_token>> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order action was rejected.
+
+| `action`| object with a single field `"cancel_order"` of type <<cancel_order_ltorder_token_gt>>|
+A copy of the order action that was rejected.
+
+| `reason`| <<reject_reason>>|
+The reason the order action was rejected.
+
+|=================================
+
+[[order_action_rejected_ltcancel_order_ltorder_token_gt_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<order_action_rejected_ltcancel_order_ltorder_token_gt_gt,"order_action_rejected">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        "action":{
+            <<cancel_order_ltorder_token_gt,"cancel_order">>:{
+                "existing_order":{
+                    <<order_token,"order_token">>:123
+                },
+                "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000"
+            }
+        },
+        <<reject_reason,"reason">>:"invalid_tradeable_entity"
+    }
+}
+
+-------------------
+
+[[order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt]]
+==== order_action_rejected<enter_order<simple_order<account_id>>>
+
+Notification that a new order was rejected.
+
+Generated as a response to indicate an action was rejected.
+
+This message defines the following fields:
+
+.order_action_rejected<enter_order<simple_order<account_id>>> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order action was rejected.
+
+| `action`| object with a single field `"enter_order"` of type <<enter_order_ltsimple_order_ltaccount_id_gt_gt>>|
+A copy of the order action that was rejected.
+
+| `reason`| <<reject_reason>>|
+The reason the order action was rejected.
+
+|=================================
+
+[[order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt,"order_action_rejected">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        "action":{
+            <<enter_order_ltsimple_order_ltaccount_id_gt_gt,"enter_order">>:{
+                <<order_token,"order_token">>:123,
+                "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+                "new_order":{
+                    <<simple_order_ltaccount_id_gt,"simple_order">>:{
+                        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+                        <<market_id,"market_id">>:123,
+                        <<side,"side">>:"buy",
+                        <<time_in_force,"time_in_force">>:"good_for_cycles",
+                        <<time_to_live,"time_to_live">>:123,
+                        <<quantity,"quantity">>:123,
+                        <<price,"price">>:123,
+                        "party_data":{
+                            <<account_id,"account_id">>:123
+                        }
+                    }
+                }
+            }
+        },
+        <<reject_reason,"reason">>:"invalid_tradeable_entity"
+    }
+}
+
+-------------------
+
+[[order_cancelled]]
+==== order_cancelled
+
+Notification that an existing order was cancelled.
+
+Generated in response to <<cancel_order>> as well as other events that trigger order cancellation.
+
+This message defines the following fields:
+
+.order_cancelled fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order was cancelled.
+
+| `order_id`| <<order_id>>|
+The unique, exchange-assigned identifier for the order.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the display order.
+
+| `order_token`| <<order_token>>|
+The client-generated unique identifier for the order.
+
+| `client_reference`| Bytes|
+The client-generated hash value that represents the client-side inputs to an order transaction.
+
+| `reason`| <<cancelled_reason>>|
+The reason the order was cancelled.
+
+|=================================
+
+[[order_cancelled_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<order_cancelled,"order_cancelled">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<order_id,"order_id">>:123,
+        <<display_order_id,"display_order_id">>:123,
+        <<order_token,"order_token">>:123,
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        <<cancelled_reason,"reason">>:"user_cancelled"
+    }
+}
+
+-------------------
+
+[[order_entered]]
+==== order_entered
+
+`order_entered` may refer to one of the following messages:
+
+* <<order_entered_ltsimple_order_ltaccount_id_gt_gt,order_entered<simple_order<account_id>>>>
+
+[[order_entered_ltsimple_order_ltaccount_id_gt_gt]]
+==== order_entered<simple_order<account_id>>
+
+Notification that a new order was entered.
+
+Generated in response to <<enter_order>> to indicate that the order was successfully entered.
+
+This message defines the following fields:
+
+.order_entered<simple_order<account_id>> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order was entered.
+
+| `order_id`| <<order_id>>|
+The unique, exchange-assigned identifier for the order.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the display order.
+
+| `order_token`| <<order_token>>|
+The client-generated unique order identifier.
+
+| `client_reference`| Bytes|
+The client-generated hash value that represents the client-side inputs to an order transaction.
+
+| `new_order`| object with a single field `"simple_order"` of type <<simple_order_ltaccount_id_gt>>|
+The entered order attributes.
+
+| `order_state`| <<order_state>>|
+Whether the order is live or dead.
+
+|=================================
+
+[[order_entered_ltsimple_order_ltaccount_id_gt_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<order_entered_ltsimple_order_ltaccount_id_gt_gt,"order_entered">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<order_id,"order_id">>:123,
+        <<display_order_id,"display_order_id">>:123,
+        <<order_token,"order_token">>:123,
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        "new_order":{
+            <<simple_order_ltaccount_id_gt,"simple_order">>:{
+                <<tradeable_entity_id,"tradeable_entity_id">>:123,
+                <<market_id,"market_id">>:123,
+                <<side,"side">>:"buy",
+                <<time_in_force,"time_in_force">>:"good_for_cycles",
+                <<time_to_live,"time_to_live">>:123,
+                <<quantity,"quantity">>:123,
+                <<price,"price">>:123,
+                "party_data":{
+                    <<account_id,"account_id">>:123
+                }
+            }
+        },
+        <<order_state,"order_state">>:"accepted"
+    }
+}
+
+-------------------
+
+[[order_executed]]
+==== order_executed
+
+Notification that an existing order executed.
+
+Generated to indicate that an order entered via <<enter_order>> has executed.
+
+This message defines the following fields:
+
+.order_executed fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order was executed.
+
+| `order_id`| <<order_id>>|
+The unique, exchange-assigned identifier for the order.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the display order.
+
+| `order_token`| <<order_token>>|
+The client-generated unique identifier for the order.
+
+| `executed_price`| <<price>>|
+The price of the trade. The number of decimal places is determined by the tradeable entity.
+
+| `executed_quantity`| <<quantity>>|
+The quantity of the trade. The number of decimal places is determined by the tradeable entity.
+
+| `counterparty_display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the counterparty display order.
+
+| `trade_id`| <<trade_id>>|
+The unique, exchange-assigned identifier for the trade.
+
+| `liquidity_flag`| <<liquidity_flag>>|
+Whether the order was responsible for adding or taking liquidity.
+
+|=================================
+
+[[order_executed_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<order_executed,"order_executed">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<order_id,"order_id">>:123,
+        <<display_order_id,"display_order_id">>:123,
+        <<order_token,"order_token">>:123,
+        <<price,"executed_price">>:123,
+        <<quantity,"executed_quantity">>:123,
+        <<display_order_id,"counterparty_display_order_id">>:123,
+        <<trade_id,"trade_id">>:123,
+        <<liquidity_flag,"liquidity_flag">>:"added"
+    }
+}
+
+-------------------
+
+[[order_restated]]
+==== order_restated
+
+`order_restated` may refer to one of the following messages:
+
+* <<order_restated_ltsimple_order_ltaccount_id_gt_gt,order_restated<simple_order<account_id>>>>
+
+[[order_restated_ltsimple_order_ltaccount_id_gt_gt]]
+==== order_restated<simple_order<account_id>>
+
+Notification that an order was restated.
+
+Generated to restate an open order to a client.
+
+This message defines the following fields:
+
+.order_restated<simple_order<account_id>> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order was restated.
+
+| `order_id`| <<order_id>>|
+The unique, exchange-assigned identifier for the order.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the display order.
+
+| `order_token`| <<order_token>>|
+The client-generated unique order identifier.
+
+| `client_reference`| Bytes|
+The client-generated hash value that represents the client-side inputs to an order transaction.
+
+| `original_timestamp`| <<utc_timestamp>>|
+The time when the order was originally entered.
+
+| `original_order`| object with a single field `"simple_order"` of type <<simple_order_ltaccount_id_gt>>|
+The original order attributes.
+
+| `balance`| <<quantity>>|
+The balance of the order that has not yet executed.
+
+| `order_state`| <<order_state>>|
+Whether the order is live or dead.
+
+|=================================
+
+[[order_restated_ltsimple_order_ltaccount_id_gt_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<order_restated_ltsimple_order_ltaccount_id_gt_gt,"order_restated">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<order_id,"order_id">>:123,
+        <<display_order_id,"display_order_id">>:123,
+        <<order_token,"order_token">>:123,
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        <<utc_timestamp,"original_timestamp">>:123,
+        "original_order":{
+            <<simple_order_ltaccount_id_gt,"simple_order">>:{
+                <<tradeable_entity_id,"tradeable_entity_id">>:123,
+                <<market_id,"market_id">>:123,
+                <<side,"side">>:"buy",
+                <<time_in_force,"time_in_force">>:"good_for_cycles",
+                <<time_to_live,"time_to_live">>:123,
+                <<quantity,"quantity">>:123,
+                <<price,"price">>:123,
+                "party_data":{
+                    <<account_id,"account_id">>:123
+                }
+            }
+        },
+        <<quantity,"balance">>:123,
+        <<order_state,"order_state">>:"accepted"
+    }
+}
+
+-------------------
+
+[[order_updated]]
+==== order_updated
+
+Notification of an unsolicited change to an order's state.
+
+Generated by events that trigger a change in order state or display identifier.
+
+This message defines the following fields:
+
+.order_updated fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the order was updated.
+
+| `order_id`| <<order_id>>|
+The unique, exchange-assigned identifier for the order.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the display order.
+
+| `order_token`| <<order_token>>|
+The client-generated unique identifier for the order.
+
+| `client_reference`| Bytes|
+The client-generated hash value that represents the client-side inputs to an order transaction.
+
+| `order_state`| <<order_state>>|
+The current state of the order.
+
+|=================================
+
+[[order_updated_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<order_updated,"order_updated">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<order_id,"order_id">>:123,
+        <<display_order_id,"display_order_id">>:123,
+        <<order_token,"order_token">>:123,
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        <<order_state,"order_state">>:"accepted"
+    }
+}
+
+-------------------
+
+[[position]]
+==== position
+
+Position data for an open position.
+
+Represents a open position on a deliverable for the specified account.
+
+This message defines the following fields:
+
+.position fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the position was opened.
+
+| `account_id`| <<account_id>>|
+The unique, exchange-assigned identifier for the account.
+
+| `product_deliverable_id`| <<deliverable_id>>|
+A unique, exchange-assigned identifier for the product deliverable.
+
+| `position_kind`| <<position_kind>>|
+Whether the position kind is cash, unrealised, exposure or margin.
+
+| `product_type`| <<product_type>>|
+Whether the product_type is balance, option, future or spot.
+
+| `value`| <<position_value>>|
+Value of the position.
+
+| `position_deliverable_id`| <<deliverable_id>>|
+A unique, exchange-assigned identifier for the position deliverable.
+
+| `anchor_price`| <<price>>|
+The anchor price for the position. The number of decimal places is determined by the deliverable.
+
+| `balance`| <<balance>>|
+The balance of the deliverable held by the open position.
+
+| `mark_price`| <<price>>|
+The mark price for the position. The number of decimal places is determined by the deliverable.
+
+|=================================
+
+[[position_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<position,"position">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<account_id,"account_id">>:123,
+        <<deliverable_id,"product_deliverable_id">>:123,
+        <<position_kind,"position_kind">>:"cash",
+        <<product_type,"product_type">>:"reference_balance",
+        <<position_value,"value">>:123,
+        <<deliverable_id,"position_deliverable_id">>:123,
+        <<price,"anchor_price">>:123,
+        <<balance,"balance">>:123,
+        <<price,"mark_price">>:123
+    }
+}
+
+-------------------
+
+[[position_consistency_marker]]
+==== position_consistency_marker
+
+Notification that the position_priced messages are in a consistent state.
+
+Marks a point in the event stream where the state across objects is consistent.
+
+This message defines the following fields:
+
+.position_consistency_marker fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the marker was generated.
+
+|=================================
+
+[[position_consistency_marker_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<position_consistency_marker,"position_consistency_marker">>:{
+        <<utc_timestamp,"timestamp">>:123
+    }
+}
+
+-------------------
+
+[[quote_executed]]
+==== quote_executed
+
+Notification that an existing order executed.
+
+Generated to indicate that a quote side entered via <<enter_quotes>> has executed.
+
+This message defines the following fields:
+
+.quote_executed fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the quote side was executed.
+
+| `order_id`| <<order_id>>|
+The unique, exchange-assigned identifier for the order representing the quote side.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the display order representing the quote side.
+
+| `quote_token`| <<quote_token>>|
+The client-generated unique identifier for the quotes entered that this quote side belongs to.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+Identifies the target tradeable entity for the order.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the order.
+
+| `quote_step`| <<quote_step>>|
+Specifies the quote step used for creating ladders of quotes.
+
+| `executed_price`| <<price>>|
+The price of the trade. The number of decimal places is determined by the tradeable entity.
+
+| `executed_quantity`| <<quantity>>|
+The quantity of the trade. The number of decimal places is determined by the tradeable entity.
+
+| `remaining_quantity`| <<quantity>>|
+The quantity remaining for the quote side after the trade. The number of decimal places is determined by the tradeable entity.
+
+| `counterparty_display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the counterparty display order.
+
+| `trade_id`| <<trade_id>>|
+The unique, exchange-assigned identifier for the trade.
+
+| `liquidity_flag`| <<liquidity_flag>>|
+Whether the order representing the quote side was responsible for adding or taking liquidity.
+
+|=================================
+
+[[quote_executed_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<quote_executed,"quote_executed">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<order_id,"order_id">>:123,
+        <<display_order_id,"display_order_id">>:123,
+        <<quote_token,"quote_token">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<quote_step,"quote_step">>:123,
+        <<price,"executed_price">>:123,
+        <<quantity,"executed_quantity">>:123,
+        <<quantity,"remaining_quantity">>:123,
+        <<display_order_id,"counterparty_display_order_id">>:123,
+        <<trade_id,"trade_id">>:123,
+        <<liquidity_flag,"liquidity_flag">>:"added"
+    }
+}
+
+-------------------
+
+[[quotes_action_rejected]]
+==== quotes_action_rejected
+
+`quotes_action_rejected` may refer to one of the following messages:
+
+* <<quotes_action_rejected_ltenter_quotes_ltsimple_quotes_commaaccount_id_gt_gt,quotes_action_rejected<enter_quotes<simple_quotes,account_id>>>>
+
+[[quotes_action_rejected_ltenter_quotes_ltsimple_quotes_commaaccount_id_gt_gt]]
+==== quotes_action_rejected<enter_quotes<simple_quotes,account_id>>
+
+Notification that an enter quotes message was rejected.
+
+Generated as a response to indicate an action was rejected.
+
+This message defines the following fields:
+
+.quotes_action_rejected<enter_quotes<simple_quotes,account_id>> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the quotes action was rejected.
+
+| `action`| object with a single field `"enter_quotes"` of type <<enter_quotes_ltsimple_quotes_commaaccount_id_gt>>|
+A copy of the quotes action that was rejected.
+
+| `reason`| <<reject_reason>>|
+The reason the quotes action was rejected.
+
+|=================================
+
+[[quotes_action_rejected_ltenter_quotes_ltsimple_quotes_commaaccount_id_gt_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<quotes_action_rejected_ltenter_quotes_ltsimple_quotes_commaaccount_id_gt_gt,"quotes_action_rejected">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        "action":{
+            <<enter_quotes_ltsimple_quotes_commaaccount_id_gt,"enter_quotes">>:{
+                <<quote_token,"quote_token">>:123,
+                "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+                "quotes":{
+                    <<simple_quotes,"simple_quotes">>:[
+                        {
+                            <<tradeable_entity_id,"tradeable_entity_id">>:123,
+                            <<market_id,"market_id">>:123,
+                            <<quote_step,"quote_step">>:123,
+                            <<quote_side,"buy">>:{
+                                <<quantity,"quantity">>:123,
+                                <<price,"price">>:123,
+                                "is_new_quantity":false
+                            },
+                            <<quote_side,"sell">>:{
+                                <<quantity,"quantity">>:123,
+                                <<price,"price">>:123,
+                                "is_new_quantity":false
+                            }
+                        }
+                    ]
+                },
+                "party_data":{
+                    <<account_id,"account_id">>:123
+                }
+            }
+        },
+        <<reject_reason,"reason">>:"invalid_fields"
+    }
+}
+
+-------------------
+
+[[quotes_entered]]
+==== quotes_entered
+
+`quotes_entered` may refer to one of the following messages:
+
+* <<quotes_entered_ltsimple_quotes_commaaccount_id_gt,quotes_entered<simple_quotes,account_id>>>
+
+[[quotes_entered_ltsimple_quotes_commaaccount_id_gt]]
+==== quotes_entered<simple_quotes,account_id>
+
+Notification that quotes were entered.
+
+Generated in response to <<enter_quotes>> to indicate that status of the quotes entered.
+
+This message defines the following fields:
+
+.quotes_entered<simple_quotes,account_id> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the quotes were entered.
+
+| `quotes_id`| <<quotes_id>>|
+The unique, exchange-assigned identifier for the quotes.
+
+| `quote_token`| <<quote_token>>|
+A client-generated unique quote identifier.
+
+| `client_reference`| Bytes|
+A client-generated hash value that represents the client-side inputs to the enter quotes transaction.
+
+| `quotes`| object with a single field `"simple_quotes"` of type <<simple_quotes>>|
+A sequence of quotes.
+
+| `party_data`| object with a single field `"account_id"` of type <<account_id>>|
+Contains attributes identifying the party associated with the order.
+
+| `quotes_status`| array of <<quote_status>>|
+A dynamic array of quote_status entries, one for each quote in the quotes array.
+
+|=================================
+
+[[quotes_entered_ltsimple_quotes_commaaccount_id_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<quotes_entered_ltsimple_quotes_commaaccount_id_gt,"quotes_entered">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<quotes_id,"quotes_id">>:123,
+        <<quote_token,"quote_token">>:123,
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        "quotes":{
+            <<simple_quotes,"simple_quotes">>:[
+                {
+                    <<tradeable_entity_id,"tradeable_entity_id">>:123,
+                    <<market_id,"market_id">>:123,
+                    <<quote_step,"quote_step">>:123,
+                    <<quote_side,"buy">>:{
+                        <<quantity,"quantity">>:123,
+                        <<price,"price">>:123,
+                        "is_new_quantity":false
+                    },
+                    <<quote_side,"sell">>:{
+                        <<quantity,"quantity">>:123,
+                        <<price,"price">>:123,
+                        "is_new_quantity":false
+                    }
+                }
+            ]
+        },
+        "party_data":{
+            <<account_id,"account_id">>:123
+        },
+        <<quote_status,"quotes_status">>:[
+            {
+                <<quote_side_status,"buy">>:{
+                    <<order_id,"order_id">>:123,
+                    <<display_order_id,"display_order_id">>:123
+                },
+                <<quote_side_status,"sell">>:{
+                    <<order_id,"order_id">>:123,
+                    <<display_order_id,"display_order_id">>:123
+                },
+                <<quote_reject_status,"reject_status">>:"none"
+            }
+        ]
+    }
+}
+
+-------------------
+
+[[reference_price]]
+==== reference_price
+
+Notification of a reference price update.
+
+Communicates an update to the reference price for a specified tradeable entity.
+
+This message defines the following fields:
+
+.reference_price fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the reference price update was generated.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+A unique, exchange-assigned identifier for the tradeable entity.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the reference price update.
+
+| `price`| <<price>>|
+The price. The number of decimal places is determined by the tradeable entity.
+
+| `price_type`| <<reference_price_type>>|
+The type of the reference price update
+
+|=================================
+
+[[reference_price_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<reference_price,"reference_price">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<price,"price">>:123,
+        <<reference_price_type,"price_type">>:"reference"
+    }
+}
+
+-------------------
+
+[[request_stream]]
+==== request_stream
+
+Request a new stream associated with a specified channel.
+
+Used to request a stream of messages.
+
+This message defines the following fields:
+
+.request_stream fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `channel_id`| <<channel_id>>|
+A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.
+
+| `begin_sequence_number`| <<sequence_number>>|
+The sequence number requested as the start of the half-open range [Begin,End).
+
+| `end_sequence_number`| <<sequence_number>>|
+The sequence number that closes the request’s half-open range [Begin,End).
+
+| `stream_id`| <<stream_id>>|
+Optional, client-assigned stream identifier used for correlation with response messages.
+
+|=================================
+
+[[request_stream_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<request_stream,"request_stream">>:{
+        <<channel_id,"channel_id">>:123,
+        <<sequence_number,"begin_sequence_number">>:123,
+        <<sequence_number,"end_sequence_number">>:123,
+        <<stream_id,"stream_id">>:123
+    }
+}
+
+-------------------
+
+[[session_ended]]
+==== session_ended
+
+Notification that the current session was ended.
+
+Generated in response to <<end_session>> or server-initiated session termination.
+
+This message defines the following fields:
+
+.session_ended fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the session was ended.
+
+| `session_id`| <<session_id>>|
+The unique, server-assigned identifier for the session.
+
+|=================================
+
+[[session_ended_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<session_ended,"session_ended">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<session_id,"session_id">>:123
+    }
+}
+
+-------------------
+
+[[session_started]]
+==== session_started
+
+Notification that a new session was started.
+
+Generated in response to <<start_session>>.
+
+This message defines the following fields:
+
+.session_started fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the session was started.
+
+| `session_id`| <<session_id>>|
+The unique, server-assigned identifier for the session.
+
+| `default_channel_id`| <<channel_id>>|
+Identifies the session's default channel.
+
+|=================================
+
+[[session_started_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<session_started,"session_started">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<session_id,"session_id">>:123,
+        <<channel_id,"default_channel_id">>:123
+    }
+}
+
+-------------------
+
+[[settlement_price]]
+==== settlement_price
+
+Notification of a settlement price update.
+
+Communicates an update to the settlement price for a specified tradeable entity.
+
+This message defines the following fields:
+
+.settlement_price fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the settlement price update was generated.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+A unique, exchange-assigned identifier for the tradeable entity.
+
+| `price`| <<price>>|
+The price. The number of decimal places is determined by the tradeable entity.
+
+| `price_type`| <<settlement_price_type>>|
+The type of the settlement price update
+
+| `settlement_event`| <<zoned_datetime>>|
+Indicates the settlement date and time to which the settlement price applies. Interim settlement prices are typically published prior to this time, but may be published on or after this time if there is a delay in determining the final settlement price. Final prices are published only on or after this time. If equal to the quantity deliverable's expiry, the price being published is for settlement at expiry.
+
+|=================================
+
+[[settlement_price_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<settlement_price,"settlement_price">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<price,"price">>:123,
+        <<settlement_price_type,"price_type">>:"interim_price",
+        <<zoned_datetime,"settlement_event">>:{
+            <<datetime,"datetime">>:{
+                <<date,"date">>:{
+                    <<year,"year">>:123,
+                    <<month,"month">>:123,
+                    <<day,"day">>:123
+                },
+                <<time_of_day,"time">>:{
+                    <<hours,"hours">>:123,
+                    <<minutes,"minutes">>:123,
+                    <<seconds,"seconds">>:123,
+                    <<nanoseconds,"nanoseconds">>:123
+                }
+            },
+            "timezone":"A"
+        }
+    }
+}
+
+-------------------
+
+[[start_session]]
+==== start_session
+
+The first message on an authenticated session.
+
+Used to request a new session.
+
+This message contains no fields.
+
+
+[[start_session_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<start_session,"start_session">>:{
+    }
+}
+
+-------------------
+
+[[stream_ended]]
+==== stream_ended
+
+Notification that a stream has ended.
+
+Marks the end of a stream of messages.
+
+This message defines the following fields:
+
+.stream_ended fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the stream was ended.
+
+| `channel_id`| <<channel_id>>|
+A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.
+
+| `stream_id`| <<stream_id>>|
+Client-assigned stream identifier used for correlation with a <<request_stream>> message.
+
+|=================================
+
+[[stream_ended_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<stream_ended,"stream_ended">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<channel_id,"channel_id">>:123,
+        <<stream_id,"stream_id">>:123
+    }
+}
+
+-------------------
+
+[[stream_rejected]]
+==== stream_rejected
+
+Notification that a stream request was rejected.
+
+Sent in response to an invalid <<request_stream>> message.
+
+This message defines the following fields:
+
+.stream_rejected fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the stream request was rejected.
+
+| `channel_id`| <<channel_id>>|
+A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.
+
+| `stream_id`| <<stream_id>>|
+Client-assigned stream identifier used for correlation with a <<request_stream>> message.
+
+| `reason`| <<stream_reject_reason>>|
+The reason the <<request_stream>> message was rejected.
+
+|=================================
+
+[[stream_rejected_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<stream_rejected,"stream_rejected">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<channel_id,"channel_id">>:123,
+        <<stream_id,"stream_id">>:123,
+        <<stream_reject_reason,"reason">>:"invalid_channel_id"
+    }
+}
+
+-------------------
+
+[[stream_resumed]]
+==== stream_resumed
+
+Notification that a stream has resumed.
+
+Marks the beginning of a stream of messages.
+
+This message defines the following fields:
+
+.stream_resumed fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the stream was resumed.
+
+| `channel_id`| <<channel_id>>|
+A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.
+
+| `next_sequence_number`| <<sequence_number>>|
+The next sequence number that will be transmitted as part of the stream.
+
+| `stream_id`| <<stream_id>>|
+Client-assigned stream identifier used for correlation with a <<request_stream>> message.
+
+|=================================
+
+[[stream_resumed_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<stream_resumed,"stream_resumed">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<channel_id,"channel_id">>:123,
+        <<sequence_number,"next_sequence_number">>:123,
+        <<stream_id,"stream_id">>:123
+    }
+}
+
+-------------------
+
+[[stream_started]]
+==== stream_started
+
+Notification that a stream has started.
+
+Marks the beginning of a stream of messages.
+
+This message defines the following fields:
+
+.stream_started fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the stream was started.
+
+| `channel_id`| <<channel_id>>|
+A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.
+
+| `begin_sequence_number`| <<sequence_number>>|
+The sequence number requested as the start of the half-open range [Begin,End).
+
+| `end_sequence_number`| <<sequence_number>>|
+The sequence number that closes the request’s half-open range [Begin,End).
+
+| `stream_id`| <<stream_id>>|
+Client-assigned stream identifier used for correlation with a <<request_stream>> message.
+
+|=================================
+
+[[stream_started_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<stream_started,"stream_started">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<channel_id,"channel_id">>:123,
+        <<sequence_number,"begin_sequence_number">>:123,
+        <<sequence_number,"end_sequence_number">>:123,
+        <<stream_id,"stream_id">>:123
+    }
+}
+
+-------------------
+
+[[time]]
+==== time
+
+Notification of an update to system time.
+
+Used to communicate an update to the internal clock.
+
+This message defines the following fields:
+
+.time fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the message was generated.
+
+|=================================
+
+[[time_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<time,"time">>:{
+        <<utc_timestamp,"timestamp">>:123
+    }
+}
+
+-------------------
+
+[[top_of_book]]
+==== top_of_book
+
+Notification of a change in the best bid and offer.
+
+The current best bid and best offer for a specified tradeable entity.
+
+This message defines the following fields:
+
+.top_of_book fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the top_of_book was generated.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+A unique, exchange-assigned identifier for the tradeable entity.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the top-of-book information.
+
+| `buy_price`| <<price>>|
+The price of the best bid. The number of decimal places is determined by the tradeable entity.
+
+| `buy_quantity`| <<quantity>>|
+The total quantity at the best bid price. The number of decimal places is determined by the tradeable entity.
+
+| `sell_price`| <<price>>|
+The price of the best offer. The number of decimal places is determined by the tradeable entity.
+
+| `sell_quantity`| <<quantity>>|
+The total quantity at the best offer price. The number of decimal places is determined by the tradeable entity.
+
+|=================================
+
+[[top_of_book_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<top_of_book,"top_of_book">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<price,"buy_price">>:123,
+        <<quantity,"buy_quantity">>:123,
+        <<price,"sell_price">>:123,
+        <<quantity,"sell_quantity">>:123
+    }
+}
+
+-------------------
+
+[[trade]]
+==== trade
+
+Notification that a new trade was generated.
+
+A trade generated for the specified tradeable entity.
+
+This message defines the following fields:
+
+.trade fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the trade was generated.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+A unique, exchange-assigned identifier for the tradeable entity.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the trade.
+
+| `trade_id`| <<trade_id>>|
+The unique identifier for the trade.
+
+| `price`| <<price>>|
+The price of the trade. The number of decimal places is determined by the tradeable entity.
+
+| `quantity`| <<quantity>>|
+The quantity of the trade. The number of decimal places is determined by the tradeable entity.
+
+| `buy_display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier of the display order on the buy side of the trade.
+
+| `sell_display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier of the display order on the sell side of the trade.
+
+|=================================
+
+[[trade_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<trade,"trade">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<trade_id,"trade_id">>:123,
+        <<price,"price">>:123,
+        <<quantity,"quantity">>:123,
+        <<display_order_id,"buy_display_order_id">>:123,
+        <<display_order_id,"sell_display_order_id">>:123
+    }
+}
+
+-------------------
+
+[[tradeable_entity]]
+==== tradeable_entity
+
+`tradeable_entity` may refer to one of the following messages:
+
+* <<tradeable_entity_ltsimple_market_gt,tradeable_entity<simple_market>>>
+
+[[tradeable_entity_ltsimple_market_gt]]
+==== tradeable_entity<simple_market>
+
+Reference data for a tradeable entity that is traded using a simple, single market.
+
+Contains reference data associated with a single tradeable entity.
+
+This message defines the following fields:
+
+.tradeable_entity<simple_market> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+The unique, exchange-assigned identifier for the tradeable entity.
+
+| `symbol`| String|
+A human-readable identifier for the tradeable entity.
+
+| `tags`| array of String|
+A collection of tags used for classifying the tradeable entity.
+
+| `price_deliverable_id`| <<deliverable_id>>|
+Identifies the deliverable used to express the price.
+
+| `price_decimal_places`| <<decimal_places>>|
+The number of decimal places used for prices.
+
+| `quantity_deliverable_id`| <<deliverable_id>>|
+Identifies the deliverable used to express the quantity.
+
+| `quantity_decimal_places`| <<decimal_places>>|
+The number of decimal places used for quantities.
+
+| `buy_trading_limit_deliverable_id`| <<deliverable_id>>|
+Identifies the deliverable used to express trading limits for buy side orders and trades.
+
+| `buy_trading_limit_decimal_places`| <<decimal_places>>|
+The number of decimal places used for trading limits for buy side orders and trades.
+
+| `sell_trading_limit_deliverable_id`| <<deliverable_id>>|
+Identifies the deliverable used to express trading limits for sell side orders and trades.
+
+| `sell_trading_limit_decimal_places`| <<decimal_places>>|
+The number of decimal places used for trading limits for sell side orders and trades.
+
+| `tradeability`| <<tradeability>>|
+Specifies the tradeability of a tradeable entity.
+
+| `details`| object with a single field `"simple_market"` of type <<simple_market>>|
+Contains additional details describing the tradeable entity.
+
+|=================================
+
+[[tradeable_entity_ltsimple_market_gt_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<tradeable_entity_ltsimple_market_gt,"tradeable_entity">>:{
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        "symbol":"A",
+        "tags":[
+            "A"
+        ],
+        <<deliverable_id,"price_deliverable_id">>:123,
+        <<decimal_places,"price_decimal_places">>:123,
+        <<deliverable_id,"quantity_deliverable_id">>:123,
+        <<decimal_places,"quantity_decimal_places">>:123,
+        <<deliverable_id,"buy_trading_limit_deliverable_id">>:123,
+        <<decimal_places,"buy_trading_limit_decimal_places">>:123,
+        <<deliverable_id,"sell_trading_limit_deliverable_id">>:123,
+        <<decimal_places,"sell_trading_limit_decimal_places">>:123,
+        <<tradeability,"tradeability">>:"tradeable",
+        "details":{
+            <<simple_market,"simple_market">>:{
+                <<market_id,"market_id">>:123,
+                <<date,"trade_date">>:{
+                    <<year,"year">>:123,
+                    <<month,"month">>:123,
+                    <<day,"day">>:123
+                }
+            }
+        }
+    }
+}
+
+-------------------
+
+[[trading_rule]]
+==== trading_rule
+
+A trading rule that determines order and trade validation.
+
+Contains rules used to determine order and trade validity.
+
+This message defines the following fields:
+
+.trading_rule fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+The tradeable entity to which the rule applies. If none, applies to all tradeable entities.
+
+| `market_id`| <<market_id>>|
+The market to which the rule applies. If none, applies to all markets.
+
+| `minimum_price`| <<price>>|
+Specifies the minimum price on an order. The number of decimal places is determined by the tradeable entity.
+
+| `maximum_price`| <<price>>|
+Specifies the maximum price on an order. The number of decimal places is determined by the tradeable entity.
+
+| `price_step`| <<price>>|
+Specifies the valid price step for an order. The number of decimal places is determined by the tradeable entity.
+
+| `minimum_quantity`| <<quantity>>|
+Specifies the minimum quantity on an order. The number of decimal places is determined by the tradeable entity.
+
+| `maximum_quantity`| <<quantity>>|
+Specifies the maximum quantity on an order. The number of decimal places is determined by the tradeable entity.
+
+| `quantity_step`| <<quantity>>|
+Specifies the valid quantity step for an order. The number of decimal places is determined by the tradeable entity.
+
+| `minimum_value`| <<value>>|
+Specifies the minimum value of an order. The number of decimal places is determined by the tradeable entity.
+
+| `maximum_value`| <<value>>|
+Specifies the maximum value of an order. The number of decimal places is determined by the tradeable entity.
+
+|=================================
+
+[[trading_rule_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<trading_rule,"trading_rule">>:{
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<price,"minimum_price">>:123,
+        <<price,"maximum_price">>:123,
+        <<price,"price_step">>:123,
+        <<quantity,"minimum_quantity">>:123,
+        <<quantity,"maximum_quantity">>:123,
+        <<quantity,"quantity_step">>:123,
+        <<value,"minimum_value">>:123,
+        <<value,"maximum_value">>:123
+    }
+}
+
+-------------------
+
+[[trading_state]]
+==== trading_state
+
+Reflects the current state of trading in the tradeable entity and market.
+
+Indicates the current state of a tradeable entity and market.
+
+This message defines the following fields:
+
+.trading_state fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `timestamp`| <<utc_timestamp>>|
+The time when the trading state was reported.
+
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+The tradeable entity to which the state applies.
+
+| `market_id`| <<market_id>>|
+The market to which the state applies.
+
+| `suspension_status`| <<suspension_status>>|
+Whether trading is active or suspended.
+
+| `expiry_status`| <<expiry_status>>|
+Whether the tradeable entity is active or expired.
+
+|=================================
+
+[[trading_state_json_example]]
+.JSON Example
+[source,json,subs="+macros"]
+-------------------
+{
+    <<trading_state,"trading_state">>:{
+        <<utc_timestamp,"timestamp">>:123,
+        <<tradeable_entity_id,"tradeable_entity_id">>:123,
+        <<market_id,"market_id">>:123,
+        <<suspension_status,"suspension_status">>:"active",
+        <<expiry_status,"expiry_status">>:"active"
+    }
+}
+
+-------------------
+
+=== Structures
+
+This section describes the following structures:
+
+* <<date,date>>
+* <<datetime,datetime>>
+* <<exchange_token,exchange_token>>
+* <<fiat_currency,fiat_currency>>
+* <<future,future>>
+* <<fx_spot,fx_spot>>
+* <<option,option>>
+* <<quote_side,quote_side>>
+* <<quote_side_status,quote_side_status>>
+* <<quote_status,quote_status>>
+* <<simple_market,simple_market>>
+* <<simple_order_ltaccount_id_gt,simple_order<account_id>>>
+* <<simple_quote,simple_quote>>
+* <<simple_quotes,simple_quotes>>
+* <<stable_token,stable_token>>
+* <<time_of_day,time_of_day>>
+* <<zoned_datetime,zoned_datetime>>
+
+[[date]]
+==== date
+
+Represents a calendar date.
+
+This structure defines the following fields:
+
+.date fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `year`| <<year>>|
+The four digit year.
+
+| `month`| <<month>>|
+The month (1-12).
+
+| `day`| <<day>>|
+The day of the month (1-31).
+
+|=================================
+
+[[datetime]]
+==== datetime
+
+Represents a datetime.
+
+This structure defines the following fields:
+
+.datetime fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `date`| <<date>>|
+The date.
+
+| `time`| <<time_of_day>>|
+The time of day.
+
+|=================================
+
+[[exchange_token]]
+==== exchange_token
+
+Contains reference data associated with an exchange token.
+
+This structure defines the following fields:
+
+.exchange_token fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `common_name`| String|
+The common name of the exchange token.
+
+| `ledger_name`| String|
+The name of the exchange token's anchoring ledger.
+
+| `ledger_address`| Bytes|
+The address of the exchange token on the ledger, if any.
+
+| `minor_units`| <<decimal_places>>|
+The minor units supported for the token.
+
+|=================================
+
+[[fiat_currency]]
+==== fiat_currency
+
+Contains reference data associated with a fiat currency.
+
+This structure defines the following fields:
+
+.fiat_currency fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `currency`| String|
+The ISO 4217 name of the currency.
+
+| `code`| String|
+The ISO 4217 alphabetic code for the currency.
+
+| `number`| <<iso4217_currency_number>>|
+The ISO 4217 numeric code for the currency.
+
+| `minor_units`| <<decimal_places>>|
+The ISO 4217 specified number of minor units for the currency.
+
+|=================================
+
+[[future]]
+==== future
+
+Contains reference data associated with a single future entity.
+
+This structure defines the following fields:
+
+.future fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `expiry`| <<zoned_datetime>>|
+The expiry for the future.
+
+| `delivery_style`| <<delivery_style>>|
+The future delivery style.
+
+| `underlying_deliverable_id`| <<deliverable_id>>|
+Denotes the unique deliverable_id assigned to the underlying security within exchange.
+
+| `contract_size_deliverable_id`| <<deliverable_id>>|
+Identifies the deliverable used to express the contract size.
+
+| `contract_size`| <<contract_size>>|
+Specifies the contract size.
+
+| `settlement_deliverable_id`| <<deliverable_id>>|
+Identifies the deliverable used to express settlement values.
+
+| `settlement_decimal_places`| <<decimal_places>>|
+Specifies the number of decimal places used to express settlement values.
+
+| `utc_creation_time`| <<utc_timestamp>>|
+The UTC time when the future was created.
+
+| `creation_source_id`| <<creation_source_id>>|
+The creation source ID for the future.
+
+| `margin_spec_id`| <<margin_spec_id>>|
+Identifies the margin specification to be used for the future.
+
+|=================================
+
+[[fx_spot]]
+==== fx_spot
+
+Contains reference data associated with a single fx_spot entity.
+
+This structure defines the following fields:
+
+.fx_spot fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `base_deliverable_id`| <<deliverable_id>>|
+The deliverable that is being bought or sold in exchange for the quote deliverable.
+
+| `quote_deliverable_id`| <<deliverable_id>>|
+The deliverable that is being paid to secure the base deliverable.
+
+| `contract_size`| <<contract_size>>|
+Specifies the contract size.
+
+|=================================
+
+[[option]]
+==== option
+
+Contains reference data associated with a single option entity.
+
+This structure defines the following fields:
+
+.option fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `expiry`| <<zoned_datetime>>|
+The expiry for the option.
+
+| `strike_price`| <<price>>|
+The option strike price.
+
+| `option_type`| <<option_type>>|
+The option type (Put or Call).
+
+| `exercise_style`| <<option_exercise_style>>|
+The exercise style of the option.
+
+| `valuation_approach`| <<option_valuation_approach>>|
+The valuation approach of the option.
+
+| `delivery_style`| <<delivery_style>>|
+The option delivery style.
+
+| `underlying_deliverable_id`| <<deliverable_id>>|
+Denotes the unique deliverable_id assigned to the underlying security within exchange.
+
+| `contract_size_deliverable_id`| <<deliverable_id>>|
+Identifies the deliverable used to express the contract size.
+
+| `contract_size`| <<contract_size>>|
+Specifies the contract size. Uses the decimals specified on the corresponding contract deliverable.
+
+| `settlement_deliverable_id`| <<deliverable_id>>|
+Identifies the deliverable used to express settlement values.
+
+| `settlement_decimal_places`| <<decimal_places>>|
+Specifies the number of decimal places used to express settlement values.
+
+| `utc_creation_time`| <<utc_timestamp>>|
+The UTC time when the option was created.
+
+| `creation_source_id`| <<creation_source_id>>|
+The creation source ID for the option.
+
+| `margin_spec_id`| <<margin_spec_id>>|
+Identifies the margin specification to be used for the option.
+
+| `strikes_spec_id`| <<strikes_spec_id>>|
+Identifies the strikes specification to be used for the option.
+
+|=================================
+
+[[quote_side]]
+==== quote_side
+
+Attributes used to capture a quote side.
+
+This structure defines the following fields:
+
+.quote_side fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `quantity`| <<quantity>>|
+The quantity of the order. The number of decimal places is determined by the symbol.
+
+| `price`| <<price>>|
+Order price. 9223372036854775807 ("none") denotes a market order. The number of decimal places is determined by the symbol.
+
+| `is_new_quantity`| Boolean|
+Indicates if the quantity specified should be treated as a new quantity, regardless of whether a trade has occured or not. A value of false means that quantity is treated as change in the upper limit of the quantity. For example if the quantity is change from 100 to 120 then the upper limit is +20 higher meaning that if trade had occurred for 40 the quantity on the live quote would change from (100-40)=60 to (120-40)=80. If the value is true then the quantity simply becomes 120 regardless of whether a trade has occurred or not.
+
+|=================================
+
+[[quote_side_status]]
+==== quote_side_status
+
+This captures the order ids and other information associated with the entered quote.
+
+This structure defines the following fields:
+
+.quote_side_status fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `order_id`| <<order_id>>|
+The unique, exchange-assigned identifier for the order generated from this side of the quote.
+
+| `display_order_id`| <<display_order_id>>|
+The unique, exchange-assigned identifier for the display order generated from this side of the quote.
+
+|=================================
+
+[[quote_status]]
+==== quote_status
+
+This captures the quote status that reflects the status of any entered quote.
+
+This structure defines the following fields:
+
+.quote_status fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `buy`| <<quote_side_status>>|
+The order ids and other status associated with the buy side of the quote.
+
+| `sell`| <<quote_side_status>>|
+The order ids and other status associated with the sell side of the quote.
+
+| `reject_status`| <<quote_reject_status>>|
+If the quote is rejected (reject_status is not "none", then this reject_status will reflect why.
+
+|=================================
+
+[[simple_market]]
+==== simple_market
+
+Describes a simple, single market for trading in a tradeable entity.
+
+This structure defines the following fields:
+
+.simple_market fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `market_id`| <<market_id>>|
+The market identifier.
+
+| `trade_date`| <<date>>|
+The date against which trades will be recorded.
+
+|=================================
+
+[[simple_order_ltaccount_id_gt]]
+==== simple_order<account_id>
+
+Attributes used for simple order entry.
+
+This structure defines the following fields:
+
+.simple_order<account_id> fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+Identifies the target tradeable entity for the order.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the order.
+
+| `side`| <<side>>|
+Whether the order is a buy or sell.
+
+| `time_in_force`| <<time_in_force>>|
+Specifies how long the order remains valid.
+
+| `time_to_live`| <<time_to_live>>|
+In conjunction with time_in_force, specifies how long the order remains valid.
+
+| `quantity`| <<quantity>>|
+The quantity of the order. The number of decimal places is determined by the symbol.
+
+| `price`| <<price>>|
+Order price. 9223372036854775807 ("none") denotes a market order. The number of decimal places is determined by the symbol.
+
+| `party_data`| object with a single field `"account_id"` of type <<account_id>>|
+Contains attributes identifying the party associated with the order.
+
+|=================================
+
+[[simple_quote]]
+==== simple_quote
+
+Attributes used for simple quote entry.
+
+This structure defines the following fields:
+
+.simple_quote fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `tradeable_entity_id`| <<tradeable_entity_id>>|
+Identifies the target tradeable entity for the quote.
+
+| `market_id`| <<market_id>>|
+Identifies the target market for the quote.
+
+| `quote_step`| <<quote_step>>|
+Specifies the quote step used for creating ladders of quotes.
+
+| `buy`| <<quote_side>>|
+The buy side of the quote.
+
+| `sell`| <<quote_side>>|
+The sell side of the quote.
+
+|=================================
+
+[[simple_quotes]]
+==== simple_quotes
+
+`simple_quotes` is an array with elements of type <<simple_quote>>.
+
+[[stable_token]]
+==== stable_token
+
+Contains reference data associated with a single stable_token entity.
+
+This structure defines the following fields:
+
+.stable_token fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `common_name`| String|
+The common name of the exchange token.
+
+| `ledger_name`| String|
+The name of the exchange tokens anchoring ledger.
+
+| `ledger_address`| Bytes|
+The address of the exchange token on the ledger, if any.
+
+| `minor_units`| <<decimal_places>>|
+The minor units supported for the token.
+
+| `stabilisation_approach`| <<stabilisation_approach>>|
+The stabilisation approach used by the stable token.
+
+| `backing_deliverable_id`| <<deliverable_id>>|
+The deliverable used to back the stable token, if any.
+
+|=================================
+
+[[time_of_day]]
+==== time_of_day
+
+Represents a time of day.
+
+This structure defines the following fields:
+
+.time_of_day fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `hours`| <<hours>>|
+The hours (0-23).
+
+| `minutes`| <<minutes>>|
+The minutes (0-59).
+
+| `seconds`| <<seconds>>|
+The seconds (0-59).
+
+| `nanoseconds`| <<nanoseconds>>|
+The nanonseconds (0-999,999,999).
+
+|=================================
+
+[[zoned_datetime]]
+==== zoned_datetime
+
+Represents a zoned datetime.
+
+This structure defines the following fields:
+
+.zoned_datetime fields
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+| `datetime`| <<datetime>>|
+The date and time of day.
+
+| `timezone`| String|
+The timezone.
+
+|=================================
+
+=== Types
+
+This section describes the following types:
+
+* <<account_id,account_id>>
+* <<balance,balance>>
+* <<cancelled_reason,cancelled_reason>>
+* <<channel_id,channel_id>>
+* <<contract_size,contract_size>>
+* <<creation_source_id,creation_source_id>>
+* <<day,day>>
+* <<decimal_places,decimal_places>>
+* <<deliverable_id,deliverable_id>>
+* <<delivery_style,delivery_style>>
+* <<display_order_id,display_order_id>>
+* <<expiry_status,expiry_status>>
+* <<hours,hours>>
+* <<iso4217_currency_number,iso4217_currency_number>>
+* <<liquidity_flag,liquidity_flag>>
+* <<margin_spec_id,margin_spec_id>>
+* <<market_id,market_id>>
+* <<minutes,minutes>>
+* <<month,month>>
+* <<nanoseconds,nanoseconds>>
+* <<option_exercise_style,option_exercise_style>>
+* <<option_type,option_type>>
+* <<option_valuation_approach,option_valuation_approach>>
+* <<order_id,order_id>>
+* <<order_state,order_state>>
+* <<order_token,order_token>>
+* <<position_kind,position_kind>>
+* <<position_value,position_value>>
+* <<price,price>>
+* <<product_type,product_type>>
+* <<quantity,quantity>>
+* <<quote_reject_status,quote_reject_status>>
+* <<quote_step,quote_step>>
+* <<quote_token,quote_token>>
+* <<quotes_id,quotes_id>>
+* <<reference_price_type,reference_price_type>>
+* <<reject_reason,reject_reason>>
+* <<seconds,seconds>>
+* <<sequence_number,sequence_number>>
+* <<session_id,session_id>>
+* <<settlement_price_type,settlement_price_type>>
+* <<side,side>>
+* <<stabilisation_approach,stabilisation_approach>>
+* <<stream_id,stream_id>>
+* <<stream_reject_reason,stream_reject_reason>>
+* <<strikes_spec_id,strikes_spec_id>>
+* <<suspension_status,suspension_status>>
+* <<time_in_force,time_in_force>>
+* <<time_to_live,time_to_live>>
+* <<trade_id,trade_id>>
+* <<tradeability,tradeability>>
+* <<tradeable_entity_id,tradeable_entity_id>>
+* <<utc_timestamp,utc_timestamp>>
+* <<value,value>>
+* <<year,year>>
+
+[[account_id]]
+==== account_id
+
+Uniquely identifies an account.
+
+`account_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.account_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no account ID.
+
+|=================================
+
+[[balance]]
+==== balance
+
+A balance.
+
+`balance` is an integer with supported values from `-9223372036854775808` to `9223372036854775807` inclusive.
+The type also supports the following string constants:
+
+.balance constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `9223372036854775807`|
+A constant used to specify no balance.
+
+|=================================
+
+[[cancelled_reason]]
+==== cancelled_reason
+
+Specifies why the quotes were cancelled.
+
+`cancelled_reason` is an enumeration with the following well-known string constants:
+
+.cancelled_reason constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"user_cancelled"`|
+The quotes were cancelled by the user.
+
+| `"on_disconnect"`|
+The quotes were cancelled on a disconnect.
+
+|=================================
+
+[[channel_id]]
+==== channel_id
+
+Uniquely identifies a channel.
+
+`channel_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.channel_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `0`|
+A constant used to specify no channel ID.
+
+|=================================
+
+[[contract_size]]
+==== contract_size
+
+Specifies the contract size.
+
+`contract_size` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.contract_size constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no contract size.
+
+|=================================
+
+[[creation_source_id]]
+==== creation_source_id
+
+Identifies the source of an instrument.
+
+`creation_source_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.creation_source_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no creation source.
+
+|=================================
+
+[[day]]
+==== day
+
+Day of the month (1-31).
+
+`day` is an integer with supported values from `0` to `255` inclusive.
+The type also supports the following string constants:
+
+.day constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `255`|
+A constant used to specify no day.
+
+|=================================
+
+[[decimal_places]]
+==== decimal_places
+
+Decimal Places.
+
+`decimal_places` is an integer with supported values from `0` to `255` inclusive.
+The type also supports the following string constants:
+
+.decimal_places constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `255`|
+A constant used to specify no decimal places.
+
+|=================================
+
+[[deliverable_id]]
+==== deliverable_id
+
+Uniquely identifies a deliverable.
+
+`deliverable_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.deliverable_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no deliverable ID.
+
+|=================================
+
+[[delivery_style]]
+==== delivery_style
+
+Specifies how derivative delivery will occur.
+
+`delivery_style` is an enumeration with the following well-known string constants:
+
+.delivery_style constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"physical"`|
+The derivative settlement deliverable is the same as the quantity deliverable.
+
+| `"cash"`|
+The derivative settlement deliverable is a cash-style deliverable.
+
+| `"non_deliverable"`|
+The derivative is non-deliverable.
+
+| `"elect_at_exercise"`|
+The derivative's delivery is elected at exercise.
+
+|=================================
+
+[[display_order_id]]
+==== display_order_id
+
+Uniquely identifies a display order.
+
+`display_order_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.display_order_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no display order ID.
+
+|=================================
+
+[[expiry_status]]
+==== expiry_status
+
+Specifies whether an entity has expired or is active.
+
+`expiry_status` is an enumeration with the following well-known string constants:
+
+.expiry_status constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"active"`|
+The entity is active.
+
+| `"expired"`|
+The entity has expired.
+
+|=================================
+
+[[hours]]
+==== hours
+
+Hours.
+
+`hours` is an integer with supported values from `0` to `255` inclusive.
+The type also supports the following string constants:
+
+.hours constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `255`|
+A constant used to specify no hours.
+
+|=================================
+
+[[iso4217_currency_number]]
+==== iso4217_currency_number
+
+Unique numeric identifier for a currency according to the ISO4217 standard.
+
+`iso4217_currency_number` is an integer with supported values from `0` to `65535` inclusive.
+The type also supports the following string constants:
+
+.iso4217_currency_number constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `65535`|
+A constant used to specify no currency number.
+
+|=================================
+
+[[liquidity_flag]]
+==== liquidity_flag
+
+Specifies how an order affects liquidity.
+
+`liquidity_flag` is an enumeration with the following well-known string constants:
+
+.liquidity_flag constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"added"`|
+Liquidity was added
+
+| `"taken"`|
+Liquidity was taken
+
+|=================================
+
+[[margin_spec_id]]
+==== margin_spec_id
+
+Uniquely identifies a margin spec.
+
+`margin_spec_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.margin_spec_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no margin spec ID.
+
+|=================================
+
+[[market_id]]
+==== market_id
+
+Uniquely identifies a market.
+
+`market_id` is an integer with supported values from `0` to `255` inclusive.
+The type also supports the following string constants:
+
+.market_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `255`|
+A constant used to specify no market ID.
+
+|=================================
+
+[[minutes]]
+==== minutes
+
+Minutes.
+
+`minutes` is an integer with supported values from `0` to `255` inclusive.
+The type also supports the following string constants:
+
+.minutes constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `255`|
+A constant used to specify no minutes.
+
+|=================================
+
+[[month]]
+==== month
+
+Month (1-12).
+
+`month` is an integer with supported values from `0` to `255` inclusive.
+The type also supports the following string constants:
+
+.month constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `255`|
+A constant used to specify no month.
+
+|=================================
+
+[[nanoseconds]]
+==== nanoseconds
+
+Nanoseconds.
+
+`nanoseconds` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.nanoseconds constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no nanoseconds.
+
+|=================================
+
+[[option_exercise_style]]
+==== option_exercise_style
+
+Specifies how the option may be exercised.
+
+`option_exercise_style` is an enumeration with the following well-known string constants:
+
+.option_exercise_style constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"european"`|
+The option is a European style option and can only be exercised on expiry.
+
+| `"american"`|
+The option is an American style option and can be exercised at any time.
+
+| `"bermudan"`|
+The option is a Bermudan style option that can only be exercised on predetermined dates, often on one day each month, or at expiry.
+
+|=================================
+
+[[option_type]]
+==== option_type
+
+Specifies whether option is a call or put.
+
+`option_type` is an enumeration with the following well-known string constants:
+
+.option_type constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"call"`|
+Call option.
+
+| `"put"`|
+Put option.
+
+|=================================
+
+[[option_valuation_approach]]
+==== option_valuation_approach
+
+Specifies the general approach used to value the option.
+
+`option_valuation_approach` is an enumeration with the following well-known string constants:
+
+.option_valuation_approach constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"vanilla"`|
+The option is a Vanilla option.
+
+| `"asian"`|
+The option is an Asian option.
+
+| `"digital"`|
+The option is Digital (Binary) option.
+
+| `"barrier"`|
+The option is a Barrier option.
+
+| `"digital_barrier"`|
+The option is a Digital Barrier option.
+
+| `"loopback"`|
+The option is a Loopback option.
+
+|=================================
+
+[[order_id]]
+==== order_id
+
+Uniquely identifies an order.
+
+`order_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.order_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no order ID.
+
+|=================================
+
+[[order_state]]
+==== order_state
+
+Specifies state of an order following <<order_entered>>.
+
+`order_state` is an enumeration with the following well-known string constants:
+
+.order_state constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"accepted"`|
+The order has been accepted and is eligible for matching.
+
+| `"pending"`|
+The order is pending and not yet eligible for matching.
+
+| `"expired"`|
+The order has expired. No further messages will be generated for it.
+
+|=================================
+
+[[order_token]]
+==== order_token
+
+A 64-bit client-generated ID to uniquely identify an order. Must be increased for each inbound order management request. The top 8 bits are reserved and must be 0.
+
+`order_token` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.order_token constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no order token.
+
+|=================================
+
+[[position_kind]]
+==== position_kind
+
+Specifies the type of position being added.
+
+`position_kind` is an enumeration with the following well-known string constants:
+
+.position_kind constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"cash"`|
+Cash position.
+
+| `"realised"`|
+Realised position.
+
+| `"unrealised"`|
+Unrealised position.
+
+| `"margin"`|
+Margin position.
+
+| `"payoff"`|
+Payoff position.
+
+|=================================
+
+[[position_value]]
+==== position_value
+
+A position_value.
+
+`position_value` is an integer with supported values from `-9223372036854775808` to `9223372036854775807` inclusive.
+The type also supports the following string constants:
+
+.position_value constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `9223372036854775807`|
+A constant used to specify no position value.
+
+|=================================
+
+[[price]]
+==== price
+
+A price.
+
+`price` is an integer with supported values from `-9223372036854775808` to `9223372036854775807` inclusive.
+The type also supports the following string constants:
+
+.price constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `9223372036854775807`|
+A constant used to specify no price.
+
+|=================================
+
+[[product_type]]
+==== product_type
+
+Specifies product type of product a position is related to .
+
+`product_type` is an enumeration with the following well-known string constants:
+
+.product_type constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"reference_balance"`|
+Balance positions for the reference currency.
+
+| `"balance"`|
+Balance.
+
+| `"spot"`|
+Spot.
+
+| `"future"`|
+Future.
+
+| `"option"`|
+Option.
+
+| `"none"`|
+No product.
+
+|=================================
+
+[[quantity]]
+==== quantity
+
+A quantity.
+
+`quantity` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.quantity constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no quantity.
+
+|=================================
+
+[[quote_reject_status]]
+==== quote_reject_status
+
+Specifies why a quote was rejected.
+
+`quote_reject_status` is an enumeration with the following well-known string constants:
+
+.quote_reject_status constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"none"`|
+The quote was entered successfully into the system
+
+| `"invalid_tradeable_entity"`|
+Invalid tradeable entity
+
+| `"invalid_fields"`|
+Invalid fields
+
+| `"invalid_this_period"`|
+Invalid this period
+
+| `"invalid_order_flow"`|
+Invalid order flow
+
+| `"illegal_order_flow"`|
+Illegal order flow
+
+| `"trading_suspended"`|
+Trading suspended
+
+| `"insufficient_account_balance"`|
+Insufficient account balance
+
+| `"invalid_market"`|
+Invalid market
+
+| `"self_cross_prevented"`|
+The quote would have self crossed and so has been rejected
+
+|=================================
+
+[[quote_step]]
+==== quote_step
+
+The number quote steps that are to be listed for an associated tradeable entity. This allows a market maker to specify a quote ladder. The size of the steps will be determined by the tick size of the tradeable entity.
+
+`quote_step` is an integer with supported values from `0` to `255` inclusive.
+The type also supports the following string constants:
+
+.quote_step constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `255`|
+A constant used to specify no quote step.
+
+|=================================
+
+[[quote_token]]
+==== quote_token
+
+A 64-bit client-generated ID to uniquely identify a quote. Must be increased for each inbound quote management request. The top 8 bits are reserved and must be 0.
+
+`quote_token` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.quote_token constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no quote token.
+
+|=================================
+
+[[quotes_id]]
+==== quotes_id
+
+Uniquely identifies a set of quotes.
+
+`quotes_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.quotes_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no quotes ID.
+
+|=================================
+
+[[reference_price_type]]
+==== reference_price_type
+
+Specifies the type of reference price.
+
+`reference_price_type` is an enumeration with the following well-known string constants:
+
+.reference_price_type constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"reference"`|
+Reference price.
+
+| `"close"`|
+Close price.
+
+|=================================
+
+[[reject_reason]]
+==== reject_reason
+
+Specifies why a quotes action was rejected.
+
+`reject_reason` is an enumeration with the following well-known string constants:
+
+.reject_reason constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"invalid_fields"`|
+Invalid fields
+
+| `"invalid_participant"`|
+Invalid participant
+
+| `"invalid_account"`|
+Invalid account
+
+|=================================
+
+[[seconds]]
+==== seconds
+
+Seconds.
+
+`seconds` is an integer with supported values from `0` to `255` inclusive.
+The type also supports the following string constants:
+
+.seconds constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `255`|
+A constant used to specify no seconds.
+
+|=================================
+
+[[sequence_number]]
+==== sequence_number
+
+A message sequence number.
+
+`sequence_number` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.sequence_number constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `0`|
+A used to specify no sequence number.
+
+|=================================
+
+[[session_id]]
+==== session_id
+
+Uniquely identifies a session.
+
+`session_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.session_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `0`|
+A constant used to specify no session ID.
+
+|=================================
+
+[[settlement_price_type]]
+==== settlement_price_type
+
+Specifies the type of settlement price.
+
+`settlement_price_type` is an enumeration with the following well-known string constants:
+
+.settlement_price_type constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"interim_price"`|
+Interim price.
+
+| `"final_price"`|
+Final price.
+
+|=================================
+
+[[side]]
+==== side
+
+Specifies whether order is a buy or sell.
+
+`side` is an enumeration with the following well-known string constants:
+
+.side constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"buy"`|
+Buy order.
+
+| `"sell"`|
+Sell order.
+
+|=================================
+
+[[stabilisation_approach]]
+==== stabilisation_approach
+
+Specifies the general approach used to stabilise the token.
+
+`stabilisation_approach` is an enumeration with the following well-known string constants:
+
+.stabilisation_approach constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"fiat_backed"`|
+The token is backed by a fiat currency, either directly, or by pegging, or against a basket.
+
+| `"asset_backed"`|
+The token is backed by an asset, such as commodities like gold price or other kinds of assets.
+
+| `"token_backed"`|
+The token is backed by other cryptoasset tokens, such as a diversified basket.
+
+| `"unbacked"`|
+The token is a seigniorage-style, unbacked token that uses some form of algorithm to control supply and value.
+
+|=================================
+
+[[stream_id]]
+==== stream_id
+
+Uniquely identifies a stream.
+
+`stream_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.stream_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `0`|
+A constant used to specify no stream ID.
+
+|=================================
+
+[[stream_reject_reason]]
+==== stream_reject_reason
+
+Specifies why a stream request was rejected.
+
+`stream_reject_reason` is an enumeration with the following well-known string constants:
+
+.stream_reject_reason constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"invalid_channel_id"`|
+The channel ID did not refer to a known channel
+
+| `"invalid_sequence_number"`|
+The begin or end sequence number was invalid
+
+| `"stream_id_in_use"`|
+The stream ID is already being used for another active stream.
+
+| `"too_many_streams"`|
+The number of active streams is already at the maximum allowed.
+
+|=================================
+
+[[strikes_spec_id]]
+==== strikes_spec_id
+
+Uniquely identifies a strikes specification.
+
+`strikes_spec_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.strikes_spec_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no strikes spec ID.
+
+|=================================
+
+[[suspension_status]]
+==== suspension_status
+
+Specifies whether an entity is suspended or active.
+
+`suspension_status` is an enumeration with the following well-known string constants:
+
+.suspension_status constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"active"`|
+The entity is active.
+
+| `"suspended"`|
+The entity is suspended.
+
+|=================================
+
+[[time_in_force]]
+==== time_in_force
+
+Specifies the duration of the order.
+
+`time_in_force` is an enumeration with the following well-known string constants:
+
+.time_in_force constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"good_for_cycles"`|
+Good for the number of system cycles specified in <<time_to_live>>.
+
+| `"immediate_or_cancel"`|
+Immediate or cancel order.
+
+|=================================
+
+[[time_to_live]]
+==== time_to_live
+
+Used in conjunction with <<time_in_force>> to specify an order's lifetime.
+
+`time_to_live` is an integer with supported values from `0` to `65535` inclusive.
+The type also supports the following string constants:
+
+.time_to_live constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `65535`|
+A constant used to specify no time_to_live.
+
+|=================================
+
+[[trade_id]]
+==== trade_id
+
+Uniquely identifies a trade.
+
+`trade_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.trade_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no trade ID.
+
+|=================================
+
+[[tradeability]]
+==== tradeability
+
+Specifies the tradeability of a tradeable_entity.
+
+`tradeability` is an enumeration with the following well-known string constants:
+
+.tradeability constants
+[width="80%",options="header"]
+|=================================
+| Value | Description
+| `"tradeable"`|
+Can enter orders.
+
+| `"display_only"`|
+Cannot enter orders, but we may publish market data.
+
+| `"non_tradeable"`|
+Cannot enter orders, no market data.
+
+|=================================
+
+[[tradeable_entity_id]]
+==== tradeable_entity_id
+
+Uniquely identifies a tradeable entity.
+
+`tradeable_entity_id` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.tradeable_entity_id constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no tradeable entity ID.
+
+|=================================
+
+[[utc_timestamp]]
+==== utc_timestamp
+
+A UTC timestamp expressed in nanoseconds since the epoch (1970-01-01 00:00:00).
+
+`utc_timestamp` is an integer with supported values from `0` to `18446744073709551615` inclusive.
+The type also supports the following string constants:
+
+.utc_timestamp constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `18446744073709551615`|
+A constant used to specify no timestamp.
+
+|=================================
+
+[[value]]
+==== value
+
+A value.
+
+`value` is an integer with supported values from `-9223372036854775808` to `9223372036854775807` inclusive.
+The type also supports the following string constants:
+
+.value constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `9223372036854775807`|
+A constant used to specify no value.
+
+|=================================
+
+[[year]]
+==== year
+
+The year (YYYY).
+
+`year` is an integer with supported values from `0` to `65535` inclusive.
+The type also supports the following string constants:
+
+.year constants
+[width="80%",options="header"]
+|=================================
+| Value | Equivalent integer | Description
+| `"none"`| `65535`|
+A constant used to specify no year.
+
+|=================================
+

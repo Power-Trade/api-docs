@@ -1,0 +1,30 @@
+== *Monetary Values*
+
+In this section we explain how to handle inbound and outbound monetary values.
+
+The key requirement for proper handling of monetary values is to ensure their _precise_ handling _without rounding_. The challange here is that most general purpose CPUs don't have native hardware decimal types for numbers with fractional parts, instead binary-based floating point values available in their FPUs and widely used in programs for calculations. The floating point values have no fixed precision, hence there is a term "floating" in such type names; it means that during calculations using such values, the precision of the resulting values changes dynamically, e.g. inputs may have 6 precise digits after decimal point and output can be automatically rounded to 3rd decimal point with corresponding degradation in its precision from 6 to 3 digits after decimal point.
+
+To keep all monetary values always precise, at PowerTrade platform monetary values represented using simple integer-based notation with corresponding scaling by defined number of decimals in fractional parts for each currency.
+
+Here is the example of representation of value "price" equal to "1.12345678" for some <<deliverable,  *deliverable*>>:
+
+The <<price, *"price"*>> tells you what the value is in.
+The number of decimal places that <<price, *"price"*>> uses will be determined by
+the <<decimal_places, *"decimal_places"*>> of the corresponding <<deliverable_id, *"price_deliverable_id"*>>:
+
+....
+"price":                112345678,
+"price_deliverable_id": 3,
+....
+where using *"price_deliverable_id"* a corresponding descriptor of <<deliverable,  *deliverable*>>
+can be found in the dessiminated reference data:
+....
+"deliverable_id":       3,
+"decimal_places":       8
+..
+....
+so using value of *"decimal_places"* corresponding integer scaling can be found as 10^8.
+In other words, all *"price"* values for a given *"price_deliverable_id"* have 8 decimal places for fractionals.
+In case fractional part is 0, corresponding number of zero decimals will appiar in encoded integer values.
+
+TBD

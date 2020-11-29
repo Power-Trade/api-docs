@@ -1,0 +1,46 @@
+[[Service_Guide_Market_Data]]
+=== Market Data
+
+Market Data Service provides information essential for trading on PowerTrade exchange using the protocol described on the diagram below.
+
+[[market_data_protocol]]
+.Diagram of Market Data Protocol
+plantuml::protocols/puml/market_data_protocol.puml[format=svg,opts=inline,align=center]
+
+The corresponding message set can be found in <<Market_Data_Messages,Market Data Messages>>.
+
+[[Reference_Data]]
+==== Reference Data
+
+The reference data is _a key information_ disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <<Introduction,Introduction>> and <<Managing_Cycles,Cycles, Channels and Streams>>).
+
+API clients should properly keep reference data available for usage in all API Services and, for example, to encode/decode all monetary values (as explained in <<Monetary_Values, Monetary Values>>).
+
+[[Reference_Data_Messages_Table]]
+.*Reference Data* messages included into Market Data message set:
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<deliverable_ltfx_spot_gt,deliverable<fx_spot>>>
+| Reference data for a single spot deliverable.
+| <<deliverable_ltfuture_gt,deliverable<future>>>
+| Reference data for a single future deliverable.
+| <<deliverable_ltoption_gt,deliverable<option>>>
+| Reference data for a single option deliverable.
+| <<deliverable_ltexchange_token_gt,deliverable<exchange_token>>>
+| Reference data for an exchange token deliverable.
+| <<deliverable_ltstable_token_gt,deliverable<stable_token>>>
+| Reference data for a stable token deliverable.
+| <<deliverable_ltfiat_currency_gt,deliverable<fiat_currency>>>
+| Reference data for a fiat currency deliverable.
+| <<tradeable_entity_ltsimple_market_gt,tradeable_entity<simple_market>>>
+| Reference data for a tradeable entity that is traded using a simple, single market.
+| <<trading_rule,trading_rule>>
+| A trading rule that determines order and trade validation.
+| <<reference_price,reference_price>>
+| Notification of a reference price update.
+| <<settlement_price,settlement_price>>
+| Notification of a settlement price update.
+| <<trading_state,trading_state>>
+| Reflects the current state of trading in the tradeable entity and market.
+|=================================

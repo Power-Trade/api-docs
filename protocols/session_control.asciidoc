@@ -1,0 +1,31 @@
+[[Session_Control_Protocol_LogIn_LogOut]]
+=== Session Control Protocol
+
+Data access to a particular service requires establishing a secure WebSocket connection and completing the Session protocol.
+
+
+// 1. Connect to one of the API service ports using a secure WebSocket.
+// 2. Send a <<login, login>> request;
+// 3. Wait for a <<login_accepted,login_accepted>> response.
+//     a. If login fails, you will receive a <<login_rejected,login_rejected>> message.
+// 4. Send a <<start_session, start_session>> request.
+// 5. Wait for <<session_started, session_started>>.
+// 6. Respond to <<heartbeat, heartbeat>> messages also with a <<heartbeat, heartbeat>>.
+//    a. A <<heartbeat, heartbeat>> response must be sent in order to keep the session alive.
+// 7. Wait for <<channel_added, channel_added>> message.
+//    a. The <<channel_id, channel_id>> in this message is needed to request a stream.
+// 8. Send <<request_stream, request_stream>> message.
+// 9. Receive <<stream_started, stream_started>> message.
+// This completes the protocol sequence, and the client will now receive updates for the stream of data they requested.
+
+[[session_control_with_auth]]
+.Diagram of Session Control Protocol
+plantuml::protocols/puml/session_control_with_auth.puml[format=svg,opts=inline,align=center]
+
+The details of related messages can be found in <<Session_Protocol_Requests,Session Protocol Requests>>, <<Session_Protocol_Responses,Session Protocol Responses>>.
+
+// Login and state recovery:
+// image::login_and_recover.svg[]
+
+// Login and requesting all:
+// image::login_and_request_all.svg[]

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' contentScriptType='application/ecmascript' contentStyleType='text/css' height='181px' preserveAspectRatio='none' style='width:272px;height:181px;' version='1.1' viewBox='0 0 272 181' width='272px' zoomAndPan='magnify'>
+  <defs>
+    <filter height='300%' id='f1c3fvzrdfynnc' width='300%' x='-1' y='-1'>
+      <feGaussianBlur result='blurOut' stdDeviation='2.0'/>
+      <feColorMatrix in='blurOut' result='blurOut2' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0'/>
+      <feOffset dx='4.0' dy='4.0' in='blurOut2' result='blurOut3'/>
+      <feBlend in='SourceGraphic' in2='blurOut3' mode='normal'/>
+    </filter>
+  </defs>
+  <g>
+    <path d='M14.094,13.1328 C14.034,13.1328 13.989,13.1768 13.969,13.2268 L11.031,20.0398 L11,20.2278 L11,21.0408 C11,21.1008 11.034,21.1348 11.094,21.1348 L17.907,21.1348 C17.967,21.1348 18.001,21.1008 18.001,21.0408 L18.001,20.2278 L17.97,20.0398 L15.032,13.2268 C15.012,13.1768 14.967,13.1328 14.907,13.1328 L14.094,13.1328 M14,16.1328 L15,16.1328 L15,18.1328 L14,18.1328 L14,16.1328 M14,19.1328 L15,19.1328 L15,20.1328 L14,20.1328 L14,19.1328 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
+    <text fill='#888888' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' textLength='186' x='20' y='21.6016'>
+      Do not test in production, test in
+    </text>
+    <a href='#WS_API_Services_Sandbox' xlink:href='#WS_API_Services_Sandbox' target='_top' title='#WS_API_Services_Sandbox' xlink:title='#WS_API_Services_Sandbox' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='50' x='210' y='21.6016'>
+        sandbox
+      </text>
+    </a>
+    <rect fill='#FFFFFF' filter='url(#f1c3fvzrdfynnc)' height='133.4297' style='stroke: #000000; stroke-width: 2.0;' width='240' x='15.5' y='24.1328'/>
+    <path d='M204.5,25.1328 L204.5,33.6211 L194.5,43.6211 L15.5,43.6211 ' fill='none' style='stroke: #000000; stroke-width: 2.0;'/>
+    <a href='#session_control_with_auth' xlink:href='#session_control_with_auth' target='_top' title='#session_control_with_auth' xlink:title='#session_control_with_auth' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='14' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='179' x='18.5' y='38.668'>
+        Session Control Protocol
+      </text>
+    </a>
+    <rect fill='#FFFFFF' filter='url(#f1c3fvzrdfynnc)' height='91.4883' style='stroke: #000000; stroke-width: 2.0;' width='220' x='25.5' y='54.0742'/>
+    <path d='M240.5,55.0742 L240.5,63.5625 L230.5,73.5625 L25.5,73.5625 ' fill='none' style='stroke: #000000; stroke-width: 2.0;'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='205' x='28.5' y='68.6094'>
+      Funds Management Protocol
+    </text>
+    <ellipse cx='138' cy='93.5625' fill='#FFFFFF' filter='url(#f1c3fvzrdfynnc)' rx='10' ry='10' style='stroke: #000000; stroke-width: 1.5;'/>
+    <line style='stroke: #000000; stroke-width: 2.5;' x1='131.8128' x2='144.1872' y1='87.3753' y2='99.7497'/>
+    <line style='stroke: #000000; stroke-width: 2.5;' x1='144.1872' x2='131.8128' y1='87.3753' y2='99.7497'/>
+    <ellipse cx='138' cy='123.5625' fill='#FFFFFF' filter='url(#f1c3fvzrdfynnc)' rx='10' ry='10' style='stroke: #000000; stroke-width: 1.5;'/>
+    <line style='stroke: #000000; stroke-width: 2.5;' x1='131.8128' x2='144.1872' y1='117.3753' y2='129.7497'/>
+    <line style='stroke: #000000; stroke-width: 2.5;' x1='144.1872' x2='131.8128' y1='117.3753' y2='129.7497'/>
+    <path d='M151,156.5625 L147.25,162.8125 L149.75,162.8125 L149.75,166.5625 L153.5,160.3125 L151,160.3125 L151,156.5625 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
+    <text fill='#888888' font-family='sans-serif' font-size='10' lengthAdjust='spacingAndGlyphs' textLength='0' x='160' y='168.2031'/>
+    <a href='https://power.trade' xlink:href='https://power.trade' target='_top' title='https://power.trade' xlink:title='https://power.trade' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='9' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='100' x='160' y='168.4141'>
+        PowerTrade Exchange
+      </text>
+    </a>
+    <!--MD5=[1bd0701f78c7c9769c1e63fb39d892b7]
+@startuml funds_management_protocol
+
+
+
+skinparam sequenceMessageAlign center
+
+
+right header
+    <size:12><&warning>Do not test in production, test in [[#WS_API_Services_Sandbox sandbox]]</size>
+endheader
+
+right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Exchange]]</size>
+
+
+group <b>[[#session_control_with_auth Session Control Protocol]]</b>
+
+
+    group <b>Funds Management Protocol</b>
+
+    end
+end
+
+@enduml
+
+PlantUML version 1.2020.06(Sun Apr 05 21:38:32 JST 2020)
+(APACHE source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 15.0.1+9-18
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: JP
+-->
+  </g>
+</svg>

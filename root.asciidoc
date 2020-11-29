@@ -1,0 +1,72 @@
+// asciidoctor -v -r asciidoctor-diagram root.asciidoc -a for_internal_use@=true -o OUT/ws_api_spec_internal.html
+// asciidoctor -v -r asciidoctor-diagram root.asciidoc -a for_internal_use@=false -o OUT/ws_api_spec_external.html
+
+= *PowerTrade WebSocket API Specification*
+:toc: left
+:toclevels: 4
+:stylesheet: powertrade.css
+:source-highlighter: highlightjs
+
+:imagesdir: protocols/svg
+:sectnums:
+
+ifeval::[{for_internal_use} == true]
+*INTERNAL* VERSION 0.0
+endif::[]
+ifeval::[{for_internal_use} == false]
+*EXTERNAL* VERSION 0.0
+endif::[]
+
+include::intro/introduction.asciidoc[]
+
+include::intro/products.asciidoc[]
+
+include::intro/monetary_values.asciidoc[]
+
+// -----------------------------------------------------------------------------
+== *Protocols*
+// -----------------------------------------------------------------------------
+
+// plantuml::protocols/puml/simple_diagram.puml[format=svg,opts=inline]
+
+// online example of svg diagram with links
+// http://safemap.sourceforge.net/demo/index-no-refresh.html
+
+include::protocols/protocols_overview.asciidoc[]
+
+include::protocols/authentification.asciidoc[]
+
+include::protocols/session_control.asciidoc[]
+
+include::protocols/managing_cycles.asciidoc[]
+
+include::protocols/market_data_handling.asciidoc[]
+
+include::protocols/order_management.asciidoc[]
+
+include::protocols/orderbook_handling.asciidoc[]
+
+include::protocols/position_data_handling.asciidoc[]
+
+include::protocols/quote_management.asciidoc[]
+
+ifeval::[{for_internal_use} == true]
+
+include::protocols/accounts_management.asciidoc[]
+include::protocols/funds_management.asciidoc[]
+
+endif::[]
+== *Message Reference Book*
+// -----------------------------------------------------------------------------
+
+// TODO: review [[https://github.com/asyncapi-archived-repos/docgen]]
+
+ifeval::[{for_internal_use} == true]
+include::reference/internal_version.asciidoc[]
+endif::[]
+
+ifeval::[{for_internal_use} == false]
+include::reference/external_version.asciidoc[]
+endif::[]
+
+// -----------------------------------------------------------------------------

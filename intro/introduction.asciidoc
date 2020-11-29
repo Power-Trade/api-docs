@@ -1,0 +1,110 @@
+[[Introduction]]
+== *Introduction*
+
+// PowerTrade offers two types of APIs: WebSocket and FIX.
+This chapter provides an overview of the concepts and structure of PowerTrade WebSocket API.
+
+The WebSocket API is an advanced technology that makes it possible to open a two-way interactive communication session between a client and a server. With this API, you can send messages to a server and receive event-driven responses without having to poll the server for a reply, so it enables richer client/service interactions.
+
+[[WS_API_Services]]
+.*PowerTrade WebSocket API Services*:
+[width="95%",cols="^.^20%, ^.^5%, ^.^5%, ^.^60%, ^.^10%", options="header"]
+|=================================
+| Service | User guide | Message set | URI in Production | Is authentication required?
+
+| Market Data
+| <<Service_Guide_Market_Data,Market Data Guide>>
+| <<Market_Data_Messages,Market Data Messages>>
+| `wss://pt-test.clearpool.dev:35443`
+| *yes*
+
+| Market Data Demo
+| <<Service_Guide_Market_Data,Market Data Guide>>
+| <<Market_Data_Messages,Market Data Messages>>
+| `wss://pt-test.clearpool.dev:62443`
+| *no*
+
+| Order Management
+| <<Service_Guide_Order_Management,Order Management Guide>>
+| <<Order_Management_Requests,Order Management Requests>>/<<Order_Management_Responses,Responses>>
+| `wss://pt-test.clearpool.dev:65443`
+| *yes*
+
+| Quote Management
+| <<Service_Guide_Quote_Management,Quote Management Guide>>
+| <<Quote_Management_Requests,Quote Management Requests>>/<<Quote_Management_Responses,Responses>>
+| `TBD`
+| *yes*
+
+| Position Data
+| <<Service_Guide_Position_Data,Position Data Guide>>
+| <<Position_Data_Messages,Position Data Messages>>
+| `wss://pt-test.clearpool.dev:45443`
+| *yes*
+
+ifeval::[{for_internal_use} == true]
+
+| Accounts Management
+| <<Service_Guide_Accounts_Management,Accounts Management Guide>>
+| <<Account_Management_Requests,Account Management Requests>>/<<Account_Management_Responses,Responses>>
+| `TBD`
+| *yes*
+
+| Funds Management
+| <<Service_Guide_Funds_Management,Funds Management Guide>>
+| <<Funds_Management_Requests,Funds Management Requests>>/<<Funds_Management_Responses,Responses>>
+| `TBD`
+| *yes*
+
+endif::[]
+|=================================
+
+
+[[WS_API_Services_Sandbox]]
+.*Sandbox environment* of PowerTrade WebSocket API *available for API clients testing*:
+[width="95%",cols="^.^20%, ^.^80%", options="header"]
+|=================================
+| Service | URI in Sandbox
+
+| Market Data
+| `TBD`
+
+| Market Data Demo
+| `TBD`
+
+| Order Management
+| `TBD`
+
+| Quote Management
+| `TBD`
+
+| Position Data
+| `TBD`
+
+ifeval::[{for_internal_use} == true]
+
+| Accounts Management
+| `TBD`
+
+| Funds Management
+| `TBD`
+
+endif::[]
+|=================================
+
+
+A secure WebSocket connection must be made to most of services in order to send requests and receive updates from the platform, please see the details in chapter <<Authentication,Authentication>>.
+
+Access to the PowerTrade WebSocket API is structured around four core concepts: Session, Streams, Channels and Cycles. Please read about it in details in section <<Managing_Cycles,Cycles, Channels and Streams>>.
+
+A session is started on a per connection basis when connecting to one of the services above. As shown in chapter <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>>, the protocol sequences follow a synchronous request/response pattern until a session established, at which point the API becomes asynchronous. The session-related messages groupped in corresponding reference sections: <<Session_Protocol_Requests,Session Protocol Requests>>, <<Session_Protocol_Responses,Session Protocol Responses>>.
+
+The session lasts as long as several conditions are met: <<heartbeat,heartbeats>> are sent every 15 seconds and as long as the client has not explicitly logged out (or terminated the session).
+
+Cycles are specific intervals of time that are used to provide a logical separation of the trading session over time. They are continuous; once a cycle ends, a new cycle starts. Please read chapter <<Managing_Cycles,Cycles, Channels and Streams>> for the details.
+
+Channels represent a set of sequenced messages that correspond to the beginning and end to a cycle. Clients can receive numerous channel messages in a single session, since a client can go through numerous trading cycles.
+
+Streams are used by the various services in the platform to update clients on the state of the service at a given point in time. A stream is a subset of application messages from a channel. Upon opening a session and successful authentication, the client can request the latest state of a service via a stream.
+
+A stream is effectively a series of events that are broadcast over the channel associated with the service (Market Data, Order Management, Position Data etc.). Events describe changes of the state of the service over time. Each event in a stream is identified by a sequence number. The stream would normally start with a snapshot of the state of service at the beginning of the current cycle and a sequence of events that when put together with the “snapshot” would provide the full state of the service (or the objects that underlie the service).

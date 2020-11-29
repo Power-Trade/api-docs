@@ -1,0 +1,67 @@
+@startuml order_management_protocol
+
+' to support time duration and delays:
+'!pragma teoz true
+
+'skinparam handwritten true
+'skinparam shadowing false
+
+'skinparam monochrome true
+skinparam sequenceMessageAlign center
+
+'skinparam title {
+'    BorderRoundCorner 5
+'    BorderThickness 1
+'    BorderColor black
+'    BackgroundColor WhiteSmoke
+'}
+
+    '<font color=black>Warning:</font>
+right header
+    <size:12><&warning>Do not test in production, test in [[#WS_API_Services_Sandbox sandbox]]</size>
+endheader
+
+right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Exchange]]</size>
+
+'entity Client
+'entity Server
+
+group <b>[[#session_control_with_auth Session Control Protocol]]</b>
+
+    ... <b>Note</b>: for simplicity, heartbeating ...
+    ... is not shown here but it is <b>required</b> ...
+    ... <b>to keep session alive</b> ...
+
+    group <b>Order Management Protocol</b>
+
+        group i-Cycle
+            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
+            |||
+            Client -> Server : <b>[[#enter_order_ltsimple_order_ltaccount_id_gt_gt enter_order<simple_order<account_id>>]]</b>
+            Client <- Server : <b>[[#order_entered_ltsimple_order_ltaccount_id_gt_gt order_entered<simple_order<account_id>>]]</b>
+            Client <- Server : <b>[[#order_executed order_executed]]</b>
+            |||
+            Client <- Server : <b>[[#order_updated order_updated]]</b>
+            |||
+            ... using known client's [[#order_token order_token]] ...
+            Client -> Server : <b>[[#cancel_order_ltorder_token_gt cancel_order<order_token>]]</b>
+            Client <- Server : <b>[[#order_cancelled order_cancelled]]</b>
+            ... or in case of failure: ...
+            Client <- Server : <b>[[#order_action_rejected_ltcancel_order_ltorder_token_gt_gt order_action_rejected<cancel_order<order_token>>]]</b>
+            ... using known [[#order_id order_id]] ...
+            Client -> Server : <b>[[#cancel_order_ltorder_id_gt cancel_order<order_id>]]</b>
+            Client <- Server : <b>[[#order_cancelled order_cancelled]]</b>
+            ... or in case of failure: ...
+            Client <- Server : <b>[[#order_action_rejected_ltcancel_order_ltorder_id_gt_gt order_action_rejected<cancel_order<order_id>>]]</b>
+
+            ... and so on ...
+            |||
+            Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+            Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
+        end
+        ... and so on ...
+    end
+end
+
+@enduml

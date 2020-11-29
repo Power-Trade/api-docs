@@ -1,0 +1,12 @@
+[[Service_Guide_Funds_Management]]
+=== Funds Management
+
+The corresponding message sets can be found in <<Funds_Management_Requests,Funds Management Requests>>/<<Funds_Management_Responses,Responses>>.
+
+[[funds_management_protocol]]
+.Diagram of Funds Management Protocol
+plantuml::protocols/puml/funds_management_protocol.puml[format=svg,opts=inline,align=center]
+
+
+TBD
+

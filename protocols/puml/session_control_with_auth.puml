@@ -1,0 +1,92 @@
+@startuml session_control_with_auth
+
+' to support time duration and delays:
+'!pragma teoz true
+
+'skinparam handwritten true
+'skinparam shadowing false
+
+'skinparam monochrome true
+skinparam sequenceMessageAlign center
+
+'skinparam title {
+'    BorderRoundCorner 5
+'    BorderThickness 1
+'    BorderColor black
+'    BackgroundColor WhiteSmoke
+'}
+
+    '<font color=black>Warning:</font>
+right header
+    <size:12><&warning>Do not test in production, test in [[#WS_API_Services_Sandbox sandbox]]</size>
+endheader
+
+right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Exchange]]</size>
+
+'entity Client
+'entity Server
+
+group <b>Connect to secure WebSocket URI</b>
+
+    Client -> Server : [[https://tools.ietf.org/html/rfc6455#section-1.3 WebSocket Opening handshake]]
+    Client <- Server : WebSocket Opening handshake
+end
+
+group <b>[OPTIONAL] Authentication</b> (see if required in [[#WS_API_Services Table of API Services]])
+
+    Client -> Server : 1) <b>[[#login login]]</b>
+    Client <- Server : 2) <b>[[#login_accepted login_accepted]]</b>
+    ... **or in case of failure**: ...
+    Client <-- Server : 2) <b>[[#login_rejected login_rejected]]</b>
+
+end
+
+group <b>Session openning</b>
+
+    Client -> Server : 1) <b>[[#start_session start_session]]</b>
+    Client <- Server : 2) <b>[[#session_started session_started]]</b>
+
+    group to keep session alive, heartbeating is required from now on
+        Client <- Server : a) <b>[[#heartbeat heartbeat]]</b>
+        Client -> Server : b) <b>[[#heartbeat heartbeat]]</b>
+    end
+
+    Client <- Server : 3) <b>[[#channel_added channel_added]]</b>
+
+    note right: with assigned <b>[[#channel_id channel_id]]</b>
+
+    Client -> Server : 4) <b>[[#request_stream request_stream]]</b>
+
+    note left: with <b>[[#channel_id channel_id]]</b>\nfrom <b>[[#channel_added channel_added]]</b>
+
+    Client <- Server : 5) <b>[[#stream_started stream_started]]</b>
+end
+
+'== Service-specific protocol phase ==
+group <b>Service-specific protocol</b>
+
+    group to keep session alive,\nmake sure that Client is idle less than 15 sec\nby sending <b>heartbeat</b> to Server during idle periods\nso Server will see that Client is alive
+        Client -> Server : <b>[[#heartbeat heartbeat]]</b>
+    end
+
+    group always handshake Server's heartbeat too
+        Client <- Server : a) <b>[[#heartbeat heartbeat]]</b>
+        Client -> Server : b) <b>[[#heartbeat heartbeat]]</b>
+    end
+end
+
+group <b>Session ending</b>
+
+    Client -> Server : 1) <b>[[#logout logout]]</b>
+    Client <- Server : 2) <b>[[#session_ended session_ended]]</b>
+
+end
+
+group <b>Closing WebSocket</b>
+
+    Client -> Server : [[https://tools.ietf.org/html/rfc6455#section-1.4 WebSocket Closing handshake]]
+    Client <- Server : WebSocket Closing handshake
+
+end
+
+@enduml

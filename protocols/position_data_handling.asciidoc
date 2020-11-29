@@ -1,0 +1,226 @@
+[[Service_Guide_Position_Data]]
+=== Position Data Handling
+
+The corresponding message set can be found in <<Position_Data_Messages,Position Data Messages>>.
+
+[[position_data_protocol]]
+.Diagram of Position Data Protocol
+plantuml::protocols/puml/position_data_protocol.puml[format=svg,opts=inline,align=center]
+
+The position data is mainly provided in <<position, position>> message update and
+the most important fields of it listed below:
+
+.The most important <<position, position>> fields:
+[width="80%",options="header"]
+|=================================
+| Name | Type | Description
+
+| `product_deliverable_id`| <<deliverable_id>>|
+A unique, exchange-assigned identifier for the product deliverable.
+
+| `position_kind`| <<position_kind>>|
+Whether the position kind is cash, unrealised, exposure or margin.
+
+| `product_type`| <<product_type>>|
+Whether the product_type is balance, option, future or spot.
+
+| `value`| <<position_value>>|
+Value of the position.
+
+| `position_deliverable_id`| <<deliverable_id>>|
+A unique, exchange-assigned identifier for the position deliverable.
+
+|=================================
+
+The *value* of a position is the main field that you care about.
+
+The tuple of:
+
+* *product_deliverable_id, position_kind, product_type*
+
+identifies the position.
+
+The *position_deliverable_id* tells you what the value is in.
+The number of decimal places that *value* uses will be determined by
+the *decimal_places* of the *position_deliveralbe_id*.
+
+==== Primary Exchange Currency
+
+In addition to supporting positions in different combinations of deliverables the exchange also provides an overview position in primary (or default) currency of the exchange: USDT. This means any positions that are not valued in USDT will have a USDT equivalent position calculated for it.
+
+==== Different Kinds of Position Message
+
+The position kind tells you how to interpret the value of the position and how it should be treated from an accounting perspective, that is, which “bucket” does it fall into.
+This allows us to form an overall view of positions.
+
+* *cash* - this position represents deliverables that you hold, what you deposited and what you expect to be able to withdraw, assuming a withdrawal would not put your account at risk of default;
+* *margin* - this represents your margin obligations;
+* *unrealised* - this represents your potential earnings or losses;
+* *realised* - this represents the positions that are realised but not yet fully settled;
+* *payoff* - this represents the potential payoff of any option-like positions that are currently unrealised. This is provided as an alternative view of the potential value of the options that you hold.
+
+To understand your available BTC position you would consider all “balance” (see below) positions for BTC and perform the sum:
+
+* *available = cash + realised + unrealised - margin*
+
+To understand your t overview position in USDT you would consider all “overview” (see below) positions for USDT and perform the sum same sum as above:
+
+* *available = cash + realised + unrealised - margin*
+
+==== Different Product Types
+
+Positions can also be defined by their product type. This in essence tells you why the position is there and how it should be interpreted.
+
+* *reference_balance* - the position represents an overview position of the primary currency of the exchange;
+* *balance* - the position represents a balance that is held because of a deposit, withdrawal, trade or settlement;
+* *spot* - the position represents an unrealised position as the result of a trade or mark price change;
+* *future* - the position represents an unrealised or margin position that resulted from a trade or mark price change;
+* *option* - the position represents an unrealised or margin position that resulted from a trade or mark price change.
+
+
+==== Allowable Combinations of Position Kind and Product Type
+
+Not all combinations of position kind and product type make sense, or are allowed. The following table shows the allowed combinations:
+
+[width="80%",cols="^.^,^.^,^.^,^.^,^.^,^.^", options="header"]
+|=================================
+| position_kind      | reference_balance| balance   | spot  | future| option
+| cash               |   	OK          |     OK    |       |       |
+| realised           |      OK          |     OK    |  OK   |   OK  |  OK
+| unrealised         |      OK          |     OK    |       |   OK  |  OK
+| margin             |      OK          |     OK    |       |   OK  |  OK
+| payoff             |                  |           |       |       |  OK
+|=================================
+
+==== Summary of Positions
+
+For the primary exchange deliverable, USDT, you will see the following positions:
+
+* *cash-reference_balance* — this position tells you how much USDT you hold as deposited “cash” or realised “cash”.
+* *realised-reference_balance* — this position tells you overall how much USDT you have in all realised positions that have yet to be settled to your cash positions.
+* *unrealised-reference_balance* — this position tells you overall how much USDT you have in all unrealised positions you hold.
+* *margin-reference_balance* — this position tells you overall how much USDT you have set aside as margin for all unrealised positions you currently hold.
+
+For base deliverables like USDT, BTC and ETH you will see the following positions:
+
+* *cash-balance* — this position tells you how much of [USDT, ETH or BTC] you hold as deposited “cash” or realised “cash”.
+* *realised-balance* — this position tells you overall how much [USDT, ETH or BTC] you have in all realised positions that have yet to be settled to your cash positions.
+* *unrealised-balance* — this position tells you overall how much [USDT, ETH or BTC] you have in all unrealised positions you hold.
+* *margin-balance* — this position tells you overall how much [USDT, ETH or BTC] you have set aside as margin for all unrealised positions you currently hold.
+
+For future deliverables like BTC_USDT-10DEC20 you will see the following associated positions:
+
+* *margin-future* — this position tells you how much margin you are maintaining for the given future.
+* *realised-future* — this position tells you how much money you have realised while trading (or holding expired) futures which has not yet settled to your cash position.
+* *unrealised-future* — this position tells you how much money you are making or losing because you hold a position in the future.
+
+For option deliverables like BTC_USDT-10DEC20-10000C you will see the following associated positions:
+
+* *margin-option* — this position tells you how much margin you are maintaining for the given option.
+* *realised-option* — this position tells you how much money you have realised while trading (or holding expired) option which has not yet settled to your cash position.
+* *unrealised-option* — this position tells you how much money you are making or losing because you hold a position in the option.
+
+For spot deliverables like BTC_USDT you will see the following position:
+
+* *realised-spot* — this position tells you how much money you have realised while trading deliverables in spot markets which has not yet been settled to a cash position for the respective deliverable.
+* *unrealised-spot* — this position tells you how much money you are making or losing because you hold a position in the base deliverable. In this case by holding BTC you are making or losing USDT as the price of BTC moves.
+
+.Example Cash Position
+[source,cpp,subs="+macros"]
+-------------------
+position
+{
+    <<utc_timestamp>>   timestamp;
+    <<account_id>>      account_id;
+    <<deliverable_id>>  product_deliverable_id;  // USDT’s deliverable_id
+    <<position_kind>>   position_kind;           // “cash”
+    <<product_type>>    product_type;            // “balance”
+    <<position_value>>  value;                   // 10,000
+    <<deliverable_id>>  position_deliverable_id; // USDT’s deliverable_id
+    <<price>>           anchor_price;            // “none”
+    <<balance>>         balance;                 // “none”
+    <<price>>           mark_price;              // “none”
+}
+-------------------
+
+.Example Margin Option Position
+“Account A holds 10,000 USDT as Margin for 10 BTC 9000C Options based on a BTC_USDT spot price of 11,000 USDT”:
+[source,cpp,subs="+macros"]
+-------------------
+position
+{
+    <<utc_timestamp>>   timestamp;
+    <<account_id>>      account_id;
+    <<deliverable_id>>  product_deliverable_id;  // Option’s deliverable_id
+    <<position_kind>>   position_kind;           // “margin”
+    <<product_type>>    product_type;            // “option”
+    <<position_value>>  value;                   // 10,000
+    <<deliverable_id>>  position_deliverable_id; // USDT’s deliverable_id
+    <<price>>           anchor_price;            // 11,000
+    <<balance>>         balance;                 // 10
+    <<price>>           mark_price;              // “none”
+}
+-------------------
+
+.Example Unrealised Option Position
+“Account A has potential value of 20,000 USDT in the future because they hold 10 BTC 9000C Options based on a BTC_USDT spot price of 11,000 USDT”:
+[source,cpp,subs="+macros"]
+-------------------
+position
+{
+    <<utc_timestamp>>   timestamp;
+    <<account_id>>      account_id;
+    <<deliverable_id>>  product_deliverable_id;  // Option’s deliverable_id
+    <<position_kind>>   position_kind;           // “unrealised”
+    <<product_type>>    product_type;            // “option”
+    <<position_value>>  value;                   // 20,000
+    <<deliverable_id>>  position_deliverable_id; // USDT’s deliverable_id
+    <<price>>           anchor_price;            // 11,000
+    <<balance>>         balance;                 // 10
+    <<price>>           mark_price;              // “none”
+}
+-------------------
+
+.Example Overall Unrealised USDT Position
+“Account A has an OVERALL UNREALISED value of X USDt because they hold (many) positions valued in USDt” - In this case they are LOSING money:
+[source,cpp,subs="+macros"]
+-------------------
+position
+{
+    <<utc_timestamp>>   timestamp;
+    <<account_id>>      account_id;
+    <<deliverable_id>>  product_deliverable_id;  // USDT’s deliverable_id
+    <<position_kind>>   position_kind;           // “unrealised”
+    <<product_type>>    product_type;            // “balance”
+    <<position_value>>  value;                   // -83,242
+    <<deliverable_id>>  position_deliverable_id; // USDT’s deliverable_id
+    <<price>>           anchor_price;            // “none”
+    <<balance>>         balance;                 // “none”
+    <<price>>           mark_price;              // “none”
+}
+-------------------
+
+.Example Margin USDT Position
+“Account A has an OVERALL MARGIN commitment of X USDT because they hold margined positions valued in USDT”:
+[source,cpp,subs="+macros"]
+-------------------
+position
+{
+    <<utc_timestamp>>   timestamp;
+    <<account_id>>      account_id;
+    <<deliverable_id>>  product_deliverable_id;  // USDT’s deliverable_id
+    <<position_kind>>   position_kind;           // “margin”
+    <<product_type>>    product_type;            // “balance”
+    <<position_value>>  value;                   // 103,242
+    <<deliverable_id>>  position_deliverable_id; // USDT’s deliverable_id
+    <<price>>           anchor_price;            // “none”
+    <<balance>>         balance;                 // “none”
+    <<price>>           mark_price;              // “none”
+}
+-------------------
+
+// Case of adding a single position:
+// image::single_position_added.svg[]
+
+// Case of adding multiple positions:
+// image::multiple_positions_added.svg[]

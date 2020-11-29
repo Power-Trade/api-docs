@@ -1,0 +1,71 @@
+@startuml simple_diagram
+
+!pragma teoz true
+
+'skinparam handwritten true
+'skinparam shadowing false
+
+skinparam monochrome true
+skinparam sequenceMessageAlign center
+
+skinparam title {
+    BorderRoundCorner 5
+    BorderThickness 1
+    BorderColor black
+    BackgroundColor WhiteSmoke
+}
+
+'scale max 2048 width
+
+    '<font color=black>Warning:</font>
+header
+    <size:12><&warning>Do not test in production, test in [[#heartbeat sandbox]]</size>
+endheader
+
+right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Exchange]]</size>
+
+'title
+'      Simple diagram, the coolest one
+'end title
+
+'legend left
+'      Legend bottom left
+'endlegend
+
+' actor Bob [[#heartbeat]]
+' actor "This is [[#heartbeat Alice]] actor" as Alice
+
+'[[#WS_API_OrderEntry_Service]]
+
+entity Client
+entity "[[#WS_API_OrderEntry_Service Service]]" as Server
+
+== Initialization ==
+
+{start} Client -> Server [[#session_started {STRUCT {\nTooltipLine1: 1234567890;\nTooltipLine2: 1234567890;\nTooltipLine3: 1234567890;\n};} ]] : hello
+
+note left [[#session_ended]]
+  a note with a link
+end note
+
+|||
+
+{end} Server -> Client : hello with [[#heartbeat_resp some link]]
+
+{start} <-> {end} : some time
+
+note right [[#cycle_starting]] : another note
+
+note left of Client
+You can use [[#year links in notes]] also.
+end note
+
+== Repetition ==
+
+|||
+...5 ns later...
+|||
+
+Client -> Server [[#session_started]] : hello
+
+@enduml
