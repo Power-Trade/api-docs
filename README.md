@@ -37,6 +37,7 @@ Structure of the repo:
 
 ├── ws_api_spec_external.html   // output: generated EXTERNAL version
 ├── ws_api_spec_internal.html   // output: generated INTERNAL version
+
 ├── workspace.code-workspace    // VS Code settings etc
 ├── index.html                  // old file, keeping for now
 ```
