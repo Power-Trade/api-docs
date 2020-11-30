@@ -851,7 +851,7 @@
         PowerTrade Exchange
       </text>
     </a>
-    <!--MD5=[cbe02efd6380ce3f342de21570d509ee]
+    <!--MD5=[3d691f217e993f6eb3e92955a2a3e2ef]
 @startuml accounts_management_protocol
 
 
@@ -970,15 +970,15 @@ end
 
 @enduml
 
-PlantUML version 1.2020.06(Sun Apr 05 21:38:32 JST 2020)
+PlantUML version 1.2020.06(Sun Apr 05 13:38:32 WEST 2020)
 (APACHE source distribution)
-Java Runtime: Java(TM) SE Runtime Environment
-JVM: Java HotSpot(TM) 64-Bit Server VM
-Java Version: 15.0.1+9-18
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 15.0.1+9
 Operating System: Mac OS X
 Default Encoding: UTF-8
 Language: en
-Country: JP
+Country: US
 -->
   </g>
 </svg>
