@@ -38,7 +38,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
             |||
-            Client <- Server : <b>[[#Reference_Data various Reference Data]]</b>
+            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
             ... and so on ...
             |||
             Client <- Server : <b>various market data</b>:\n[[#trade trade]],\n[[#top_of_book top_of_book]],\n[[#display_order_added display_order_added]],\n[[#display_order_deleted display_order_deleted]],\n[[#display_order_updated display_order_updated]],..
@@ -52,7 +52,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
             |||
-            Client <- Server : <b>[[#Reference_Data various Reference Data]]</b>
+            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
             Client <- Server : <b>various market data</b>
             ... and so on ...
             |||
@@ -66,7 +66,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
             |||
-            Client <- Server : <b>[[#Reference_Data various Reference Data]]</b>
+            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
             Client <- Server : <b>various market data</b>
             ... and so on ...
             |||

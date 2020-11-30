@@ -1,23 +1,23 @@
-[[Service_Guide_Market_Data]]
-=== Market Data
-
-Market Data Service provides information essential for trading on PowerTrade exchange using the protocol described on the diagram below.
-
-[[market_data_protocol]]
-.Diagram of Market Data Protocol
-plantuml::protocols/puml/market_data_protocol.puml[format=svg,opts=inline,align=center]
-
-The corresponding message set can be found in <<Market_Data_Messages,Market Data Messages>>.
-
 [[Reference_Data]]
-==== Reference Data
+=== Reference Data
 
+ifeval::[{for_internal_use} == true]
+The reference data is _a key information_ disseminated by Market Data Service and Accounts Management Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <<Introduction,Introduction>> and <<Managing_Cycles,Cycles, Channels and Streams>>).
+endif::[]
+
+ifeval::[{for_internal_use} == false]
 The reference data is _a key information_ disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <<Introduction,Introduction>> and <<Managing_Cycles,Cycles, Channels and Streams>>).
+endif::[]
 
 API clients should properly keep reference data available for usage in all API Services and, for example, to encode/decode all monetary values (as explained in <<Monetary_Values, Monetary Values>>).
 
 [[Reference_Data_Messages_Table]]
-.*Reference Data* messages included into Market Data message set:
+ifeval::[{for_internal_use} == true]
+.*Reference Data* messages included in Market Data and Accounts Management message sets:
+endif::[]
+ifeval::[{for_internal_use} == false]
+.*Reference Data* messages included in Market Data message set:
+endif::[]
 [width="80%",options="header"]
 |=================================
 | Name | Description
@@ -44,3 +44,14 @@ API clients should properly keep reference data available for usage in all API S
 | <<trading_state,trading_state>>
 | Reflects the current state of trading in the tradeable entity and market.
 |=================================
+
+[[Service_Guide_Market_Data]]
+=== Market Data
+
+Market Data Service provides information essential for trading on PowerTrade exchange, including <<Reference_Data, Reference Data>>.
+
+[[market_data_protocol]]
+.Diagram of Market Data Protocol
+plantuml::protocols/puml/market_data_protocol.puml[format=svg,opts=inline,align=center]
+
+The corresponding message set can be found in <<Market_Data_Messages,Market Data Messages>>.
