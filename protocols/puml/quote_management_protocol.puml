@@ -37,18 +37,27 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
             |||
-            Client -> Server : <b>[[#cancel_all_quotes_ltaccount_id_gt cancel_all_quotes<account_id>]]</b>
-            Client <- Server : <b>[[#all_quotes_cancelled_ltaccount_id_gt all_quotes_cancelled<account_id>]]</b>
-            |||
-            Client -> Server : <b>[[#enter_quotes_ltsimple_quotes_commaaccount_id_gt enter_quotes<simple_quotes,account_id>]]</b>
-            Client <- Server : <b>[[#quotes_entered_ltsimple_quotes_commaaccount_id_gt quotes_entered<simple_quotes,account_id>]]</b>
-            ... or in case of failure: ...
-            Client <- Server : <b>[[#quotes_action_rejected_ltenter_quotes_ltsimple_quotes_commaaccount_id_gt_gt quotes_action_rejected<enter_quotes<simple_quotes,account_id>>]]</b>
-            ... example of quote execution: ...
-            Client -> Server : <b>[[#enter_quotes_ltsimple_quotes_commaaccount_id_gt enter_quotes<simple_quotes,account_id>]]</b>
-            Client <- Server : <b>[[#quotes_entered_ltsimple_quotes_commaaccount_id_gt quotes_entered<simple_quotes,account_id>]]</b>
-            Client <- Server : <b>[[#quote_executed quote_executed]]</b>
-            ... and so on ...
+            group new quote entering
+                |||
+                Client -> Server : <b>[[#enter_quotes_ltsimple_quotes_commaaccount_id_gt enter_quotes<simple_quotes,account_id>]]</b>
+                ... in case of <b>success</b>: ...
+                Client <- Server : <b>[[#quotes_entered_ltsimple_quotes_commaaccount_id_gt quotes_entered<simple_quotes,account_id>]]</b>
+                ... in case of <b>failure</b>: ...
+                Client <- Server : <b>[[#quotes_action_rejected_ltenter_quotes_ltsimple_quotes_commaaccount_id_gt_gt quotes_action_rejected<enter_quotes<simple_quotes,account_id>>]]</b>
+            end
+
+            group example of quote execution and receiving corresponding notificaiton
+                |||
+                Client <- Server : <b>[[#quote_executed quote_executed]]</b>
+            end
+
+            group canceling all quotes
+                |||
+                Client -> Server : <b>[[#cancel_all_quotes_ltaccount_id_gt cancel_all_quotes<account_id>]]</b>
+                ... in case of <b>success</b>: ...
+                Client <- Server : <b>[[#all_quotes_cancelled_ltaccount_id_gt all_quotes_cancelled<account_id>]]</b>
+                ... in case of <b>failure</b>: TBD ...
+            end
             |||
             Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
             Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>

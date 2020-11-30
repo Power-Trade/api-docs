@@ -10,11 +10,13 @@
 :imagesdir: protocols/svg
 :sectnums:
 
+:VERSION: VERSION 0.1
+
 ifeval::[{for_internal_use} == true]
-*INTERNAL* VERSION 0.0
+*INTERNAL* {VERSION}
 endif::[]
 ifeval::[{for_internal_use} == false]
-*EXTERNAL* VERSION 0.0
+*EXTERNAL* {VERSION}
 endif::[]
 
 include::intro/introduction.asciidoc[]
