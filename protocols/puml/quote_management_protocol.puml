@@ -54,9 +54,8 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
             group canceling all quotes
                 |||
                 Client -> Server : <b>[[#cancel_all_quotes_ltaccount_id_gt cancel_all_quotes<account_id>]]</b>
-                ... in case of <b>success</b>: ...
+                ... always <b>successfull</b>: ...
                 Client <- Server : <b>[[#all_quotes_cancelled_ltaccount_id_gt all_quotes_cancelled<account_id>]]</b>
-                ... in case of <b>failure</b>: TBD ...
             end
             |||
             Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
