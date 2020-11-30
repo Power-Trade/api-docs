@@ -37,12 +37,6 @@ endif::[]
 | Reference data for a tradeable entity that is traded using a simple, single market.
 | <<trading_rule,trading_rule>>
 | A trading rule that determines order and trade validation.
-| <<reference_price,reference_price>>
-| Notification of a reference price update.
-| <<settlement_price,settlement_price>>
-| Notification of a settlement price update.
-| <<trading_state,trading_state>>
-| Reflects the current state of trading in the tradeable entity and market.
 |=================================
 
 [[Service_Guide_Market_Data]]
