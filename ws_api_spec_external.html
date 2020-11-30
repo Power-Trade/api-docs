@@ -1291,10 +1291,10 @@ In case fractional part is 0, corresponding number of zero decimals will appiar 
 <p><code>nonce</code> - Monotonically increasing integer number. Usually, a timestamp can be used.</p>
 </li>
 <li>
-<p><code>iat</code> - The &lt;&lt;<a href="https://en.wikipedia.org/wiki/Unix_time" class="bare">https://en.wikipedia.org/wiki/Unix_time</a>, Unit time&gt;&gt; at which the JWT was issued,, in seconds since Epoch.</p>
+<p><code>iat</code> - The <a href="https://en.wikipedia.org/wiki/Unix_time">Unit time</a> at which the JWT was issued, in seconds.</p>
 </li>
 <li>
-<p><code>exp</code> - The expiration Unix time on and after which the JWT must not be accepted for processing, in seconds since Epoch. Must be less than iat+30sec.</p>
+<p><code>exp</code> - The expiration <a href="https://en.wikipedia.org/wiki/Unix_time">Unit time</a> on and after which the JWT must not be accepted for processing, in seconds. Must be less than iat+30sec.</p>
 </li>
 <li>
 <p><code>sub</code> - The API Key.</p>
@@ -1302,7 +1302,7 @@ In case fractional part is 0, corresponding number of zero decimals will appiar 
 </ul>
 </div>
 <div class="paragraph">
-<p>The JWT should be signed with the API <code>secret_key</code> using the ES256 (elliptic curves using sha256) algorithm.</p>
+<p>The JWT should be signed with the API <code>secret_key</code> using the <strong>ES256</strong> (elliptic curves using <strong>sha256</strong>) algorithm.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12608,7 +12608,7 @@ The type also supports the following string constants:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-30 11:16:28 UTC
+Last updated 2020-11-30 21:40:19 +0900
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
