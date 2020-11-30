@@ -1,0 +1,75 @@
+[[Authentication]]
+=== Authentication
+
+PowerTrade requires clients to use API keys in order to access the APIs.
+
+There are two components to an API key: the key itself and an API `secret_key`. Both are needed in order to authenticate and use API services.
+
+The `secret_key` is used to sign session protocol messages sent to the platform’s backend during <<login, login>>.
+
+The details about signing procedure can be found below.
+
+==== Obtaining API keys and secrets
+
+// TODO - add step by step instructions
+API keys can be obtained here <link>.
+
+==== Generating credentials_secret
+
+To initiate a session after establishing a WSS connection to a service, users must send a <<login, login>> message to the backend using their email as the `credentials` and a generated `credentials_secret`.
+
+The `credentials_secret` is a specially constructed JSON Web Token (JWT) that is signed using the user's API `secret_key`. The following JWT claims are required in order to use submit a valid `credentials_secret`:
+
+- `client` - Set to `api`.
+- `uri` - The production endpoint of the requested service.
+- `nonce` - Monotonically increasing integer number. Usually, a timestamp can be used.
+- `iat` - The <<https://en.wikipedia.org/wiki/Unix_time, Unit time>> at which the JWT was issued,, in seconds since Epoch.
+- `exp` - The expiration Unix time on and after which the JWT must not be accepted for processing, in seconds since Epoch. Must be less than iat+30sec.
+- `sub` - The API Key.
+
+The JWT should be signed with the API `secret_key` using the ES256 (elliptic curves using sha256) algorithm.
+
+[source,python]
+-------------------
+TODO: place Python code here
+-------------------
+
+[source,golang]
+-------------------
+import (
+	"fmt"
+	"os"
+	"time"
+	jwt "github.com/dgrijalva/jwt-go"
+)
+
+type ClientCredentialsClaim struct {
+	Uri    string
+	Client string
+	Nonce  int64
+	jwt.StandardClaims
+}
+
+func GenerateCredentialsSecret() string {
+	now := time.Now()
+	claims := ClientCredentialsClaim{
+		Uri: "", // TODO - fill in with example production url
+		Client: "api",
+		None: now.Unix(),
+		jwt.StandardClaims{
+			ExpiresAt: now.UTC().Add(30 * time.Second).Unix(),
+			IssuedAt:  now.Unix(),
+			Subject:   a.ApiKey,
+		},
+	}
+	secretKey := os.Getenv("PEM_SECRET_KEY")
+	privateKey, _ := jwt.ParseECPrivateKeyFromPEM([]byte(secretKey))
+	credentialsSecret, _ := token.SignedString(privKey)
+	return credentialsSecret
+}
+
+func main() {
+	fmt.Println(GenerateCredentialsSecret())
+}
+
+-------------------

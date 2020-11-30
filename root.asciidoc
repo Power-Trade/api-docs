@@ -36,7 +36,7 @@ include::intro/monetary_values.asciidoc[]
 
 include::protocols/protocols_overview.asciidoc[]
 
-include::protocols/authentification.asciidoc[]
+include::protocols/authentication.asciidoc[]
 
 include::protocols/session_control.asciidoc[]
 

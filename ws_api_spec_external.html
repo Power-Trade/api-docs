@@ -787,7 +787,12 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#_protocols">4. <strong>Protocols</strong></a>
 <ul class="sectlevel2">
 <li><a href="#_protocols_overview">4.1. Protocols Overview</a></li>
-<li><a href="#Authentication">4.2. Authentication</a></li>
+<li><a href="#Authentication">4.2. Authentication</a>
+<ul class="sectlevel3">
+<li><a href="#_obtaining_api_keys_and_secrets">4.2.1. Obtaining API keys and secrets</a></li>
+<li><a href="#_generating_credentials_secret">4.2.2. Generating credentials_secret</a></li>
+</ul>
+</li>
 <li><a href="#Session_Control_Protocol_LogIn_LogOut">4.3. Session Control Protocol</a></li>
 <li><a href="#Managing_Cycles">4.4. Cycles, Channels and Streams</a></li>
 <li><a href="#Reference_Data">4.5. Reference Data</a></li>
@@ -1252,18 +1257,96 @@ In case fractional part is 0, corresponding number of zero decimals will appiar 
 <p>PowerTrade requires clients to use API keys in order to access the APIs.</p>
 </div>
 <div class="paragraph">
-<p>There are two components to an API key: the key itself and the so-called “secret”. Both are needed in order to authenticate with the API and in order to use the API.</p>
+<p>There are two components to an API key: the key itself and an API <code>secret_key</code>. Both are needed in order to authenticate and use API services.</p>
 </div>
 <div class="paragraph">
-<p>The “secret” is used to sign messages sent to the platform’s backend.
-The API key serves as a username. API keys can be obtained here &lt;link&gt;.</p>
+<p>The <code>secret_key</code> is used to sign session protocol messages sent to the platform’s backend during <a href="#login">login</a>.</p>
 </div>
 <div class="paragraph">
-<p>The detailes about signing procedure can be found below.</p>
+<p>The details about signing procedure can be found below.</p>
+</div>
+<div class="sect3">
+<h4 id="_obtaining_api_keys_and_secrets">4.2.1. Obtaining API keys and secrets</h4>
+<div class="paragraph">
+<p>API keys can be obtained here &lt;link&gt;.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_generating_credentials_secret">4.2.2. Generating credentials_secret</h4>
+<div class="paragraph">
+<p>To initiate a session after establishing a WSS connection to a service, users must send a <a href="#login">login</a> message to the backend using their email as the <code>credentials</code> and a generated <code>credentials_secret</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>credentials_secret</code> is a specially constructed JSON Web Token (JWT) that is signed using the user&#8217;s API <code>secret_key</code>. The following JWT claims are required in order to use submit a valid <code>credentials_secret</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>client</code> - Set to <code>api</code>.</p>
+</li>
+<li>
+<p><code>uri</code> - The production endpoint of the requested service.</p>
+</li>
+<li>
+<p><code>nonce</code> - Monotonically increasing integer number. Usually, a timestamp can be used.</p>
+</li>
+<li>
+<p><code>iat</code> - The &lt;&lt;<a href="https://en.wikipedia.org/wiki/Unix_time" class="bare">https://en.wikipedia.org/wiki/Unix_time</a>, Unit time&gt;&gt; at which the JWT was issued,, in seconds since Epoch.</p>
+</li>
+<li>
+<p><code>exp</code> - The expiration Unix time on and after which the JWT must not be accepted for processing, in seconds since Epoch. Must be less than iat+30sec.</p>
+</li>
+<li>
+<p><code>sub</code> - The API Key.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The JWT should be signed with the API <code>secret_key</code> using the ES256 (elliptic curves using sha256) algorithm.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">TODO: place Python/Golang code here</code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">TODO: place Python code here</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-golang hljs" data-lang="golang">import (
+	"fmt"
+	"os"
+	"time"
+	jwt "github.com/dgrijalva/jwt-go"
+)
+
+type ClientCredentialsClaim struct {
+	Uri    string
+	Client string
+	Nonce  int64
+	jwt.StandardClaims
+}
+
+func GenerateCredentialsSecret() string {
+	now := time.Now()
+	claims := ClientCredentialsClaim{
+		Uri: "", // TODO - fill in with example production url
+		Client: "api",
+		None: now.Unix(),
+		jwt.StandardClaims{
+			ExpiresAt: now.UTC().Add(30 * time.Second).Unix(),
+			IssuedAt:  now.Unix(),
+			Subject:   a.ApiKey,
+		},
+	}
+	secretKey := os.Getenv("PEM_SECRET_KEY")
+	privateKey, _ := jwt.ParseECPrivateKeyFromPEM([]byte(secretKey))
+	credentialsSecret, _ := token.SignedString(privKey)
+	return credentialsSecret
+}
+
+func main() {
+	fmt.Println(GenerateCredentialsSecret())
+}</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -12525,7 +12608,7 @@ The type also supports the following string constants:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-30 12:03:12 +0900
+Last updated 2020-11-30 11:16:28 UTC
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
