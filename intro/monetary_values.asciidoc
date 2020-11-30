@@ -7,6 +7,8 @@ The key requirement for proper handling of monetary values is to ensure their _p
 
 To keep all monetary values always precise, at PowerTrade platform monetary values represented using simple integer-based notation with corresponding scaling by defined number of decimals in fractional parts for each currency.
 
+*To be able to encode/decode monetary values, API client should collect and store <<Reference_Data, Reference Data>> provided by <<market_data_protocol, Market Data Service Protocol>> at the begining of each exchange cycle.*
+
 Here is the example of representation of value "price" equal to "1.12345678 ABC" for some <<deliverable, *deliverable*>> entity:
 
 The <<price, *price*>> tells you what the value is in.
