@@ -39,14 +39,14 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
             |||
             Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
             |||
-            group account adding:
+            group account adding
                 Client -> Server : <b>[[#add_account_ltsimple_account_gt add_account<simple_account>]]</b>
                 ... in case of <b><b>success</b></b>: ...
                 Client <- Server : <b>[[#account_added_ltsimple_account_gt account_added<simple_account>]]</b>
                 ... in case of <b>failure</b>: ...
                 Client <- Server : <b>[[#account_action_rejected_ltadd_account_ltsimple_account_gt_gt account_action_rejected<add_account<simple_account>>]]</b>
             end
-            group account removal:
+            group account removal
                 ... 1. using known [[#account_id account_id]] : ...
                 Client -> Server : <b>[[#remove_account_ltaccount_id_gt remove_account<account_id>]]</b>
                 ... 1a. in case of <b>success</b>: ...
@@ -60,7 +60,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
                 ... 2b. in case of <b>failure</b>: ...
                 Client <- Server : <b>[[#account_action_rejected_ltremove_account_ltaccount_token_gt_gt account_action_rejected<remove_account<account_token>>]]</b>
             end
-            group account suspending:
+            group account suspending
                 ... 1. using known [[#account_id account_id]] : ...
                 Client -> Server : <b>[[#suspend_account_ltaccount_id_gt suspend_account<account_id>]]</b>
                 ... 1a. in case of <b>success</b>: ...
@@ -74,7 +74,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
                 ... 2b. in case of <b>failure</b>: ...
                 Client <- Server : <b>[[#account_action_rejected_ltsuspend_account_ltaccount_token_gt_gt account_action_rejected<suspend_account<account_token>>]]</b>
             end
-            group resuming suspended account:
+            group resuming suspended account
                 ... 1. using known [[#account_id account_id]] : ...
                 Client -> Server : <b>[[#unsuspend_account_ltaccount_id_gt unsuspend_account<account_id>]]</b>
                 ... 1a. in case of <b>success</b>: ...
@@ -88,14 +88,14 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
                 ... 2b. in case of <b>failure</b>: ...
                 Client <- Server : <b>[[#account_action_rejected_ltunsuspend_account_ltaccount_token_gt_gt account_action_rejected<unsuspend_account<account_token>>]]</b>
             end
-            group adding [[#mobile_app_account mobile_app_account]]:
+            group adding [[#mobile_app_account mobile_app_account]]
                 Client -> Server : <b>[[#add_account_ltmobile_app_account_gt add_account<mobile_app_account>]]</b>
                 ... in case of <b>success</b>: ...
                 Client <- Server : <b>[[#account_updated_ltmobile_app_account_gt account_updated<mobile_app_account>]]</b>
                 ... in case of <b>failure</b>: ...
                 Client <- Server : <b>[[#account_action_rejected_ltadd_account_ltmobile_app_account_gt_gt account_action_rejected<add_account<mobile_app_account>>]]</b>
             end
-            group updating [[#mobile_app_account mobile_app_account]]:
+            group updating [[#mobile_app_account mobile_app_account]]
                 ... 1. using known [[#account_id account_id]] : ...
                 Client -> Server : <b>[[#update_account_ltaccount_id_commamobile_app_account_gt update_account<account_id,mobile_app_account>]]</b>
                 ... 1a. in case of <b>success</b>: ...
@@ -109,7 +109,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
                 ... 2b. in case of <b>failure</b>: ...
                 Client <- Server : <b>[[#account_action_rejected_ltupdate_account_ltaccount_token_commamobile_app_account_gt_gt account_action_rejected<update_account<account_token,mobile_app_account>>]]</b>
             end
-            group examples of asynchronous account notifications:
+            group examples of asynchronous account notifications
                 ... account consistency marker: ...
                 Client <- Server : <b>[[#account_consistency_marker account_consistency_marker]]</b>
                 ... other account notifications: ...
