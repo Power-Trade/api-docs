@@ -4,8 +4,10 @@ These API docs are a preview for the unreleased PowerTrade test environment. The
 
 Make sure to have/install:
 
-- Java with correct values in $JAVA_HOME, $PATH;
-- asciidoctor with extentions;
+-- Java with correct values in $JAVA_HOME, $PATH;
+-- install asciidoctor with extentions:
+* Linux: https://asciidoctor.org/
+* MacOS: https://asciidoctor.org/docs/install-asciidoctor-macos/#vanilla-procedure
 
 To generate EXTERNAL VERSION (under /api-docs directory):
 
