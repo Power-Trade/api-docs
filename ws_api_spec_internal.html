@@ -1791,7 +1791,7 @@ Country: JP
   </g>
 </svg>
 </div>
-<div class="title">Figure 1. Diagram of Session Control Protocol</div>
+<div class="title">Figure 1. Diagram of <strong>Session Control Protocol</strong></div>
 </div>
 <div class="paragraph">
 <p>The details of related messages can be found in <a href="#Session_Protocol_Requests">Session Protocol Requests</a>, <a href="#Session_Protocol_Responses">Session Protocol Responses</a>.</p>
@@ -2288,7 +2288,7 @@ Country: JP
   </g>
 </svg>
 </div>
-<div class="title">Figure 2. Diagram of Market Data Protocol</div>
+<div class="title">Figure 2. Diagram of <strong>Market Data Protocol</strong></div>
 </div>
 <div class="paragraph">
 <p>The corresponding message set can be found in <a href="#Market_Data_Messages">Market Data Messages</a>.</p>
@@ -2724,7 +2724,7 @@ Country: JP
   </g>
 </svg>
 </div>
-<div class="title">Figure 3. Diagram of Order Management Protocol</div>
+<div class="title">Figure 3. Diagram of <strong>Order Management Protocol</strong></div>
 </div>
 <div class="paragraph">
 <p>The corresponding message sets can be found in <a href="#Order_Management_Requests">Order Management Requests</a>/<a href="#Order_Management_Responses">Responses</a>.</p>
@@ -4233,14 +4233,14 @@ Country: JP
   </g>
 </svg>
 </div>
-<div class="title">Figure 4. Diagram of Position Data Protocol</div>
+<div class="title">Figure 4. Diagram of <strong>Position Data Protocol</strong></div>
 </div>
 <div class="paragraph">
 <p>The position data is mainly provided in <a href="#position">position</a> message update and
 the most important fields of it listed below:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 5. The most important <a href="#position">position</a> fields:</caption>
+<caption class="title">Table 5. <strong>The most important <a href="#position">position</a> fields</strong>:</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -4955,7 +4955,7 @@ Country: JP
   </g>
 </svg>
 </div>
-<div class="title">Figure 5. Diagram of Quote Management Protocol</div>
+<div class="title">Figure 5. Diagram of <strong>Quote Management Protocol</strong></div>
 </div>
 <div class="paragraph">
 <p>The corresponding message sets can be found in <a href="#Quote_Management_Requests">Quote Management Requests</a>/<a href="#Quote_Management_Responses">Responses</a>.</p>
@@ -4967,14 +4967,70 @@ Country: JP
 <div class="sect2">
 <h3 id="Service_Guide_Accounts_Management">4.11. Accounts Management</h3>
 <div class="paragraph">
-<p>Accounts Management Service provides information for corresponding operations, including <a href="#Reference_Data">Reference Data</a>.
-The corresponding message sets can be found in <a href="#Account_Management_Requests">Account Management Requests</a>/<a href="#Account_Management_Responses">Responses</a>.</p>
+<p>Accounts Management Service provides information for corresponding operations, including <a href="#Reference_Data">Reference Data</a>.</p>
+</div>
+<div class="paragraph">
+<p>It also sents <strong>account-related asynchronous notifications</strong> in case of corresponding changes:</p>
+</div>
+<table id="account_notifications" class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 6. <strong>Account-related notifications sent by Accounts Management and Funds Management Services</strong>:</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_added_ltsimple_account_gt">account_added&lt;simple_account</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a new account was added.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_removed">account_removed</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that an existing account was removed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_suspended">account_suspended</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that an existing account was suspended.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_unsuspended">account_unsuspended</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that an existing account was unsuspended.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_added_ltmobile_app_account_gt">account_added&lt;mobile_app_account</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a new mobile app account was added.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_updated_ltmobile_app_account_gt">account_updated&lt;mobile_app_account</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that an update was made to a mobile app account.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_restated_ltsimple_account_gt">account_restated&lt;simple_account</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a &lt;simple_account&gt; was restated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_restated_ltmobile_app_account_gt">account_restated&lt;mobile_app_account</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a &lt;mobile_app_account&gt; was restated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#account_consistency_marker">account_consistency_marker</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that the account_restated messages are in a consistent state.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The complete message sets can be found in <a href="#Account_Management_Requests">Account Management Requests</a>/<a href="#Account_Management_Responses">Responses</a>.</p>
 </div>
 <div id="accounts_management_protocol" class="imageblock text-center">
 <div class="content">
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' contentScriptType='application/ecmascript' contentStyleType='text/css' preserveAspectRatio='none' version='1.1' viewBox='0 0 749 3154' zoomAndPan='magnify' width="749" height="3154">
   <defs>
-    <filter height='300%' id='f7kdpdqh0bknx' width='300%' x='-1' y='-1'>
+    <filter height='300%' id='f1epgmonwxsao0' width='300%' x='-1' y='-1'>
       <feGaussianBlur result='blurOut' stdDeviation='2.0'/>
       <feColorMatrix in='blurOut' result='blurOut2' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0'/>
       <feOffset dx='4.0' dy='4.0' in='blurOut2' result='blurOut3'/>
@@ -4982,16 +5038,16 @@ The corresponding message sets can be found in <a href="#Account_Management_Requ
     </filter>
   </defs>
   <g>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='3000.6445' style='stroke: #000000; stroke-width: 2.0;' width='714.5' x='13' y='72.6211'/>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='2846.4688' style='stroke: #000000; stroke-width: 2.0;' width='694.5' x='23' y='219.7969'/>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='2774.2031' style='stroke: #000000; stroke-width: 2.0;' width='674.5' x='33' y='244.1074'/>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='212.1523' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='406.3496'/>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='438.9043' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='632.502'/>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='438.9043' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='1085.4063'/>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='438.9043' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='1538.3105'/>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='212.1523' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='1991.2148'/>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='438.9043' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='2217.3672'/>
-    <rect fill='#FFFFFF' filter='url(#f7kdpdqh0bknx)' height='257.418' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='2670.2715'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='3000.6445' style='stroke: #000000; stroke-width: 2.0;' width='714.5' x='13' y='72.6211'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='2846.4688' style='stroke: #000000; stroke-width: 2.0;' width='694.5' x='23' y='219.7969'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='2774.2031' style='stroke: #000000; stroke-width: 2.0;' width='674.5' x='33' y='244.1074'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='212.1523' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='406.3496'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='438.9043' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='632.502'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='438.9043' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='1085.4063'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='438.9043' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='1538.3105'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='212.1523' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='1991.2148'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='438.9043' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='2217.3672'/>
+    <rect fill='#FFFFFF' filter='url(#f1epgmonwxsao0)' height='257.418' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='2670.2715'/>
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='55.6211' y2='89.9316'/>
     <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='89.9316' y2='130.8867'/>
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='130.8867' y2='130.8867'/>
@@ -5134,19 +5190,19 @@ The corresponding message sets can be found in <a href="#Account_Management_Requ
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='656.5' x2='656.5' y1='2927.6895' y2='3025.3105'/>
     <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='656.5' x2='656.5' y1='3025.3105' y2='3066.2656'/>
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='656.5' x2='656.5' y1='3066.2656' y2='3090.2656'/>
-    <rect fill='#FEFECE' filter='url(#f7kdpdqh0bknx)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='53' y='20.1328'/>
+    <rect fill='#FEFECE' filter='url(#f1epgmonwxsao0)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='53' y='20.1328'/>
     <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='60' y='40.668'>
       Client
     </text>
-    <rect fill='#FEFECE' filter='url(#f7kdpdqh0bknx)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='53' y='3089.2656'/>
+    <rect fill='#FEFECE' filter='url(#f1epgmonwxsao0)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='53' y='3089.2656'/>
     <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='60' y='3109.8008'>
       Client
     </text>
-    <rect fill='#FEFECE' filter='url(#f7kdpdqh0bknx)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='626.5' y='20.1328'/>
+    <rect fill='#FEFECE' filter='url(#f1epgmonwxsao0)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='626.5' y='20.1328'/>
     <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='633.5' y='40.668'>
       Server
     </text>
-    <rect fill='#FEFECE' filter='url(#f7kdpdqh0bknx)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='626.5' y='3089.2656'/>
+    <rect fill='#FEFECE' filter='url(#f1epgmonwxsao0)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='626.5' y='3089.2656'/>
     <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='633.5' y='3109.8008'>
       Server
     </text>
@@ -5735,10 +5791,18 @@ The corresponding message sets can be found in <a href="#Account_Management_Requ
         account_action_rejected&lt;update_account&lt;account_token,mobile_app_account&gt;&gt;
       </text>
     </a>
-    <path d='M43,2670.2715 L413,2670.2715 L413,2677.2715 L403,2687.2715 L43,2687.2715 L43,2670.2715 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <path d='M43,2670.2715 L416,2670.2715 L416,2677.2715 L406,2687.2715 L43,2687.2715 L43,2670.2715 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
     <rect fill='none' height='257.418' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='43' y='2670.2715'/>
-    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='325' x='58' y='2683.8398'>
-      examples of asynchronous account notifications
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='181' x='58' y='2683.8398'>
+      examples of asynchronous
+    </text>
+    <a href='#account_notifications' xlink:href='#account_notifications' target='_top' title='#account_notifications' xlink:title='#account_notifications' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='140' x='243' y='2683.8398'>
+        account notifications
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='3' x='383' y='2683.8398'>
+      :
     </text>
     <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='43' x='290.5' y='2712.2168'>
       account
@@ -5816,7 +5880,7 @@ The corresponding message sets can be found in <a href="#Account_Management_Requ
         PowerTrade Exchange
       </text>
     </a>
-    <!--MD5=[cbba1960b6f56fa134e71fe37843f25f]
+    <!--MD5=[cbe02efd6380ce3f342de21570d509ee]
 @startuml accounts_management_protocol
 
 
@@ -5916,7 +5980,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
                 ... 2b. in case of <b>failure</b>: ...
                 Client <- Server : <b>[[#account_action_rejected_ltupdate_account_ltaccount_token_commamobile_app_account_gt_gt account_action_rejected<update_account<account_token,mobile_app_account>>]]</b>
             end
-            group examples of asynchronous account notifications
+            group examples of asynchronous [[#account_notifications account notifications]]:
                 ... account <b>consistency marker</b>: ...
                 Client <- Server : <b>[[#account_consistency_marker account_consistency_marker]]</b>
                 ... other account notifications: ...
@@ -5948,7 +6012,7 @@ Country: JP
   </g>
 </svg>
 </div>
-<div class="title">Figure 6. Diagram of Accounts Management Protocol</div>
+<div class="title">Figure 6. Diagram of <strong>Accounts Management Protocol</strong></div>
 </div>
 <div class="paragraph">
 <p>TBD</p>
@@ -5957,13 +6021,56 @@ Country: JP
 <div class="sect2">
 <h3 id="Service_Guide_Funds_Management">4.12. Funds Management</h3>
 <div class="paragraph">
-<p>The corresponding message sets can be found in <a href="#Funds_Management_Requests">Funds Management Requests</a>/<a href="#Funds_Management_Responses">Responses</a>.</p>
+<p>This service implements the operations on funds, such as <strong>deposit</strong> (using <a href="#deposit_funds">deposit_funds</a> request) and <strong>withdrawal</strong> (using <a href="#withdraw_funds">withdraw_funds</a> request).
+Since such operations <strong>impact entire account state</strong>, corresponding <a href="#account_notifications">account-related notifications</a> (part of <a href="#accounts_management_protocol">Accounts Management Service Protocol</a>) <strong>for consistency sent by this service too</strong>, together with funds-related updates:</p>
+</div>
+<table id="funds_notifications" class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 7. <strong>Funds-related notifications sent by Funds Management Services</strong>:</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_deposit_pending">funds_deposit_pending</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a funds deposit is pending.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_deposit_processed">funds_deposit_processed</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a funds deposit has been processed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_withdrawal_pending">funds_withdrawal_pending</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a funds withdrawal is pending.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_withdrawal_processed">funds_withdrawal_processed</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a funds withdrawal has been processed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_action_rejected_ltdeposit_funds_gt">funds_action_rejected&lt;deposit_funds</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rejects a funds deposit.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#funds_action_rejected_ltwithdraw_funds_gt">funds_action_rejected&lt;withdraw_funds</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rejects a funds withdrawal.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The complete message sets can be found in <a href="#Funds_Management_Requests">Funds Management Requests</a>/<a href="#Funds_Management_Responses">Responses</a>.</p>
 </div>
 <div id="funds_management_protocol" class="imageblock text-center">
 <div class="content">
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' contentScriptType='application/ecmascript' contentStyleType='text/css' preserveAspectRatio='none' version='1.1' viewBox='0 0 272 181' zoomAndPan='magnify' width="272" height="181">
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' contentScriptType='application/ecmascript' contentStyleType='text/css' preserveAspectRatio='none' version='1.1' viewBox='0 0 515 1495' zoomAndPan='magnify' width="515" height="1495">
   <defs>
-    <filter height='300%' id='f1c3fvzrdfynnc' width='300%' x='-1' y='-1'>
+    <filter height='300%' id='f1aaklk9vp9ist' width='300%' x='-1' y='-1'>
       <feGaussianBlur result='blurOut' stdDeviation='2.0'/>
       <feColorMatrix in='blurOut' result='blurOut2' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0'/>
       <feOffset dx='4.0' dy='4.0' in='blurOut2' result='blurOut3'/>
@@ -5971,41 +6078,358 @@ Country: JP
     </filter>
   </defs>
   <g>
-    <path d='M14.094,13.1328 C14.034,13.1328 13.989,13.1768 13.969,13.2268 L11.031,20.0398 L11,20.2278 L11,21.0408 C11,21.1008 11.034,21.1348 11.094,21.1348 L17.907,21.1348 C17.967,21.1348 18.001,21.1008 18.001,21.0408 L18.001,20.2278 L17.97,20.0398 L15.032,13.2268 C15.012,13.1768 14.967,13.1328 14.907,13.1328 L14.094,13.1328 M14,16.1328 L15,16.1328 L15,18.1328 L14,18.1328 L14,16.1328 M14,19.1328 L15,19.1328 L15,20.1328 L14,20.1328 L14,19.1328 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
-    <text fill='#888888' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' textLength='186' x='20' y='21.6016'>
-      Do not test in production, test in
+    <rect fill='#FFFFFF' filter='url(#f1aaklk9vp9ist)' height='1341.8906' style='stroke: #000000; stroke-width: 2.0;' width='480' x='13' y='72.6211'/>
+    <rect fill='#FFFFFF' filter='url(#f1aaklk9vp9ist)' height='1187.7148' style='stroke: #000000; stroke-width: 2.0;' width='460' x='23' y='219.7969'/>
+    <rect fill='#FFFFFF' filter='url(#f1aaklk9vp9ist)' height='1156.4043' style='stroke: #000000; stroke-width: 2.0;' width='440' x='33' y='244.1074'/>
+    <rect fill='#FFFFFF' filter='url(#f1aaklk9vp9ist)' height='257.418' style='stroke: #000000; stroke-width: 2.0;' width='400.5' x='43' y='352.0391'/>
+    <rect fill='#FFFFFF' filter='url(#f1aaklk9vp9ist)' height='241.4629' style='stroke: #000000; stroke-width: 2.0;' width='400.5' x='43' y='623.457'/>
+    <rect fill='#FFFFFF' filter='url(#f1aaklk9vp9ist)' height='241.4629' style='stroke: #000000; stroke-width: 2.0;' width='400.5' x='43' y='878.9199'/>
+    <rect fill='#FFFFFF' filter='url(#f1aaklk9vp9ist)' height='259.1289' style='stroke: #000000; stroke-width: 2.0;' width='420' x='43' y='1134.3828'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='55.6211' y2='89.9316'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='89.9316' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='130.8867' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='130.8867' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='171.8418' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='171.8418' y2='212.7969'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='212.7969' y2='369.3496'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='369.3496' y2='410.3047'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='410.3047' y2='439.6152'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='439.6152' y2='480.5703'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='480.5703' y2='568.502'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='568.502' y2='609.457'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='609.457' y2='695.0781'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='695.0781' y2='736.0332'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='736.0332' y2='794.6543'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='794.6543' y2='835.6094'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='835.6094' y2='950.541'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='950.541' y2='991.4961'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='991.4961' y2='1050.1172'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='1050.1172' y2='1091.0723'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='1091.0723' y2='1352.5566'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='1352.5566' y2='1393.5117'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='1393.5117' y2='1431.5117'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='55.6211' y2='89.9316'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='89.9316' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='130.8867' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='130.8867' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='171.8418' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='171.8418' y2='212.7969'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='212.7969' y2='369.3496'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='369.3496' y2='410.3047'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='410.3047' y2='439.6152'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='439.6152' y2='480.5703'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='480.5703' y2='568.502'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='568.502' y2='609.457'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='609.457' y2='695.0781'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='695.0781' y2='736.0332'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='736.0332' y2='794.6543'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='794.6543' y2='835.6094'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='835.6094' y2='950.541'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='950.541' y2='991.4961'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='991.4961' y2='1050.1172'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='1050.1172' y2='1091.0723'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='1091.0723' y2='1352.5566'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='402.5' x2='402.5' y1='1352.5566' y2='1393.5117'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='402.5' x2='402.5' y1='1393.5117' y2='1431.5117'/>
+    <rect fill='#FEFECE' filter='url(#f1aaklk9vp9ist)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='53' y='20.1328'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='60' y='40.668'>
+      Client
     </text>
-    <a href='#WS_API_Services_Sandbox' xlink:href='#WS_API_Services_Sandbox' target='_top' title='#WS_API_Services_Sandbox' xlink:title='#WS_API_Services_Sandbox' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='50' x='210' y='21.6016'>
-        sandbox
-      </text>
-    </a>
-    <rect fill='#FFFFFF' filter='url(#f1c3fvzrdfynnc)' height='133.4297' style='stroke: #000000; stroke-width: 2.0;' width='240' x='15.5' y='24.1328'/>
-    <path d='M204.5,25.1328 L204.5,33.6211 L194.5,43.6211 L15.5,43.6211 ' fill='none' style='stroke: #000000; stroke-width: 2.0;'/>
+    <rect fill='#FEFECE' filter='url(#f1aaklk9vp9ist)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='53' y='1430.5117'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='60' y='1451.0469'>
+      Client
+    </text>
+    <rect fill='#FEFECE' filter='url(#f1aaklk9vp9ist)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='372.5' y='20.1328'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='379.5' y='40.668'>
+      Server
+    </text>
+    <rect fill='#FEFECE' filter='url(#f1aaklk9vp9ist)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='372.5' y='1430.5117'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='379.5' y='1451.0469'>
+      Server
+    </text>
+    <path d='M13,72.6211 L219,72.6211 L219,79.6211 L209,89.6211 L13,89.6211 L13,72.6211 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='1341.8906' style='stroke: #000000; stroke-width: 2.0;' width='480' x='13' y='72.6211'/>
     <a href='#session_control_with_auth' xlink:href='#session_control_with_auth' target='_top' title='#session_control_with_auth' xlink:title='#session_control_with_auth' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='14' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='179' x='18.5' y='38.668'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='161' x='28' y='86.1895'>
         Session Control Protocol
       </text>
     </a>
-    <rect fill='#FFFFFF' filter='url(#f1c3fvzrdfynnc)' height='91.4883' style='stroke: #000000; stroke-width: 2.0;' width='220' x='25.5' y='54.0742'/>
-    <path d='M240.5,55.0742 L240.5,63.5625 L230.5,73.5625 L25.5,73.5625 ' fill='none' style='stroke: #000000; stroke-width: 2.0;'/>
-    <text fill='#000000' font-family='sans-serif' font-size='14' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='205' x='28.5' y='68.6094'>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='155' y='114.5664'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='25' x='155' y='114.5664'>
+      Note
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='150' x='180' y='114.5664'>
+      : for simplicity, heartbeating
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='138' x='148.5' y='155.5215'>
+      is not shown here but it is
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='47' x='289.5' y='155.5215'>
+      required
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='339.5' y='155.5215'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='183.5' y='196.4766'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='118' x='183.5' y='196.4766'>
+      to keep session alive
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='304.5' y='196.4766'/>
+    <path d='M23,219.7969 L260,219.7969 L260,226.7969 L250,236.7969 L23,236.7969 L23,219.7969 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='1187.7148' style='stroke: #000000; stroke-width: 2.0;' width='460' x='23' y='219.7969'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='192' x='38' y='233.3652'>
       Funds Management Protocol
     </text>
-    <ellipse cx='138' cy='93.5625' fill='#FFFFFF' filter='url(#f1c3fvzrdfynnc)' rx='10' ry='10' style='stroke: #000000; stroke-width: 1.5;'/>
-    <line style='stroke: #000000; stroke-width: 2.5;' x1='131.8128' x2='144.1872' y1='87.3753' y2='99.7497'/>
-    <line style='stroke: #000000; stroke-width: 2.5;' x1='144.1872' x2='131.8128' y1='87.3753' y2='99.7497'/>
-    <ellipse cx='138' cy='123.5625' fill='#FFFFFF' filter='url(#f1c3fvzrdfynnc)' rx='10' ry='10' style='stroke: #000000; stroke-width: 1.5;'/>
-    <line style='stroke: #000000; stroke-width: 2.5;' x1='131.8128' x2='144.1872' y1='117.3753' y2='129.7497'/>
-    <line style='stroke: #000000; stroke-width: 2.5;' x1='144.1872' x2='131.8128' y1='117.3753' y2='129.7497'/>
-    <path d='M151,156.5625 L147.25,162.8125 L149.75,162.8125 L149.75,166.5625 L153.5,160.3125 L151,160.3125 L151,156.5625 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
-    <text fill='#888888' font-family='sans-serif' font-size='10' lengthAdjust='spacingAndGlyphs' textLength='0' x='160' y='168.2031'/>
+    <path d='M33,244.1074 L126,244.1074 L126,251.1074 L116,261.1074 L33,261.1074 L33,244.1074 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='1156.4043' style='stroke: #000000; stroke-width: 2.0;' width='440' x='33' y='244.1074'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='48' x='48' y='257.6758'>
+      i-Cycle
+    </text>
+    <polygon fill='#A80036' points='93,278.7285,83,282.7285,93,286.7285,89,282.7285' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='282.7285' y2='282.7285'/>
+    <a href='#cycle_starting' xlink:href='#cycle_starting' target='_top' title='#cycle_starting' xlink:title='#cycle_starting' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='94' x='195.5' y='277.9863'>
+        cycle_starting
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,308.0391,83,312.0391,93,316.0391,89,312.0391' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='312.0391' y2='312.0391'/>
+    <a href='#cycle_started' xlink:href='#cycle_started' target='_top' title='#cycle_started' xlink:title='#cycle_started' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='198' y='307.2969'>
+        cycle_started
+      </text>
+    </a>
+    <path d='M43,352.0391 L416,352.0391 L416,359.0391 L406,369.0391 L43,369.0391 L43,352.0391 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='257.418' style='stroke: #000000; stroke-width: 2.0;' width='400.5' x='43' y='352.0391'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='181' x='58' y='365.6074'>
+      examples of asynchronous
+    </text>
+    <a href='#account_notifications' xlink:href='#account_notifications' target='_top' title='#account_notifications' xlink:title='#account_notifications' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='140' x='243' y='365.6074'>
+        account notifications
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='3' x='383' y='365.6074'>
+      :
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='43' x='163.5' y='393.9844'>
+      account
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='109' x='209.5' y='393.9844'>
+      consistency marker
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='3' x='318.5' y='393.9844'>
+      :
+    </text>
+    <polygon fill='#A80036' points='93,427.6152,83,431.6152,93,435.6152,89,431.6152' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='431.6152' y2='431.6152'/>
+    <a href='#account_consistency_marker' xlink:href='#account_consistency_marker' target='_top' title='#account_consistency_marker' xlink:title='#account_consistency_marker' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='195' x='145' y='426.873'>
+        account_consistency_marker
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='148' x='168.5' y='464.25'>
+      other account notifications:
+    </text>
+    <polygon fill='#A80036' points='93,497.8809,83,501.8809,93,505.8809,89,501.8809' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='501.8809' y2='501.8809'/>
+    <a href='#account_restated_ltsimple_account_gt' xlink:href='#account_restated_ltsimple_account_gt' target='_top' title='#account_restated_ltsimple_account_gt' xlink:title='#account_restated_ltsimple_account_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='241' x='122' y='497.1387'>
+        account_restated&lt;simple_account&gt;
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,527.1914,83,531.1914,93,535.1914,89,531.1914' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='531.1914' y2='531.1914'/>
+    <a href='#account_updated_ltmobile_app_account_gt' xlink:href='#account_updated_ltmobile_app_account_gt' target='_top' title='#account_updated_ltmobile_app_account_gt' xlink:title='#account_updated_ltmobile_app_account_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='276' x='104.5' y='526.4492'>
+        account_updated&lt;mobile_app_account&gt;
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,556.502,83,560.502,93,564.502,89,560.502' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='560.502' y2='560.502'/>
+    <a href='#account_restated_ltmobile_app_account_gt' xlink:href='#account_restated_ltmobile_app_account_gt' target='_top' title='#account_restated_ltmobile_app_account_gt' xlink:title='#account_restated_ltmobile_app_account_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='275' x='105' y='555.7598'>
+        account_restated&lt;mobile_app_account&gt;
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='216' y='593.1367'>
+      and so on
+    </text>
+    <path d='M43,623.457 L203,623.457 L203,630.457 L193,640.457 L43,640.457 L43,623.457 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='241.4629' style='stroke: #000000; stroke-width: 2.0;' width='400.5' x='43' y='623.457'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='115' x='58' y='637.0254'>
+      depositing funds
+    </text>
+    <polygon fill='#A80036' points='391,683.0781,401,687.0781,391,691.0781,395,687.0781' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='397' y1='687.0781' y2='687.0781'/>
+    <a href='#deposit_funds' xlink:href='#deposit_funds' target='_top' title='#deposit_funds' xlink:title='#deposit_funds' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='96' x='194.5' y='682.3359'>
+        deposit_funds
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='51' x='192.5' y='719.7129'>
+      in case of
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='43' x='246.5' y='719.7129'>
+      success
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='3' x='289.5' y='719.7129'>
+      :
+    </text>
+    <polygon fill='#A80036' points='93,753.3438,83,757.3438,93,761.3438,89,757.3438' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='757.3438' y2='757.3438'/>
+    <a href='#funds_deposit_pending' xlink:href='#funds_deposit_pending' target='_top' title='#funds_deposit_pending' xlink:title='#funds_deposit_pending' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='160' x='162.5' y='752.6016'>
+        funds_deposit_pending
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,782.6543,83,786.6543,93,790.6543,89,786.6543' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='786.6543' y2='786.6543'/>
+    <a href='#funds_deposit_processed' xlink:href='#funds_deposit_processed' target='_top' title='#funds_deposit_processed' xlink:title='#funds_deposit_processed' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='297' x='94' y='781.9121'>
+        funds_deposit_processed&lt;simple_account&gt;
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='51' x='195.5' y='819.2891'>
+      in case of
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='37' x='249.5' y='819.2891'>
+      failure
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='3' x='286.5' y='819.2891'>
+      :
+    </text>
+    <polygon fill='#A80036' points='93,852.9199,83,856.9199,93,860.9199,89,856.9199' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='856.9199' y2='856.9199'/>
+    <a href='#funds_action_rejected_ltdeposit_funds_gt' xlink:href='#funds_action_rejected_ltdeposit_funds_gt' target='_top' title='#funds_action_rejected_ltdeposit_funds_gt' xlink:title='#funds_action_rejected_ltdeposit_funds_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='265' x='110' y='852.1777'>
+        funds_action_rejected&lt;deposit_funds&gt;
+      </text>
+    </a>
+    <path d='M43,878.9199 L216,878.9199 L216,885.9199 L206,895.9199 L43,895.9199 L43,878.9199 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='241.4629' style='stroke: #000000; stroke-width: 2.0;' width='400.5' x='43' y='878.9199'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='128' x='58' y='892.4883'>
+      withdrawing funds
+    </text>
+    <polygon fill='#A80036' points='391,938.541,401,942.541,391,946.541,395,942.541' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='397' y1='942.541' y2='942.541'/>
+    <a href='#withdraw_funds' xlink:href='#withdraw_funds' target='_top' title='#withdraw_funds' xlink:title='#withdraw_funds' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='109' x='188' y='937.7988'>
+        withdraw_funds
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='51' x='192.5' y='975.1758'>
+      in case of
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='43' x='246.5' y='975.1758'>
+      success
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='3' x='289.5' y='975.1758'>
+      :
+    </text>
+    <polygon fill='#A80036' points='93,1008.8066,83,1012.8066,93,1016.8066,89,1012.8066' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='1012.8066' y2='1012.8066'/>
+    <a href='#funds_withdrawal_pending' xlink:href='#funds_withdrawal_pending' target='_top' title='#funds_withdrawal_pending' xlink:title='#funds_withdrawal_pending' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='185' x='150' y='1008.0645'>
+        funds_withdrawal_pending
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,1038.1172,83,1042.1172,93,1046.1172,89,1042.1172' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='1042.1172' y2='1042.1172'/>
+    <a href='#funds_withdrawal_processed' xlink:href='#funds_withdrawal_processed' target='_top' title='#funds_withdrawal_processed' xlink:title='#funds_withdrawal_processed' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='197' x='144' y='1037.375'>
+        funds_withdrawal_processed
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='51' x='195.5' y='1074.752'>
+      in case of
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='37' x='249.5' y='1074.752'>
+      failure
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='3' x='286.5' y='1074.752'>
+      :
+    </text>
+    <polygon fill='#A80036' points='93,1108.3828,83,1112.3828,93,1116.3828,89,1112.3828' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='1112.3828' y2='1112.3828'/>
+    <a href='#funds_action_rejected_ltwithdraw_funds_gt' xlink:href='#funds_action_rejected_ltwithdraw_funds_gt' target='_top' title='#funds_action_rejected_ltwithdraw_funds_gt' xlink:title='#funds_action_rejected_ltwithdraw_funds_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='278' x='103.5' y='1107.6406'>
+        funds_action_rejected&lt;withdraw_funds&gt;
+      </text>
+    </a>
+    <path d='M43,1134.3828 L458,1134.3828 L458,1141.3828 L448,1151.3828 L43,1151.3828 L43,1134.3828 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='259.1289' style='stroke: #000000; stroke-width: 2.0;' width='420' x='43' y='1134.3828'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='181' x='58' y='1147.9512'>
+      examples of asynchronous
+    </text>
+    <a href='#funds_notifications' xlink:href='#funds_notifications' target='_top' title='#funds_notifications' xlink:title='#funds_notifications' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='182' x='243' y='1147.9512'>
+        funds-related notifications
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='3' x='425' y='1147.9512'>
+      :
+    </text>
+    <polygon fill='#A80036' points='93,1194.0039,83,1198.0039,93,1202.0039,89,1198.0039' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='1198.0039' y2='1198.0039'/>
+    <a href='#funds_deposit_pending' xlink:href='#funds_deposit_pending' target='_top' title='#funds_deposit_pending' xlink:title='#funds_deposit_pending' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='160' x='162.5' y='1193.2617'>
+        funds_deposit_pending
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,1223.3145,83,1227.3145,93,1231.3145,89,1227.3145' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='1227.3145' y2='1227.3145'/>
+    <a href='#funds_deposit_processed' xlink:href='#funds_deposit_processed' target='_top' title='#funds_deposit_processed' xlink:title='#funds_deposit_processed' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='297' x='94' y='1222.5723'>
+        funds_deposit_processed&lt;simple_account&gt;
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,1252.625,83,1256.625,93,1260.625,89,1256.625' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='1256.625' y2='1256.625'/>
+    <a href='#funds_withdrawal_pending' xlink:href='#funds_withdrawal_pending' target='_top' title='#funds_withdrawal_pending' xlink:title='#funds_withdrawal_pending' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='185' x='150' y='1251.8828'>
+        funds_withdrawal_pending
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,1281.9355,83,1285.9355,93,1289.9355,89,1285.9355' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='1285.9355' y2='1285.9355'/>
+    <a href='#funds_withdrawal_processed' xlink:href='#funds_withdrawal_processed' target='_top' title='#funds_withdrawal_processed' xlink:title='#funds_withdrawal_processed' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='197' x='144' y='1281.1934'>
+        funds_withdrawal_processed
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,1311.2461,83,1315.2461,93,1319.2461,89,1315.2461' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='1315.2461' y2='1315.2461'/>
+    <a href='#funds_action_rejected_ltdeposit_funds_gt' xlink:href='#funds_action_rejected_ltdeposit_funds_gt' target='_top' title='#funds_action_rejected_ltdeposit_funds_gt' xlink:title='#funds_action_rejected_ltdeposit_funds_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='265' x='110' y='1310.5039'>
+        funds_action_rejected&lt;deposit_funds&gt;
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,1340.5566,83,1344.5566,93,1348.5566,89,1344.5566' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='402' y1='1344.5566' y2='1344.5566'/>
+    <a href='#funds_action_rejected_ltwithdraw_funds_gt' xlink:href='#funds_action_rejected_ltwithdraw_funds_gt' target='_top' title='#funds_action_rejected_ltwithdraw_funds_gt' xlink:title='#funds_action_rejected_ltwithdraw_funds_gt' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='278' x='103.5' y='1339.8145'>
+        funds_action_rejected&lt;withdraw_funds&gt;
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='216' y='1377.1914'>
+      and so on
+    </text>
+    <path d='M257.094,6.1328 C257.034,6.1328 256.989,6.1768 256.969,6.2268 L254.031,13.0398 L254,13.2278 L254,14.0408 C254,14.1008 254.034,14.1348 254.094,14.1348 L260.907,14.1348 C260.967,14.1348 261.001,14.1008 261.001,14.0408 L261.001,13.2278 L260.97,13.0398 L258.032,6.2268 C258.012,6.1768 257.967,6.1328 257.907,6.1328 L257.094,6.1328 M257,9.1328 L258,9.1328 L258,11.1328 L257,11.1328 L257,9.1328 M257,12.1328 L258,12.1328 L258,13.1328 L257,13.1328 L257,12.1328 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
+    <text fill='#888888' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' textLength='186' x='263' y='14.6016'>
+      Do not test in production, test in
+    </text>
+    <a href='#WS_API_Services_Sandbox' xlink:href='#WS_API_Services_Sandbox' target='_top' title='#WS_API_Services_Sandbox' xlink:title='#WS_API_Services_Sandbox' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='50' x='453' y='14.6016'>
+        sandbox
+      </text>
+    </a>
+    <path d='M394,1470 L390.25,1476.25 L392.75,1476.25 L392.75,1480 L396.5,1473.75 L394,1473.75 L394,1470 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
+    <text fill='#888888' font-family='sans-serif' font-size='10' lengthAdjust='spacingAndGlyphs' textLength='0' x='403' y='1481.6406'/>
     <a href='https://power.trade' xlink:href='https://power.trade' target='_top' title='https://power.trade' xlink:title='https://power.trade' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='9' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='100' x='160' y='168.4141'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='9' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='100' x='403' y='1481.8516'>
         PowerTrade Exchange
       </text>
     </a>
-    <!--MD5=[1bd0701f78c7c9769c1e63fb39d892b7]
+    <!--MD5=[2f0e039f5999238cc2d1fa201173fbb9]
 @startuml funds_management_protocol
 
 
@@ -6022,9 +6446,57 @@ right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Ex
 
 group <b>[[#session_control_with_auth Session Control Protocol]]</b>
 
+    ... <b>Note</b>: for simplicity, heartbeating ...
+    ... is not shown here but it is <b>required</b> ...
+    ... <b>to keep session alive</b> ...
 
     group <b>Funds Management Protocol</b>
 
+        group i-Cycle
+            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
+            |||
+            group examples of asynchronous [[#account_notifications account notifications]]:
+                ... account <b>consistency marker</b>: ...
+                Client <- Server : <b>[[#account_consistency_marker account_consistency_marker]]</b>
+                ... other account notifications: ...
+                Client <- Server : <b>[[#account_restated_ltsimple_account_gt account_restated<simple_account>]]</b>
+                Client <- Server : <b>[[#account_updated_ltmobile_app_account_gt account_updated<mobile_app_account>]]</b>
+                Client <- Server : <b>[[#account_restated_ltmobile_app_account_gt account_restated<mobile_app_account>]]</b>
+                ... and so on ...
+            end
+
+            group depositing funds
+                |||
+                Client -> Server : <b>[[#deposit_funds deposit_funds]]</b>
+                ... in case of <b>success</b>: ...
+                Client <- Server : <b>[[#funds_deposit_pending funds_deposit_pending]]</b>
+                Client <- Server : <b>[[#funds_deposit_processed funds_deposit_processed<simple_account>]]</b>
+                ... in case of <b>failure</b>: ...
+                Client <- Server : <b>[[#funds_action_rejected_ltdeposit_funds_gt funds_action_rejected<deposit_funds>]]</b>
+            end
+
+            group withdrawing funds
+                |||
+                Client -> Server : <b>[[#withdraw_funds withdraw_funds]]</b>
+                ... in case of <b>success</b>: ...
+                Client <- Server : <b>[[#funds_withdrawal_pending funds_withdrawal_pending]]</b>
+                Client <- Server : <b>[[#funds_withdrawal_processed funds_withdrawal_processed]]</b>
+                ... in case of <b>failure</b>: ...
+                Client <- Server : <b>[[#funds_action_rejected_ltwithdraw_funds_gt funds_action_rejected<withdraw_funds>]]</b>
+            end
+
+            group examples of asynchronous [[#funds_notifications funds-related notifications]]:
+                |||
+                Client <- Server : <b>[[#funds_deposit_pending funds_deposit_pending]]</b>
+                Client <- Server : <b>[[#funds_deposit_processed funds_deposit_processed<simple_account>]]</b>
+                Client <- Server : <b>[[#funds_withdrawal_pending funds_withdrawal_pending]]</b>
+                Client <- Server : <b>[[#funds_withdrawal_processed funds_withdrawal_processed]]</b>
+                Client <- Server : <b>[[#funds_action_rejected_ltdeposit_funds_gt funds_action_rejected<deposit_funds>]]</b>
+                Client <- Server : <b>[[#funds_action_rejected_ltwithdraw_funds_gt funds_action_rejected<withdraw_funds>]]</b>
+                ... and so on ...
+            end
+        end
     end
 end
 
@@ -6043,7 +6515,7 @@ Country: JP
   </g>
 </svg>
 </div>
-<div class="title">Figure 7. Diagram of Funds Management Protocol</div>
+<div class="title">Figure 7. Diagram of <strong>Funds Management Protocol</strong></div>
 </div>
 <div class="paragraph">
 <p>TBD</p>
@@ -7254,7 +7726,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 6. account_action_rejected&lt;add_account&lt;mobile_app_account&gt;&gt; fields</caption>
+<caption class="title">Table 8. account_action_rejected&lt;add_account&lt;mobile_app_account&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7321,7 +7793,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 7. account_action_rejected&lt;add_account&lt;simple_account&gt;&gt; fields</caption>
+<caption class="title">Table 9. account_action_rejected&lt;add_account&lt;simple_account&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7386,7 +7858,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 8. account_action_rejected&lt;remove_account&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 10. account_action_rejected&lt;remove_account&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7448,7 +7920,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 9. account_action_rejected&lt;remove_account&lt;account_token&gt;&gt; fields</caption>
+<caption class="title">Table 11. account_action_rejected&lt;remove_account&lt;account_token&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7510,7 +7982,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 10. account_action_rejected&lt;suspend_account&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 12. account_action_rejected&lt;suspend_account&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7573,7 +8045,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 11. account_action_rejected&lt;suspend_account&lt;account_token&gt;&gt; fields</caption>
+<caption class="title">Table 13. account_action_rejected&lt;suspend_account&lt;account_token&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7636,7 +8108,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 12. account_action_rejected&lt;unsuspend_account&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 14. account_action_rejected&lt;unsuspend_account&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7699,7 +8171,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 13. account_action_rejected&lt;unsuspend_account&lt;account_token&gt;&gt; fields</caption>
+<caption class="title">Table 15. account_action_rejected&lt;unsuspend_account&lt;account_token&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7762,7 +8234,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 14. account_action_rejected&lt;update_account&lt;account_id,mobile_app_account&gt;&gt; fields</caption>
+<caption class="title">Table 16. account_action_rejected&lt;update_account&lt;account_id,mobile_app_account&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7832,7 +8304,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 15. account_action_rejected&lt;update_account&lt;account_token,mobile_app_account&gt;&gt; fields</caption>
+<caption class="title">Table 17. account_action_rejected&lt;update_account&lt;account_token,mobile_app_account&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7918,7 +8390,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 16. account_added&lt;mobile_app_account&gt; fields</caption>
+<caption class="title">Table 18. account_added&lt;mobile_app_account&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7986,7 +8458,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 17. account_added&lt;simple_account&gt; fields</caption>
+<caption class="title">Table 19. account_added&lt;simple_account&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8052,7 +8524,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 18. account_consistency_marker fields</caption>
+<caption class="title">Table 20. account_consistency_marker fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8102,7 +8574,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 19. account_removed fields</caption>
+<caption class="title">Table 21. account_removed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8174,7 +8646,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 20. account_restated&lt;mobile_app_account&gt; fields</caption>
+<caption class="title">Table 22. account_restated&lt;mobile_app_account&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8248,7 +8720,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 21. account_restated&lt;simple_account&gt; fields</caption>
+<caption class="title">Table 23. account_restated&lt;simple_account&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8320,7 +8792,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 22. account_suspended fields</caption>
+<caption class="title">Table 24. account_suspended fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8382,7 +8854,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 23. account_unsuspended fields</caption>
+<caption class="title">Table 25. account_unsuspended fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8457,7 +8929,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 24. account_updated&lt;mobile_app_account&gt; fields</caption>
+<caption class="title">Table 26. account_updated&lt;mobile_app_account&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8547,7 +9019,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 25. add_account&lt;mobile_app_account&gt; fields</caption>
+<caption class="title">Table 27. add_account&lt;mobile_app_account&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8603,7 +9075,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 26. add_account&lt;simple_account&gt; fields</caption>
+<caption class="title">Table 28. add_account&lt;simple_account&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8670,7 +9142,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 27. all_quotes_cancelled&lt;account_id&gt; fields</caption>
+<caption class="title">Table 29. all_quotes_cancelled&lt;account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8747,7 +9219,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 28. cancel_all_quotes&lt;account_id&gt; fields</caption>
+<caption class="title">Table 30. cancel_all_quotes&lt;account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8821,7 +9293,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 29. cancel_order&lt;order_id&gt; fields</caption>
+<caption class="title">Table 31. cancel_order&lt;order_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8873,7 +9345,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 30. cancel_order&lt;order_token&gt; fields</caption>
+<caption class="title">Table 32. cancel_order&lt;order_token&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8925,7 +9397,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 31. channel_added fields</caption>
+<caption class="title">Table 33. channel_added fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8993,7 +9465,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 32. channel_removed fields</caption>
+<caption class="title">Table 34. channel_removed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9043,7 +9515,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 33. cycle_ended fields</caption>
+<caption class="title">Table 35. cycle_ended fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9087,7 +9559,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 34. cycle_ending fields</caption>
+<caption class="title">Table 36. cycle_ending fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9137,7 +9609,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 35. cycle_started fields</caption>
+<caption class="title">Table 37. cycle_started fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9181,7 +9653,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 36. cycle_starting fields</caption>
+<caption class="title">Table 38. cycle_starting fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9253,7 +9725,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 37. deliverable&lt;exchange_token&gt; fields</caption>
+<caption class="title">Table 39. deliverable&lt;exchange_token&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9330,7 +9802,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 38. deliverable&lt;fiat_currency&gt; fields</caption>
+<caption class="title">Table 40. deliverable&lt;fiat_currency&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9407,7 +9879,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 39. deliverable&lt;future&gt; fields</caption>
+<caption class="title">Table 41. deliverable&lt;future&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9505,7 +9977,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 40. deliverable&lt;fx_spot&gt; fields</caption>
+<caption class="title">Table 42. deliverable&lt;fx_spot&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9581,7 +10053,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 41. deliverable&lt;option&gt; fields</caption>
+<caption class="title">Table 43. deliverable&lt;option&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9684,7 +10156,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 42. deliverable&lt;stable_token&gt; fields</caption>
+<caption class="title">Table 44. deliverable&lt;stable_token&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9763,7 +10235,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 43. deposit_funds fields</caption>
+<caption class="title">Table 45. deposit_funds fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9837,7 +10309,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 44. display_order_added fields</caption>
+<caption class="title">Table 46. display_order_added fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9917,7 +10389,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 45. display_order_deleted fields</caption>
+<caption class="title">Table 47. display_order_deleted fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9985,7 +10457,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 46. display_order_executed fields</caption>
+<caption class="title">Table 48. display_order_executed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10071,7 +10543,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 47. display_order_updated fields</caption>
+<caption class="title">Table 49. display_order_updated fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10170,7 +10642,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 48. enter_order&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 50. enter_order&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10252,7 +10724,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 49. enter_quotes&lt;simple_quotes,account_id&gt; fields</caption>
+<caption class="title">Table 51. enter_quotes&lt;simple_quotes,account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10350,7 +10822,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 50. funds_action_rejected&lt;deposit_funds&gt; fields</caption>
+<caption class="title">Table 52. funds_action_rejected&lt;deposit_funds&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10415,7 +10887,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 51. funds_action_rejected&lt;withdraw_funds&gt; fields</caption>
+<caption class="title">Table 53. funds_action_rejected&lt;withdraw_funds&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10481,7 +10953,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 52. funds_deposit_pending fields</caption>
+<caption class="title">Table 54. funds_deposit_pending fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10561,7 +11033,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 53. funds_deposit_processed fields</caption>
+<caption class="title">Table 55. funds_deposit_processed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10647,7 +11119,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 54. funds_withdrawal_pending fields</caption>
+<caption class="title">Table 56. funds_withdrawal_pending fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10733,7 +11205,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 55. funds_withdrawal_processed fields</caption>
+<caption class="title">Table 57. funds_withdrawal_processed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10831,7 +11303,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 56. heartbeat fields</caption>
+<caption class="title">Table 58. heartbeat fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10875,7 +11347,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 57. login fields</caption>
+<caption class="title">Table 59. login fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10925,7 +11397,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 58. login_accepted fields</caption>
+<caption class="title">Table 60. login_accepted fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10969,7 +11441,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 59. login_rejected fields</caption>
+<caption class="title">Table 61. login_rejected fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11053,7 +11525,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 60. order_action_rejected&lt;cancel_order&lt;order_id&gt;&gt; fields</caption>
+<caption class="title">Table 62. order_action_rejected&lt;cancel_order&lt;order_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11116,7 +11588,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 61. order_action_rejected&lt;cancel_order&lt;order_token&gt;&gt; fields</caption>
+<caption class="title">Table 63. order_action_rejected&lt;cancel_order&lt;order_token&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11179,7 +11651,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 62. order_action_rejected&lt;enter_order&lt;simple_order&lt;account_id&gt;&gt;&gt; fields</caption>
+<caption class="title">Table 64. order_action_rejected&lt;enter_order&lt;simple_order&lt;account_id&gt;&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11254,7 +11726,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 63. order_cancelled fields</caption>
+<caption class="title">Table 65. order_cancelled fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11341,7 +11813,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 64. order_entered&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 66. order_entered&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11434,7 +11906,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 65. order_executed fields</caption>
+<caption class="title">Table 67. order_executed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11539,7 +12011,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 66. order_restated&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 68. order_restated&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11644,7 +12116,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 67. order_updated fields</caption>
+<caption class="title">Table 69. order_updated fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11718,7 +12190,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 68. position fields</caption>
+<caption class="title">Table 70. position fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11816,7 +12288,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 69. position_consistency_marker fields</caption>
+<caption class="title">Table 71. position_consistency_marker fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11860,7 +12332,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 70. quote_executed fields</caption>
+<caption class="title">Table 72. quote_executed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11989,7 +12461,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 71. quotes_action_rejected&lt;enter_quotes&lt;simple_quotes,account_id&gt;&gt; fields</caption>
+<caption class="title">Table 73. quotes_action_rejected&lt;enter_quotes&lt;simple_quotes,account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12085,7 +12557,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 72. quotes_entered&lt;simple_quotes,account_id&gt; fields</caption>
+<caption class="title">Table 74. quotes_entered&lt;simple_quotes,account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12197,7 +12669,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 73. reference_price fields</caption>
+<caption class="title">Table 75. reference_price fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12281,7 +12753,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 74. remove_account&lt;account_id&gt; fields</caption>
+<caption class="title">Table 76. remove_account&lt;account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12327,7 +12799,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 75. remove_account&lt;account_token&gt; fields</caption>
+<caption class="title">Table 77. remove_account&lt;account_token&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12373,7 +12845,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 76. request_stream fields</caption>
+<caption class="title">Table 78. request_stream fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12432,7 +12904,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 77. session_ended fields</caption>
+<caption class="title">Table 79. session_ended fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12482,7 +12954,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 78. session_started fields</caption>
+<caption class="title">Table 80. session_started fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12538,7 +13010,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 79. settlement_price fields</caption>
+<caption class="title">Table 81. settlement_price fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12642,7 +13114,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 80. stream_ended fields</caption>
+<caption class="title">Table 82. stream_ended fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12698,7 +13170,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 81. stream_rejected fields</caption>
+<caption class="title">Table 83. stream_rejected fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12760,7 +13232,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 82. stream_resumed fields</caption>
+<caption class="title">Table 84. stream_resumed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12822,7 +13294,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 83. stream_started fields</caption>
+<caption class="title">Table 85. stream_started fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12906,7 +13378,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 84. suspend_account&lt;account_id&gt; fields</caption>
+<caption class="title">Table 86. suspend_account&lt;account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12958,7 +13430,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 85. suspend_account&lt;account_token&gt; fields</caption>
+<caption class="title">Table 87. suspend_account&lt;account_token&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13010,7 +13482,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 86. time fields</caption>
+<caption class="title">Table 88. time fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13054,7 +13526,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 87. top_of_book fields</caption>
+<caption class="title">Table 89. top_of_book fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13134,7 +13606,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 88. trade fields</caption>
+<caption class="title">Table 90. trade fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13233,7 +13705,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 89. tradeable_entity&lt;simple_market&gt; fields</caption>
+<caption class="title">Table 91. tradeable_entity&lt;simple_market&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13360,7 +13832,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 90. trading_rule fields</caption>
+<caption class="title">Table 92. trading_rule fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13458,7 +13930,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 91. trading_state fields</caption>
+<caption class="title">Table 93. trading_state fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13542,7 +14014,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 92. unsuspend_account&lt;account_id&gt; fields</caption>
+<caption class="title">Table 94. unsuspend_account&lt;account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13594,7 +14066,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 93. unsuspend_account&lt;account_token&gt; fields</caption>
+<caption class="title">Table 95. unsuspend_account&lt;account_token&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13662,7 +14134,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 94. update_account&lt;account_id,mobile_app_account&gt; fields</caption>
+<caption class="title">Table 96. update_account&lt;account_id,mobile_app_account&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13726,7 +14198,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 95. update_account&lt;account_token,mobile_app_account&gt; fields</caption>
+<caption class="title">Table 97. update_account&lt;account_token,mobile_app_account&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13790,7 +14262,7 @@ Country: JP
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 96. withdraw_funds fields</caption>
+<caption class="title">Table 98. withdraw_funds fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13934,7 +14406,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 97. date fields</caption>
+<caption class="title">Table 99. date fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13975,7 +14447,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 98. datetime fields</caption>
+<caption class="title">Table 100. datetime fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14011,7 +14483,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 99. exchange_token fields</caption>
+<caption class="title">Table 101. exchange_token fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14057,7 +14529,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 100. fiat_currency fields</caption>
+<caption class="title">Table 102. fiat_currency fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14103,7 +14575,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 101. future fields</caption>
+<caption class="title">Table 103. future fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14179,7 +14651,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 102. fx_spot fields</caption>
+<caption class="title">Table 104. fx_spot fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14220,7 +14692,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 103. mobile_app_account fields</caption>
+<caption class="title">Table 105. mobile_app_account fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14261,7 +14733,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 104. option fields</caption>
+<caption class="title">Table 106. option fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14362,7 +14834,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 105. quote_side fields</caption>
+<caption class="title">Table 107. quote_side fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14403,7 +14875,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 106. quote_side_status fields</caption>
+<caption class="title">Table 108. quote_side_status fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14439,7 +14911,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 107. quote_status fields</caption>
+<caption class="title">Table 109. quote_status fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14480,7 +14952,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 108. simple_account fields</caption>
+<caption class="title">Table 110. simple_account fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14511,7 +14983,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 109. simple_market fields</caption>
+<caption class="title">Table 111. simple_market fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14547,7 +15019,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 110. simple_order&lt;account_id&gt; fields</caption>
+<caption class="title">Table 112. simple_order&lt;account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14613,7 +15085,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 111. simple_quote fields</caption>
+<caption class="title">Table 113. simple_quote fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14670,7 +15142,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 112. stable_token fields</caption>
+<caption class="title">Table 114. stable_token fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14726,7 +15198,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 113. time_of_day fields</caption>
+<caption class="title">Table 115. time_of_day fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14772,7 +15244,7 @@ Country: JP
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 114. zoned_datetime fields</caption>
+<caption class="title">Table 116. zoned_datetime fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15005,7 +15477,7 @@ Country: JP
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 115. account_id constants</caption>
+<caption class="title">Table 117. account_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15036,7 +15508,7 @@ The type also supports the following string constants:</p>
 <p><code>account_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 116. account_status constants</caption>
+<caption class="title">Table 118. account_status constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15069,7 +15541,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 117. account_token constants</caption>
+<caption class="title">Table 119. account_token constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15101,7 +15573,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 118. balance constants</caption>
+<caption class="title">Table 120. balance constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15132,7 +15604,7 @@ The type also supports the following string constants:</p>
 <p><code>cancelled_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 119. cancelled_reason constants</caption>
+<caption class="title">Table 121. cancelled_reason constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15165,7 +15637,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 120. channel_id constants</caption>
+<caption class="title">Table 122. channel_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15197,7 +15669,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 121. contract_size constants</caption>
+<caption class="title">Table 123. contract_size constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15229,7 +15701,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 122. creation_source_id constants</caption>
+<caption class="title">Table 124. creation_source_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15261,7 +15733,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 123. day constants</caption>
+<caption class="title">Table 125. day constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15293,7 +15765,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 124. decimal_places constants</caption>
+<caption class="title">Table 126. decimal_places constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15325,7 +15797,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 125. deliverable_id constants</caption>
+<caption class="title">Table 127. deliverable_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15356,7 +15828,7 @@ The type also supports the following string constants:</p>
 <p><code>delivery_style</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 126. delivery_style constants</caption>
+<caption class="title">Table 128. delivery_style constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15397,7 +15869,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 127. display_order_id constants</caption>
+<caption class="title">Table 129. display_order_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15428,7 +15900,7 @@ The type also supports the following string constants:</p>
 <p><code>expiry_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 128. expiry_status constants</caption>
+<caption class="title">Table 130. expiry_status constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15461,7 +15933,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 129. funds_id constants</caption>
+<caption class="title">Table 131. funds_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15492,7 +15964,7 @@ The type also supports the following string constants:</p>
 <p><code>funds_result</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 130. funds_result constants</caption>
+<caption class="title">Table 132. funds_result constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15525,7 +15997,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 131. funds_token constants</caption>
+<caption class="title">Table 133. funds_token constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15557,7 +16029,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 132. hours constants</caption>
+<caption class="title">Table 134. hours constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15589,7 +16061,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 133. iso4217_currency_number constants</caption>
+<caption class="title">Table 135. iso4217_currency_number constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15620,7 +16092,7 @@ The type also supports the following string constants:</p>
 <p><code>liquidity_flag</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 134. liquidity_flag constants</caption>
+<caption class="title">Table 136. liquidity_flag constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15653,7 +16125,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 135. margin_spec_id constants</caption>
+<caption class="title">Table 137. margin_spec_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15685,7 +16157,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 136. market_id constants</caption>
+<caption class="title">Table 138. market_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15717,7 +16189,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 137. minutes constants</caption>
+<caption class="title">Table 139. minutes constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15749,7 +16221,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 138. month constants</caption>
+<caption class="title">Table 140. month constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15781,7 +16253,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 139. nanoseconds constants</caption>
+<caption class="title">Table 141. nanoseconds constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15812,7 +16284,7 @@ The type also supports the following string constants:</p>
 <p><code>option_exercise_style</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 140. option_exercise_style constants</caption>
+<caption class="title">Table 142. option_exercise_style constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15848,7 +16320,7 @@ The type also supports the following string constants:</p>
 <p><code>option_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 141. option_type constants</caption>
+<caption class="title">Table 143. option_type constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15880,7 +16352,7 @@ The type also supports the following string constants:</p>
 <p><code>option_valuation_approach</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 142. option_valuation_approach constants</caption>
+<caption class="title">Table 144. option_valuation_approach constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15929,7 +16401,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 143. order_id constants</caption>
+<caption class="title">Table 145. order_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15960,7 +16432,7 @@ The type also supports the following string constants:</p>
 <p><code>order_state</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 144. order_state constants</caption>
+<caption class="title">Table 146. order_state constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -15997,7 +16469,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 145. order_token constants</caption>
+<caption class="title">Table 147. order_token constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16029,7 +16501,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 146. participant_id constants</caption>
+<caption class="title">Table 148. participant_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16060,7 +16532,7 @@ The type also supports the following string constants:</p>
 <p><code>position_kind</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 147. position_kind constants</caption>
+<caption class="title">Table 149. position_kind constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16105,7 +16577,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 148. position_value constants</caption>
+<caption class="title">Table 150. position_value constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16137,7 +16609,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 149. price constants</caption>
+<caption class="title">Table 151. price constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16168,7 +16640,7 @@ The type also supports the following string constants:</p>
 <p><code>product_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 150. product_type constants</caption>
+<caption class="title">Table 152. product_type constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16217,7 +16689,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 151. quantity constants</caption>
+<caption class="title">Table 153. quantity constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16248,7 +16720,7 @@ The type also supports the following string constants:</p>
 <p><code>quote_reject_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 152. quote_reject_status constants</caption>
+<caption class="title">Table 154. quote_reject_status constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16313,7 +16785,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 153. quote_step constants</caption>
+<caption class="title">Table 155. quote_step constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16345,7 +16817,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 154. quote_token constants</caption>
+<caption class="title">Table 156. quote_token constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16377,7 +16849,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 155. quotes_id constants</caption>
+<caption class="title">Table 157. quotes_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16408,7 +16880,7 @@ The type also supports the following string constants:</p>
 <p><code>reference_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 156. reference_price_type constants</caption>
+<caption class="title">Table 158. reference_price_type constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16440,7 +16912,7 @@ The type also supports the following string constants:</p>
 <p><code>reject_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 157. reject_reason constants</caption>
+<caption class="title">Table 159. reject_reason constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16485,7 +16957,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 158. seconds constants</caption>
+<caption class="title">Table 160. seconds constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16517,7 +16989,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 159. sequence_number constants</caption>
+<caption class="title">Table 161. sequence_number constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16549,7 +17021,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 160. session_id constants</caption>
+<caption class="title">Table 162. session_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16580,7 +17052,7 @@ The type also supports the following string constants:</p>
 <p><code>settlement_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 161. settlement_price_type constants</caption>
+<caption class="title">Table 163. settlement_price_type constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16612,7 +17084,7 @@ The type also supports the following string constants:</p>
 <p><code>side</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 162. side constants</caption>
+<caption class="title">Table 164. side constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16644,7 +17116,7 @@ The type also supports the following string constants:</p>
 <p><code>stabilisation_approach</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 163. stabilisation_approach constants</caption>
+<caption class="title">Table 165. stabilisation_approach constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16685,7 +17157,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 164. stream_id constants</caption>
+<caption class="title">Table 166. stream_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16716,7 +17188,7 @@ The type also supports the following string constants:</p>
 <p><code>stream_reject_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 165. stream_reject_reason constants</caption>
+<caption class="title">Table 167. stream_reject_reason constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16757,7 +17229,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 166. strikes_spec_id constants</caption>
+<caption class="title">Table 168. strikes_spec_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16788,7 +17260,7 @@ The type also supports the following string constants:</p>
 <p><code>suspension_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 167. suspension_status constants</caption>
+<caption class="title">Table 169. suspension_status constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16820,7 +17292,7 @@ The type also supports the following string constants:</p>
 <p><code>time_in_force</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 168. time_in_force constants</caption>
+<caption class="title">Table 170. time_in_force constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16853,7 +17325,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 169. time_to_live constants</caption>
+<caption class="title">Table 171. time_to_live constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16885,7 +17357,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 170. trade_id constants</caption>
+<caption class="title">Table 172. trade_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16916,7 +17388,7 @@ The type also supports the following string constants:</p>
 <p><code>tradeability</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 171. tradeability constants</caption>
+<caption class="title">Table 173. tradeability constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -16953,7 +17425,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 172. tradeable_entity_id constants</caption>
+<caption class="title">Table 174. tradeable_entity_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -16985,7 +17457,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 173. utc_timestamp constants</caption>
+<caption class="title">Table 175. utc_timestamp constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -17017,7 +17489,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 174. value constants</caption>
+<caption class="title">Table 176. value constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -17048,7 +17520,7 @@ The type also supports the following string constants:</p>
 <p><code>withdrawal_instructions</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 175. withdrawal_instructions constants</caption>
+<caption class="title">Table 177. withdrawal_instructions constants</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -17089,7 +17561,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 176. year constants</caption>
+<caption class="title">Table 178. year constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">

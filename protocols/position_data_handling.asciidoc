@@ -4,13 +4,13 @@
 The corresponding message set can be found in <<Position_Data_Messages,Position Data Messages>>.
 
 [[position_data_protocol]]
-.Diagram of Position Data Protocol
+.Diagram of *Position Data Protocol*
 plantuml::protocols/puml/position_data_protocol.puml[format=svg,opts=inline,align=center]
 
 The position data is mainly provided in <<position, position>> message update and
 the most important fields of it listed below:
 
-.The most important <<position, position>> fields:
+.*The most important <<position, position>> fields*:
 [width="80%",options="header"]
 |=================================
 | Name | Type | Description

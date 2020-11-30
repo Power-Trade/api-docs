@@ -28,12 +28,57 @@ right footer <size:15><&bolt></size> <size:9>[[https://power.trade PowerTrade Ex
 
 group <b>[[#session_control_with_auth Session Control Protocol]]</b>
 
-'... <b>Note</b>: for simplicity, heartbeating ...
-'... is not shown here but it is <b>required</b> ...
-'... <b>to keep session alive</b> ...
+    ... <b>Note</b>: for simplicity, heartbeating ...
+    ... is not shown here but it is <b>required</b> ...
+    ... <b>to keep session alive</b> ...
 
     group <b>Funds Management Protocol</b>
 
+        group i-Cycle
+            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
+            |||
+            group examples of asynchronous [[#account_notifications account notifications]]:
+                ... account <b>consistency marker</b>: ...
+                Client <- Server : <b>[[#account_consistency_marker account_consistency_marker]]</b>
+                ... other account notifications: ...
+                Client <- Server : <b>[[#account_restated_ltsimple_account_gt account_restated<simple_account>]]</b>
+                Client <- Server : <b>[[#account_updated_ltmobile_app_account_gt account_updated<mobile_app_account>]]</b>
+                Client <- Server : <b>[[#account_restated_ltmobile_app_account_gt account_restated<mobile_app_account>]]</b>
+                ... and so on ...
+            end
+
+            group depositing funds
+                |||
+                Client -> Server : <b>[[#deposit_funds deposit_funds]]</b>
+                ... in case of <b>success</b>: ...
+                Client <- Server : <b>[[#funds_deposit_pending funds_deposit_pending]]</b>
+                Client <- Server : <b>[[#funds_deposit_processed funds_deposit_processed<simple_account>]]</b>
+                ... in case of <b>failure</b>: ...
+                Client <- Server : <b>[[#funds_action_rejected_ltdeposit_funds_gt funds_action_rejected<deposit_funds>]]</b>
+            end
+
+            group withdrawing funds
+                |||
+                Client -> Server : <b>[[#withdraw_funds withdraw_funds]]</b>
+                ... in case of <b>success</b>: ...
+                Client <- Server : <b>[[#funds_withdrawal_pending funds_withdrawal_pending]]</b>
+                Client <- Server : <b>[[#funds_withdrawal_processed funds_withdrawal_processed]]</b>
+                ... in case of <b>failure</b>: ...
+                Client <- Server : <b>[[#funds_action_rejected_ltwithdraw_funds_gt funds_action_rejected<withdraw_funds>]]</b>
+            end
+
+            group examples of asynchronous [[#funds_notifications funds-related notifications]]:
+                |||
+                Client <- Server : <b>[[#funds_deposit_pending funds_deposit_pending]]</b>
+                Client <- Server : <b>[[#funds_deposit_processed funds_deposit_processed<simple_account>]]</b>
+                Client <- Server : <b>[[#funds_withdrawal_pending funds_withdrawal_pending]]</b>
+                Client <- Server : <b>[[#funds_withdrawal_processed funds_withdrawal_processed]]</b>
+                Client <- Server : <b>[[#funds_action_rejected_ltdeposit_funds_gt funds_action_rejected<deposit_funds>]]</b>
+                Client <- Server : <b>[[#funds_action_rejected_ltwithdraw_funds_gt funds_action_rejected<withdraw_funds>]]</b>
+                ... and so on ...
+            end
+        end
     end
 end
 

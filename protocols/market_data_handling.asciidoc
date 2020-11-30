@@ -51,7 +51,7 @@ endif::[]
 Market Data Service provides information essential for trading on PowerTrade exchange, including <<Reference_Data, Reference Data>>.
 
 [[market_data_protocol]]
-.Diagram of Market Data Protocol
+.Diagram of *Market Data Protocol*
 plantuml::protocols/puml/market_data_protocol.puml[format=svg,opts=inline,align=center]
 
 The corresponding message set can be found in <<Market_Data_Messages,Market Data Messages>>.

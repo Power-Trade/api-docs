@@ -2,10 +2,38 @@
 === Accounts Management
 
 Accounts Management Service provides information for corresponding operations, including <<Reference_Data, Reference Data>>.
-The corresponding message sets can be found in <<Account_Management_Requests,Account Management Requests>>/<<Account_Management_Responses,Responses>>.
+
+It also sents *account-related asynchronous notifications* in case of corresponding changes:
+
+[[account_notifications]]
+.*Account-related notifications sent by Accounts Management and Funds Management Services*:
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<account_added_ltsimple_account_gt,account_added<simple_account>>>
+| Notification that a new account was added.
+| <<account_removed,account_removed>>
+| Notification that an existing account was removed.
+| <<account_suspended,account_suspended>>
+| Notification that an existing account was suspended.
+| <<account_unsuspended,account_unsuspended>>
+| Notification that an existing account was unsuspended.
+| <<account_added_ltmobile_app_account_gt,account_added<mobile_app_account>>>
+| Notification that a new mobile app account was added.
+| <<account_updated_ltmobile_app_account_gt,account_updated<mobile_app_account>>>
+| Notification that an update was made to a mobile app account.
+| <<account_restated_ltsimple_account_gt,account_restated<simple_account>>>
+| Notification that a <simple_account> was restated.
+| <<account_restated_ltmobile_app_account_gt,account_restated<mobile_app_account>>>
+| Notification that a <mobile_app_account> was restated.
+| <<account_consistency_marker,account_consistency_marker>>
+| Notification that the account_restated messages are in a consistent state.
+|=================================
+
+The complete message sets can be found in <<Account_Management_Requests,Account Management Requests>>/<<Account_Management_Responses,Responses>>.
 
 [[accounts_management_protocol]]
-.Diagram of Accounts Management Protocol
+.Diagram of *Accounts Management Protocol*
 plantuml::protocols/puml/accounts_management_protocol.puml[format=svg,opts=inline,align=center]
 
 

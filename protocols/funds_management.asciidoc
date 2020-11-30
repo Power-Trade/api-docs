@@ -1,10 +1,32 @@
 [[Service_Guide_Funds_Management]]
 === Funds Management
 
-The corresponding message sets can be found in <<Funds_Management_Requests,Funds Management Requests>>/<<Funds_Management_Responses,Responses>>.
+This service implements the operations on funds, such as *deposit* (using <<deposit_funds,deposit_funds>> request) and *withdrawal* (using <<withdraw_funds,withdraw_funds>> request).
+Since such operations *impact entire account state*, corresponding <<account_notifications,account-related notifications>> (part of <<accounts_management_protocol, Accounts Management Service Protocol>>) *for consistency sent by this service too*, together with funds-related updates:
+
+[[funds_notifications]]
+.*Funds-related notifications sent by Funds Management Services*:
+[width="80%",options="header"]
+|=================================
+| Name | Description
+| <<funds_deposit_pending,funds_deposit_pending>>
+| Notification that a funds deposit is pending.
+| <<funds_deposit_processed,funds_deposit_processed>>
+| Notification that a funds deposit has been processed.
+| <<funds_withdrawal_pending,funds_withdrawal_pending>>
+| Notification that a funds withdrawal is pending.
+| <<funds_withdrawal_processed,funds_withdrawal_processed>>
+| Notification that a funds withdrawal has been processed.
+| <<funds_action_rejected_ltdeposit_funds_gt,funds_action_rejected<deposit_funds>>>
+| Rejects a funds deposit.
+| <<funds_action_rejected_ltwithdraw_funds_gt,funds_action_rejected<withdraw_funds>>>
+| Rejects a funds withdrawal.
+|=================================
+
+The complete message sets can be found in <<Funds_Management_Requests,Funds Management Requests>>/<<Funds_Management_Responses,Responses>>.
 
 [[funds_management_protocol]]
-.Diagram of Funds Management Protocol
+.Diagram of *Funds Management Protocol*
 plantuml::protocols/puml/funds_management_protocol.puml[format=svg,opts=inline,align=center]
 
 
