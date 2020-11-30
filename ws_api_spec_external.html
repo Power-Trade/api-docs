@@ -790,37 +790,34 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#Authentication">4.2. Authentication</a></li>
 <li><a href="#Session_Control_Protocol_LogIn_LogOut">4.3. Session Control Protocol</a></li>
 <li><a href="#Managing_Cycles">4.4. Cycles, Channels and Streams</a></li>
-<li><a href="#Service_Guide_Market_Data">4.5. Market Data</a>
+<li><a href="#Reference_Data">4.5. Reference Data</a></li>
+<li><a href="#Service_Guide_Market_Data">4.6. Market Data</a></li>
+<li><a href="#Service_Guide_Order_Management">4.7. Order Management</a>
 <ul class="sectlevel3">
-<li><a href="#Reference_Data">4.5.1. Reference Data</a></li>
+<li><a href="#_dead_mans_switch_auto_cancel">4.7.1. Dead Man’s Switch (Auto Cancel)</a></li>
 </ul>
 </li>
-<li><a href="#Service_Guide_Order_Management">4.6. Order Management</a>
+<li><a href="#_order_book_handling">4.8. Order Book Handling</a>
 <ul class="sectlevel3">
-<li><a href="#_dead_mans_switch_auto_cancel">4.6.1. Dead Man’s Switch (Auto Cancel)</a></li>
+<li><a href="#_order_book_identification">4.8.1. Order Book Identification</a></li>
+<li><a href="#_displaying_an_order_book">4.8.2. Displaying an Order Book</a></li>
+<li><a href="#_sorting_orders_in_an_order_book">4.8.3. Sorting Orders in an Order Book</a></li>
+<li><a href="#_processing_display_order_added">4.8.4. Processing display_order_added</a></li>
+<li><a href="#_processing_display_order_deleted">4.8.5. Processing display_order_deleted</a></li>
+<li><a href="#_processing_display_order_executed">4.8.6. Processing display_order_executed</a></li>
+<li><a href="#_processing_display_order_updated">4.8.7. Processing display_order_updated</a></li>
 </ul>
 </li>
-<li><a href="#_order_book_handling">4.7. Order Book Handling</a>
+<li><a href="#Service_Guide_Position_Data">4.9. Position Data Handling</a>
 <ul class="sectlevel3">
-<li><a href="#_order_book_identification">4.7.1. Order Book Identification</a></li>
-<li><a href="#_displaying_an_order_book">4.7.2. Displaying an Order Book</a></li>
-<li><a href="#_sorting_orders_in_an_order_book">4.7.3. Sorting Orders in an Order Book</a></li>
-<li><a href="#_processing_display_order_added">4.7.4. Processing display_order_added</a></li>
-<li><a href="#_processing_display_order_deleted">4.7.5. Processing display_order_deleted</a></li>
-<li><a href="#_processing_display_order_executed">4.7.6. Processing display_order_executed</a></li>
-<li><a href="#_processing_display_order_updated">4.7.7. Processing display_order_updated</a></li>
+<li><a href="#_primary_exchange_currency">4.9.1. Primary Exchange Currency</a></li>
+<li><a href="#_different_kinds_of_position_message">4.9.2. Different Kinds of Position Message</a></li>
+<li><a href="#_different_product_types">4.9.3. Different Product Types</a></li>
+<li><a href="#_allowable_combinations_of_position_kind_and_product_type">4.9.4. Allowable Combinations of Position Kind and Product Type</a></li>
+<li><a href="#_summary_of_positions">4.9.5. Summary of Positions</a></li>
 </ul>
 </li>
-<li><a href="#Service_Guide_Position_Data">4.8. Position Data Handling</a>
-<ul class="sectlevel3">
-<li><a href="#_primary_exchange_currency">4.8.1. Primary Exchange Currency</a></li>
-<li><a href="#_different_kinds_of_position_message">4.8.2. Different Kinds of Position Message</a></li>
-<li><a href="#_different_product_types">4.8.3. Different Product Types</a></li>
-<li><a href="#_allowable_combinations_of_position_kind_and_product_type">4.8.4. Allowable Combinations of Position Kind and Product Type</a></li>
-<li><a href="#_summary_of_positions">4.8.5. Summary of Positions</a></li>
-</ul>
-</li>
-<li><a href="#Service_Guide_Quote_Management">4.9. Quote Management</a></li>
+<li><a href="#Service_Guide_Quote_Management">4.10. Quote Management</a></li>
 </ul>
 </li>
 <li><a href="#_message_reference_book">5. <strong>Message Reference Book</strong></a>
@@ -1716,15 +1713,83 @@ Country: JP
 </div>
 </div>
 <div class="sect2">
-<h3 id="Service_Guide_Market_Data">4.5. Market Data</h3>
+<h3 id="Reference_Data">4.5. Reference Data</h3>
 <div class="paragraph">
-<p>Market Data Service provides information essential for trading on PowerTrade exchange using the protocol described on the diagram below.</p>
+<p>The reference data is <em>a key information</em> disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <a href="#Introduction">Introduction</a> and <a href="#Managing_Cycles">Cycles, Channels and Streams</a>).</p>
+</div>
+<div class="paragraph">
+<p>API clients should properly keep reference data available for usage in all API Services and, for example, to encode/decode all monetary values (as explained in <a href="#Monetary_Values">Monetary Values</a>).</p>
+</div>
+<table id="Reference_Data_Messages_Table" class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 4. <strong>Reference Data</strong> messages included in Market Data message set:</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltfx_spot_gt">deliverable&lt;fx_spot</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a single spot deliverable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltfuture_gt">deliverable&lt;future</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a single future deliverable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltoption_gt">deliverable&lt;option</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a single option deliverable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltexchange_token_gt">deliverable&lt;exchange_token</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for an exchange token deliverable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltstable_token_gt">deliverable&lt;stable_token</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a stable token deliverable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltfiat_currency_gt">deliverable&lt;fiat_currency</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a fiat currency deliverable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#tradeable_entity_ltsimple_market_gt">tradeable_entity&lt;simple_market</a>&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a tradeable entity that is traded using a simple, single market.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#trading_rule">trading_rule</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A trading rule that determines order and trade validation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference_price">reference_price</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification of a reference price update.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#settlement_price">settlement_price</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification of a settlement price update.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#trading_state">trading_state</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reflects the current state of trading in the tradeable entity and market.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="Service_Guide_Market_Data">4.6. Market Data</h3>
+<div class="paragraph">
+<p>Market Data Service provides information essential for trading on PowerTrade exchange, including <a href="#Reference_Data">Reference Data</a>.</p>
 </div>
 <div id="market_data_protocol" class="imageblock text-center">
 <div class="content">
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' contentScriptType='application/ecmascript' contentStyleType='text/css' preserveAspectRatio='none' version='1.1' viewBox='0 0 335 1468' zoomAndPan='magnify' width="335" height="1468">
   <defs>
-    <filter height='300%' id='f5k8gxes2x429' width='300%' x='-1' y='-1'>
+    <filter height='300%' id='fwlq5zhsqivny' width='300%' x='-1' y='-1'>
       <feGaussianBlur result='blurOut' stdDeviation='2.0'/>
       <feColorMatrix in='blurOut' result='blurOut2' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0'/>
       <feOffset dx='4.0' dy='4.0' in='blurOut2' result='blurOut3'/>
@@ -1732,11 +1797,11 @@ Country: JP
     </filter>
   </defs>
   <g>
-    <rect fill='#FFFFFF' filter='url(#f5k8gxes2x429)' height='1315.291' style='stroke: #000000; stroke-width: 2.0;' width='300.5' x='13' y='72.6211'/>
-    <rect fill='#FFFFFF' filter='url(#f5k8gxes2x429)' height='1161.1152' style='stroke: #000000; stroke-width: 2.0;' width='280.5' x='23' y='219.7969'/>
-    <rect fill='#FFFFFF' filter='url(#f5k8gxes2x429)' height='426.6367' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='244.1074'/>
-    <rect fill='#FFFFFF' filter='url(#f5k8gxes2x429)' height='284.1289' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='709.7441'/>
-    <rect fill='#FFFFFF' filter='url(#f5k8gxes2x429)' height='284.1289' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='1048.8281'/>
+    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='1315.291' style='stroke: #000000; stroke-width: 2.0;' width='300.5' x='13' y='72.6211'/>
+    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='1161.1152' style='stroke: #000000; stroke-width: 2.0;' width='280.5' x='23' y='219.7969'/>
+    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='426.6367' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='244.1074'/>
+    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='284.1289' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='709.7441'/>
+    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='284.1289' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='1048.8281'/>
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='55.6211' y2='89.9316'/>
     <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='89.9316' y2='130.8867'/>
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='130.8867' y2='130.8867'/>
@@ -1775,19 +1840,19 @@ Country: JP
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='1249.3359' y2='1339.957'/>
     <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='1339.957' y2='1380.9121'/>
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='1380.9121' y2='1404.9121'/>
-    <rect fill='#FEFECE' filter='url(#f5k8gxes2x429)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='43' y='20.1328'/>
+    <rect fill='#FEFECE' filter='url(#fwlq5zhsqivny)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='43' y='20.1328'/>
     <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='50' y='40.668'>
       Client
     </text>
-    <rect fill='#FEFECE' filter='url(#f5k8gxes2x429)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='43' y='1403.9121'/>
+    <rect fill='#FEFECE' filter='url(#fwlq5zhsqivny)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='43' y='1403.9121'/>
     <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='50' y='1424.4473'>
       Client
     </text>
-    <rect fill='#FEFECE' filter='url(#f5k8gxes2x429)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='222.5' y='20.1328'/>
+    <rect fill='#FEFECE' filter='url(#fwlq5zhsqivny)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='222.5' y='20.1328'/>
     <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='229.5' y='40.668'>
       Server
     </text>
-    <rect fill='#FEFECE' filter='url(#f5k8gxes2x429)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='222.5' y='1403.9121'/>
+    <rect fill='#FEFECE' filter='url(#fwlq5zhsqivny)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='222.5' y='1403.9121'/>
     <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='229.5' y='1424.4473'>
       Server
     </text>
@@ -1843,9 +1908,13 @@ Country: JP
     </a>
     <polygon fill='#A80036' points='83,362.3496,73,366.3496,83,370.3496,79,366.3496' style='stroke: #A80036; stroke-width: 1.0;'/>
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='366.3496' y2='366.3496'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='50' x='84' y='361.6074'>
+      various
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='138' y='361.6074'/>
     <a href='#Reference_Data' xlink:href='#Reference_Data' target='_top' title='#Reference_Data' xlink:title='#Reference_Data' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='157' x='84' y='361.6074'>
-        various Reference Data
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='103' x='138' y='361.6074'>
+        Reference Data
       </text>
     </a>
     <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='136' y='398.9844'>
@@ -1937,9 +2006,13 @@ Country: JP
     </a>
     <polygon fill='#A80036' points='83,827.9863,73,831.9863,83,835.9863,79,831.9863' style='stroke: #A80036; stroke-width: 1.0;'/>
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='831.9863' y2='831.9863'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='50' x='84' y='827.2441'>
+      various
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='138' y='827.2441'/>
     <a href='#Reference_Data' xlink:href='#Reference_Data' target='_top' title='#Reference_Data' xlink:title='#Reference_Data' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='157' x='84' y='827.2441'>
-        various Reference Data
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='103' x='138' y='827.2441'>
+        Reference Data
       </text>
     </a>
     <polygon fill='#A80036' points='83,857.2969,73,861.2969,83,865.2969,79,861.2969' style='stroke: #A80036; stroke-width: 1.0;'/>
@@ -1988,9 +2061,13 @@ Country: JP
     </a>
     <polygon fill='#A80036' points='83,1167.0703,73,1171.0703,83,1175.0703,79,1171.0703' style='stroke: #A80036; stroke-width: 1.0;'/>
     <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='1171.0703' y2='1171.0703'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='50' x='84' y='1166.3281'>
+      various
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='138' y='1166.3281'/>
     <a href='#Reference_Data' xlink:href='#Reference_Data' target='_top' title='#Reference_Data' xlink:title='#Reference_Data' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='157' x='84' y='1166.3281'>
-        various Reference Data
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='103' x='138' y='1166.3281'>
+        Reference Data
       </text>
     </a>
     <polygon fill='#A80036' points='83,1196.3809,73,1200.3809,83,1204.3809,79,1200.3809' style='stroke: #A80036; stroke-width: 1.0;'/>
@@ -2034,7 +2111,7 @@ Country: JP
         PowerTrade Exchange
       </text>
     </a>
-    <!--MD5=[460939458677f59789418cecf5db58d2]
+    <!--MD5=[87e673d0cdb4b7f20b494b7227f40de7]
 @startuml market_data_protocol
 
 
@@ -2061,7 +2138,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
             |||
-            Client <- Server : <b>[[#Reference_Data various Reference Data]]</b>
+            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
             ... and so on ...
             |||
             Client <- Server : <b>various market data</b>:\n[[#trade trade]],\n[[#top_of_book top_of_book]],\n[[#display_order_added display_order_added]],\n[[#display_order_deleted display_order_deleted]],\n[[#display_order_updated display_order_updated]],..
@@ -2075,7 +2152,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
             |||
-            Client <- Server : <b>[[#Reference_Data various Reference Data]]</b>
+            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
             Client <- Server : <b>various market data</b>
             ... and so on ...
             |||
@@ -2089,7 +2166,7 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
             |||
-            Client <- Server : <b>[[#Reference_Data various Reference Data]]</b>
+            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
             Client <- Server : <b>various market data</b>
             ... and so on ...
             |||
@@ -2122,77 +2199,9 @@ Country: JP
 <div class="paragraph">
 <p>The corresponding message set can be found in <a href="#Market_Data_Messages">Market Data Messages</a>.</p>
 </div>
-<div class="sect3">
-<h4 id="Reference_Data">4.5.1. Reference Data</h4>
-<div class="paragraph">
-<p>The reference data is <em>a key information</em> disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <a href="#Introduction">Introduction</a> and <a href="#Managing_Cycles">Cycles, Channels and Streams</a>).</p>
-</div>
-<div class="paragraph">
-<p>API clients should properly keep reference data available for usage in all API Services and, for example, to encode/decode all monetary values (as explained in <a href="#Monetary_Values">Monetary Values</a>).</p>
-</div>
-<table id="Reference_Data_Messages_Table" class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 4. <strong>Reference Data</strong> messages included into Market Data message set:</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltfx_spot_gt">deliverable&lt;fx_spot</a>&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a single spot deliverable.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltfuture_gt">deliverable&lt;future</a>&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a single future deliverable.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltoption_gt">deliverable&lt;option</a>&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a single option deliverable.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltexchange_token_gt">deliverable&lt;exchange_token</a>&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for an exchange token deliverable.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltstable_token_gt">deliverable&lt;stable_token</a>&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a stable token deliverable.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#deliverable_ltfiat_currency_gt">deliverable&lt;fiat_currency</a>&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a fiat currency deliverable.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#tradeable_entity_ltsimple_market_gt">tradeable_entity&lt;simple_market</a>&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference data for a tradeable entity that is traded using a simple, single market.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#trading_rule">trading_rule</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A trading rule that determines order and trade validation.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#reference_price">reference_price</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Notification of a reference price update.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#settlement_price">settlement_price</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Notification of a settlement price update.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#trading_state">trading_state</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reflects the current state of trading in the tradeable entity and market.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 <div class="sect2">
-<h3 id="Service_Guide_Order_Management">4.6. Order Management</h3>
+<h3 id="Service_Guide_Order_Management">4.7. Order Management</h3>
 <div class="paragraph">
 <p>This section explains how to enter orders and control their state.</p>
 </div>
@@ -2519,7 +2528,7 @@ Country: JP
 <p>The corresponding message sets can be found in <a href="#Order_Management_Requests">Order Management Requests</a>/<a href="#Order_Management_Responses">Responses</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="_dead_mans_switch_auto_cancel">4.6.1. Dead Man’s Switch (Auto Cancel)</h4>
+<h4 id="_dead_mans_switch_auto_cancel">4.7.1. Dead Man’s Switch (Auto Cancel)</h4>
 <div class="paragraph">
 <p>TBD</p>
 </div>
@@ -2529,7 +2538,7 @@ Country: JP
 </div>
 </div>
 <div class="sect2">
-<h3 id="_order_book_handling">4.7. Order Book Handling</h3>
+<h3 id="_order_book_handling">4.8. Order Book Handling</h3>
 <div class="paragraph">
 <p>In this section we will examine how the market data messages
 <a href="#display_order_added">display_order_added</a>, <a href="#display_order_deleted">display_order_deleted</a>, <a href="#display_order_executed">display_order_executed</a>,
@@ -2537,7 +2546,7 @@ and <a href="#display_order_updated">display_order_updated</a> are used to incre
 order book view for display.</p>
 </div>
 <div class="sect3">
-<h4 id="_order_book_identification">4.7.1. Order Book Identification</h4>
+<h4 id="_order_book_identification">4.8.1. Order Book Identification</h4>
 <div class="paragraph">
 <p>An order book is identified by the combination of the <code>tradeable_entity_id</code> and
 <code>market_id</code> fields. When processing the market data messages, use these fields
@@ -2545,7 +2554,7 @@ to determine which order book must be updated.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_displaying_an_order_book">4.7.2. Displaying an Order Book</h4>
+<h4 id="_displaying_an_order_book">4.8.2. Displaying an Order Book</h4>
 <div class="paragraph">
 <p>An order book may be viewed as <em>market by order</em> or <em>market by price</em>.</p>
 </div>
@@ -2665,7 +2674,7 @@ the display. For example:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_sorting_orders_in_an_order_book">4.7.3. Sorting Orders in an Order Book</h4>
+<h4 id="_sorting_orders_in_an_order_book">4.8.3. Sorting Orders in an Order Book</h4>
 <div class="paragraph">
 <p>Orders in a <em>market by order</em> view are sorted in price-time priority.</p>
 </div>
@@ -2681,7 +2690,7 @@ with higher values representing newer orders.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_processing_display_order_added">4.7.4. Processing display_order_added</h4>
+<h4 id="_processing_display_order_added">4.8.4. Processing display_order_added</h4>
 <div class="paragraph">
 <p>The <a href="#display_order_added">display_order_added</a> message is used to indicate that a new order should be added to the book.</p>
 </div>
@@ -3121,7 +3130,7 @@ orders and an aggregated quantity of <code>400</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_processing_display_order_deleted">4.7.5. Processing display_order_deleted</h4>
+<h4 id="_processing_display_order_deleted">4.8.5. Processing display_order_deleted</h4>
 <div class="paragraph">
 <p>The <a href="#display_order_deleted">display_order_deleted</a> message is used to remove an individual order
 from the book.</p>
@@ -3319,7 +3328,7 @@ removed from the <em>market by price</em> view.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_processing_display_order_executed">4.7.6. Processing display_order_executed</h4>
+<h4 id="_processing_display_order_executed">4.8.6. Processing display_order_executed</h4>
 <div class="paragraph">
 <p>The <a href="#display_order_executed">display_order_executed</a> message indicates that an order executed some or
 all of its remaining quantity. If all remaining quantity executed, the order
@@ -3596,7 +3605,7 @@ price <code>1300</code>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_processing_display_order_updated">4.7.7. Processing display_order_updated</h4>
+<h4 id="_processing_display_order_updated">4.8.7. Processing display_order_updated</h4>
 <div class="paragraph">
 <p>A <a href="#display_order_updated">display_order_updated</a> message is used to apply an update to an existing
 order in the book. This may require the orders in the book to be re-sorted.</p>
@@ -3749,7 +3758,7 @@ its having a higher <code>display_order_id</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Service_Guide_Position_Data">4.8. Position Data Handling</h3>
+<h3 id="Service_Guide_Position_Data">4.9. Position Data Handling</h3>
 <div class="paragraph">
 <p>The corresponding message set can be found in <a href="#Position_Data_Messages">Position Data Messages</a>.</p>
 </div>
@@ -4092,13 +4101,13 @@ The number of decimal places that <strong>value</strong> uses will be determined
 the <strong>decimal_places</strong> of the <strong>position_deliveralbe_id</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_primary_exchange_currency">4.8.1. Primary Exchange Currency</h4>
+<h4 id="_primary_exchange_currency">4.9.1. Primary Exchange Currency</h4>
 <div class="paragraph">
 <p>In addition to supporting positions in different combinations of deliverables the exchange also provides an overview position in primary (or default) currency of the exchange: USDT. This means any positions that are not valued in USDT will have a USDT equivalent position calculated for it.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_different_kinds_of_position_message">4.8.2. Different Kinds of Position Message</h4>
+<h4 id="_different_kinds_of_position_message">4.9.2. Different Kinds of Position Message</h4>
 <div class="paragraph">
 <p>The position kind tells you how to interpret the value of the position and how it should be treated from an accounting perspective, that is, which “bucket” does it fall into.
 This allows us to form an overall view of positions.</p>
@@ -4144,7 +4153,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_different_product_types">4.8.3. Different Product Types</h4>
+<h4 id="_different_product_types">4.9.3. Different Product Types</h4>
 <div class="paragraph">
 <p>Positions can also be defined by their product type. This in essence tells you why the position is there and how it should be interpreted.</p>
 </div>
@@ -4169,7 +4178,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_allowable_combinations_of_position_kind_and_product_type">4.8.4. Allowable Combinations of Position Kind and Product Type</h4>
+<h4 id="_allowable_combinations_of_position_kind_and_product_type">4.9.4. Allowable Combinations of Position Kind and Product Type</h4>
 <div class="paragraph">
 <p>Not all combinations of position kind and product type make sense, or are allowed. The following table shows the allowed combinations:</p>
 </div>
@@ -4237,7 +4246,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_summary_of_positions">4.8.5. Summary of Positions</h4>
+<h4 id="_summary_of_positions">4.9.5. Summary of Positions</h4>
 <div class="paragraph">
 <p>For the primary exchange deliverable, USDT, you will see the following positions:</p>
 </div>
@@ -4426,7 +4435,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Service_Guide_Quote_Management">4.9. Quote Management</h3>
+<h3 id="Service_Guide_Quote_Management">4.10. Quote Management</h3>
 <div class="paragraph">
 <p>This section provides information about quote management.</p>
 </div>
