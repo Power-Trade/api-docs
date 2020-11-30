@@ -2,14 +2,43 @@
 
 These API docs are a preview for the unreleased PowerTrade test environment. They are provided as a directional reference for early partners and are likely to change frequently without update or warning until a test environment is released.
 
+## Dependencies
+
 Make sure to have/install:
 
-1. Java with correct values in $JAVA_HOME, $PATH;
+- Java with correct values in `$JAVA_HOME`, `$PATH`;
+- [asciidoctor](asciidoctor.org) with extentions:
+  - [asciidoctor-diagram](https://asciidoctor.org/docs/asciidoctor-diagram/)
 
-2. install asciidoctor with extentions;
+### On MacOS
 
-* Linux: https://asciidoctor.org/
-* MacOS: https://asciidoctor.org/docs/install-asciidoctor-macos/#vanilla-procedure
+#### Installing Java
+
+Using `brew`:
+
+```bash
+$ brew doctor
+$ brew cask install adoptopenjdk
+$ brew cask install adoptopenjdk15
+```
+
+Then export `JAVA_HOME` in `~/.zshrc` or `~/.bashrc`:
+
+```bash
+$ echo 'export JAVA_HOME=$(/usr/libexec/java_home -v"15");' >> ~/.zshrc
+```
+
+#### Installing asciidoctor
+
+Make sure you're not using your system's ruby runtime. Use something like `rvm` or `asdf`.
+
+```bash
+$ gem install asciidoctor
+$ gem install asciidoctor-diagram
+```
+
+## Development
+=======
 
 To generate EXTERNAL VERSION (under /api-docs directory):
 
