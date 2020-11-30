@@ -23,11 +23,11 @@ The `credentials_secret` is a specially constructed JSON Web Token (JWT) that is
 - `client` - Set to `api`.
 - `uri` - The production endpoint of the requested service.
 - `nonce` - Monotonically increasing integer number. Usually, a timestamp can be used.
-- `iat` - The <<https://en.wikipedia.org/wiki/Unix_time, Unit time>> at which the JWT was issued,, in seconds since Epoch.
-- `exp` - The expiration Unix time on and after which the JWT must not be accepted for processing, in seconds since Epoch. Must be less than iat+30sec.
+- `iat` - The https://en.wikipedia.org/wiki/Unix_time[Unit time] at which the JWT was issued, in seconds.
+- `exp` - The expiration https://en.wikipedia.org/wiki/Unix_time[Unit time] on and after which the JWT must not be accepted for processing, in seconds. Must be less than iat+30sec.
 - `sub` - The API Key.
 
-The JWT should be signed with the API `secret_key` using the ES256 (elliptic curves using sha256) algorithm.
+The JWT should be signed with the API `secret_key` using the *ES256* (elliptic curves using *sha256*) algorithm.
 
 [source,python]
 -------------------
