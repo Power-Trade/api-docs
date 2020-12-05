@@ -794,7 +794,7 @@ p { margin-bottom: 1.25rem; }
 </ul>
 </li>
 <li><a href="#Session_Control_Protocol_LogIn_LogOut">4.3. Session Control Protocol</a></li>
-<li><a href="#Managing_Cycles">4.4. Cycles, Channels and Streams</a></li>
+<li><a href="#Managing_Cycles">4.4. Sessions, Channels, Streams and Cycles</a></li>
 <li><a href="#Reference_Data">4.5. Reference Data</a></li>
 <li><a href="#Service_Guide_Market_Data">4.6. Market Data</a></li>
 <li><a href="#Service_Guide_Order_Management">4.7. Order Management</a>
@@ -1108,7 +1108,7 @@ p { margin-bottom: 1.25rem; }
 <p>A secure WebSocket connection must be made to most of services in order to send requests and receive updates from the platform, please see the details in chapter <a href="#Authentication">Authentication</a>.</p>
 </div>
 <div class="paragraph">
-<p>Access to the PowerTrade WebSocket API is structured around four core concepts: Session, Streams, Channels and Cycles. Please read about it in details in section <a href="#Managing_Cycles">Cycles, Channels and Streams</a>.</p>
+<p>Access to the PowerTrade WebSocket API is structured around four core concepts: Session, Streams, Channels and Cycles. Please read about it in details in section <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a>.</p>
 </div>
 <div class="paragraph">
 <p>A session is started on a per connection basis when connecting to one of the services above. As shown in chapter <a href="#Session_Control_Protocol_LogIn_LogOut">Session Control Protocol</a>, the protocol sequences follow a synchronous request/response pattern until a session established, at which point the API becomes asynchronous. The session-related messages groupped in corresponding reference sections: <a href="#Session_Protocol_Requests">Session Protocol Requests</a>, <a href="#Session_Protocol_Responses">Session Protocol Responses</a>.</p>
@@ -1117,7 +1117,7 @@ p { margin-bottom: 1.25rem; }
 <p>The session lasts as long as several conditions are met: <a href="#heartbeat">heartbeats</a> are sent every 15 seconds and as long as the client has not explicitly logged out (or terminated the session).</p>
 </div>
 <div class="paragraph">
-<p>Cycles are specific intervals of time that are used to provide a logical separation of the trading session over time. They are continuous; once a cycle ends, a new cycle starts. Please read chapter <a href="#Managing_Cycles">Cycles, Channels and Streams</a> for the details.</p>
+<p>Cycles are specific intervals of time that are used to provide a logical separation of the trading session over time. They are continuous; once a cycle ends, a new cycle starts. Please read chapter <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a> for the details.</p>
 </div>
 <div class="paragraph">
 <p>Channels represent a set of sequenced messages that correspond to the beginning and end to a cycle. Clients can receive numerous channel messages in a single session, since a client can go through numerous trading cycles.</p>
@@ -1790,18 +1790,49 @@ Country: JP
 </div>
 </div>
 <div class="sect2">
-<h3 id="Managing_Cycles">4.4. Cycles, Channels and Streams</h3>
+<h3 id="Managing_Cycles">4.4. Sessions, Channels, Streams and Cycles</h3>
 <div class="paragraph">
-<p>As discussed previously, a cycle represents a logical division of time within a trading session. A cycle starts as soon as the previous one ends, e.g. as shown on the diagram of <a href="#market_data_protocol">Market Data Protocol</a>. Cycles currently last one hour in the production platform. Cycles, Channels and Streams are closely related as follows. When a new cycle starts, the platform notifies the client with a new channel ID. The client must use the new channel ID to request a new stream from the platform.</p>
+<p>As shown on <a href="#session_control_with_auth">Diagram of <strong>Session Control Protocol</strong></a> Sessions, Channels and Streams are closely related: when a new session begins, the platform notifies the client with a new channel ID. The client must use the new channel ID to request a new stream from the platform.</p>
 </div>
 <div class="paragraph">
 <p>As described in earlier sections, streams are essentially a set of events, each event representing an action taken on objects within the service they represent and resulting in a change of the state of the service. Streams are associated with channels. In order for the client to start receiving a stream, the channel ID must be provided to the backend.</p>
+</div>
+<div class="paragraph">
+<p>A <em>cycle</em> represents a logical division of time within a <em>trading session</em>, so a trading session may go thru <em>multiple cycles</em>.</p>
+</div>
+<div class="paragraph">
+<p>A <em>cycle</em> starts as soon as the previous one ends, e.g. as shown on the diagram of <a href="#market_data_protocol">Market Data Protocol</a>. Cycles currently last one hour in the production platform.</p>
+</div>
+<div class="paragraph">
+<p>In turn, cycle also goes thru 3 phases: <em>"prolog"</em>, <em>"real-time"</em>, <em>"epilog"</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>prolog</strong>: begins after <a href="#cycle_starting">cycle_starting</a> and ends by <a href="#cycle_started">cycle_started</a>;</p>
+</li>
+<li>
+<p><strong>real-time</strong>: begins after <a href="#cycle_started">cycle_started</a> and ends by <a href="#cycle_ending">cycle_ending</a>;</p>
+</li>
+<li>
+<p><strong>epilog</strong>: begins after <a href="#cycle_ending">cycle_ending</a> and ends by <a href="#cycle_ended">cycle_ended</a>;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>At <strong>prolog</strong> phase a service sends to clients all essential information needed to prepare for participating in <strong>real-time</strong> part.</p>
+</div>
+<div class="paragraph">
+<p>At <strong>real-time</strong> phase clients suppose to act according to real-time updates sent by particular service.</p>
+</div>
+<div class="paragraph">
+<p>At <strong>epilog</strong> phase a service may send information about expiring items which life-time is bounded by number of cycles etc.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="Reference_Data">4.5. Reference Data</h3>
 <div class="paragraph">
-<p>The reference data is <em>a key information</em> disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <a href="#Introduction">Introduction</a> and <a href="#Managing_Cycles">Cycles, Channels and Streams</a>).</p>
+<p>The reference data is <em>a key information</em> disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <a href="#Introduction">Introduction</a> and <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a>).</p>
 </div>
 <div class="paragraph">
 <p>API clients should properly keep reference data available for usage in all API Services and, for example, to encode/decode all monetary values (as explained in <a href="#Monetary_Values">Monetary Values</a>).</p>
@@ -1859,11 +1890,39 @@ Country: JP
 <div class="paragraph">
 <p>Market Data Service provides information essential for trading on PowerTrade exchange, including <a href="#Reference_Data">Reference Data</a>.</p>
 </div>
+<div class="paragraph">
+<p>As mentioned in <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a> chapter, trading session goes thru <em>multiple cycles</em> and, in turn, each cycle also goes thru 3 phases: <strong>prolog</strong>, <strong>real-time</strong>, <strong>epilog</strong>.</p>
+</div>
+<div class="paragraph">
+<p>It is important to understand how corresponding information "carries over" the state of all related items (orders, markets, products etc) between cycles.</p>
+</div>
+<div class="paragraph">
+<p>At <strong>prolog</strong> phase, Market Data service sends to clients all essential information needed to prepare for participating in <strong>real-time</strong> part:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reference data for existing deliverables and and tradeable entities (e.g. <a href="#deliverable">deliverable</a>, <a href="#tradeable_entity">tradeable_entity</a>);</p>
+</li>
+<li>
+<p>The state of the tradeable entities as the beginning of the cycle (<a href="#trading_state">trading_state</a>);</p>
+</li>
+<li>
+<p>Restatement of display orders that were already open before the cycle started (<a href="#display_order_added">display_order_added</a>);</p>
+</li>
+<li>
+<p>Top of book information if there are open orders (<a href="#top_of_book">top_of_book</a>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>At <strong>epilog</strong> phase, Market Data service may send information about deletions for orders that are expiring (<a href="#display_order_deleted">display_order_deleted</a> for orders who have reached the end of their <a href="#time_in_force">time_in_force</a> set to <strong>"good_for_cycles"</strong>).</p>
+</div>
 <div id="market_data_protocol" class="imageblock text-center">
 <div class="content">
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' contentScriptType='application/ecmascript' contentStyleType='text/css' preserveAspectRatio='none' version='1.1' viewBox='0 0 335 1468' zoomAndPan='magnify' width="335" height="1468">
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' contentScriptType='application/ecmascript' contentStyleType='text/css' preserveAspectRatio='none' version='1.1' viewBox='0 0 709 1443' zoomAndPan='magnify' width="709" height="1443">
   <defs>
-    <filter height='300%' id='fwlq5zhsqivny' width='300%' x='-1' y='-1'>
+    <filter height='300%' id='fx25ifzufgtjn' width='300%' x='-1' y='-1'>
       <feGaussianBlur result='blurOut' stdDeviation='2.0'/>
       <feColorMatrix in='blurOut' result='blurOut2' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0'/>
       <feOffset dx='4.0' dy='4.0' in='blurOut2' result='blurOut3'/>
@@ -1871,321 +1930,357 @@ Country: JP
     </filter>
   </defs>
   <g>
-    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='1315.291' style='stroke: #000000; stroke-width: 2.0;' width='300.5' x='13' y='72.6211'/>
-    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='1161.1152' style='stroke: #000000; stroke-width: 2.0;' width='280.5' x='23' y='219.7969'/>
-    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='426.6367' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='244.1074'/>
-    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='284.1289' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='709.7441'/>
-    <rect fill='#FFFFFF' filter='url(#fwlq5zhsqivny)' height='284.1289' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='1048.8281'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='55.6211' y2='89.9316'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='89.9316' y2='130.8867'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='130.8867' y2='130.8867'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='130.8867' y2='171.8418'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='171.8418' y2='171.8418'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='171.8418' y2='212.7969'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='212.7969' y2='374.3496'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='374.3496' y2='415.3047'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='415.3047' y2='546.168'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='546.168' y2='587.123'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='587.123' y2='869.2969'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='869.2969' y2='910.252'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='910.252' y2='1000.873'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='1000.873' y2='1041.8281'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='1041.8281' y2='1208.3809'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='1208.3809' y2='1249.3359'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='1249.3359' y2='1339.957'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='72' x2='72' y1='1339.957' y2='1380.9121'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='72' x2='72' y1='1380.9121' y2='1404.9121'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='55.6211' y2='89.9316'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='89.9316' y2='130.8867'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='130.8867' y2='130.8867'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='130.8867' y2='171.8418'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='171.8418' y2='171.8418'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='171.8418' y2='212.7969'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='212.7969' y2='374.3496'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='374.3496' y2='415.3047'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='415.3047' y2='546.168'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='546.168' y2='587.123'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='587.123' y2='869.2969'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='869.2969' y2='910.252'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='910.252' y2='1000.873'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='1000.873' y2='1041.8281'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='1041.8281' y2='1208.3809'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='1208.3809' y2='1249.3359'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='1249.3359' y2='1339.957'/>
-    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='252.5' x2='252.5' y1='1339.957' y2='1380.9121'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='252.5' x2='252.5' y1='1380.9121' y2='1404.9121'/>
-    <rect fill='#FEFECE' filter='url(#fwlq5zhsqivny)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='43' y='20.1328'/>
-    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='50' y='40.668'>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='1289.9336' style='stroke: #000000; stroke-width: 2.0;' width='674.5' x='13' y='72.6211'/>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='1135.7578' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='23' y='219.7969'/>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='667.1211' style='stroke: #000000; stroke-width: 2.0;' width='634.5' x='33' y='244.1074'/>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='163.8633' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='297.7285'/>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='214.1289' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='504.9023'/>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='112.5762' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='762.3418'/>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='316.416' style='stroke: #000000; stroke-width: 2.0;' width='634.5' x='33' y='991.1836'/>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='46.6211' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='1044.8047'/>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='46.6211' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='1134.7363'/>
+    <rect fill='#FFFFFF' filter='url(#fx25ifzufgtjn)' height='46.6211' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='1224.668'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='55.6211' y2='89.9316'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='89.9316' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='130.8867' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='130.8867' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='171.8418' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='171.8418' y2='212.7969'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='212.7969' y2='653.0762'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='653.0762' y2='694.0313'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='694.0313' y2='808.9629'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='808.9629' y2='849.918'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='849.918' y2='943.2285'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='943.2285' y2='984.1836'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='984.1836' y2='1314.5996'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='82' x2='82' y1='1314.5996' y2='1355.5547'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='82' x2='82' y1='1355.5547' y2='1379.5547'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='616.5' x2='616.5' y1='55.6211' y2='89.9316'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='616.5' x2='616.5' y1='89.9316' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='616.5' x2='616.5' y1='130.8867' y2='130.8867'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='616.5' x2='616.5' y1='130.8867' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='616.5' x2='616.5' y1='171.8418' y2='171.8418'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='616.5' x2='616.5' y1='171.8418' y2='212.7969'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='616.5' x2='616.5' y1='212.7969' y2='653.0762'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='616.5' x2='616.5' y1='653.0762' y2='694.0313'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='616.5' x2='616.5' y1='694.0313' y2='808.9629'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='616.5' x2='616.5' y1='808.9629' y2='849.918'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='616.5' x2='616.5' y1='849.918' y2='943.2285'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='616.5' x2='616.5' y1='943.2285' y2='984.1836'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='616.5' x2='616.5' y1='984.1836' y2='1314.5996'/>
+    <line style='stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;' x1='616.5' x2='616.5' y1='1314.5996' y2='1355.5547'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='616.5' x2='616.5' y1='1355.5547' y2='1379.5547'/>
+    <rect fill='#FEFECE' filter='url(#fx25ifzufgtjn)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='53' y='20.1328'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='60' y='40.668'>
       Client
     </text>
-    <rect fill='#FEFECE' filter='url(#fwlq5zhsqivny)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='43' y='1403.9121'/>
-    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='50' y='1424.4473'>
+    <rect fill='#FEFECE' filter='url(#fx25ifzufgtjn)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='54' x='53' y='1378.5547'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='40' x='60' y='1399.0898'>
       Client
     </text>
-    <rect fill='#FEFECE' filter='url(#fwlq5zhsqivny)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='222.5' y='20.1328'/>
-    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='229.5' y='40.668'>
+    <rect fill='#FEFECE' filter='url(#fx25ifzufgtjn)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='586.5' y='20.1328'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='593.5' y='40.668'>
       Server
     </text>
-    <rect fill='#FEFECE' filter='url(#fwlq5zhsqivny)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='222.5' y='1403.9121'/>
-    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='229.5' y='1424.4473'>
+    <rect fill='#FEFECE' filter='url(#fx25ifzufgtjn)' height='30.4883' style='stroke: #A80036; stroke-width: 1.5;' width='57' x='586.5' y='1378.5547'/>
+    <text fill='#000000' font-family='sans-serif' font-size='14' lengthAdjust='spacingAndGlyphs' textLength='43' x='593.5' y='1399.0898'>
       Server
     </text>
     <path d='M13,72.6211 L219,72.6211 L219,79.6211 L209,89.6211 L13,89.6211 L13,72.6211 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
-    <rect fill='none' height='1315.291' style='stroke: #000000; stroke-width: 2.0;' width='300.5' x='13' y='72.6211'/>
+    <rect fill='none' height='1289.9336' style='stroke: #000000; stroke-width: 2.0;' width='674.5' x='13' y='72.6211'/>
     <a href='#session_control_with_auth' xlink:href='#session_control_with_auth' target='_top' title='#session_control_with_auth' xlink:title='#session_control_with_auth' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
       <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='161' x='28' y='86.1895'>
         Session Control Protocol
       </text>
     </a>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='75' y='114.5664'/>
-    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='25' x='75' y='114.5664'>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='262' y='114.5664'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='25' x='262' y='114.5664'>
       Note
     </text>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='150' x='100' y='114.5664'>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='150' x='287' y='114.5664'>
       : for simplicity, heartbeating
     </text>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='138' x='68.5' y='155.5215'>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='138' x='255.5' y='155.5215'>
       is not shown here but it is
     </text>
-    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='47' x='209.5' y='155.5215'>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='47' x='396.5' y='155.5215'>
       required
     </text>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='259.5' y='155.5215'/>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='103.5' y='196.4766'/>
-    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='118' x='103.5' y='196.4766'>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='446.5' y='155.5215'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='290.5' y='196.4766'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='118' x='290.5' y='196.4766'>
       to keep session alive
     </text>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='224.5' y='196.4766'/>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='0' x='411.5' y='196.4766'/>
     <path d='M23,219.7969 L208,219.7969 L208,226.7969 L198,236.7969 L23,236.7969 L23,219.7969 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
-    <rect fill='none' height='1161.1152' style='stroke: #000000; stroke-width: 2.0;' width='280.5' x='23' y='219.7969'/>
+    <rect fill='none' height='1135.7578' style='stroke: #000000; stroke-width: 2.0;' width='654.5' x='23' y='219.7969'/>
     <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='140' x='38' y='233.3652'>
       Market Data Protocol
     </text>
     <path d='M33,244.1074 L139,244.1074 L139,251.1074 L129,261.1074 L33,261.1074 L33,244.1074 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
-    <rect fill='none' height='426.6367' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='244.1074'/>
+    <rect fill='none' height='667.1211' style='stroke: #000000; stroke-width: 2.0;' width='634.5' x='33' y='244.1074'/>
     <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='61' x='48' y='257.6758'>
       1st Cycle
     </text>
-    <polygon fill='#A80036' points='83,278.7285,73,282.7285,83,286.7285,79,282.7285' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='282.7285' y2='282.7285'/>
+    <polygon fill='#A80036' points='93,278.7285,83,282.7285,93,286.7285,89,282.7285' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='282.7285' y2='282.7285'/>
     <a href='#cycle_starting' xlink:href='#cycle_starting' target='_top' title='#cycle_starting' xlink:title='#cycle_starting' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='94' x='115.5' y='277.9863'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='94' x='302.5' y='277.9863'>
         cycle_starting
       </text>
     </a>
-    <polygon fill='#A80036' points='83,308.0391,73,312.0391,83,316.0391,79,312.0391' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='312.0391' y2='312.0391'/>
-    <a href='#cycle_started' xlink:href='#cycle_started' target='_top' title='#cycle_started' xlink:title='#cycle_started' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='118' y='307.2969'>
-        cycle_started
+    <path d='M43,297.7285 L132,297.7285 L132,304.7285 L122,314.7285 L43,314.7285 L43,297.7285 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='163.8633' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='297.7285'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='44' x='58' y='311.2969'>
+      prolog
+    </text>
+    <polygon fill='#A80036' points='93,332.3496,83,336.3496,93,340.3496,89,336.3496' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='336.3496' y2='336.3496'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='270' x='174.5' y='331.6074'>
+      Reference data for existing deliverables
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='448.5' y='331.6074'/>
+    <a href='#deliverable' xlink:href='#deliverable' target='_top' title='#deliverable' xlink:title='#deliverable' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='76' x='448.5' y='331.6074'>
+        deliverable
       </text>
     </a>
-    <polygon fill='#A80036' points='83,362.3496,73,366.3496,83,370.3496,79,366.3496' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='366.3496' y2='366.3496'/>
-    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='50' x='84' y='361.6074'>
-      various
+    <polygon fill='#A80036' points='93,361.6602,83,365.6602,93,369.6602,89,365.6602' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='365.6602' y2='365.6602'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='306' x='139' y='360.918'>
+      Reference data for existing tradeable entities
     </text>
-    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='138' y='361.6074'/>
-    <a href='#Reference_Data' xlink:href='#Reference_Data' target='_top' title='#Reference_Data' xlink:title='#Reference_Data' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='103' x='138' y='361.6074'>
-        Reference Data
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='449' y='360.918'/>
+    <a href='#tradeable_entity' xlink:href='#tradeable_entity' target='_top' title='#tradeable_entity' xlink:title='#tradeable_entity' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='111' x='449' y='360.918'>
+        tradeable_entity
       </text>
     </a>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='136' y='398.9844'>
-      and so on
+    <polygon fill='#A80036' points='93,390.9707,83,394.9707,93,398.9707,89,394.9707' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='394.9707' y2='394.9707'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='229' x='188' y='390.2285'>
+      The state of the tradeable entities
     </text>
-    <polygon fill='#A80036' points='83,534.168,73,538.168,83,542.168,79,538.168' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='538.168' y2='538.168'/>
-    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='136' x='92.5' y='456.873'>
-      various market data
-    </text>
-    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='228.5' y='456.873'>
-      :
-    </text>
-    <a href='#trade' xlink:href='#trade' target='_top' title='#trade' xlink:title='#trade' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='32' x='144.5' y='472.1836'>
-        trade
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='421' y='390.2285'/>
+    <a href='#trading_state' xlink:href='#trading_state' target='_top' title='#trading_state' xlink:title='#trading_state' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='90' x='421' y='390.2285'>
+        trading_state
       </text>
     </a>
-    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='176.5' y='472.1836'>
-      ,
+    <polygon fill='#A80036' points='93,420.2813,83,424.2813,93,428.2813,89,424.2813' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='424.2813' y2='424.2813'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='364' x='94' y='419.5391'>
+      Restatement of display orders that were already open
     </text>
-    <a href='#top_of_book' xlink:href='#top_of_book' target='_top' title='#top_of_book' xlink:title='#top_of_book' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='80' x='120.5' y='487.4941'>
-        top_of_book
-      </text>
-    </a>
-    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='200.5' y='487.4941'>
-      ,
-    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='462' y='419.5391'/>
     <a href='#display_order_added' xlink:href='#display_order_added' target='_top' title='#display_order_added' xlink:title='#display_order_added' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='130' x='95.5' y='502.8047'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='143' x='462' y='419.5391'>
         display_order_added
       </text>
     </a>
-    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='225.5' y='502.8047'>
+    <polygon fill='#A80036' points='93,449.5918,83,453.5918,93,457.5918,89,453.5918' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='453.5918' y2='453.5918'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='328' x='142.5' y='448.8496'>
+      Top of book information if there are open orders
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='474.5' y='448.8496'/>
+    <a href='#top_of_book' xlink:href='#top_of_book' target='_top' title='#top_of_book' xlink:title='#top_of_book' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='82' x='474.5' y='448.8496'>
+        top_of_book
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,485.9023,83,489.9023,93,493.9023,89,489.9023' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='489.9023' y2='489.9023'/>
+    <a href='#cycle_started' xlink:href='#cycle_started' target='_top' title='#cycle_started' xlink:title='#cycle_started' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='305' y='485.1602'>
+        cycle_started
+      </text>
+    </a>
+    <path d='M43,504.9023 L152,504.9023 L152,511.9023 L142,521.9023 L43,521.9023 L43,504.9023 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='214.1289' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='504.9023'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='64' x='58' y='518.4707'>
+      real-time
+    </text>
+    <polygon fill='#A80036' points='93,641.0762,83,645.0762,93,649.0762,89,645.0762' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='645.0762' y2='645.0762'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='204' x='245.5' y='563.7813'>
+      various real-time Market Data
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='449.5' y='563.7813'>
+      :
+    </text>
+    <a href='#trade' xlink:href='#trade' target='_top' title='#trade' xlink:title='#trade' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='32' x='331.5' y='579.0918'>
+        trade
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='363.5' y='579.0918'>
+      ,
+    </text>
+    <a href='#top_of_book' xlink:href='#top_of_book' target='_top' title='#top_of_book' xlink:title='#top_of_book' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='80' x='307.5' y='594.4023'>
+        top_of_book
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='387.5' y='594.4023'>
+      ,
+    </text>
+    <a href='#display_order_added' xlink:href='#display_order_added' target='_top' title='#display_order_added' xlink:title='#display_order_added' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='130' x='282.5' y='609.7129'>
+        display_order_added
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='412.5' y='609.7129'>
       ,
     </text>
     <a href='#display_order_deleted' xlink:href='#display_order_deleted' target='_top' title='#display_order_deleted' xlink:title='#display_order_deleted' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='138' x='91.5' y='518.1152'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='138' x='278.5' y='625.0234'>
         display_order_deleted
       </text>
     </a>
-    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='229.5' y='518.1152'>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='416.5' y='625.0234'>
       ,
     </text>
     <a href='#display_order_updated' xlink:href='#display_order_updated' target='_top' title='#display_order_updated' xlink:title='#display_order_updated' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='143' x='85' y='533.4258'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='143' x='272' y='640.334'>
         display_order_updated
       </text>
     </a>
-    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='12' x='228' y='533.4258'>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='12' x='415' y='640.334'>
       ,..
     </text>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='136' y='570.8027'>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='323' y='677.7109'>
       and so on
     </text>
-    <polygon fill='#A80036' points='83,629.4336,73,633.4336,83,637.4336,79,633.4336' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='633.4336' y2='633.4336'/>
+    <polygon fill='#A80036' points='93,743.3418,83,747.3418,93,751.3418,89,747.3418' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='747.3418' y2='747.3418'/>
     <a href='#cycle_ending' xlink:href='#cycle_ending' target='_top' title='#cycle_ending' xlink:title='#cycle_ending' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='118' y='628.6914'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='305' y='742.5996'>
         cycle_ending
       </text>
     </a>
-    <polygon fill='#A80036' points='83,658.7441,73,662.7441,83,666.7441,79,662.7441' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='662.7441' y2='662.7441'/>
+    <path d='M43,762.3418 L130,762.3418 L130,769.3418 L120,779.3418 L43,779.3418 L43,762.3418 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='112.5762' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='762.3418'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='42' x='58' y='775.9102'>
+      epilog
+    </text>
+    <polygon fill='#A80036' points='93,796.9629,83,800.9629,93,804.9629,89,800.9629' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='800.9629' y2='800.9629'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='55' x='242.5' y='796.2207'>
+      optional
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='297.5' y='796.2207'>
+      :
+    </text>
+    <a href='#display_order_deleted' xlink:href='#display_order_deleted' target='_top' title='#display_order_deleted' xlink:title='#display_order_deleted' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='151' x='305.5' y='796.2207'>
+        display_order_deleted
+      </text>
+    </a>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='323' y='833.5977'>
+      and so on
+    </text>
+    <polygon fill='#A80036' points='93,899.2285,83,903.2285,93,907.2285,89,903.2285' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='903.2285' y2='903.2285'/>
     <a href='#cycle_ended' xlink:href='#cycle_ended' target='_top' title='#cycle_ended' xlink:title='#cycle_ended' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='84' x='120.5' y='658.002'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='84' x='307.5' y='898.4863'>
         cycle_ended
       </text>
     </a>
-    <path d='M33,709.7441 L145,709.7441 L145,716.7441 L135,726.7441 L33,726.7441 L33,709.7441 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
-    <rect fill='none' height='284.1289' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='709.7441'/>
-    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='67' x='48' y='723.3125'>
-      2nd Cycle
-    </text>
-    <polygon fill='#A80036' points='83,744.3652,73,748.3652,83,752.3652,79,748.3652' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='748.3652' y2='748.3652'/>
-    <a href='#cycle_starting' xlink:href='#cycle_starting' target='_top' title='#cycle_starting' xlink:title='#cycle_starting' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='94' x='115.5' y='743.623'>
-        cycle_starting
-      </text>
-    </a>
-    <polygon fill='#A80036' points='83,773.6758,73,777.6758,83,781.6758,79,777.6758' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='777.6758' y2='777.6758'/>
-    <a href='#cycle_started' xlink:href='#cycle_started' target='_top' title='#cycle_started' xlink:title='#cycle_started' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='118' y='772.9336'>
-        cycle_started
-      </text>
-    </a>
-    <polygon fill='#A80036' points='83,827.9863,73,831.9863,83,835.9863,79,831.9863' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='831.9863' y2='831.9863'/>
-    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='50' x='84' y='827.2441'>
-      various
-    </text>
-    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='138' y='827.2441'/>
-    <a href='#Reference_Data' xlink:href='#Reference_Data' target='_top' title='#Reference_Data' xlink:title='#Reference_Data' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='103' x='138' y='827.2441'>
-        Reference Data
-      </text>
-    </a>
-    <polygon fill='#A80036' points='83,857.2969,73,861.2969,83,865.2969,79,861.2969' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='861.2969' y2='861.2969'/>
-    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='136' x='94.5' y='856.5547'>
-      various market data
-    </text>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='136' y='893.9316'>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='323' y='967.8633'>
       and so on
     </text>
-    <polygon fill='#A80036' points='83,952.5625,73,956.5625,83,960.5625,79,956.5625' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='956.5625' y2='956.5625'/>
-    <a href='#cycle_ending' xlink:href='#cycle_ending' target='_top' title='#cycle_ending' xlink:title='#cycle_ending' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='118' y='951.8203'>
-        cycle_ending
-      </text>
-    </a>
-    <polygon fill='#A80036' points='83,981.873,73,985.873,83,989.873,79,985.873' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='985.873' y2='985.873'/>
-    <a href='#cycle_ended' xlink:href='#cycle_ended' target='_top' title='#cycle_ended' xlink:title='#cycle_ended' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='84' x='120.5' y='981.1309'>
-        cycle_ended
-      </text>
-    </a>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='136' y='1025.5078'>
-      and so on
-    </text>
-    <path d='M33,1048.8281 L142,1048.8281 L142,1055.8281 L132,1065.8281 L33,1065.8281 L33,1048.8281 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
-    <rect fill='none' height='284.1289' style='stroke: #000000; stroke-width: 2.0;' width='260.5' x='33' y='1048.8281'/>
-    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='64' x='48' y='1062.3965'>
+    <path d='M33,991.1836 L142,991.1836 L142,998.1836 L132,1008.1836 L33,1008.1836 L33,991.1836 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='316.416' style='stroke: #000000; stroke-width: 2.0;' width='634.5' x='33' y='991.1836'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='64' x='48' y='1004.752'>
       Nth Cycle
     </text>
-    <polygon fill='#A80036' points='83,1083.4492,73,1087.4492,83,1091.4492,79,1087.4492' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='1087.4492' y2='1087.4492'/>
+    <polygon fill='#A80036' points='93,1025.8047,83,1029.8047,93,1033.8047,89,1029.8047' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='1029.8047' y2='1029.8047'/>
     <a href='#cycle_starting' xlink:href='#cycle_starting' target='_top' title='#cycle_starting' xlink:title='#cycle_starting' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='94' x='115.5' y='1082.707'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='94' x='302.5' y='1025.0625'>
         cycle_starting
       </text>
     </a>
-    <polygon fill='#A80036' points='83,1112.7598,73,1116.7598,83,1120.7598,79,1116.7598' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='1116.7598' y2='1116.7598'/>
+    <path d='M43,1044.8047 L132,1044.8047 L132,1051.8047 L122,1061.8047 L43,1061.8047 L43,1044.8047 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='46.6211' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='1044.8047'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='44' x='58' y='1058.373'>
+      prolog
+    </text>
+    <polygon fill='#A80036' points='93,1079.4258,83,1083.4258,93,1087.4258,89,1083.4258' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='1083.4258' y2='1083.4258'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='131' x='284' y='1078.6836'>
+      key Reference Data
+    </text>
+    <polygon fill='#A80036' points='93,1115.7363,83,1119.7363,93,1123.7363,89,1119.7363' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='1119.7363' y2='1119.7363'/>
     <a href='#cycle_started' xlink:href='#cycle_started' target='_top' title='#cycle_started' xlink:title='#cycle_started' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='118' y='1112.0176'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='305' y='1114.9941'>
         cycle_started
       </text>
     </a>
-    <polygon fill='#A80036' points='83,1167.0703,73,1171.0703,83,1175.0703,79,1171.0703' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='1171.0703' y2='1171.0703'/>
-    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='50' x='84' y='1166.3281'>
-      various
+    <path d='M43,1134.7363 L152,1134.7363 L152,1141.7363 L142,1151.7363 L43,1151.7363 L43,1134.7363 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='46.6211' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='1134.7363'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='64' x='58' y='1148.3047'>
+      real-time
     </text>
-    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='0' x='138' y='1166.3281'/>
-    <a href='#Reference_Data' xlink:href='#Reference_Data' target='_top' title='#Reference_Data' xlink:title='#Reference_Data' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='103' x='138' y='1166.3281'>
-        Reference Data
-      </text>
-    </a>
-    <polygon fill='#A80036' points='83,1196.3809,73,1200.3809,83,1204.3809,79,1200.3809' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='1200.3809' y2='1200.3809'/>
-    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='136' x='94.5' y='1195.6387'>
-      various market data
+    <polygon fill='#A80036' points='93,1169.3574,83,1173.3574,93,1177.3574,89,1173.3574' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='1173.3574' y2='1173.3574'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='204' x='247.5' y='1168.6152'>
+      various real-time Market Data
     </text>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='136' y='1233.0156'>
-      and so on
-    </text>
-    <polygon fill='#A80036' points='83,1291.6465,73,1295.6465,83,1299.6465,79,1295.6465' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='1295.6465' y2='1295.6465'/>
+    <polygon fill='#A80036' points='93,1205.668,83,1209.668,93,1213.668,89,1209.668' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='1209.668' y2='1209.668'/>
     <a href='#cycle_ending' xlink:href='#cycle_ending' target='_top' title='#cycle_ending' xlink:title='#cycle_ending' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='118' y='1290.9043'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='89' x='305' y='1204.9258'>
         cycle_ending
       </text>
     </a>
-    <polygon fill='#A80036' points='83,1320.957,73,1324.957,83,1328.957,79,1324.957' style='stroke: #A80036; stroke-width: 1.0;'/>
-    <line style='stroke: #A80036; stroke-width: 1.0;' x1='77' x2='252' y1='1324.957' y2='1324.957'/>
+    <path d='M43,1224.668 L130,1224.668 L130,1231.668 L120,1241.668 L43,1241.668 L43,1224.668 ' fill='#EEEEEE' style='stroke: #000000; stroke-width: 1.0;'/>
+    <rect fill='none' height='46.6211' style='stroke: #000000; stroke-width: 2.0;' width='614.5' x='43' y='1224.668'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='42' x='58' y='1238.2363'>
+      epilog
+    </text>
+    <polygon fill='#A80036' points='93,1259.2891,83,1263.2891,93,1267.2891,89,1263.2891' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='1263.2891' y2='1263.2891'/>
+    <text fill='#000000' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' textLength='55' x='242.5' y='1258.5469'>
+      optional
+    </text>
+    <text fill='#000000' font-family='sans-serif' font-size='13' lengthAdjust='spacingAndGlyphs' textLength='4' x='297.5' y='1258.5469'>
+      :
+    </text>
+    <a href='#display_order_deleted' xlink:href='#display_order_deleted' target='_top' title='#display_order_deleted' xlink:title='#display_order_deleted' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='151' x='305.5' y='1258.5469'>
+        display_order_deleted
+      </text>
+    </a>
+    <polygon fill='#A80036' points='93,1295.5996,83,1299.5996,93,1303.5996,89,1299.5996' style='stroke: #A80036; stroke-width: 1.0;'/>
+    <line style='stroke: #A80036; stroke-width: 1.0;' x1='87' x2='616' y1='1299.5996' y2='1299.5996'/>
     <a href='#cycle_ended' xlink:href='#cycle_ended' target='_top' title='#cycle_ended' xlink:title='#cycle_ended' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='84' x='120.5' y='1320.2148'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='13' font-weight='bold' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='84' x='307.5' y='1294.8574'>
         cycle_ended
       </text>
     </a>
-    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='136' y='1364.5918'>
+    <text fill='#000000' font-family='sans-serif' font-size='11' lengthAdjust='spacingAndGlyphs' textLength='53' x='323' y='1339.2344'>
       and so on
     </text>
-    <path d='M77.594,6.1328 C77.534,6.1328 77.489,6.1768 77.469,6.2268 L74.531,13.0398 L74.5,13.2278 L74.5,14.0408 C74.5,14.1008 74.534,14.1348 74.594,14.1348 L81.407,14.1348 C81.467,14.1348 81.501,14.1008 81.501,14.0408 L81.501,13.2278 L81.47,13.0398 L78.532,6.2268 C78.512,6.1768 78.467,6.1328 78.407,6.1328 L77.594,6.1328 M77.5,9.1328 L78.5,9.1328 L78.5,11.1328 L77.5,11.1328 L77.5,9.1328 M77.5,12.1328 L78.5,12.1328 L78.5,13.1328 L77.5,13.1328 L77.5,12.1328 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
-    <text fill='#888888' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' textLength='186' x='83.5' y='14.6016'>
+    <path d='M451.594,6.1328 C451.534,6.1328 451.489,6.1768 451.469,6.2268 L448.531,13.0398 L448.5,13.2278 L448.5,14.0408 C448.5,14.1008 448.534,14.1348 448.594,14.1348 L455.407,14.1348 C455.467,14.1348 455.501,14.1008 455.501,14.0408 L455.501,13.2278 L455.47,13.0398 L452.532,6.2268 C452.512,6.1768 452.467,6.1328 452.407,6.1328 L451.594,6.1328 M451.5,9.1328 L452.5,9.1328 L452.5,11.1328 L451.5,11.1328 L451.5,9.1328 M451.5,12.1328 L452.5,12.1328 L452.5,13.1328 L451.5,13.1328 L451.5,12.1328 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
+    <text fill='#888888' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' textLength='186' x='457.5' y='14.6016'>
       Do not test in production, test in
     </text>
     <a href='#WS_API_Services_Sandbox' xlink:href='#WS_API_Services_Sandbox' target='_top' title='#WS_API_Services_Sandbox' xlink:title='#WS_API_Services_Sandbox' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='50' x='273.5' y='14.6016'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='12' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='50' x='647.5' y='14.6016'>
         sandbox
       </text>
     </a>
-    <path d='M214.5,1443.4004 L210.75,1449.6504 L213.25,1449.6504 L213.25,1453.4004 L217,1447.1504 L214.5,1447.1504 L214.5,1443.4004 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
-    <text fill='#888888' font-family='sans-serif' font-size='10' lengthAdjust='spacingAndGlyphs' textLength='0' x='223.5' y='1455.041'/>
+    <path d='M588.5,1418.043 L584.75,1424.293 L587.25,1424.293 L587.25,1428.043 L591,1421.793 L588.5,1421.793 L588.5,1418.043 ' fill='#888888' style='stroke: ; stroke-width: 0.0; stroke-dasharray: ;'/>
+    <text fill='#888888' font-family='sans-serif' font-size='10' lengthAdjust='spacingAndGlyphs' textLength='0' x='597.5' y='1429.6836'/>
     <a href='https://power.trade' xlink:href='https://power.trade' target='_top' title='https://power.trade' xlink:title='https://power.trade' xlink:actuate='onRequest' xlink:show='new' xlink:type='simple'>
-      <text fill='#0000FF' font-family='sans-serif' font-size='9' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='100' x='223.5' y='1455.252'>
+      <text fill='#0000FF' font-family='sans-serif' font-size='9' lengthAdjust='spacingAndGlyphs' text-decoration='underline' textLength='100' x='597.5' y='1429.8945'>
         PowerTrade Exchange
       </text>
     </a>
-    <!--MD5=[87e673d0cdb4b7f20b494b7227f40de7]
+    <!--MD5=[20c38a3a2ad041694c33b521b809323a]
 @startuml market_data_protocol
 
 
@@ -2209,47 +2304,60 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
     group <b>Market Data Protocol</b>
 
         group 1st Cycle
+
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+
+            group prolog
+                Client <- Server : <b>Reference data for existing deliverables</b> <b>[[#deliverable deliverable]]</b>
+                Client <- Server : <b>Reference data for existing tradeable entities</b> <b>[[#tradeable_entity tradeable_entity]]</b>
+                Client <- Server : <b>The state of the tradeable entities</b> <b>[[#trading_state trading_state]]</b>
+                Client <- Server : <b>Restatement of display orders that were already open</b> <b>[[#display_order_added display_order_added]]</b>
+                Client <- Server : <b>Top of book information if there are open orders</b> <b>[[#top_of_book top_of_book]]</b>
+            end
+
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
-            |||
-            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
-            ... and so on ...
-            |||
-            Client <- Server : <b>various market data</b>:\n[[#trade trade]],\n[[#top_of_book top_of_book]],\n[[#display_order_added display_order_added]],\n[[#display_order_deleted display_order_deleted]],\n[[#display_order_updated display_order_updated]],..
-            ... and so on ...
-            |||
+
+            group real-time
+                |||
+                Client <- Server : <b>various real-time Market Data</b>:\n[[#trade trade]],\n[[#top_of_book top_of_book]],\n[[#display_order_added display_order_added]],\n[[#display_order_deleted display_order_deleted]],\n[[#display_order_updated display_order_updated]],..
+                ... and so on ...
+                |||
+            end
+
             Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+
+            group epilog
+                Client <- Server : <b>optional</b>: <b>[[#display_order_deleted display_order_deleted]]</b>
+                ... and so on ...
+                |||
+            end
+
             Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
         end
         |||
-        group 2nd Cycle
-            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
-            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
-            |||
-            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
-            Client <- Server : <b>various market data</b>
-            ... and so on ...
-            |||
-            Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
-            Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
-        end
-
         ... and so on ...
-
         group Nth Cycle
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+
+            group prolog
+                Client <- Server : <b>key Reference Data</b>
+            end
+
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
-            |||
-            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
-            Client <- Server : <b>various market data</b>
-            ... and so on ...
-            |||
+
+            group real-time
+                Client <- Server : <b>various real-time Market Data</b>
+            end
+
             Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+
+            group epilog
+                Client <- Server : <b>optional</b>: <b>[[#display_order_deleted display_order_deleted]]</b>
+            end
+
             Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
         end
-
         ... and so on ...
-
     end
 end
 
@@ -12608,7 +12716,7 @@ The type also supports the following string constants:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-30 21:40:19 +0900
+Last updated 2020-12-05 17:35:26 +0900
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

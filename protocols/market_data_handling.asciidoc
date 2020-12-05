@@ -2,11 +2,11 @@
 === Reference Data
 
 ifeval::[{for_internal_use} == true]
-The reference data is _a key information_ disseminated by Market Data Service and Accounts Management Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <<Introduction,Introduction>> and <<Managing_Cycles,Cycles, Channels and Streams>>).
+The reference data is _a key information_ disseminated by Market Data Service and Accounts Management Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <<Introduction,Introduction>> and <<Managing_Cycles,Sessions, Channels, Streams and Cycles>>).
 endif::[]
 
 ifeval::[{for_internal_use} == false]
-The reference data is _a key information_ disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <<Introduction,Introduction>> and <<Managing_Cycles,Cycles, Channels and Streams>>).
+The reference data is _a key information_ disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <<Introduction,Introduction>> and <<Managing_Cycles,Sessions, Channels, Streams and Cycles>>).
 endif::[]
 
 API clients should properly keep reference data available for usage in all API Services and, for example, to encode/decode all monetary values (as explained in <<Monetary_Values, Monetary Values>>).
@@ -43,6 +43,22 @@ endif::[]
 === Market Data
 
 Market Data Service provides information essential for trading on PowerTrade exchange, including <<Reference_Data, Reference Data>>.
+
+As mentioned in <<Managing_Cycles, Sessions, Channels, Streams and Cycles>> chapter, trading session goes thru _multiple cycles_ and, in turn, each cycle also goes thru 3 phases: *prolog*, *real-time*, *epilog*.
+
+It is important to understand how corresponding information "carries over" the state of all related items (orders, markets, products etc) between cycles.
+
+At *prolog* phase, Market Data service sends to clients all essential information needed to prepare for participating in *real-time* part:
+
+* Reference data for existing deliverables and and tradeable entities (e.g. <<deliverable,deliverable>>, <<tradeable_entity, tradeable_entity>>);
+
+* The state of the tradeable entities as the beginning of the cycle (<<trading_state,trading_state>>);
+
+* Restatement of display orders that were already open before the cycle started (<<display_order_added, display_order_added>>);
+
+* Top of book information if there are open orders (<<top_of_book, top_of_book>>).
+
+At *epilog* phase, Market Data service may send information about deletions for orders that are expiring (<<display_order_deleted, display_order_deleted>> for orders who have reached the end of their <<time_in_force, time_in_force>> set to *"good_for_cycles"*).
 
 [[market_data_protocol]]
 .Diagram of *Market Data Protocol*

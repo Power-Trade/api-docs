@@ -1,6 +1,23 @@
 [[Managing_Cycles]]
-=== Cycles, Channels and Streams
+=== Sessions, Channels, Streams and Cycles
 
-As discussed previously, a cycle represents a logical division of time within a trading session. A cycle starts as soon as the previous one ends, e.g. as shown on the diagram of <<market_data_protocol, Market Data Protocol>>. Cycles currently last one hour in the production platform. Cycles, Channels and Streams are closely related as follows. When a new cycle starts, the platform notifies the client with a new channel ID. The client must use the new channel ID to request a new stream from the platform.
+As shown on <<session_control_with_auth, Diagram of *Session Control Protocol*>> Sessions, Channels and Streams are closely related: when a new session begins, the platform notifies the client with a new channel ID. The client must use the new channel ID to request a new stream from the platform.
 
 As described in earlier sections, streams are essentially a set of events, each event representing an action taken on objects within the service they represent and resulting in a change of the state of the service. Streams are associated with channels. In order for the client to start receiving a stream, the channel ID must be provided to the backend.
+
+A _cycle_ represents a logical division of time within a _trading session_, so a trading session may go thru _multiple cycles_.
+
+A _cycle_ starts as soon as the previous one ends, e.g. as shown on the diagram of <<market_data_protocol, Market Data Protocol>>. Cycles currently last one hour in the production platform.
+
+In turn, cycle also goes thru 3 phases: _"prolog"_, _"real-time"_, _"epilog"_.
+
+* *prolog*: begins after <<cycle_starting, cycle_starting>> and ends by <<cycle_started, cycle_started>>;
+* *real-time*: begins after <<cycle_started, cycle_started>> and ends by <<cycle_ending, cycle_ending>>;
+* *epilog*: begins after <<cycle_ending, cycle_ending>> and ends by <<cycle_ended, cycle_ended>>;
+
+At *prolog* phase a service sends to clients all essential information needed to prepare for participating in *real-time* part.
+
+At *real-time* phase clients suppose to act according to real-time updates sent by particular service.
+
+At *epilog* phase a service may send information about expiring items which life-time is bounded by number of cycles etc.
+

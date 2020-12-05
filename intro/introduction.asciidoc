@@ -95,13 +95,13 @@ endif::[]
 
 A secure WebSocket connection must be made to most of services in order to send requests and receive updates from the platform, please see the details in chapter <<Authentication,Authentication>>.
 
-Access to the PowerTrade WebSocket API is structured around four core concepts: Session, Streams, Channels and Cycles. Please read about it in details in section <<Managing_Cycles,Cycles, Channels and Streams>>.
+Access to the PowerTrade WebSocket API is structured around four core concepts: Session, Streams, Channels and Cycles. Please read about it in details in section <<Managing_Cycles,Sessions, Channels, Streams and Cycles>>.
 
 A session is started on a per connection basis when connecting to one of the services above. As shown in chapter <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>>, the protocol sequences follow a synchronous request/response pattern until a session established, at which point the API becomes asynchronous. The session-related messages groupped in corresponding reference sections: <<Session_Protocol_Requests,Session Protocol Requests>>, <<Session_Protocol_Responses,Session Protocol Responses>>.
 
 The session lasts as long as several conditions are met: <<heartbeat,heartbeats>> are sent every 15 seconds and as long as the client has not explicitly logged out (or terminated the session).
 
-Cycles are specific intervals of time that are used to provide a logical separation of the trading session over time. They are continuous; once a cycle ends, a new cycle starts. Please read chapter <<Managing_Cycles,Cycles, Channels and Streams>> for the details.
+Cycles are specific intervals of time that are used to provide a logical separation of the trading session over time. They are continuous; once a cycle ends, a new cycle starts. Please read chapter <<Managing_Cycles,Sessions, Channels, Streams and Cycles>> for the details.
 
 Channels represent a set of sequenced messages that correspond to the beginning and end to a cycle. Clients can receive numerous channel messages in a single session, since a client can go through numerous trading cycles.
 

@@ -35,47 +35,60 @@ group <b>[[#session_control_with_auth Session Control Protocol]]</b>
     group <b>Market Data Protocol</b>
 
         group 1st Cycle
+
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+
+            group prolog
+                Client <- Server : <b>Reference data for existing deliverables</b> <b>[[#deliverable deliverable]]</b>
+                Client <- Server : <b>Reference data for existing tradeable entities</b> <b>[[#tradeable_entity tradeable_entity]]</b>
+                Client <- Server : <b>The state of the tradeable entities</b> <b>[[#trading_state trading_state]]</b>
+                Client <- Server : <b>Restatement of display orders that were already open</b> <b>[[#display_order_added display_order_added]]</b>
+                Client <- Server : <b>Top of book information if there are open orders</b> <b>[[#top_of_book top_of_book]]</b>
+            end
+
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
-            |||
-            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
-            ... and so on ...
-            |||
-            Client <- Server : <b>various market data</b>:\n[[#trade trade]],\n[[#top_of_book top_of_book]],\n[[#display_order_added display_order_added]],\n[[#display_order_deleted display_order_deleted]],\n[[#display_order_updated display_order_updated]],..
-            ... and so on ...
-            |||
+
+            group real-time
+                |||
+                Client <- Server : <b>various real-time Market Data</b>:\n[[#trade trade]],\n[[#top_of_book top_of_book]],\n[[#display_order_added display_order_added]],\n[[#display_order_deleted display_order_deleted]],\n[[#display_order_updated display_order_updated]],..
+                ... and so on ...
+                |||
+            end
+
             Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+
+            group epilog
+                Client <- Server : <b>optional</b>: <b>[[#display_order_deleted display_order_deleted]]</b>
+                ... and so on ...
+                |||
+            end
+
             Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
         end
         |||
-        group 2nd Cycle
-            Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
-            Client <- Server : <b>[[#cycle_started cycle_started]]</b>
-            |||
-            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
-            Client <- Server : <b>various market data</b>
-            ... and so on ...
-            |||
-            Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
-            Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
-        end
-
         ... and so on ...
-
         group Nth Cycle
             Client <- Server : <b>[[#cycle_starting cycle_starting]]</b>
+
+            group prolog
+                Client <- Server : <b>key Reference Data</b>
+            end
+
             Client <- Server : <b>[[#cycle_started cycle_started]]</b>
-            |||
-            Client <- Server : <b>various</b> <b>[[#Reference_Data Reference Data]]</b>
-            Client <- Server : <b>various market data</b>
-            ... and so on ...
-            |||
+
+            group real-time
+                Client <- Server : <b>various real-time Market Data</b>
+            end
+
             Client <- Server : <b>[[#cycle_ending cycle_ending]]</b>
+
+            group epilog
+                Client <- Server : <b>optional</b>: <b>[[#display_order_deleted display_order_deleted]]</b>
+            end
+
             Client <- Server : <b>[[#cycle_ended cycle_ended]]</b>
         end
-
         ... and so on ...
-
     end
 end
 
