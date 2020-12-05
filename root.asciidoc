@@ -10,7 +10,7 @@
 :imagesdir: protocols/svg
 :sectnums:
 
-:VERSION: VERSION 0.1
+:VERSION: VERSION 0.2
 
 ifeval::[{for_internal_use} == true]
 *INTERNAL* {VERSION}
