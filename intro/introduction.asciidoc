@@ -30,12 +30,6 @@ The WebSocket API is an advanced technology that makes it possible to open a two
 | `TBD`
 | *yes*
 
-| Quote Management
-| <<Service_Guide_Quote_Management,Quote Management Guide>>
-| <<Quote_Management_Requests,Quote Management Requests>>/<<Quote_Management_Responses,Responses>>
-| `TBD`
-| *yes*
-
 | Position Data
 | <<Service_Guide_Position_Data,Position Data Guide>>
 | <<Position_Data_Messages,Position Data Messages>>
@@ -75,9 +69,6 @@ endif::[]
 | Order Management
 | `wss://pt-test.clearpool.dev:65443`
 
-| Quote Management
-| `TBD`
-
 | Position Data
 | `wss://pt-test.clearpool.dev:45443`
 
@@ -93,18 +84,18 @@ endif::[]
 |=================================
 
 
-A secure WebSocket connection must be made to most of services in order to send requests and receive updates from the platform, please see the details in chapter <<Authentication,Authentication>>.
+A secure WebSocket connection must be made to most of the services in order to send requests and receive updates from the platform. for more details please see the <<Authentication,Authentication>> chapter.
 
-Access to the PowerTrade WebSocket API is structured around four core concepts: Session, Streams, Channels and Cycles. Please read about it in details in section <<Managing_Cycles,Sessions, Channels, Streams and Cycles>>.
+Access to the PowerTrade WebSocket API is structured around four core concepts: **Sessions**, **Cycles**, **Streams** and **Channels**. You can read more detail about these core concepts in the section <<Managing_Cycles,Sessions, Channels, Streams and Cycles>>.
 
-A session is started on a per connection basis when connecting to one of the services above. As shown in chapter <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>>, the protocol sequences follow a synchronous request/response pattern until a session established, at which point the API becomes asynchronous. The session-related messages groupped in corresponding reference sections: <<Session_Protocol_Requests,Session Protocol Requests>>, <<Session_Protocol_Responses,Session Protocol Responses>>.
+To summarise here though, a **Session** is started on a per connection basis when connection is established to one of the services above. As shown in chapter <<Session_Control_Protocol_LogIn_LogOut,Session Control Protocol>>, the protocols follow a synchronous request/response pattern until a session established, at which point the API becomes asynchronous. These session-related messages are described in their corresponding reference sections: <<Session_Protocol_Requests,Session Protocol Requests>>, <<Session_Protocol_Responses,Session Protocol Responses>>.
 
-The session lasts as long as several conditions are met: <<heartbeat,heartbeats>> are sent every 15 seconds and as long as the client has not explicitly logged out (or terminated the session).
+A session will be maintained so long as two conditions are met: first, that <<heartbeat,heartbeats>> are sent every 15 seconds, and second the client does not explicitly log out (or the seesion is terminated).
 
-Cycles are specific intervals of time that are used to provide a logical separation of the trading session over time. They are continuous; once a cycle ends, a new cycle starts. Please read chapter <<Managing_Cycles,Sessions, Channels, Streams and Cycles>> for the details.
+**Cycles** are specific intervals of time that are used to provide a logical separation of the trading session over time. They are continuous in that once a cycle ends, a new cycle starts. You can read more about this in the chapter <<Managing_Cycles,Sessions, Channels, Streams and Cycles>>.
 
-Channels represent a set of sequenced messages that correspond to the beginning and end to a cycle. Clients can receive numerous channel messages in a single session, since a client can go through numerous trading cycles.
+**Channels** represent a set of sequenced messages that correspond to the beginning and end of a cycle. Clients can receive numerous channel messages in a single session, since a client will often remain connected across many cycles.
 
-Streams are used by the various services in the platform to update clients on the state of the service at a given point in time. A stream is a subset of application messages from a channel. Upon opening a session and successful authentication, the client can request the latest state of a service via a stream.
+**Streams** are used by the various services in the platform to update clients on the state of the service at any given point in time. A stream is a subset of application messages from a channel. Upon opening a session and successful authentication, the client can request the latest state of a service via a stream.
 
-A stream is effectively a series of events that are broadcast over the channel associated with the service (Market Data, Order Management, Position Data etc.). Events describe changes of the state of the service over time. Each event in a stream is identified by a sequence number. The stream would normally start with a snapshot of the state of service at the beginning of the current cycle and a sequence of events that when put together with the “snapshot” would provide the full state of the service (or the objects that underlie the service).
+A stream is effectively a series of events that are broadcast over the channel associated with the service (Market Data, Order Management, Position Data etc.). These events describe changes of the state of the service over time. Each event in a stream is identified by a sequence number. The stream would normally start with a snapshot of the state of service at the beginning of the current cycle and a sequence of events that when put together with the “snapshot” would provide the full state of the service (or the objects that underlie the service).

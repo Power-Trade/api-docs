@@ -3,30 +3,68 @@
 
 In this section we explain how to handle inbound and outbound monetary values.
 
-The key requirement for proper handling of monetary values is to ensure their _precise_ handling _without rounding_. The challange here is that most general purpose CPUs don't have native hardware decimal types for numbers with fractional parts, instead binary-based floating point values available in their FPUs and widely used in programs for calculations. The floating point values have no fixed precision, hence there is a term "floating" in such type names; it means that during calculations using such values, the precision of the resulting values changes dynamically, e.g. inputs may have 6 precise digits after decimal point and output can be automatically rounded to 3rd decimal point with corresponding degradation in its precision from 6 to 3 digits after decimal point.
+The key requirement for proper handling of monetary values is to ensure their _precise_ handling _without rounding_. The challange here is that most general purpose CPUs don't have native hardware decimal types for numbers with fractional parts. Instead binary-based floating point values available in their FPUs are widely used in programs for calculations. The floating point values have no fixed precision, hence the term "floating". This means that during calculations using such values, the precision of the resulting values changes dynamically, e.g. inputs may have 6 precise digits after the decimal point and output can be automatically rounded to 3 decimal places with a corresponding degradation in precision from 6 to 3 digits after decimal point.
 
-To keep all monetary values always precise, at PowerTrade platform monetary values represented using simple integer-based notation with corresponding scaling by defined number of decimals in fractional parts for each currency.
+To keep all monetary values precise, PowerTrade's platform represents monetary values using simple integer-based notation with corresponding scaling defined by the number of decimals in fractional parts for each currency.
 
-*To be able to encode/decode monetary values, API client should collect and store <<Reference_Data, Reference Data>> provided by <<market_data_protocol, Market Data Service Protocol>> at the begining of each exchange cycle.*
+*To be able to encode or decode monetary values, any client of the API should collect and store the <<Reference_Data, Reference Data>> provided through the <<market_data_protocol, Market Data Service Protocol>> which will indicate the number of decimal places that should be assumed for scaling values in the given deliverable or tradeable entity. This is sent at the beginning of each cycle and updated as needed.*
 
-Here is the example of representation of value "price" equal to "1.12345678 ABC" for some <<deliverable, *deliverable*>> entity:
+As an example consider that we have a tradeable entity described as follows:
 
-The <<price, *price*>> tells you what the value is in.
-The number of decimal places that *price* uses will be determined by
-the <<decimal_places,*decimal_places*>> of the corresponding <<deliverable_id,*price_deliverable_id*>>:
+[source,json]
+{
+    "tradeable_entity": {
+        "tradeable_entity_id": 12345,
+        "symbol": "BTC-USDT 25-Dec-2020 C15000",
+        "price_deliverable_id":2,     // USDT
+        "price_decimal_places":4,
+        "quantity_deliverable_id":10, // Option: BTC-USDT 25-Dec-2020 C15000
+        "quantity_decimal_places":1,
+        // ...
+    }
+}
 
-....
-"price":                112345678,
-"price_deliverable_id": 3,
-....
-where using *price_deliverable_id* a corresponding descriptor of *deliverable* entity
-can be found in the dessiminated reference data:
-....
-"deliverable_id":       3,
-"decimal_places":       8
-..
-....
-so using value of *decimal_places* corresponding integer scaling can be found as 10^8, so resulting encoded value "price" will be "112345678" (= 1.12345678 x 10^8).
+and we receive a message over the <<market_data_protocol, Market Data Service Protocol>> which has an integer  <<price, *price*>> of `2345600` and whose <<tradeable_entity_id,*tradeable_entity_id*>> field corresponds to the tradeable entity shown above, that is, `12345`.
 
-So all *price* values for a given *price_deliverable_id* have 8 decimal places for fractionals.
-In case fractional part is 0, corresponding number of zero decimals will appiar in encoded integer values, e.g "100000000" (= 1.0 x 10^8).
+We know from looking up tradeable entity `12345` that the price of the tradeable entity is represented as the corresponding <<deliverable_id,*price_deliverable_id*>> (which we know to be USDT if we look up deliverable_id `2` in our stored deliverables.
+
+We also know that prices listed for this tradeable entity will have `4` decimal places assumed because the value for <<decimal_places,*price_decimal_places*>> is `4`. This means that for the number given of `2345600`, the actual price is `234.5600`.
+
+To convert to and from the scaled integer representation you can use the following simple formulae:
+
+1. From scaled integer to floating point: `2345600 / pow( 10, 4 ) = 234.5600`
+2. From floating point to scaled integer: `234.5600 x pow( 10, 4 ) = 2345600`
+
+The relationship is `scaled_integer` / pow( 10, `decimal_places` ) = `floating_point`.
+
+=== Tradeable Entity or Deliverable for Decimal Places?
+
+In the example given we were interpreting data sent over the <<market_data_protocol, Market Data Service Protocol>> which provides market data, like trades and display order messages to allow you to build a view of the orderbooks currently active in the sysmtem. As such the messages will refer to the tradeable entities which they are providing information for. You can think of a tradeable entity as being another name for an "order book". This means that all prices and quantities listed in these messages will use the decimal places listed for the price and quantity in the corresponding tradeable entity.
+
+However, if you receive a message that refers to a deliverable specifically then you should interpret numbers in that message based on the decimal places for the appropriate deliverable. For example you might receive a message like this over the <<position_data_protocol, Position Data Service Protocol>>:
+
+[source,json]
+{
+    "position":{
+        "timestamp":<time in nanoseconds since epoch>,
+        "account_id":456,
+        "product_deliverable_id":4,  // ETH
+        "position_kind":"cash",
+        "product_type":"balance",
+        "value":10000000000,         // 100.0 ETH
+        "position_deliverable_id":4, // ETH
+        "anchor_price":"none",
+        "balance":"none",
+        "mark_price":"none",
+        "base_deliverable_id":"none",
+        "source_type":"deposit",
+        "source_id":"none"
+    }
+}
+
+This message has a `value` of `10000000000` and the `position_deliverable_id` is `4` which we look up and find to be ETH which in turn we learn has a `decimal_places` field of `8`. The key point is that this message has numbers associated with it that refer to deliverables and so we look up the appropriate deliveralbe id to determine the number of decimal places to use when scaling the number.
+
+To learn more about which deliverable ids to refer to for which fields and the rules around that you should refer to the appropriate section later in this documentation. In this case the <<position_data_protocol, Position Data Service Protocol>>.
+
+For the example shown we use the formula above and see that we hold `10000000000 / pow( 10, 8 ) = 100.0` ETH.
+

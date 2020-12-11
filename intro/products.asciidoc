@@ -1,12 +1,14 @@
-== *Products*
-In order to understand how product data is managed by the PowerTrade platform, it is important to understand two concepts: <<deliverable, *Deliverable Entity*>> and <<tradeable_entity, *Tradable Entity*>>.
+== *Tradeable Products*
+In order to understand how tradeable products (or financial products/instruments as they are typically known) are managed by the PowerTrade platform, it is important to understand two foundational concepts: the <<deliverable, *Deliverable*>> and the <<tradeable_entity, *Tradable Entity*>>.
 
-A Deliverable Entity is essentially a Product such as a specific Option contract (a BTC call with 20,000 strike price expiring in March 2021 for instance) or a Future contract (an ETH perpetual).
+A **Deliverable** is essentially a financial product such as a specific **Option** contract (for example, a BTC call option expiring in March 2021 with a $20,000 strike price) or a **Futures** contract (such as an ETH perpetual). It is also used to capture currency instruments, including **Fundable** instruments, such as USDT, BTC and ETH. Each of these instruments are deliverables.
 
-Internally and in most of the API document, products are referred to as "Deliverable Entities" or "Deliverables" in short.
+A **Tradeable Entity** is the exchange's representation of something that can be traded and is expressed in terms of two deliverables: the deliverable you will use to price the deliverable that is being traded. We refer to the first deliverable as the "price" deliverable and the second deliverable as the "quantity" deliverable.
 
-Products can be quoted in different currencies (USDT in the case of PowerTrade at launch time). These quote currencies are also known as settlement currencies and this terminology may be used in later sections and other documents to refer to quote currencies (USDT, USD, GBP, etc.).
+To understand this more clearly we can apply this description to a deliverable that is an option. If the option is a BTC "cash" settled in a currency, like USDT, and is therefore also priced in USDT, then we have two deliverables. The price deliverable is USDT and the option itself is the quantity deliverable. The tradeable entity then is the orderbook in the exchange that allows trading in that option, priced in USDT.
 
-In general, a product can be quoted in multiple currencies, each combination representing a trading market. This combination of Product + Settlement Currency is known as Tradable Entity. At this point, note that there is _a one-to-many relationship_ between Deliverable Entity and Tradable Entity.
+It is worth noting at this time that financial products are often quoted in different currencies such USDT, USD, GBP and so on. Tradeable Entities allows the exchange to offer trading in the same deliverable but priced in different currencies. That is, the qunatity deliverable across multiple tradeable entities would be the same but the price deliverable would be different.
 
+It should be noted that initially in Power-Trade all **Derivative** products (options and futures) will be priced and cash-settled in USDT. This will mean that the "settlement deliverable" for these deliverables will be USDT and that the "price deliverable" for any tradeable entities will also be USDT.
 
+In summary then, this combination of Product + Pricing Currency, represented as a **Order book** is known as a Tradable Entity. It is also worth noting that there is _a one-to-many relationship_ between Deliverables and Tradeable Entities.
