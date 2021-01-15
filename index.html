@@ -1242,7 +1242,7 @@ p { margin-bottom: 1.25rem; }
 <div class="sect2">
 <h3 id="_tradeable_entity_or_deliverable_for_decimal_places">3.1. Tradeable Entity or Deliverable for Decimal Places?</h3>
 <div class="paragraph">
-<p>In the example given we were interpreting data sent over the <a href="#market_data_protocol">Market Data Service Protocol</a> which provides market data, like trades and display order messages to allow you to build a view of the orderbooks currently active in the sysmtem. As such the messages will refer to the tradeable entities which they are providing information for. You can think of a tradeable entity as being another name for an "order book". This means that all prices and quantities listed in these messages will use the decimal places listed for the price and quantity in the corresponding tradeable entity.</p>
+<p>In the example given we were interpreting data sent over the <a href="#market_data_protocol">Market Data Service Protocol</a> which provides market data, like trades and display order messages to allow you to build a view of the orderbooks currently active in the system. As such the messages will refer to the tradeable entities which they are providing information for. You can think of a tradeable entity as being another name for an "order book". This means that all prices and quantities listed in these messages will use the decimal places listed for the price and quantity in the corresponding tradeable entity.</p>
 </div>
 <div class="paragraph">
 <p>However, if you receive a message that refers to a deliverable specifically then you should interpret numbers in that message based on the decimal places for the appropriate deliverable. For example you might receive a message like this over the <a href="#position_data_protocol">Position Data Service Protocol</a>:</p>
@@ -1289,7 +1289,7 @@ p { margin-bottom: 1.25rem; }
 <p>All API services listed in Table <a href="#WS_API_Services">PowerTrade WebSocket API services</a> are based on session control protocol, as described in details in section <a href="#Session_Control_Protocol_LogIn_LogOut">Session Control Protocol</a>.</p>
 </div>
 <div class="paragraph">
-<p>The session control protocol is essentially a synchronious protocol, because all its stages required to be passed by client in the predefined order with confirmation from server sent in form of corresponding responses. After session becomes properly established, the communication follows service-specific protocol, essential for a particular service, e.g. for Market Data service the protocol is one-way (read-only, listen-only) where a client receives market data updates from a service as market changes happen. In case of Order Management service, the service-specific protocols is two-ways, so a client can control his/her orders by sending requests and receiving corresponding confirmation from a service in form of responses.</p>
+<p>The session control protocol is essentially a synchronous protocol, because all its stages required to be passed by client in the predefined order with confirmation from server sent in form of corresponding responses. After session becomes properly established, the communication follows service-specific protocol, essential for a particular service, e.g. for Market Data service the protocol is one-way (read-only, listen-only) where a client receives market data updates from a service as market changes happen. In case of Order Management service, the service-specific protocols is two-ways, so a client can control his/her orders by sending requests and receiving corresponding confirmation from a service in form of responses.</p>
 </div>
 <table id="WS_API_Service_Protocols" class="tableblock frame-all grid-all" style="width: 95%;">
 <caption class="title">Table 5. <strong>Protocols of PowerTrade WebSocket API Services</strong>:</caption>
@@ -1410,7 +1410,7 @@ func GenerateCredentialsSecret() string {
 		jwt.StandardClaims{
 			ExpiresAt: now.UTC().Add(30 * time.Second).Unix(),
 			IssuedAt:  now.Unix(),
-			Subject:   a.ApiKey,
+			Subject:   os.Getenv("API_KEY"),
 		},
 	}
 	secretKey := os.Getenv("PEM_SECRET_KEY")
@@ -1767,7 +1767,7 @@ func main() {
         PowerTrade Exchange
       </text>
     </a>
-    <!--MD5=[302aa32174905a0f3060ad0ccc314ac7]
+    <!--MD5=[766470030dcdf50ea10e3ea8445c42ec]
 @startuml session_control_with_auth
 
 
@@ -1846,15 +1846,15 @@ end
 
 @enduml
 
-PlantUML version 1.2020.06(Sun Apr 05 21:38:32 JST 2020)
+PlantUML version 1.2020.06(Sun Apr 05 13:38:32 WEST 2020)
 (APACHE source distribution)
-Java Runtime: Java(TM) SE Runtime Environment
-JVM: Java HotSpot(TM) 64-Bit Server VM
-Java Version: 15.0.1+9-18
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 15.0.1+9
 Operating System: Mac OS X
 Default Encoding: UTF-8
 Language: en
-Country: JP
+Country: US
 -->
   </g>
 </svg>
@@ -1868,19 +1868,19 @@ Country: JP
 <div class="sect2">
 <h3 id="Managing_Cycles">4.4. Sessions, Channels, Streams and Cycles</h3>
 <div class="paragraph">
-<p>As shown on <a href="#session_control_with_auth">Diagram of <strong>Session Control Protocol</strong></a> Sessions, Channels and Streams are closely related: when a new session begins, the platform notifies the client with a new channel ID. The client must use the new channel ID to request a new stream from the platform.</p>
+<p>As shown on <a href="#session_control_with_auth">Diagram of <strong>Session Control Protocol</strong></a> Sessions, Channels and Streams are closely related. When a new session begins, the platform notifies the client with a new channel ID. The client must use the new channel ID to request a new stream from the platform.</p>
 </div>
 <div class="paragraph">
-<p>As described in earlier sections, streams are essentially a set of events, each event representing an action taken on objects within the service they represent and resulting in a change of the state of the service. Streams are associated with channels. In order for the client to start receiving a stream, the channel ID must be provided to the backend.</p>
+<p>As described in earlier sections, streams are essentially a set of events. Each event represents an action and the resulting state change of objects of that service. Streams are associated with channels. In order for the client to start receiving a stream, the channel ID must be provided to the backend.</p>
 </div>
 <div class="paragraph">
-<p>A <em>cycle</em> represents a logical division of time within a <em>trading session</em>, so a trading session may go thru <em>multiple cycles</em>.</p>
+<p>A <em>cycle</em> represents a logical division of time within a <em>trading session</em>, so a trading session may go through <em>multiple cycles</em>.</p>
 </div>
 <div class="paragraph">
 <p>A <em>cycle</em> starts as soon as the previous one ends, e.g. as shown on the diagram of <a href="#market_data_protocol">Market Data Protocol</a>. Cycles currently last one hour in the production platform.</p>
 </div>
 <div class="paragraph">
-<p>In turn, cycle also goes thru 3 phases: <em>"prolog"</em>, <em>"real-time"</em>, <em>"epilog"</em>.</p>
+<p>In turn, a cycle also goes through three phases: <em>"prolog"</em>, <em>"real-time"</em>, <em>"epilog"</em>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1896,13 +1896,13 @@ Country: JP
 </ul>
 </div>
 <div class="paragraph">
-<p>At <strong>prolog</strong> phase a service sends to clients all essential information needed to prepare for participating in <strong>real-time</strong> part.</p>
+<p>At <strong>prolog</strong> phase, a service sends to clients all essential information needed to prepare for the <strong>real-time</strong> phase.</p>
 </div>
 <div class="paragraph">
-<p>At <strong>real-time</strong> phase clients suppose to act according to real-time updates sent by particular service.</p>
+<p>At <strong>real-time</strong> phase, clients may begin processing real-time updates sent by the requested service.</p>
 </div>
 <div class="paragraph">
-<p>At <strong>epilog</strong> phase a service may send information about expiring items which life-time is bounded by number of cycles etc.</p>
+<p>At <strong>epilog</strong> phase, a service may send information about expiring items which life-time is bounded by the number of cycles etc.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1971,7 +1971,7 @@ Country: JP
 <p>Market Data Service provides information essential for trading on PowerTrade exchange, including <a href="#Reference_Data">Reference Data</a>.</p>
 </div>
 <div class="paragraph">
-<p>As mentioned in <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a> chapter, trading session goes thru <em>multiple cycles</em> and, in turn, each cycle also goes thru 3 phases: <strong>prolog</strong>, <strong>real-time</strong>, <strong>epilog</strong>.</p>
+<p>As mentioned in <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a> chapter, trading session goes through <em>multiple cycles</em> and, in turn, each cycle also goes through three phases: <strong>prolog</strong>, <strong>real-time</strong>, <strong>epilog</strong>.</p>
 </div>
 <div class="paragraph">
 <p>It is important to understand how corresponding information "carries over" the state of all related items (orders, markets, products etc) between cycles.</p>
@@ -2360,7 +2360,7 @@ Country: JP
         PowerTrade Exchange
       </text>
     </a>
-    <!--MD5=[20c38a3a2ad041694c33b521b809323a]
+    <!--MD5=[52dde5ca169ffd173d2744fd4dc3c65a]
 @startuml market_data_protocol
 
 
@@ -2443,15 +2443,15 @@ end
 
 @enduml
 
-PlantUML version 1.2020.06(Sun Apr 05 21:38:32 JST 2020)
+PlantUML version 1.2020.06(Sun Apr 05 13:38:32 WEST 2020)
 (APACHE source distribution)
-Java Runtime: Java(TM) SE Runtime Environment
-JVM: Java HotSpot(TM) 64-Bit Server VM
-Java Version: 15.0.1+9-18
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 15.0.1+9
 Operating System: Mac OS X
 Default Encoding: UTF-8
 Language: en
-Country: JP
+Country: US
 -->
   </g>
 </svg>
@@ -2808,7 +2808,7 @@ Country: JP
         PowerTrade Exchange
       </text>
     </a>
-    <!--MD5=[b98b2244f8b3d24a04a57aa0f5ab926f]
+    <!--MD5=[027e6cec1daf2ae6a0666e9a1fe5b571]
 @startuml order_management_protocol
 
 
@@ -2879,15 +2879,15 @@ end
 
 @enduml
 
-PlantUML version 1.2020.06(Sun Apr 05 21:38:32 JST 2020)
+PlantUML version 1.2020.06(Sun Apr 05 13:38:32 WEST 2020)
 (APACHE source distribution)
-Java Runtime: Java(TM) SE Runtime Environment
-JVM: Java HotSpot(TM) 64-Bit Server VM
-Java Version: 15.0.1+9-18
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 15.0.1+9
 Operating System: Mac OS X
 Default Encoding: UTF-8
 Language: en
-Country: JP
+Country: US
 -->
   </g>
 </svg>
@@ -4371,7 +4371,7 @@ its having a higher <code>display_order_id</code>.</p>
         PowerTrade Exchange
       </text>
     </a>
-    <!--MD5=[e83183c73b03c04fee339bc3ac285f47]
+    <!--MD5=[4faf9f108b0204010eb228d6b77af313]
 @startuml position_data_protocol
 
 
@@ -4421,15 +4421,15 @@ end
 
 @enduml
 
-PlantUML version 1.2020.06(Sun Apr 05 21:38:32 JST 2020)
+PlantUML version 1.2020.06(Sun Apr 05 13:38:32 WEST 2020)
 (APACHE source distribution)
-Java Runtime: Java(TM) SE Runtime Environment
-JVM: Java HotSpot(TM) 64-Bit Server VM
-Java Version: 15.0.1+9-18
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 15.0.1+9
 Operating System: Mac OS X
 Default Encoding: UTF-8
 Language: en
-Country: JP
+Country: US
 -->
   </g>
 </svg>
