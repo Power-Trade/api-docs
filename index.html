@@ -794,7 +794,12 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#Authentication">4.2. Authentication</a>
 <ul class="sectlevel3">
 <li><a href="#_obtaining_api_keys_and_secrets">4.2.1. Obtaining API keys and secrets</a></li>
-<li><a href="#_generating_credentials_secret">4.2.2. Generating credentials_secret</a></li>
+<li><a href="#_generating_credentials_secret">4.2.2. Generating credentials_secret</a>
+<ul class="sectlevel4">
+<li><a href="#_examples">Examples</a></li>
+<li><a href="#_example_ouput">Example Ouput</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#Session_Control_Protocol_LogIn_LogOut">4.3. Session Control Protocol</a></li>
@@ -1371,10 +1376,10 @@ p { margin-bottom: 1.25rem; }
 <p><code>nonce</code> - Monotonically increasing integer number. Usually, a timestamp can be used.</p>
 </li>
 <li>
-<p><code>iat</code> - The <a href="https://en.wikipedia.org/wiki/Unix_time">Unit time</a> at which the JWT was issued, in seconds.</p>
+<p><code>iat</code> - The <a href="https://en.wikipedia.org/wiki/Unix_time">Unix time</a> at which the JWT was issued, in seconds.</p>
 </li>
 <li>
-<p><code>exp</code> - The expiration <a href="https://en.wikipedia.org/wiki/Unix_time">Unit time</a> on and after which the JWT must not be accepted for processing, in seconds. Must be less than iat+30sec.</p>
+<p><code>exp</code> - The expiration <a href="https://en.wikipedia.org/wiki/Unix_time">Unix time</a> on and after which the JWT must not be accepted for processing, in seconds. Must be less than iat+30sec.</p>
 </li>
 <li>
 <p><code>sub</code> - The API Key.</p>
@@ -1383,6 +1388,25 @@ p { margin-bottom: 1.25rem; }
 </div>
 <div class="paragraph">
 <p>The JWT should be signed with the API <code>secret_key</code> using the <strong>ES256</strong> (elliptic curves using <strong>sha256</strong>) algorithm.</p>
+</div>
+<div class="sect4">
+<h5 id="_examples">Examples</h5>
+<div class="paragraph">
+<p>To go through the next few code samples, export the following environment variables in your shell.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># Replace with your api_key
+export API_KEY="8557379d6d62080a1169740f183f16bf"
+
+# Replace with your secret_key
+export PEM_SECRET_KEY="-----BEGIN EC PRIVATE KEY-----\nMHcCAQEEILwnCHltSNt5BT+oB2C/I/YjI6OObYMaGLw0cTtOVHsroAoGCCqGSM49\nAwEHoUQDQgAELzRQAq3U6JtDa7hLHTzX+tzlJurj1v2hcrHSdk4X3hzHQYJu1DB6\n/gnZqe5mv3KS/HGvGCCyL1WFAz1S7VJ9uw==\n-----END PRIVATE KEY-----\n"</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-c++ hljs" data-lang="c++">TODO: place c++ code here</code></pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1395,9 +1419,10 @@ p { margin-bottom: 1.25rem; }
 	"fmt"
 	"os"
 	"time"
+
+  // We recommend using the dgrijalva/jwt-go library for generating and validating JWTs
 	jwt "github.com/dgrijalva/jwt-go"
 )
-
 type ClientCredentialsClaim struct {
 	Uri    string
 	Client string
@@ -1406,26 +1431,44 @@ type ClientCredentialsClaim struct {
 }
 
 func GenerateCredentialsSecret() string {
+  apiKey := os.Getenv("API_KEY")
+	secretKey := os.Getenv("PEM_SECRET_KEY")
 	now := time.Now()
+
 	claims := ClientCredentialsClaim{
 		Uri: "", // TODO - fill in with example production url
 		Client: "api",
-		None: now.Unix(),
-		jwt.StandardClaims{
+		Nonce: now.Unix(),
+		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: now.UTC().Add(30 * time.Second).Unix(),
 			IssuedAt:  now.Unix(),
-			Subject:   os.Getenv("API_KEY"),
+			Subject:   apiKey,
 		},
 	}
-	secretKey := os.Getenv("PEM_SECRET_KEY")
-	privateKey, _ := jwt.ParseECPrivateKeyFromPEM([]byte(secretKey))
-	credentialsSecret, _ := token.SignedString(privKey)
+  token := jwt.NewWithClaims(jwt.SigningMethodES256, claims)
+	privateKey, err := jwt.ParseECPrivateKeyFromPEM([]byte(secretKey))
+  if err != nil {
+    panic(err)
+  }
+	credentialsSecret, err := token.SignedString(privKey)
+  if err != nil {
+    panic(err)
+  }
 	return credentialsSecret
 }
 
 func main() {
 	fmt.Println(GenerateCredentialsSecret())
 }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_example_ouput">Example Ouput</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJhcGkiLCJub25jZSI6MTYxMTQwMjU0MSwiZXhwIjoxNjIwMDQyNTQxLCJpYXQiOjE2MTE0MDI1NDEsImlzcyI6InB0LXRlc3QuY2xlYXJwb29sLmRldjo0OTYyMSIsInN1YiI6Ijg1NTczNzlkNmQ2MjA4MGExMTY5NzQwZjE4M2YxNmJmIn0.oEjCgumgFfnYWw-otLW7vRAZ7p1KakMnDkmUz_LXWXKJlpZ3N7Ev6xeHSNEA9ZKJXwfHfEnvCAJbHWackjGSLA</code></pre>
+</div>
 </div>
 </div>
 </div>
