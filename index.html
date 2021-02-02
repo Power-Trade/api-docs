@@ -965,29 +965,30 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#position_source_id">5.4.33. position_source_id</a></li>
 <li><a href="#position_source_type">5.4.34. position_source_type</a></li>
 <li><a href="#position_value">5.4.35. position_value</a></li>
-<li><a href="#price">5.4.36. price</a></li>
-<li><a href="#product_type">5.4.37. product_type</a></li>
-<li><a href="#quantity">5.4.38. quantity</a></li>
-<li><a href="#reference_price_type">5.4.39. reference_price_type</a></li>
-<li><a href="#seconds">5.4.40. seconds</a></li>
-<li><a href="#sequence_number">5.4.41. sequence_number</a></li>
-<li><a href="#session_id">5.4.42. session_id</a></li>
-<li><a href="#settlement_event_type">5.4.43. settlement_event_type</a></li>
-<li><a href="#settlement_price_type">5.4.44. settlement_price_type</a></li>
-<li><a href="#side">5.4.45. side</a></li>
-<li><a href="#stabilisation_approach">5.4.46. stabilisation_approach</a></li>
-<li><a href="#stream_id">5.4.47. stream_id</a></li>
-<li><a href="#stream_reject_reason">5.4.48. stream_reject_reason</a></li>
-<li><a href="#strikes_spec_id">5.4.49. strikes_spec_id</a></li>
-<li><a href="#suspension_status">5.4.50. suspension_status</a></li>
-<li><a href="#time_in_force">5.4.51. time_in_force</a></li>
-<li><a href="#time_to_live">5.4.52. time_to_live</a></li>
-<li><a href="#trade_id">5.4.53. trade_id</a></li>
-<li><a href="#tradeability">5.4.54. tradeability</a></li>
-<li><a href="#tradeable_entity_id">5.4.55. tradeable_entity_id</a></li>
-<li><a href="#utc_timestamp">5.4.56. utc_timestamp</a></li>
-<li><a href="#value">5.4.57. value</a></li>
-<li><a href="#year">5.4.58. year</a></li>
+<li><a href="#positions_risk_status">5.4.36. positions_risk_status</a></li>
+<li><a href="#price">5.4.37. price</a></li>
+<li><a href="#product_type">5.4.38. product_type</a></li>
+<li><a href="#quantity">5.4.39. quantity</a></li>
+<li><a href="#reference_price_type">5.4.40. reference_price_type</a></li>
+<li><a href="#seconds">5.4.41. seconds</a></li>
+<li><a href="#sequence_number">5.4.42. sequence_number</a></li>
+<li><a href="#session_id">5.4.43. session_id</a></li>
+<li><a href="#settlement_event_type">5.4.44. settlement_event_type</a></li>
+<li><a href="#settlement_price_type">5.4.45. settlement_price_type</a></li>
+<li><a href="#side">5.4.46. side</a></li>
+<li><a href="#stabilisation_approach">5.4.47. stabilisation_approach</a></li>
+<li><a href="#stream_id">5.4.48. stream_id</a></li>
+<li><a href="#stream_reject_reason">5.4.49. stream_reject_reason</a></li>
+<li><a href="#strikes_spec_id">5.4.50. strikes_spec_id</a></li>
+<li><a href="#suspension_status">5.4.51. suspension_status</a></li>
+<li><a href="#time_in_force">5.4.52. time_in_force</a></li>
+<li><a href="#time_to_live">5.4.53. time_to_live</a></li>
+<li><a href="#trade_id">5.4.54. trade_id</a></li>
+<li><a href="#tradeability">5.4.55. tradeability</a></li>
+<li><a href="#tradeable_entity_id">5.4.56. tradeable_entity_id</a></li>
+<li><a href="#utc_timestamp">5.4.57. utc_timestamp</a></li>
+<li><a href="#value">5.4.58. value</a></li>
+<li><a href="#year">5.4.59. year</a></li>
 </ul>
 </li>
 </ul>
@@ -999,7 +1000,7 @@ p { margin-bottom: 1.25rem; }
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>VERSION 1.2</p>
+<p>VERSION 1.3</p>
 </div>
 </div>
 </div>
@@ -1153,6 +1154,9 @@ p { margin-bottom: 1.25rem; }
 <div class="paragraph">
 <p>The key requirement for proper handling of monetary values is to ensure their <em>precise</em> handling <em>without rounding</em>. The challange here is that most general purpose CPUs don&#8217;t have native hardware decimal types for numbers with fractional parts. Instead binary-based floating point values available in their FPUs are widely used in programs for calculations. The floating point values have no fixed precision, hence the term "floating". This means that during calculations using such values, the precision of the resulting values changes dynamically, e.g. inputs may have 6 precise digits after the decimal point and output can be automatically rounded to 3 decimal places with a corresponding degradation in precision from 6 to 3 digits after decimal point.</p>
 </div>
+<div id="All_Numericals_Are_Sent_As_JSON_strings" class="paragraph">
+<p><strong>Please note that all numerical values being sent by PowerTrade&#8217;s platform as <em>JSON strings</em></strong>.</p>
+</div>
 <div class="paragraph">
 <p>To keep all monetary values precise, PowerTrade&#8217;s platform represents monetary values using simple integer-based notation with corresponding scaling defined by the number of decimals in fractional parts for each currency.</p>
 </div>
@@ -1166,19 +1170,19 @@ p { margin-bottom: 1.25rem; }
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "tradeable_entity": {
-        "tradeable_entity_id": 12345,
+        "tradeable_entity_id": "12345",
         "symbol": "BTC-USDT 25-Dec-2020 C15000",
-        "price_deliverable_id":2,     // USDT
-        "price_decimal_places":4,
-        "quantity_deliverable_id":10, // Option: BTC-USDT 25-Dec-2020 C15000
-        "quantity_decimal_places":1,
+        "price_deliverable_id":"2",     // USDT
+        "price_decimal_places":"4",
+        "quantity_deliverable_id":"10", // Option: BTC-USDT 25-Dec-2020 C15000
+        "quantity_decimal_places":"1",
         // ...
     }
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>and we receive a message over the <a href="#market_data_protocol">Market Data Service Protocol</a> which has an integer  <a href="#price"><strong>price</strong></a> of <code>2345600</code> and whose <a href="#tradeable_entity_id"><strong>tradeable_entity_id</strong></a> field corresponds to the tradeable entity shown above, that is, <code>12345</code>.</p>
+<p>and we receive a message over the <a href="#market_data_protocol">Market Data Service Protocol</a> which has an integer  <a href="#price"><strong>price</strong></a> of <code>"2345600"</code> and whose <a href="#tradeable_entity_id"><strong>tradeable_entity_id</strong></a> field corresponds to the tradeable entity shown above, that is, <code>"12345"</code>.</p>
 </div>
 <div class="paragraph">
 <p>We know from looking up tradeable entity <code>12345</code> that the price of the tradeable entity is represented as the corresponding <a href="#deliverable_id"><strong>price_deliverable_id</strong></a> (which we know to be USDT if we look up deliverable_id <code>2</code> in our stored deliverables.</p>
@@ -1260,13 +1264,13 @@ p { margin-bottom: 1.25rem; }
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "position":{
-        "timestamp":&lt;time in nanoseconds since epoch&gt;,
-        "account_id":456,
-        "product_deliverable_id":4,  // ETH
+        "timestamp":"&lt;time in nanoseconds since epoch&gt;",
+        "account_id":"456",
+        "product_deliverable_id":"4",  // ETH
         "position_kind":"cash",
         "product_type":"balance",
-        "value":10000000000,         // 100.0 ETH
-        "position_deliverable_id":4, // ETH
+        "value":"10000000000",         // 100.0 ETH
+        "position_deliverable_id":"4", // ETH
         "anchor_price":"none",
         "balance":"none",
         "mark_price":"none",
@@ -3153,13 +3157,13 @@ with higher values representing newer orders.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "display_order_added": {
-        "timestamp": 1600999860839906000,
-        "tradeable_entity_id": 2,
-        "market_id": 0,
+        "timestamp": "1600999860839906000",
+        "tradeable_entity_id": "2",
+        "market_id": "0",
         "side": "buy",
-        "display_order_id": 1,
-        "display_price": 1300,
-        "display_quantity": 100
+        "display_order_id": "1",
+        "display_price": "1300",
+        "display_quantity": "100"
     }
 }</code></pre>
 </div>
@@ -3212,13 +3216,13 @@ with higher values representing newer orders.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "display_order_added": {
-        "timestamp": 1601000073287232000,
-        "tradeable_entity_id": 2,
-        "market_id": 0,
+        "timestamp": "1601000073287232000",
+        "tradeable_entity_id": "2",
+        "market_id": "0",
         "side": "buy",
-        "display_order_id": 2,
-        "display_price": 1200,
-        "display_quantity": 150
+        "display_order_id": "2",
+        "display_price": "1200",
+        "display_quantity": "150"
     }
 }</code></pre>
 </div>
@@ -3283,13 +3287,13 @@ and quantity <code>200</code>:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "display_order_added": {
-        "timestamp": 1601000194942338000,
-        "tradeable_entity_id": 2,
-        "market_id": 0,
+        "timestamp": "1601000194942338000",
+        "tradeable_entity_id": "2",
+        "market_id": "0",
         "side": "sell",
-        "display_order_id": 3,
-        "display_price": 1400,
-        "display_quantity": 200
+        "display_order_id": "3",
+        "display_price": "1400",
+        "display_quantity": "200"
     }
 }</code></pre>
 </div>
@@ -3352,13 +3356,13 @@ and quantity <code>200</code>:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "display_order_added": {
-        "timestamp": 1601000361968567000,
-        "tradeable_entity_id": 2,
-        "market_id": 0,
+        "timestamp": "1601000361968567000",
+        "tradeable_entity_id": "2",
+        "market_id": "0",
         "side": "sell",
-        "display_order_id": 4,
-        "display_price": 1350,
-        "display_quantity": 50
+        "display_order_id": "4",
+        "display_price": "1350",
+        "display_quantity": "50"
     }
 }</code></pre>
 </div>
@@ -3422,13 +3426,13 @@ the top of the sell side of the book:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "display_order_added": {
-        "timestamp": 1601000480132500000,
-        "tradeable_entity_id": 2,
-        "market_id": 0,
+        "timestamp": "1601000480132500000",
+        "tradeable_entity_id": "2",
+        "market_id": "0",
         "side": "buy",
-        "display_order_id": 5,
-        "display_price": 1300,
-        "display_quantity": 300
+        "display_order_id": "5",
+        "display_price": "1300",
+        "display_quantity": "300"
     }
 }</code></pre>
 </div>
@@ -3625,11 +3629,11 @@ section:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "display_order_deleted": {
-        "timestamp": 1601002113866061000,
-        "tradeable_entity_id": 2,
-        "market_id": 0,
+        "timestamp": "1601002113866061000",
+        "tradeable_entity_id": "2",
+        "market_id": "0",
         "side": "sell",
-        "display_order_id": 4
+        "display_order_id": "4"
     }
 }</code></pre>
 </div>
@@ -3824,14 +3828,14 @@ order <code>1</code> has executed.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "display_order_executed": {
-        "timestamp": 1601002482430470000,
-        "tradeable_entity_id": 2,
-        "market_id": 0,
+        "timestamp": "1601002482430470000",
+        "tradeable_entity_id": "2",
+        "market_id": "0",
         "side": "buy",
-        "display_order_id": 1,
-        "executed_price": 1300,
-        "executed_quantity": 60,
-        "trade_id": 1
+        "display_order_id": "1",
+        "executed_price": "1300",
+        "executed_quantity": "60",
+        "trade_id": "1"
     }
 }</code></pre>
 </div>
@@ -3907,14 +3911,14 @@ showing that quantity <code>40</code> has executed.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "display_order_executed": {
-        "timestamp": 1601002572694660000,
-        "tradeable_entity_id": 2,
-        "market_id": 0,
+        "timestamp": "1601002572694660000",
+        "tradeable_entity_id": "2",
+        "market_id": "0",
         "side": "buy",
-        "display_order_id": 1,
-        "executed_price": 1300,
-        "executed_quantity": 40,
-        "trade_id": 2
+        "display_order_id": "1",
+        "executed_price": "1300",
+        "executed_quantity": "40",
+        "trade_id": "2"
     }
 }</code></pre>
 </div>
@@ -4100,14 +4104,14 @@ order in the book. This may require the orders in the book to be re-sorted.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     "display_order_updated": {
-        "timestamp": 1601002492430970000,
-        "tradeable_entity_id": 2,
-        "market_id": 0,
+        "timestamp": "1601002492430970000",
+        "tradeable_entity_id": "2",
+        "market_id": "0",
         "side": "buy",
-        "old_display_order_id": 1,
-        "new_display_order_id": 9,
-        "display_price": 1300,
-        "display_quantity": 120
+        "old_display_order_id": "1",
+        "new_display_order_id": "9",
+        "display_price": "1300",
+        "display_quantity": "120"
     }
 }</code></pre>
 </div>
@@ -4794,7 +4798,7 @@ This allows us to form an overall view of positions.</p>
     <a href="#deliverable_id">deliverable_id</a>  product_deliverable_id;  // USDT’s deliverable_id
     <a href="#position_kind">position_kind</a>   position_kind;           // “cash”
     <a href="#product_type">product_type</a>    product_type;            // “balance”
-    <a href="#position_value">position_value</a>  value;                   // 10,000
+    <a href="#position_value">position_value</a>  value;                   // "10000"
     <a href="#deliverable_id">deliverable_id</a>  position_deliverable_id; // USDT’s deliverable_id
     <a href="#price">price</a>           anchor_price;            // “none”
     <a href="#balance">balance</a>         balance;                 // “none”
@@ -4815,10 +4819,10 @@ This allows us to form an overall view of positions.</p>
     <a href="#deliverable_id">deliverable_id</a>  product_deliverable_id;  // Option’s deliverable_id
     <a href="#position_kind">position_kind</a>   position_kind;           // “margin”
     <a href="#product_type">product_type</a>    product_type;            // “option”
-    <a href="#position_value">position_value</a>  value;                   // 10,000
+    <a href="#position_value">position_value</a>  value;                   // "10000"
     <a href="#deliverable_id">deliverable_id</a>  position_deliverable_id; // USDT’s deliverable_id
-    <a href="#price">price</a>           anchor_price;            // 11,000
-    <a href="#balance">balance</a>         balance;                 // 10
+    <a href="#price">price</a>           anchor_price;            // "11000"
+    <a href="#balance">balance</a>         balance;                 // "10"
     <a href="#price">price</a>           mark_price;              // “none”
 }</code></pre>
 </div>
@@ -4836,17 +4840,17 @@ This allows us to form an overall view of positions.</p>
     <a href="#deliverable_id">deliverable_id</a>  product_deliverable_id;  // Option’s deliverable_id
     <a href="#position_kind">position_kind</a>   position_kind;           // “unrealised”
     <a href="#product_type">product_type</a>    product_type;            // “option”
-    <a href="#position_value">position_value</a>  value;                   // 20,000
+    <a href="#position_value">position_value</a>  value;                   // "20000"
     <a href="#deliverable_id">deliverable_id</a>  position_deliverable_id; // USDT’s deliverable_id
-    <a href="#price">price</a>           anchor_price;            // 11,000
-    <a href="#balance">balance</a>         balance;                 // 10
+    <a href="#price">price</a>           anchor_price;            // "11000"
+    <a href="#balance">balance</a>         balance;                 // "10"
     <a href="#price">price</a>           mark_price;              // “none”
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <div class="title">Example Overall Unrealised USDT Position</div>
-<p>“Account A has an OVERALL UNREALISED value of X USDt because they hold (many) positions valued in USDt” - In this case they are LOSING money:</p>
+<p>“Account A has an OVERALL UNREALISED value of X USDt because they hold (many) positions valued in USDT” - In this case they are LOSING money:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4857,7 +4861,7 @@ This allows us to form an overall view of positions.</p>
     <a href="#deliverable_id">deliverable_id</a>  product_deliverable_id;  // USDT’s deliverable_id
     <a href="#position_kind">position_kind</a>   position_kind;           // “unrealised”
     <a href="#product_type">product_type</a>    product_type;            // “balance”
-    <a href="#position_value">position_value</a>  value;                   // -83,242
+    <a href="#position_value">position_value</a>  value;                   // "-83242"
     <a href="#deliverable_id">deliverable_id</a>  position_deliverable_id; // USDT’s deliverable_id
     <a href="#price">price</a>           anchor_price;            // “none”
     <a href="#balance">balance</a>         balance;                 // “none”
@@ -4878,7 +4882,7 @@ This allows us to form an overall view of positions.</p>
     <a href="#deliverable_id">deliverable_id</a>  product_deliverable_id;  // USDT’s deliverable_id
     <a href="#position_kind">position_kind</a>   position_kind;           // “margin”
     <a href="#product_type">product_type</a>    product_type;            // “balance”
-    <a href="#position_value">position_value</a>  value;                   // 103,242
+    <a href="#position_value">position_value</a>  value;                   // "103242"
     <a href="#deliverable_id">deliverable_id</a>  position_deliverable_id; // USDT’s deliverable_id
     <a href="#price">price</a>           anchor_price;            // “none”
     <a href="#balance">balance</a>         balance;                 // “none”
@@ -5545,7 +5549,7 @@ This allows us to form an overall view of positions.</p>
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#cancel_order_ltorder_id_gt">"cancel_order"</a>:{
         "existing_order":{
-            <a href="#order_id">"order_id"</a>:123
+            <a href="#order_id">"order_id"</a>:"123"
         },
         "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000"
     }
@@ -5597,7 +5601,7 @@ This allows us to form an overall view of positions.</p>
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#cancel_order_ltorder_token_gt">"cancel_order"</a>:{
         "existing_order":{
-            <a href="#order_token">"order_token"</a>:123
+            <a href="#order_token">"order_token"</a>:"123"
         },
         "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000"
     }
@@ -5663,11 +5667,11 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#channel_added">"channel_added"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#channel_id">"channel_id"</a>:123,
-        <a href="#sequence_number">"next_sequence_number"</a>:123,
-        <a href="#sequence_number">"oldest_sequence_number"</a>:123,
-        <a href="#stream_id">"default_stream_id"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#channel_id">"channel_id"</a>:"123",
+        <a href="#sequence_number">"next_sequence_number"</a>:"123",
+        <a href="#sequence_number">"oldest_sequence_number"</a>:"123",
+        <a href="#stream_id">"default_stream_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -5716,8 +5720,8 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#channel_removed">"channel_removed"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#channel_id">"channel_id"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#channel_id">"channel_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -5761,7 +5765,7 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#cycle_ended">"cycle_ended"</a>:{
-        <a href="#utc_timestamp">"cycle_id"</a>:123
+        <a href="#utc_timestamp">"cycle_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -5810,8 +5814,8 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#cycle_ending">"cycle_ending"</a>:{
-        <a href="#utc_timestamp">"cycle_id"</a>:123,
-        <a href="#utc_timestamp">"next_cycle_id"</a>:123
+        <a href="#utc_timestamp">"cycle_id"</a>:"123",
+        <a href="#utc_timestamp">"next_cycle_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -5855,7 +5859,7 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#cycle_started">"cycle_started"</a>:{
-        <a href="#utc_timestamp">"cycle_id"</a>:123
+        <a href="#utc_timestamp">"cycle_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -5899,7 +5903,7 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#cycle_starting">"cycle_starting"</a>:{
-        <a href="#utc_timestamp">"cycle_id"</a>:123
+        <a href="#utc_timestamp">"cycle_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -5997,18 +6001,18 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#deliverable_ltexchange_token_gt">"deliverable"</a>:{
-        <a href="#deliverable_id">"deliverable_id"</a>:123,
+        <a href="#deliverable_id">"deliverable_id"</a>:"123",
         "symbol":"A",
         "tags":[
             "A"
         ],
-        <a href="#decimal_places">"decimal_places"</a>:123,
+        <a href="#decimal_places">"decimal_places"</a>:"123",
         "details":{
             <a href="#exchange_token">"exchange_token"</a>:{
                 "common_name":"A",
                 "ledger_name":"A",
                 "ledger_address":"0x00",
-                <a href="#decimal_places">"minor_units"</a>:123
+                <a href="#decimal_places">"minor_units"</a>:"123"
             }
         }
     }
@@ -6074,15 +6078,15 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#deliverable_ltexchange_trading_limit_gt">"deliverable"</a>:{
-        <a href="#deliverable_id">"deliverable_id"</a>:123,
+        <a href="#deliverable_id">"deliverable_id"</a>:"123",
         "symbol":"A",
         "tags":[
             "A"
         ],
-        <a href="#decimal_places">"decimal_places"</a>:123,
+        <a href="#decimal_places">"decimal_places"</a>:"123",
         "details":{
             <a href="#exchange_trading_limit">"exchange_trading_limit"</a>:{
-                <a href="#deliverable_id">"quote_deliverable_id"</a>:123,
+                <a href="#deliverable_id">"quote_deliverable_id"</a>:"123",
                 <a href="#side">"side"</a>:"buy"
             }
         }
@@ -6149,18 +6153,18 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#deliverable_ltfiat_currency_gt">"deliverable"</a>:{
-        <a href="#deliverable_id">"deliverable_id"</a>:123,
+        <a href="#deliverable_id">"deliverable_id"</a>:"123",
         "symbol":"A",
         "tags":[
             "A"
         ],
-        <a href="#decimal_places">"decimal_places"</a>:123,
+        <a href="#decimal_places">"decimal_places"</a>:"123",
         "details":{
             <a href="#fiat_currency">"fiat_currency"</a>:{
                 "currency":"A",
                 "code":"A",
-                <a href="#iso4217_currency_number">"number"</a>:123,
-                <a href="#decimal_places">"minor_units"</a>:123
+                <a href="#iso4217_currency_number">"number"</a>:"123",
+                <a href="#decimal_places">"minor_units"</a>:"123"
             }
         }
     }
@@ -6226,38 +6230,38 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#deliverable_ltfuture_gt">"deliverable"</a>:{
-        <a href="#deliverable_id">"deliverable_id"</a>:123,
+        <a href="#deliverable_id">"deliverable_id"</a>:"123",
         "symbol":"A",
         "tags":[
             "A"
         ],
-        <a href="#decimal_places">"decimal_places"</a>:123,
+        <a href="#decimal_places">"decimal_places"</a>:"123",
         "details":{
             <a href="#future">"future"</a>:{
                 <a href="#zoned_datetime">"expiry"</a>:{
                     <a href="#datetime">"datetime"</a>:{
                         <a href="#date">"date"</a>:{
-                            <a href="#year">"year"</a>:123,
-                            <a href="#month">"month"</a>:123,
-                            <a href="#day">"day"</a>:123
+                            <a href="#year">"year"</a>:"123",
+                            <a href="#month">"month"</a>:"123",
+                            <a href="#day">"day"</a>:"123"
                         },
                         <a href="#time_of_day">"time"</a>:{
-                            <a href="#hours">"hours"</a>:123,
-                            <a href="#minutes">"minutes"</a>:123,
-                            <a href="#seconds">"seconds"</a>:123,
-                            <a href="#nanoseconds">"nanoseconds"</a>:123
+                            <a href="#hours">"hours"</a>:"123",
+                            <a href="#minutes">"minutes"</a>:"123",
+                            <a href="#seconds">"seconds"</a>:"123",
+                            <a href="#nanoseconds">"nanoseconds"</a>:"123"
                         }
                     },
                     "timezone":"A"
                 },
                 <a href="#delivery_style">"delivery_style"</a>:"physical",
-                <a href="#deliverable_id">"underlying_deliverable_id"</a>:123,
-                <a href="#deliverable_id">"contract_size_deliverable_id"</a>:123,
-                <a href="#contract_size">"contract_size"</a>:123,
-                <a href="#deliverable_id">"settlement_deliverable_id"</a>:123,
-                <a href="#utc_timestamp">"utc_creation_time"</a>:123,
-                <a href="#creation_source_id">"creation_source_id"</a>:123,
-                <a href="#margin_spec_id">"margin_spec_id"</a>:123
+                <a href="#deliverable_id">"underlying_deliverable_id"</a>:"123",
+                <a href="#deliverable_id">"contract_size_deliverable_id"</a>:"123",
+                <a href="#contract_size">"contract_size"</a>:"123",
+                <a href="#deliverable_id">"settlement_deliverable_id"</a>:"123",
+                <a href="#utc_timestamp">"utc_creation_time"</a>:"123",
+                <a href="#creation_source_id">"creation_source_id"</a>:"123",
+                <a href="#margin_spec_id">"margin_spec_id"</a>:"123"
             }
         }
     }
@@ -6323,17 +6327,17 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#deliverable_ltfx_spot_gt">"deliverable"</a>:{
-        <a href="#deliverable_id">"deliverable_id"</a>:123,
+        <a href="#deliverable_id">"deliverable_id"</a>:"123",
         "symbol":"A",
         "tags":[
             "A"
         ],
-        <a href="#decimal_places">"decimal_places"</a>:123,
+        <a href="#decimal_places">"decimal_places"</a>:"123",
         "details":{
             <a href="#fx_spot">"fx_spot"</a>:{
-                <a href="#deliverable_id">"base_deliverable_id"</a>:123,
-                <a href="#deliverable_id">"quote_deliverable_id"</a>:123,
-                <a href="#contract_size">"contract_size"</a>:123
+                <a href="#deliverable_id">"base_deliverable_id"</a>:"123",
+                <a href="#deliverable_id">"quote_deliverable_id"</a>:"123",
+                <a href="#contract_size">"contract_size"</a>:"123"
             }
         }
     }
@@ -6399,43 +6403,43 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#deliverable_ltoption_gt">"deliverable"</a>:{
-        <a href="#deliverable_id">"deliverable_id"</a>:123,
+        <a href="#deliverable_id">"deliverable_id"</a>:"123",
         "symbol":"A",
         "tags":[
             "A"
         ],
-        <a href="#decimal_places">"decimal_places"</a>:123,
+        <a href="#decimal_places">"decimal_places"</a>:"123",
         "details":{
             <a href="#option">"option"</a>:{
                 <a href="#zoned_datetime">"expiry"</a>:{
                     <a href="#datetime">"datetime"</a>:{
                         <a href="#date">"date"</a>:{
-                            <a href="#year">"year"</a>:123,
-                            <a href="#month">"month"</a>:123,
-                            <a href="#day">"day"</a>:123
+                            <a href="#year">"year"</a>:"123",
+                            <a href="#month">"month"</a>:"123",
+                            <a href="#day">"day"</a>:"123"
                         },
                         <a href="#time_of_day">"time"</a>:{
-                            <a href="#hours">"hours"</a>:123,
-                            <a href="#minutes">"minutes"</a>:123,
-                            <a href="#seconds">"seconds"</a>:123,
-                            <a href="#nanoseconds">"nanoseconds"</a>:123
+                            <a href="#hours">"hours"</a>:"123",
+                            <a href="#minutes">"minutes"</a>:"123",
+                            <a href="#seconds">"seconds"</a>:"123",
+                            <a href="#nanoseconds">"nanoseconds"</a>:"123"
                         }
                     },
                     "timezone":"A"
                 },
-                <a href="#price">"strike_price"</a>:123,
+                <a href="#price">"strike_price"</a>:"123",
                 <a href="#option_type">"option_type"</a>:"call",
                 <a href="#option_exercise_style">"exercise_style"</a>:"european",
                 <a href="#option_valuation_approach">"valuation_approach"</a>:"vanilla",
                 <a href="#delivery_style">"delivery_style"</a>:"physical",
-                <a href="#deliverable_id">"underlying_deliverable_id"</a>:123,
-                <a href="#deliverable_id">"contract_size_deliverable_id"</a>:123,
-                <a href="#contract_size">"contract_size"</a>:123,
-                <a href="#deliverable_id">"settlement_deliverable_id"</a>:123,
-                <a href="#utc_timestamp">"utc_creation_time"</a>:123,
-                <a href="#creation_source_id">"creation_source_id"</a>:123,
-                <a href="#margin_spec_id">"margin_spec_id"</a>:123,
-                <a href="#strikes_spec_id">"strikes_spec_id"</a>:123
+                <a href="#deliverable_id">"underlying_deliverable_id"</a>:"123",
+                <a href="#deliverable_id">"contract_size_deliverable_id"</a>:"123",
+                <a href="#contract_size">"contract_size"</a>:"123",
+                <a href="#deliverable_id">"settlement_deliverable_id"</a>:"123",
+                <a href="#utc_timestamp">"utc_creation_time"</a>:"123",
+                <a href="#creation_source_id">"creation_source_id"</a>:"123",
+                <a href="#margin_spec_id">"margin_spec_id"</a>:"123",
+                <a href="#strikes_spec_id">"strikes_spec_id"</a>:"123"
             }
         }
     }
@@ -6501,32 +6505,32 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#deliverable_ltperpetual_future_gt">"deliverable"</a>:{
-        <a href="#deliverable_id">"deliverable_id"</a>:123,
+        <a href="#deliverable_id">"deliverable_id"</a>:"123",
         "symbol":"A",
         "tags":[
             "A"
         ],
-        <a href="#decimal_places">"decimal_places"</a>:123,
+        <a href="#decimal_places">"decimal_places"</a>:"123",
         "details":{
             <a href="#perpetual_future">"perpetual_future"</a>:{
                 <a href="#perpetual_funding_style">"funding_style"</a>:"mark_to_market",
                 <a href="#time_of_day">"funding_times"</a>:[
                     {
-                        <a href="#hours">"hours"</a>:123,
-                        <a href="#minutes">"minutes"</a>:123,
-                        <a href="#seconds">"seconds"</a>:123,
-                        <a href="#nanoseconds">"nanoseconds"</a>:123
+                        <a href="#hours">"hours"</a>:"123",
+                        <a href="#minutes">"minutes"</a>:"123",
+                        <a href="#seconds">"seconds"</a>:"123",
+                        <a href="#nanoseconds">"nanoseconds"</a>:"123"
                     }
                 ],
                 "funding_timezone":"A",
-                <a href="#funding_spec_id">"funding_spec_id"</a>:123,
-                <a href="#deliverable_id">"underlying_deliverable_id"</a>:123,
-                <a href="#deliverable_id">"contract_size_deliverable_id"</a>:123,
-                <a href="#contract_size">"contract_size"</a>:123,
-                <a href="#deliverable_id">"settlement_deliverable_id"</a>:123,
-                <a href="#utc_timestamp">"utc_creation_time"</a>:123,
-                <a href="#creation_source_id">"creation_source_id"</a>:123,
-                <a href="#margin_spec_id">"margin_spec_id"</a>:123
+                <a href="#funding_spec_id">"funding_spec_id"</a>:"123",
+                <a href="#deliverable_id">"underlying_deliverable_id"</a>:"123",
+                <a href="#deliverable_id">"contract_size_deliverable_id"</a>:"123",
+                <a href="#contract_size">"contract_size"</a>:"123",
+                <a href="#deliverable_id">"settlement_deliverable_id"</a>:"123",
+                <a href="#utc_timestamp">"utc_creation_time"</a>:"123",
+                <a href="#creation_source_id">"creation_source_id"</a>:"123",
+                <a href="#margin_spec_id">"margin_spec_id"</a>:"123"
             }
         }
     }
@@ -6592,20 +6596,20 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#deliverable_ltstable_token_gt">"deliverable"</a>:{
-        <a href="#deliverable_id">"deliverable_id"</a>:123,
+        <a href="#deliverable_id">"deliverable_id"</a>:"123",
         "symbol":"A",
         "tags":[
             "A"
         ],
-        <a href="#decimal_places">"decimal_places"</a>:123,
+        <a href="#decimal_places">"decimal_places"</a>:"123",
         "details":{
             <a href="#stable_token">"stable_token"</a>:{
                 "common_name":"A",
                 "ledger_name":"A",
                 "ledger_address":"0x00",
-                <a href="#decimal_places">"minor_units"</a>:123,
+                <a href="#decimal_places">"minor_units"</a>:"123",
                 <a href="#stabilisation_approach">"stabilisation_approach"</a>:"fiat_backed",
-                <a href="#deliverable_id">"backing_deliverable_id"</a>:123
+                <a href="#deliverable_id">"backing_deliverable_id"</a>:"123"
             }
         }
     }
@@ -6681,13 +6685,13 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#display_order_added">"display_order_added"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#market_id">"market_id"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#market_id">"market_id"</a>:"123",
         <a href="#side">"side"</a>:"buy",
-        <a href="#display_order_id">"display_order_id"</a>:123,
-        <a href="#price">"display_price"</a>:123,
-        <a href="#quantity">"display_quantity"</a>:123
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#price">"display_price"</a>:"123",
+        <a href="#quantity">"display_quantity"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -6751,11 +6755,11 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#display_order_deleted">"display_order_deleted"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#market_id">"market_id"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#market_id">"market_id"</a>:"123",
         <a href="#side">"side"</a>:"buy",
-        <a href="#display_order_id">"display_order_id"</a>:123
+        <a href="#display_order_id">"display_order_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -6834,14 +6838,14 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#display_order_executed">"display_order_executed"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#market_id">"market_id"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#market_id">"market_id"</a>:"123",
         <a href="#side">"side"</a>:"buy",
-        <a href="#display_order_id">"display_order_id"</a>:123,
-        <a href="#price">"executed_price"</a>:123,
-        <a href="#quantity">"executed_quantity"</a>:123,
-        <a href="#trade_id">"trade_id"</a>:123
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#price">"executed_price"</a>:"123",
+        <a href="#quantity">"executed_quantity"</a>:"123",
+        <a href="#trade_id">"trade_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -6920,14 +6924,14 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#display_order_updated">"display_order_updated"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#market_id">"market_id"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#market_id">"market_id"</a>:"123",
         <a href="#side">"side"</a>:"buy",
-        <a href="#display_order_id">"old_display_order_id"</a>:123,
-        <a href="#display_order_id">"new_display_order_id"</a>:123,
-        <a href="#price">"display_price"</a>:123,
-        <a href="#quantity">"display_quantity"</a>:123
+        <a href="#display_order_id">"old_display_order_id"</a>:"123",
+        <a href="#display_order_id">"new_display_order_id"</a>:"123",
+        <a href="#price">"display_price"</a>:"123",
+        <a href="#quantity">"display_quantity"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -6994,19 +6998,19 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#enter_order_ltsimple_order_ltaccount_id_gt_gt">"enter_order"</a>:{
-        <a href="#order_token">"order_token"</a>:123,
+        <a href="#order_token">"order_token"</a>:"123",
         "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
         "new_order":{
             <a href="#simple_order_ltaccount_id_gt">"simple_order"</a>:{
-                <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-                <a href="#market_id">"market_id"</a>:123,
+                <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                <a href="#market_id">"market_id"</a>:"123",
                 <a href="#side">"side"</a>:"buy",
                 <a href="#time_in_force">"time_in_force"</a>:"good_for_cycles",
-                <a href="#time_to_live">"time_to_live"</a>:123,
-                <a href="#quantity">"quantity"</a>:123,
-                <a href="#price">"price"</a>:123,
+                <a href="#time_to_live">"time_to_live"</a>:"123",
+                <a href="#quantity">"quantity"</a>:"123",
+                <a href="#price">"price"</a>:"123",
                 "party_data":{
-                    <a href="#account_id">"account_id"</a>:123
+                    <a href="#account_id">"account_id"</a>:"123"
                 }
             }
         }
@@ -7053,7 +7057,7 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#heartbeat">"heartbeat"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -7147,7 +7151,7 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#login_accepted">"login_accepted"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -7191,7 +7195,7 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#login_rejected">"login_rejected"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -7285,11 +7289,11 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#order_action_rejected_ltcancel_order_ltorder_id_gt_gt">"order_action_rejected"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
         "action":{
             <a href="#cancel_order_ltorder_id_gt">"cancel_order"</a>:{
                 "existing_order":{
-                    <a href="#order_id">"order_id"</a>:123
+                    <a href="#order_id">"order_id"</a>:"123"
                 },
                 "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000"
             }
@@ -7348,11 +7352,11 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#order_action_rejected_ltcancel_order_ltorder_token_gt_gt">"order_action_rejected"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
         "action":{
             <a href="#cancel_order_ltorder_token_gt">"cancel_order"</a>:{
                 "existing_order":{
-                    <a href="#order_token">"order_token"</a>:123
+                    <a href="#order_token">"order_token"</a>:"123"
                 },
                 "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000"
             }
@@ -7411,22 +7415,22 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt">"order_action_rejected"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
         "action":{
             <a href="#enter_order_ltsimple_order_ltaccount_id_gt_gt">"enter_order"</a>:{
-                <a href="#order_token">"order_token"</a>:123,
+                <a href="#order_token">"order_token"</a>:"123",
                 "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
                 "new_order":{
                     <a href="#simple_order_ltaccount_id_gt">"simple_order"</a>:{
-                        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-                        <a href="#market_id">"market_id"</a>:123,
+                        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                        <a href="#market_id">"market_id"</a>:"123",
                         <a href="#side">"side"</a>:"buy",
                         <a href="#time_in_force">"time_in_force"</a>:"good_for_cycles",
-                        <a href="#time_to_live">"time_to_live"</a>:123,
-                        <a href="#quantity">"quantity"</a>:123,
-                        <a href="#price">"price"</a>:123,
+                        <a href="#time_to_live">"time_to_live"</a>:"123",
+                        <a href="#quantity">"quantity"</a>:"123",
+                        <a href="#price">"price"</a>:"123",
                         "party_data":{
-                            <a href="#account_id">"account_id"</a>:123
+                            <a href="#account_id">"account_id"</a>:"123"
                         }
                     }
                 }
@@ -7501,10 +7505,10 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#order_cancelled">"order_cancelled"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#order_id">"order_id"</a>:123,
-        <a href="#display_order_id">"display_order_id"</a>:123,
-        <a href="#order_token">"order_token"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#order_id">"order_id"</a>:"123",
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#order_token">"order_token"</a>:"123",
         "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
         <a href="#order_cancelled_reason">"reason"</a>:"user_cancelled"
     }
@@ -7593,22 +7597,22 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#order_entered_ltsimple_order_ltaccount_id_gt_gt">"order_entered"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#order_id">"order_id"</a>:123,
-        <a href="#display_order_id">"display_order_id"</a>:123,
-        <a href="#order_token">"order_token"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#order_id">"order_id"</a>:"123",
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#order_token">"order_token"</a>:"123",
         "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
         "new_order":{
             <a href="#simple_order_ltaccount_id_gt">"simple_order"</a>:{
-                <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-                <a href="#market_id">"market_id"</a>:123,
+                <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                <a href="#market_id">"market_id"</a>:"123",
                 <a href="#side">"side"</a>:"buy",
                 <a href="#time_in_force">"time_in_force"</a>:"good_for_cycles",
-                <a href="#time_to_live">"time_to_live"</a>:123,
-                <a href="#quantity">"quantity"</a>:123,
-                <a href="#price">"price"</a>:123,
+                <a href="#time_to_live">"time_to_live"</a>:"123",
+                <a href="#quantity">"quantity"</a>:"123",
+                <a href="#price">"price"</a>:"123",
                 "party_data":{
-                    <a href="#account_id">"account_id"</a>:123
+                    <a href="#account_id">"account_id"</a>:"123"
                 }
             }
         },
@@ -7696,14 +7700,14 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#order_executed">"order_executed"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#order_id">"order_id"</a>:123,
-        <a href="#display_order_id">"display_order_id"</a>:123,
-        <a href="#order_token">"order_token"</a>:123,
-        <a href="#price">"executed_price"</a>:123,
-        <a href="#quantity">"executed_quantity"</a>:123,
-        <a href="#display_order_id">"counterparty_display_order_id"</a>:123,
-        <a href="#trade_id">"trade_id"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#order_id">"order_id"</a>:"123",
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#order_token">"order_token"</a>:"123",
+        <a href="#price">"executed_price"</a>:"123",
+        <a href="#quantity">"executed_quantity"</a>:"123",
+        <a href="#display_order_id">"counterparty_display_order_id"</a>:"123",
+        <a href="#trade_id">"trade_id"</a>:"123",
         <a href="#liquidity_flag">"liquidity_flag"</a>:"added"
     }
 }</code></pre>
@@ -7793,14 +7797,14 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#order_execution_prevented">"order_execution_prevented"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#order_id">"order_id"</a>:123,
-        <a href="#display_order_id">"display_order_id"</a>:123,
-        <a href="#order_token">"order_token"</a>:123,
-        <a href="#price">"prevented_price"</a>:123,
-        <a href="#quantity">"prevented_quantity"</a>:123,
-        <a href="#quantity">"decremented_quantity"</a>:123,
-        <a href="#display_order_id">"counterparty_display_order_id"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#order_id">"order_id"</a>:"123",
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#order_token">"order_token"</a>:"123",
+        <a href="#price">"prevented_price"</a>:"123",
+        <a href="#quantity">"prevented_quantity"</a>:"123",
+        <a href="#quantity">"decremented_quantity"</a>:"123",
+        <a href="#display_order_id">"counterparty_display_order_id"</a>:"123",
         <a href="#liquidity_flag">"liquidity_flag"</a>:"added",
         <a href="#order_execution_prevented_reason">"reason"</a>:"self_trade"
     }
@@ -7899,27 +7903,27 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#order_restated_ltsimple_order_ltaccount_id_gt_gt">"order_restated"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#order_id">"order_id"</a>:123,
-        <a href="#display_order_id">"display_order_id"</a>:123,
-        <a href="#order_token">"order_token"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#order_id">"order_id"</a>:"123",
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#order_token">"order_token"</a>:"123",
         "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
-        <a href="#utc_timestamp">"original_timestamp"</a>:123,
+        <a href="#utc_timestamp">"original_timestamp"</a>:"123",
         "original_order":{
             <a href="#simple_order_ltaccount_id_gt">"simple_order"</a>:{
-                <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-                <a href="#market_id">"market_id"</a>:123,
+                <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                <a href="#market_id">"market_id"</a>:"123",
                 <a href="#side">"side"</a>:"buy",
                 <a href="#time_in_force">"time_in_force"</a>:"good_for_cycles",
-                <a href="#time_to_live">"time_to_live"</a>:123,
-                <a href="#quantity">"quantity"</a>:123,
-                <a href="#price">"price"</a>:123,
+                <a href="#time_to_live">"time_to_live"</a>:"123",
+                <a href="#quantity">"quantity"</a>:"123",
+                <a href="#price">"price"</a>:"123",
                 "party_data":{
-                    <a href="#account_id">"account_id"</a>:123
+                    <a href="#account_id">"account_id"</a>:"123"
                 }
             }
         },
-        <a href="#quantity">"balance"</a>:123,
+        <a href="#quantity">"balance"</a>:"123",
         <a href="#order_state">"order_state"</a>:"accepted"
     }
 }</code></pre>
@@ -7989,10 +7993,10 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#order_updated">"order_updated"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#order_id">"order_id"</a>:123,
-        <a href="#display_order_id">"display_order_id"</a>:123,
-        <a href="#order_token">"order_token"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#order_id">"order_id"</a>:"123",
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#order_token">"order_token"</a>:"123",
         "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
         <a href="#order_state">"order_state"</a>:"accepted"
     }
@@ -8098,19 +8102,19 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#position">"position"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#account_id">"account_id"</a>:123,
-        <a href="#deliverable_id">"product_deliverable_id"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#account_id">"account_id"</a>:"123",
+        <a href="#deliverable_id">"product_deliverable_id"</a>:"123",
         <a href="#position_kind">"position_kind"</a>:"cash",
         <a href="#product_type">"product_type"</a>:"reference_balance",
-        <a href="#deliverable_id">"position_deliverable_id"</a>:123,
-        <a href="#position_value">"value"</a>:123,
-        <a href="#price">"anchor_price"</a>:123,
-        <a href="#balance">"balance"</a>:123,
-        <a href="#price">"mark_price"</a>:123,
-        <a href="#deliverable_id">"base_deliverable_id"</a>:123,
+        <a href="#deliverable_id">"position_deliverable_id"</a>:"123",
+        <a href="#position_value">"value"</a>:"123",
+        <a href="#price">"anchor_price"</a>:"123",
+        <a href="#balance">"balance"</a>:"123",
+        <a href="#price">"mark_price"</a>:"123",
+        <a href="#deliverable_id">"base_deliverable_id"</a>:"123",
         <a href="#position_source_type">"source_type"</a>:"deposit",
-        <a href="#position_source_id">"source_id"</a>:123
+        <a href="#position_source_id">"source_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -8154,7 +8158,7 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#position_consistency_marker">"position_consistency_marker"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -8201,6 +8205,11 @@ This allows us to form an overall view of positions.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#percent">percent</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The current health score as a percentage as determined by the positions held for the account.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>risk_status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#positions_risk_status">positions_risk_status</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The current risk status as determined by the positions held for the account.</p></td>
+</tr>
 </tbody>
 </table>
 <div id="positions_health_json_example" class="listingblock">
@@ -8208,9 +8217,10 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#positions_health">"positions_health"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#account_id">"account_id"</a>:123,
-        <a href="#percent">"score"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#account_id">"account_id"</a>:"123",
+        <a href="#percent">"score"</a>:"123",
+        <a href="#positions_risk_status">"risk_status"</a>:"normal"
     }
 }</code></pre>
 </div>
@@ -8274,10 +8284,10 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#reference_price">"reference_price"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#market_id">"market_id"</a>:123,
-        <a href="#price">"price"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#market_id">"market_id"</a>:"123",
+        <a href="#price">"price"</a>:"123",
         <a href="#reference_price_type">"price_type"</a>:"reference"
     }
 }</code></pre>
@@ -8337,10 +8347,10 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#request_stream">"request_stream"</a>:{
-        <a href="#channel_id">"channel_id"</a>:123,
-        <a href="#sequence_number">"begin_sequence_number"</a>:123,
-        <a href="#sequence_number">"end_sequence_number"</a>:123,
-        <a href="#stream_id">"stream_id"</a>:123
+        <a href="#channel_id">"channel_id"</a>:"123",
+        <a href="#sequence_number">"begin_sequence_number"</a>:"123",
+        <a href="#sequence_number">"end_sequence_number"</a>:"123",
+        <a href="#stream_id">"stream_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -8389,8 +8399,8 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#session_ended">"session_ended"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#session_id">"session_id"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#session_id">"session_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -8444,9 +8454,9 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#session_started">"session_started"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#session_id">"session_id"</a>:123,
-        <a href="#channel_id">"default_channel_id"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#session_id">"session_id"</a>:"123",
+        <a href="#channel_id">"default_channel_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -8515,22 +8525,22 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#settlement_price">"settlement_price"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#price">"price"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#price">"price"</a>:"123",
         <a href="#settlement_price_type">"price_type"</a>:"interim_price",
         <a href="#zoned_datetime">"settlement_event"</a>:{
             <a href="#datetime">"datetime"</a>:{
                 <a href="#date">"date"</a>:{
-                    <a href="#year">"year"</a>:123,
-                    <a href="#month">"month"</a>:123,
-                    <a href="#day">"day"</a>:123
+                    <a href="#year">"year"</a>:"123",
+                    <a href="#month">"month"</a>:"123",
+                    <a href="#day">"day"</a>:"123"
                 },
                 <a href="#time_of_day">"time"</a>:{
-                    <a href="#hours">"hours"</a>:123,
-                    <a href="#minutes">"minutes"</a>:123,
-                    <a href="#seconds">"seconds"</a>:123,
-                    <a href="#nanoseconds">"nanoseconds"</a>:123
+                    <a href="#hours">"hours"</a>:"123",
+                    <a href="#minutes">"minutes"</a>:"123",
+                    <a href="#seconds">"seconds"</a>:"123",
+                    <a href="#nanoseconds">"nanoseconds"</a>:"123"
                 }
             },
             "timezone":"A"
@@ -8610,9 +8620,9 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#stream_ended">"stream_ended"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#channel_id">"channel_id"</a>:123,
-        <a href="#stream_id">"stream_id"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#channel_id">"channel_id"</a>:"123",
+        <a href="#stream_id">"stream_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -8671,9 +8681,9 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#stream_rejected">"stream_rejected"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#channel_id">"channel_id"</a>:123,
-        <a href="#stream_id">"stream_id"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#channel_id">"channel_id"</a>:"123",
+        <a href="#stream_id">"stream_id"</a>:"123",
         <a href="#stream_reject_reason">"reason"</a>:"invalid_channel_id"
     }
 }</code></pre>
@@ -8733,10 +8743,10 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#stream_resumed">"stream_resumed"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#channel_id">"channel_id"</a>:123,
-        <a href="#sequence_number">"next_sequence_number"</a>:123,
-        <a href="#stream_id">"stream_id"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#channel_id">"channel_id"</a>:"123",
+        <a href="#sequence_number">"next_sequence_number"</a>:"123",
+        <a href="#stream_id">"stream_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -8800,11 +8810,11 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#stream_started">"stream_started"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#channel_id">"channel_id"</a>:123,
-        <a href="#sequence_number">"begin_sequence_number"</a>:123,
-        <a href="#sequence_number">"end_sequence_number"</a>:123,
-        <a href="#stream_id">"stream_id"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#channel_id">"channel_id"</a>:"123",
+        <a href="#sequence_number">"begin_sequence_number"</a>:"123",
+        <a href="#sequence_number">"end_sequence_number"</a>:"123",
+        <a href="#stream_id">"stream_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -8848,7 +8858,7 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#time">"time"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -8922,13 +8932,13 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#top_of_book">"top_of_book"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#market_id">"market_id"</a>:123,
-        <a href="#price">"buy_price"</a>:123,
-        <a href="#quantity">"buy_quantity"</a>:123,
-        <a href="#price">"sell_price"</a>:123,
-        <a href="#quantity">"sell_quantity"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#market_id">"market_id"</a>:"123",
+        <a href="#price">"buy_price"</a>:"123",
+        <a href="#quantity">"buy_quantity"</a>:"123",
+        <a href="#price">"sell_price"</a>:"123",
+        <a href="#quantity">"sell_quantity"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -9007,14 +9017,14 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#trade">"trade"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#market_id">"market_id"</a>:123,
-        <a href="#trade_id">"trade_id"</a>:123,
-        <a href="#price">"price"</a>:123,
-        <a href="#quantity">"quantity"</a>:123,
-        <a href="#display_order_id">"buy_display_order_id"</a>:123,
-        <a href="#display_order_id">"sell_display_order_id"</a>:123
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#market_id">"market_id"</a>:"123",
+        <a href="#trade_id">"trade_id"</a>:"123",
+        <a href="#price">"price"</a>:"123",
+        <a href="#quantity">"quantity"</a>:"123",
+        <a href="#display_order_id">"buy_display_order_id"</a>:"123",
+        <a href="#display_order_id">"sell_display_order_id"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -9121,33 +9131,33 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#tradeable_entity_ltsimple_market_gt">"tradeable_entity"</a>:{
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
         "symbol":"A",
         "tags":[
             "A"
         ],
-        <a href="#deliverable_id">"price_deliverable_id"</a>:123,
-        <a href="#decimal_places">"price_decimal_places"</a>:123,
-        <a href="#deliverable_id">"quantity_deliverable_id"</a>:123,
-        <a href="#decimal_places">"quantity_decimal_places"</a>:123,
-        <a href="#deliverable_id">"buy_trading_limit_deliverable_id"</a>:123,
-        <a href="#deliverable_id">"sell_trading_limit_deliverable_id"</a>:123,
+        <a href="#deliverable_id">"price_deliverable_id"</a>:"123",
+        <a href="#decimal_places">"price_decimal_places"</a>:"123",
+        <a href="#deliverable_id">"quantity_deliverable_id"</a>:"123",
+        <a href="#decimal_places">"quantity_decimal_places"</a>:"123",
+        <a href="#deliverable_id">"buy_trading_limit_deliverable_id"</a>:"123",
+        <a href="#deliverable_id">"sell_trading_limit_deliverable_id"</a>:"123",
         <a href="#tradeability">"tradeability"</a>:"tradeable",
         "details":{
             <a href="#simple_market">"simple_market"</a>:{
-                <a href="#market_id">"market_id"</a>:123,
+                <a href="#market_id">"market_id"</a>:"123",
                 <a href="#zoned_datetime">"settlement_event"</a>:{
                     <a href="#datetime">"datetime"</a>:{
                         <a href="#date">"date"</a>:{
-                            <a href="#year">"year"</a>:123,
-                            <a href="#month">"month"</a>:123,
-                            <a href="#day">"day"</a>:123
+                            <a href="#year">"year"</a>:"123",
+                            <a href="#month">"month"</a>:"123",
+                            <a href="#day">"day"</a>:"123"
                         },
                         <a href="#time_of_day">"time"</a>:{
-                            <a href="#hours">"hours"</a>:123,
-                            <a href="#minutes">"minutes"</a>:123,
-                            <a href="#seconds">"seconds"</a>:123,
-                            <a href="#nanoseconds">"nanoseconds"</a>:123
+                            <a href="#hours">"hours"</a>:"123",
+                            <a href="#minutes">"minutes"</a>:"123",
+                            <a href="#seconds">"seconds"</a>:"123",
+                            <a href="#nanoseconds">"nanoseconds"</a>:"123"
                         }
                     },
                     "timezone":"A"
@@ -9242,16 +9252,16 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#trading_rule">"trading_rule"</a>:{
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#market_id">"market_id"</a>:123,
-        <a href="#price">"minimum_price"</a>:123,
-        <a href="#price">"maximum_price"</a>:123,
-        <a href="#price">"price_step"</a>:123,
-        <a href="#quantity">"minimum_quantity"</a>:123,
-        <a href="#quantity">"maximum_quantity"</a>:123,
-        <a href="#quantity">"quantity_step"</a>:123,
-        <a href="#value">"minimum_value"</a>:123,
-        <a href="#value">"maximum_value"</a>:123
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#market_id">"market_id"</a>:"123",
+        <a href="#price">"minimum_price"</a>:"123",
+        <a href="#price">"maximum_price"</a>:"123",
+        <a href="#price">"price_step"</a>:"123",
+        <a href="#quantity">"minimum_quantity"</a>:"123",
+        <a href="#quantity">"maximum_quantity"</a>:"123",
+        <a href="#quantity">"quantity_step"</a>:"123",
+        <a href="#value">"minimum_value"</a>:"123",
+        <a href="#value">"maximum_value"</a>:"123"
     }
 }</code></pre>
 </div>
@@ -9315,9 +9325,9 @@ This allows us to form an overall view of positions.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#trading_state">"trading_state"</a>:{
-        <a href="#utc_timestamp">"timestamp"</a>:123,
-        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:123,
-        <a href="#market_id">"market_id"</a>:123,
+        <a href="#utc_timestamp">"timestamp"</a>:"123",
+        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+        <a href="#market_id">"market_id"</a>:"123",
         <a href="#suspension_status">"suspension_status"</a>:"active",
         <a href="#expiry_status">"expiry_status"</a>:"active"
     }
@@ -10225,6 +10235,9 @@ This allows us to form an overall view of positions.</p>
 <p><a href="#position_value">position_value</a></p>
 </li>
 <li>
+<p><a href="#positions_risk_status">positions_risk_status</a></p>
+</li>
+<li>
 <p><a href="#price">price</a></p>
 </li>
 <li>
@@ -10301,7 +10314,7 @@ This allows us to form an overall view of positions.</p>
 <p>Uniquely identifies an account.</p>
 </div>
 <div class="paragraph">
-<p><code>account_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>account_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10321,7 +10334,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no account ID.</p></td>
 </tr>
 </tbody>
@@ -10333,7 +10347,7 @@ The type also supports the following string constants:</p>
 <p>A balance.</p>
 </div>
 <div class="paragraph">
-<p><code>balance</code> is an integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
+<p><code>balance</code> is a signed 64-bit integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10353,7 +10367,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p>
+<p class="tableblock">(max signed 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no balance.</p></td>
 </tr>
 </tbody>
@@ -10365,7 +10380,7 @@ The type also supports the following string constants:</p>
 <p>Uniquely identifies a channel.</p>
 </div>
 <div class="paragraph">
-<p><code>channel_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>channel_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10397,7 +10412,7 @@ The type also supports the following string constants:</p>
 <p>Specifies the contract size.</p>
 </div>
 <div class="paragraph">
-<p><code>contract_size</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>contract_size</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10417,7 +10432,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no contract size.</p></td>
 </tr>
 </tbody>
@@ -10429,7 +10445,7 @@ The type also supports the following string constants:</p>
 <p>Identifies the source of an instrument.</p>
 </div>
 <div class="paragraph">
-<p><code>creation_source_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>creation_source_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10449,7 +10465,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no creation source.</p></td>
 </tr>
 </tbody>
@@ -10461,7 +10478,7 @@ The type also supports the following string constants:</p>
 <p>Day of the month (1-31).</p>
 </div>
 <div class="paragraph">
-<p><code>day</code> is an integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>day</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10481,7 +10498,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
+<p class="tableblock">(max unsigned 8-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no day.</p></td>
 </tr>
 </tbody>
@@ -10493,7 +10511,7 @@ The type also supports the following string constants:</p>
 <p>Decimal Places.</p>
 </div>
 <div class="paragraph">
-<p><code>decimal_places</code> is an integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>decimal_places</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10513,7 +10531,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
+<p class="tableblock">(max unsigned 8-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no decimal places.</p></td>
 </tr>
 </tbody>
@@ -10525,7 +10544,7 @@ The type also supports the following string constants:</p>
 <p>Uniquely identifies a deliverable.</p>
 </div>
 <div class="paragraph">
-<p><code>deliverable_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>deliverable_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10545,7 +10564,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no deliverable ID.</p></td>
 </tr>
 </tbody>
@@ -10562,30 +10582,40 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 82. delivery_style constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"physical"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
+<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The derivative settlement deliverable is the same as the quantity deliverable.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"cash"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
+<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The derivative settlement deliverable is a cash-style deliverable.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"non_deliverable"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
+<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The derivative is non-deliverable.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"elect_at_exercise"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
+<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The derivative&#8217;s delivery is elected at exercise.</p></td>
 </tr>
 </tbody>
@@ -10597,7 +10627,7 @@ The type also supports the following string constants:</p>
 <p>Uniquely identifies a display order.</p>
 </div>
 <div class="paragraph">
-<p><code>display_order_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>display_order_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10617,7 +10647,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no display order ID.</p></td>
 </tr>
 </tbody>
@@ -10634,22 +10665,28 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 84. expiry_status constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"active"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
+<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The entity is active.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expired"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
+<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The entity has expired.</p></td>
 </tr>
 </tbody>
@@ -10661,7 +10698,7 @@ The type also supports the following string constants:</p>
 <p>Uniquely identifies a funding specification for a perpetual derivative.</p>
 </div>
 <div class="paragraph">
-<p><code>funding_spec_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>funding_spec_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10681,7 +10718,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no funding spec ID.</p></td>
 </tr>
 </tbody>
@@ -10693,7 +10731,7 @@ The type also supports the following string constants:</p>
 <p>Hours.</p>
 </div>
 <div class="paragraph">
-<p><code>hours</code> is an integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>hours</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10713,7 +10751,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
+<p class="tableblock">(max unsigned 8-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no hours.</p></td>
 </tr>
 </tbody>
@@ -10725,7 +10764,7 @@ The type also supports the following string constants:</p>
 <p>Unique numeric identifier for a currency according to the ISO4217 standard.</p>
 </div>
 <div class="paragraph">
-<p><code>iso4217_currency_number</code> is an integer with supported values from <code>0</code> to <code>65535</code> inclusive.
+<p><code>iso4217_currency_number</code> is an unsigned 16-bit integer with supported values from <code>0</code> to <code>65535</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10745,7 +10784,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65535</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65535</code></p>
+<p class="tableblock">(max unsigned 16-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no currency number.</p></td>
 </tr>
 </tbody>
@@ -10762,22 +10802,28 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 88. liquidity_flag constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"added"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
+<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Liquidity was added</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"taken"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
+<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Liquidity was taken</p></td>
 </tr>
 </tbody>
@@ -10789,7 +10835,7 @@ The type also supports the following string constants:</p>
 <p>Uniquely identifies a margin spec.</p>
 </div>
 <div class="paragraph">
-<p><code>margin_spec_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>margin_spec_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10809,7 +10855,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no margin spec ID.</p></td>
 </tr>
 </tbody>
@@ -10821,7 +10868,7 @@ The type also supports the following string constants:</p>
 <p>Uniquely identifies a market.</p>
 </div>
 <div class="paragraph">
-<p><code>market_id</code> is an integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>market_id</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10841,7 +10888,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
+<p class="tableblock">(max unsigned 8-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no market ID.</p></td>
 </tr>
 </tbody>
@@ -10853,7 +10901,7 @@ The type also supports the following string constants:</p>
 <p>Minutes.</p>
 </div>
 <div class="paragraph">
-<p><code>minutes</code> is an integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>minutes</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10873,7 +10921,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
+<p class="tableblock">(max unsigned 8-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no minutes.</p></td>
 </tr>
 </tbody>
@@ -10885,7 +10934,7 @@ The type also supports the following string constants:</p>
 <p>Month (1-12).</p>
 </div>
 <div class="paragraph">
-<p><code>month</code> is an integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>month</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10905,7 +10954,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
+<p class="tableblock">(max unsigned 8-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no month.</p></td>
 </tr>
 </tbody>
@@ -10917,7 +10967,7 @@ The type also supports the following string constants:</p>
 <p>Nanoseconds.</p>
 </div>
 <div class="paragraph">
-<p><code>nanoseconds</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>nanoseconds</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -10937,7 +10987,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no nanoseconds.</p></td>
 </tr>
 </tbody>
@@ -10954,26 +11005,34 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 94. option_exercise_style constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"european"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
+<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a European style option and can only be exercised on expiry.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"american"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
+<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is an American style option and can be exercised at any time.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"bermudan"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
+<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a Bermudan style option that can only be exercised on predetermined dates, often on one day each month, or at expiry.</p></td>
 </tr>
 </tbody>
@@ -10990,22 +11049,28 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 95. option_type constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"call"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
+<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Call option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"put"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
+<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Put option.</p></td>
 </tr>
 </tbody>
@@ -11022,38 +11087,52 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 96. option_valuation_approach constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"vanilla"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>86</code></p>
+<p class="tableblock">(ordinal value of <code>'V'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a Vanilla option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"asian"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
+<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is an Asian option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"digital"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p>
+<p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is Digital (Binary) option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"barrier"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
+<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a Barrier option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"digital_barrier"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>71</code></p>
+<p class="tableblock">(ordinal value of <code>'G'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a Digital Barrier option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"loopback"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>76</code></p>
+<p class="tableblock">(ordinal value of <code>'L'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a Loopback option.</p></td>
 </tr>
 </tbody>
@@ -11070,118 +11149,146 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 97. order_action_reject_reason constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_tradeable_entity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invalid tradeable entity</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_fields"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invalid fields</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"fill_side_empty"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fill side empty</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"no_orders_to_peg_to"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>4</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No orders to peg to</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_this_period"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invalid this period</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_order_flow"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>6</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invalid order flow</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"illegal_order_flow"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>7</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Illegal order flow</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"trading_suspended"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>8</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Trading suspended</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_participant"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invalid participant</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_account"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>10</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invalid account</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"insufficient_account_balance"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>11</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Insufficient account balance</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_market"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>12</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invalid market</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"account_suspended"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>13</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The account is suspended</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expired_tradeable_entity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>14</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The tradeable entity has expired</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_quantity_deliverable"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>15</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invalid quantity deliverable</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_trading_limit_deliverable"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>16</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invalid trading limit deliverable</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"deliverable_is_not_a_derivative"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>17</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The deliverable is not a derivative</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"price_less_than_minimum_price"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The price of the order is less than the minimum price allowed by the trading rules that are currently in force.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"price_greater_than_maximum_price"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>19</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The price of the order is greater than the maximum price allowed by the trading rules that are currently in force.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"price_not_a_valid_price_step"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>20</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The price of the order is not on an allowed price step as required by the trading rules that are currently in force.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"quantity_less_than_minimum_quantity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>21</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of the order is less than the minimum quantity allowed by the trading rules that are currently in force.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"quantity_greater_than_maximum_quantity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>22</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of the order is greater than the maximum quantity allowed by the trading rules that are currently in force.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"quantity_not_a_valid_quantity_step"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>23</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of the order is not on an allowed quantity step as required by the trading rules that are currently in force.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"order_value_greater_than_maximum_supported"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>24</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The value of the order is greater than the maximum supported.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"order_value_less_than_minimum_allowed"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>25</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The value of the order is less than the minimum value allowed by the trading rules that are currently in force.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"order_value_greater_than_maximum_allowed"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>26</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The value of the order is greater than the maximum value allowed by the trading rules that are currently in force.</p></td>
 </tr>
 </tbody>
@@ -11198,26 +11305,31 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 98. order_cancelled_reason constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"user_cancelled"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order was cancelled by the user.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"immediate_with_insufficient_liquidity"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">There was insufficient liquidity to match the immediate order.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"timeout"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order timed out due to its TimeInForce attribute</p></td>
 </tr>
 </tbody>
@@ -11229,23 +11341,26 @@ The type also supports the following string constants:</p>
 <p>Specifies why an order execution was prevented.</p>
 </div>
 <div class="paragraph">
-<p><code>order_execution_prevented_reason</code> is an enumeration with the following well-known string constant(s):</p>
+<p><code>order_execution_prevented_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 99. order_execution_prevented_reason constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"self_trade"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order would have resulted in the party trading with itself.</p></td>
 </tr>
 </tbody>
@@ -11257,7 +11372,7 @@ The type also supports the following string constants:</p>
 <p>Uniquely identifies an order.</p>
 </div>
 <div class="paragraph">
-<p><code>order_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>order_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -11277,7 +11392,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no order ID.</p></td>
 </tr>
 </tbody>
@@ -11294,26 +11410,34 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 101. order_state constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"accepted"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
+<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order has been accepted and is eligible for matching.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"pending"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
+<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order is pending and not yet eligible for matching.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expired"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
+<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order has expired. No further messages will be generated for it.</p></td>
 </tr>
 </tbody>
@@ -11325,7 +11449,7 @@ The type also supports the following string constants:</p>
 <p>A 64-bit client-generated ID to uniquely identify an order. Must be increased for each inbound order management request. The top 8 bits are reserved and must be 0.</p>
 </div>
 <div class="paragraph">
-<p><code>order_token</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>order_token</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -11345,7 +11469,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no order token.</p></td>
 </tr>
 </tbody>
@@ -11357,7 +11482,7 @@ The type also supports the following string constants:</p>
 <p>A percentage scaled to 4 decimal places.</p>
 </div>
 <div class="paragraph">
-<p><code>percent</code> is an integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
+<p><code>percent</code> is a signed 64-bit integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -11377,7 +11502,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p>
+<p class="tableblock">(max signed 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no percentage value.</p></td>
 </tr>
 </tbody>
@@ -11394,22 +11520,28 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 104. perpetual_funding_style constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"mark_to_market"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>77</code></p>
+<p class="tableblock">(ordinal value of <code>'M'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The periodic funding flows for the perpetual are based on mark-to-market settlement.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"swap"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p>
+<p class="tableblock">(ordinal value of <code>'S'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The periodic funding flows for the perpetual are based on swap-style settlments.</p></td>
 </tr>
 </tbody>
@@ -11426,35 +11558,53 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 105. position_kind constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"cash"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
+<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cash position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"realised"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
+<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Realised position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"unrealised"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p>
+<p class="tableblock">(ordinal value of <code>'U'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unrealised position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"margin"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>77</code></p>
+<p class="tableblock">(ordinal value of <code>'M'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Margin position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"payoff"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
+<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Payoff position.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"payout"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
+<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Payout (funding) position.</p></td>
 </tr>
 </tbody>
 </table>
@@ -11465,7 +11615,7 @@ The type also supports the following string constants:</p>
 <p>The source_id that triggered a position update.</p>
 </div>
 <div class="paragraph">
-<p><code>position_source_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>position_source_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -11485,7 +11635,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no position source ID.</p></td>
 </tr>
 </tbody>
@@ -11502,42 +11653,58 @@ The type also supports the following string constants:</p>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 107. position_source_type constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"deposit"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p>
+<p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a deposit.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"withdrawal"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>87</code></p>
+<p class="tableblock">(ordinal value of <code>'W'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a withdrawal.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"trade"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
+<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a trade.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expiry"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
+<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by an expiry.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"mark_to_market"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
+<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a mark to market settlement.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"mark_price"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>77</code></p>
+<p class="tableblock">(ordinal value of <code>'M'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a change in mark price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
+<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no source type.</p></td>
 </tr>
 </tbody>
@@ -11549,7 +11716,7 @@ The type also supports the following string constants:</p>
 <p>A position_value.</p>
 </div>
 <div class="paragraph">
-<p><code>position_value</code> is an integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
+<p><code>position_value</code> is a signed 64-bit integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -11569,23 +11736,74 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p>
+<p class="tableblock">(max signed 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no position value.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="price">5.4.36. price</h4>
+<h4 id="positions_risk_status">5.4.36. positions_risk_status</h4>
+<div class="paragraph">
+<p>Indicates the risk status associated with outstanding positions</p>
+</div>
+<div class="paragraph">
+<p><code>positions_risk_status</code> is an enumeration with the following well-known string constants:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 109. positions_risk_status constants</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"normal"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
+<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The positions have a normal risk status.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"at_risk"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
+<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The positions are considered 'At Risk' and some restrictions will apply.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"critical"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
+<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The positions are considered 'Critical' and full trading restrictions will apply.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"liquidate"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>76</code></p>
+<p class="tableblock">(ordinal value of <code>'L'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The positions risk status has passed the 'Critical' level and the positions need to be liquidated.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="price">5.4.37. price</h4>
 <div class="paragraph">
 <p>A price.</p>
 </div>
 <div class="paragraph">
-<p><code>price</code> is an integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
+<p><code>price</code> is a signed 64-bit integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 109. price constants</caption>
+<caption class="title">Table 110. price constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11601,14 +11819,15 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p>
+<p class="tableblock">(max signed 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no price.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="product_type">5.4.37. product_type</h4>
+<h4 id="product_type">5.4.38. product_type</h4>
 <div class="paragraph">
 <p>Specifies product type of product a position is related to .</p>
 </div>
@@ -11616,56 +11835,70 @@ The type also supports the following string constants:</p>
 <p><code>product_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 110. product_type constants</caption>
+<caption class="title">Table 111. product_type constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"reference_balance"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
+<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Balance positions for the reference currency.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"balance"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
+<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Balance.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"spot"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p>
+<p class="tableblock">(ordinal value of <code>'S'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Spot.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"future"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
+<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Future.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"option"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p>
+<p class="tableblock">(ordinal value of <code>'O'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
+<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No product.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="quantity">5.4.38. quantity</h4>
+<h4 id="quantity">5.4.39. quantity</h4>
 <div class="paragraph">
 <p>A quantity.</p>
 </div>
 <div class="paragraph">
-<p><code>quantity</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>quantity</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 111. quantity constants</caption>
+<caption class="title">Table 112. quantity constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11681,14 +11914,15 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no quantity.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="reference_price_type">5.4.39. reference_price_type</h4>
+<h4 id="reference_price_type">5.4.40. reference_price_type</h4>
 <div class="paragraph">
 <p>Specifies the type of reference price.</p>
 </div>
@@ -11696,40 +11930,46 @@ The type also supports the following string constants:</p>
 <p><code>reference_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 112. reference_price_type constants</caption>
+<caption class="title">Table 113. reference_price_type constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"reference"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
+<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reference price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"close"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
+<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Close price.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="seconds">5.4.40. seconds</h4>
+<h4 id="seconds">5.4.41. seconds</h4>
 <div class="paragraph">
 <p>Seconds.</p>
 </div>
 <div class="paragraph">
-<p><code>seconds</code> is an integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>seconds</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 113. seconds constants</caption>
+<caption class="title">Table 114. seconds constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11745,23 +11985,24 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
+<p class="tableblock">(max unsigned 8-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no seconds.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="sequence_number">5.4.41. sequence_number</h4>
+<h4 id="sequence_number">5.4.42. sequence_number</h4>
 <div class="paragraph">
 <p>A message sequence number.</p>
 </div>
 <div class="paragraph">
-<p><code>sequence_number</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>sequence_number</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 114. sequence_number constants</caption>
+<caption class="title">Table 115. sequence_number constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11784,16 +12025,16 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="session_id">5.4.42. session_id</h4>
+<h4 id="session_id">5.4.43. session_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a session.</p>
 </div>
 <div class="paragraph">
-<p><code>session_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>session_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 115. session_id constants</caption>
+<caption class="title">Table 116. session_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11816,7 +12057,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="settlement_event_type">5.4.43. settlement_event_type</h4>
+<h4 id="settlement_event_type">5.4.44. settlement_event_type</h4>
 <div class="paragraph">
 <p>Specifies the type of settlement event.</p>
 </div>
@@ -11824,31 +12065,37 @@ The type also supports the following string constants:</p>
 <p><code>settlement_event_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 116. settlement_event_type constants</caption>
+<caption class="title">Table 117. settlement_event_type constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"cyclical"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
+<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The settlement event is cyclical, such as a daily settlement.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expiry"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
+<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The settlement event is associated with a deliverable&#8217;s expiry.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="settlement_price_type">5.4.44. settlement_price_type</h4>
+<h4 id="settlement_price_type">5.4.45. settlement_price_type</h4>
 <div class="paragraph">
 <p>Specifies the type of settlement price.</p>
 </div>
@@ -11856,31 +12103,37 @@ The type also supports the following string constants:</p>
 <p><code>settlement_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 117. settlement_price_type constants</caption>
+<caption class="title">Table 118. settlement_price_type constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"interim_price"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>73</code></p>
+<p class="tableblock">(ordinal value of <code>'I'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Interim price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"final_price"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
+<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Final price.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="side">5.4.45. side</h4>
+<h4 id="side">5.4.46. side</h4>
 <div class="paragraph">
 <p>Specifies whether order is a buy or sell.</p>
 </div>
@@ -11888,31 +12141,37 @@ The type also supports the following string constants:</p>
 <p><code>side</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 118. side constants</caption>
+<caption class="title">Table 119. side constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"buy"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
+<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Buy order.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"sell"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p>
+<p class="tableblock">(ordinal value of <code>'S'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sell order.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stabilisation_approach">5.4.46. stabilisation_approach</h4>
+<h4 id="stabilisation_approach">5.4.47. stabilisation_approach</h4>
 <div class="paragraph">
 <p>Specifies the general approach used to stabilise the token.</p>
 </div>
@@ -11920,48 +12179,58 @@ The type also supports the following string constants:</p>
 <p><code>stabilisation_approach</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 119. stabilisation_approach constants</caption>
+<caption class="title">Table 120. stabilisation_approach constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"fiat_backed"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
+<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The token is backed by a fiat currency, either directly, or by pegging, or against a basket.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"asset_backed"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
+<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The token is backed by an asset, such as commodities like gold price or other kinds of assets.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"token_backed"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
+<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The token is backed by other cryptoasset tokens, such as a diversified basket.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"unbacked"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p>
+<p class="tableblock">(ordinal value of <code>'U'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The token is a seigniorage-style, unbacked token that uses some form of algorithm to control supply and value.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stream_id">5.4.47. stream_id</h4>
+<h4 id="stream_id">5.4.48. stream_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a stream.</p>
 </div>
 <div class="paragraph">
-<p><code>stream_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>stream_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 120. stream_id constants</caption>
+<caption class="title">Table 121. stream_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11984,7 +12253,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stream_reject_reason">5.4.48. stream_reject_reason</h4>
+<h4 id="stream_reject_reason">5.4.49. stream_reject_reason</h4>
 <div class="paragraph">
 <p>Specifies why a stream request was rejected.</p>
 </div>
@@ -11992,48 +12261,54 @@ The type also supports the following string constants:</p>
 <p><code>stream_reject_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 121. stream_reject_reason constants</caption>
+<caption class="title">Table 122. stream_reject_reason constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_channel_id"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The channel ID did not refer to a known channel</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_sequence_number"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The begin or end sequence number was invalid</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"stream_id_in_use"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The stream ID is already being used for another active stream.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"too_many_streams"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>4</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The number of active streams is already at the maximum allowed.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="strikes_spec_id">5.4.49. strikes_spec_id</h4>
+<h4 id="strikes_spec_id">5.4.50. strikes_spec_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a strikes specification.</p>
 </div>
 <div class="paragraph">
-<p><code>strikes_spec_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>strikes_spec_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 122. strikes_spec_id constants</caption>
+<caption class="title">Table 123. strikes_spec_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12049,14 +12324,15 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no strikes spec ID.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="suspension_status">5.4.50. suspension_status</h4>
+<h4 id="suspension_status">5.4.51. suspension_status</h4>
 <div class="paragraph">
 <p>Specifies whether an entity is suspended or active.</p>
 </div>
@@ -12064,31 +12340,37 @@ The type also supports the following string constants:</p>
 <p><code>suspension_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 123. suspension_status constants</caption>
+<caption class="title">Table 124. suspension_status constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"active"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
+<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The entity is active.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"suspended"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p>
+<p class="tableblock">(ordinal value of <code>'S'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The entity is suspended.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="time_in_force">5.4.51. time_in_force</h4>
+<h4 id="time_in_force">5.4.52. time_in_force</h4>
 <div class="paragraph">
 <p>Specifies the duration of the order.</p>
 </div>
@@ -12096,40 +12378,46 @@ The type also supports the following string constants:</p>
 <p><code>time_in_force</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 124. time_in_force constants</caption>
+<caption class="title">Table 125. time_in_force constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"good_for_cycles"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
+<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Good for the number of system cycles specified in <a href="#time_to_live">time_to_live</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"immediate_or_cancel"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>73</code></p>
+<p class="tableblock">(ordinal value of <code>'I'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Immediate or cancel order.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="time_to_live">5.4.52. time_to_live</h4>
+<h4 id="time_to_live">5.4.53. time_to_live</h4>
 <div class="paragraph">
 <p>Used in conjunction with <a href="#time_in_force">time_in_force</a> to specify an order&#8217;s lifetime.</p>
 </div>
 <div class="paragraph">
-<p><code>time_to_live</code> is an integer with supported values from <code>0</code> to <code>65535</code> inclusive.
+<p><code>time_to_live</code> is an unsigned 16-bit integer with supported values from <code>0</code> to <code>65535</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 125. time_to_live constants</caption>
+<caption class="title">Table 126. time_to_live constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12145,23 +12433,24 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65535</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65535</code></p>
+<p class="tableblock">(max unsigned 16-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no time_to_live.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="trade_id">5.4.53. trade_id</h4>
+<h4 id="trade_id">5.4.54. trade_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a trade.</p>
 </div>
 <div class="paragraph">
-<p><code>trade_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>trade_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 126. trade_id constants</caption>
+<caption class="title">Table 127. trade_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12177,14 +12466,15 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no trade ID.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="tradeability">5.4.54. tradeability</h4>
+<h4 id="tradeability">5.4.55. tradeability</h4>
 <div class="paragraph">
 <p>Specifies the tradeability of a tradeable_entity.</p>
 </div>
@@ -12192,44 +12482,52 @@ The type also supports the following string constants:</p>
 <p><code>tradeability</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 127. tradeability constants</caption>
+<caption class="title">Table 128. tradeability constants</caption>
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"tradeable"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
+<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Can enter orders.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"display_only"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p>
+<p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cannot enter orders, but we may publish market data.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"non_tradeable"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
+<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cannot enter orders, no market data.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="tradeable_entity_id">5.4.55. tradeable_entity_id</h4>
+<h4 id="tradeable_entity_id">5.4.56. tradeable_entity_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a tradeable entity.</p>
 </div>
 <div class="paragraph">
-<p><code>tradeable_entity_id</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>tradeable_entity_id</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 128. tradeable_entity_id constants</caption>
+<caption class="title">Table 129. tradeable_entity_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12245,23 +12543,24 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no tradeable entity ID.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="utc_timestamp">5.4.56. utc_timestamp</h4>
+<h4 id="utc_timestamp">5.4.57. utc_timestamp</h4>
 <div class="paragraph">
 <p>A UTC timestamp expressed in nanoseconds since the epoch (1970-01-01 00:00:00).</p>
 </div>
 <div class="paragraph">
-<p><code>utc_timestamp</code> is an integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>utc_timestamp</code> is an unsigned 64-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 129. utc_timestamp constants</caption>
+<caption class="title">Table 130. utc_timestamp constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12277,23 +12576,24 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<p class="tableblock">(max unsigned 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no timestamp.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="value">5.4.57. value</h4>
+<h4 id="value">5.4.58. value</h4>
 <div class="paragraph">
 <p>A value.</p>
 </div>
 <div class="paragraph">
-<p><code>value</code> is an integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
+<p><code>value</code> is a signed 64-bit integer with supported values from <code>-9223372036854775808</code> to <code>9223372036854775807</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 130. value constants</caption>
+<caption class="title">Table 131. value constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12309,23 +12609,24 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>9223372036854775807</code></p>
+<p class="tableblock">(max signed 64-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no value.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="year">5.4.58. year</h4>
+<h4 id="year">5.4.59. year</h4>
 <div class="paragraph">
 <p>The year (YYYY).</p>
 </div>
 <div class="paragraph">
-<p><code>year</code> is an integer with supported values from <code>0</code> to <code>65535</code> inclusive.
+<p><code>year</code> is an unsigned 16-bit integer with supported values from <code>0</code> to <code>65535</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 131. year constants</caption>
+<caption class="title">Table 132. year constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12341,7 +12642,8 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65535</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65535</code></p>
+<p class="tableblock">(max unsigned 16-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no year.</p></td>
 </tr>
 </tbody>
