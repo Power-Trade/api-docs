@@ -1106,7 +1106,7 @@ p { margin-bottom: 1.25rem; }
 <p>To summarise here though, a <strong>Session</strong> is started on a per connection basis when connection is established to one of the services above. As shown in chapter <a href="#Session_Control_Protocol_LogIn_LogOut">Session Control Protocol</a>, the protocols follow a synchronous request/response pattern until a session established, at which point the API becomes asynchronous. These session-related messages are described in their corresponding reference sections: <a href="#Session_Protocol_Requests">Session Protocol Requests</a>, <a href="#Session_Protocol_Responses">Session Protocol Responses</a>.</p>
 </div>
 <div class="paragraph">
-<p>A session will be maintained so long as two conditions are met: first, that <a href="#heartbeat">heartbeats</a> are sent every 15 seconds, and second the client does not explicitly log out (or the seesion is terminated).</p>
+<p>A session will be maintained so long as two conditions are met: first, that <a href="#heartbeat">heartbeats</a> are sent every 15 seconds, and second the client does not explicitly log out (or the session is terminated).</p>
 </div>
 <div class="paragraph">
 <p><strong>Cycles</strong> are specific intervals of time that are used to provide a logical separation of the trading session over time. They are continuous in that once a cycle ends, a new cycle starts. You can read more about this in the chapter <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a>.</p>
@@ -1158,7 +1158,7 @@ p { margin-bottom: 1.25rem; }
 <p>The key requirement for proper handling of monetary values is to ensure their <em>precise</em> handling <em>without rounding</em>. The challange here is that most general purpose CPUs don&#8217;t have native hardware decimal types for numbers with fractional parts. Instead binary-based floating point values available in their FPUs are widely used in programs for calculations. The floating point values have no fixed precision, hence the term "floating". This means that during calculations using such values, the precision of the resulting values changes dynamically, e.g. inputs may have 6 precise digits after the decimal point and output can be automatically rounded to 3 decimal places with a corresponding degradation in precision from 6 to 3 digits after decimal point.</p>
 </div>
 <div id="All_Numericals_Are_Sent_As_JSON_strings" class="paragraph">
-<p><strong>Please note that all numerical values being sent by PowerTrade&#8217;s platform as <em>JSON strings</em></strong>.</p>
+<p><strong>Please note that all numerical values are being sent by PowerTrade&#8217;s platform as <em>JSON strings</em></strong>.</p>
 </div>
 <div class="paragraph">
 <p>To keep all monetary values precise, PowerTrade&#8217;s platform represents monetary values using simple integer-based notation with corresponding scaling defined by the number of decimals in fractional parts for each currency.</p>
@@ -1305,7 +1305,7 @@ p { margin-bottom: 1.25rem; }
 <p>All API services listed in Table <a href="#WS_API_Services">PowerTrade WebSocket API services</a> are based on session control protocol, as described in details in section <a href="#Session_Control_Protocol_LogIn_LogOut">Session Control Protocol</a>.</p>
 </div>
 <div class="paragraph">
-<p>The session control protocol is essentially a synchronous protocol, because all its stages required to be passed by client in the predefined order with confirmation from server sent in form of corresponding responses. After session becomes properly established, the communication follows service-specific protocol, essential for a particular service, e.g. for Market Data service the protocol is one-way (read-only, listen-only) where a client receives market data updates from a service as market changes happen. In case of Order Management service, the service-specific protocols is two-ways, so a client can control his/her orders by sending requests and receiving corresponding confirmation from a service in form of responses.</p>
+<p>The session control protocol is essentially a synchronous protocol, because all its stages required to be passed by client in the predefined order with confirmation from server sent in form of corresponding responses. After a session becomes properly established, the communication follows a service-specific protocol, essential for a particular service, e.g. for Market Data service the protocol is one-way (read-only, listen-only) where a client receives market data updates from a service as market changes happen. In case of Order Management service, the service-specific protocols is two-ways, so a client can control their orders by sending requests and receiving corresponding confirmation from a service in the form of responses.</p>
 </div>
 <table id="WS_API_Service_Protocols" class="tableblock frame-all grid-all" style="width: 95%;">
 <caption class="title">Table 5. <strong>Protocols of PowerTrade WebSocket API Services</strong>:</caption>
@@ -1369,7 +1369,7 @@ p { margin-bottom: 1.25rem; }
 <p>To initiate a session after establishing a WSS connection to a service, users must send a <a href="#login">login</a> message to the backend using their email as the <code>credentials</code> and a generated <code>credentials_secret</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>credentials_secret</code> is a specially constructed JSON Web Token (JWT) that is signed using the user&#8217;s API <code>secret_key</code>. The following JWT claims are required in order to use submit a valid <code>credentials_secret</code>:</p>
+<p>The <code>credentials_secret</code> is a specially constructed JSON Web Token (JWT) that is signed using the user&#8217;s API <code>secret_key</code>. The following JWT claims are required in order to submit a valid <code>credentials_secret</code>:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1407,7 +1407,7 @@ p { margin-bottom: 1.25rem; }
 export API_KEY="8557379d6d62080a1169740f183f16bf"
 
 # Replace with your secret_key
-export PEM_SECRET_KEY="-----BEGIN EC PRIVATE KEY-----\nMHcCAQEEILwnCHltSNt5BT+oB2C/I/YjI6OObYMaGLw0cTtOVHsroAoGCCqGSM49\nAwEHoUQDQgAELzRQAq3U6JtDa7hLHTzX+tzlJurj1v2hcrHSdk4X3hzHQYJu1DB6\n/gnZqe5mv3KS/HGvGCCyL1WFAz1S7VJ9uw==\n-----END PRIVATE KEY-----\n"</code></pre>
+export PEM_SECRET_KEY="-----BEGIN EC PRIVATE KEY-----\nMHcCAQEEILwnCHltSNt5BT+oB2C/I/YjI6OObYMaGLw0cTtOVHsroAoGCCqGSM49\nAwEHoUQDQgAELzRQAq3U6JtDa7hLHTzX+tzlJurj1v2hcrHSdk4X3hzHQYJu1DB6\n/gnZqe5mv3KS/HGvGCCyL1WFAz1S7VJ9uw==\n-----END EC PRIVATE KEY-----\n"</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1417,7 +1417,32 @@ export PEM_SECRET_KEY="-----BEGIN EC PRIVATE KEY-----\nMHcCAQEEILwnCHltSNt5BT+oB
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">TODO: place Python code here</code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import os
+import time
+import jwt  # Using PyJWT to generate JWT's - `pip install pyjwt`
+
+
+def generate_credential_secret(api_key, pem_secret_key):
+    now = int(time.time())
+    payload = {
+        "client": "api",
+        "uri": "",  # TODO - fill in with example production url
+        "nonce": now,
+        "iat": now,
+        "exp": now + 30,
+        "sub": api_key
+    }
+    try:
+        return jwt.encode(payload, pem_secret_key, algorithm="ES256")
+    except jwt.exceptions.PyJWTError as err:
+        print("Error: {}".format(err))
+        exit(0)
+
+
+if __name__ == '__main__':
+    API_KEY = os.getenv("API_KEY")
+    PEM_SECRET_KEY = os.getenv("PEM_SECRET_KEY")
+    print(generate_credential_secret(API_KEY, PEM_SECRET_KEY))</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1457,7 +1482,7 @@ func GenerateCredentialsSecret() string {
   if err != nil {
     panic(err)
   }
-	credentialsSecret, err := token.SignedString(privKey)
+	credentialsSecret, err := token.SignedString(privateKey)
   if err != nil {
     panic(err)
   }
@@ -1951,10 +1976,10 @@ Country: JP
 <div class="sect2">
 <h3 id="Reference_Data">4.5. Reference Data</h3>
 <div class="paragraph">
-<p>The reference data is <em>a key information</em> disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in current cycle of the exchange (about exchange cycles please read in <a href="#Introduction">Introduction</a> and <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a>).</p>
+<p>The reference data is <em>a key information</em> disseminated by Market Data Service during each cycle as it provides the descriptors of all products currently available for trading in the current cycle of the exchange (about exchange cycles please read in <a href="#Introduction">Introduction</a> and <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a>).</p>
 </div>
 <div class="paragraph">
-<p>API clients should properly keep reference data available for usage in all API Services and, for example, to encode/decode all monetary values (as explained in <a href="#Monetary_Values">Monetary Values</a>).</p>
+<p>API clients should keep reference data available for usage in all API Services and, for example, to encode/decode all monetary values (as explained in <a href="#Monetary_Values">Monetary Values</a>).</p>
 </div>
 <table id="Reference_Data_Messages_Table" class="tableblock frame-all grid-all" style="width: 80%;">
 <caption class="title">Table 6. <strong>Reference Data</strong> messages included in Market Data message set:</caption>
@@ -2033,10 +2058,10 @@ Country: JP
 <div class="ulist">
 <ul>
 <li>
-<p>Reference data for existing deliverables and and tradeable entities (e.g. <a href="#deliverable">deliverable</a>, <a href="#tradeable_entity">tradeable_entity</a>);</p>
+<p>Reference data for existing deliverables and tradeable entities (e.g. <a href="#deliverable">deliverable</a>, <a href="#tradeable_entity">tradeable_entity</a>);</p>
 </li>
 <li>
-<p>The state of the tradeable entities as the beginning of the cycle (<a href="#trading_state">trading_state</a>);</p>
+<p>The state of the tradeable entities at the beginning of the cycle (<a href="#trading_state">trading_state</a>);</p>
 </li>
 <li>
 <p>Restatement of display orders that were already open before the cycle started (<a href="#display_order_added">display_order_added</a>);</p>
@@ -8536,7 +8561,8 @@ This allows us to form an overall view of positions.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>end_sequence_number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sequence_number">sequence_number</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number that closes the request’s half-open range [Begin,End).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number that closes the request’s half-open range [Begin,End):</p>
+<p class="tableblock"><strong>the number of the last message a client is interested in receiving, or <code>"none"</code> if a client wants all messages</strong>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>stream_id</code></p></td>
