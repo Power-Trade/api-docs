@@ -1106,7 +1106,7 @@ p { margin-bottom: 1.25rem; }
 <p>To summarise here though, a <strong>Session</strong> is started on a per connection basis when connection is established to one of the services above. As shown in chapter <a href="#Session_Control_Protocol_LogIn_LogOut">Session Control Protocol</a>, the protocols follow a synchronous request/response pattern until a session established, at which point the API becomes asynchronous. These session-related messages are described in their corresponding reference sections: <a href="#Session_Protocol_Requests">Session Protocol Requests</a>, <a href="#Session_Protocol_Responses">Session Protocol Responses</a>.</p>
 </div>
 <div class="paragraph">
-<p>A session will be maintained so long as two conditions are met: first, that <a href="#heartbeat">heartbeats</a> are sent every 15 seconds, and second the client does not explicitly log out (or the session is terminated).</p>
+<p>A session will be maintained while two conditions are met: first, <a href="#heartbeat">heartbeats</a> are sent every 15 seconds during idle periods when no messages are sent by a client or a server, and second, the client does not explicitly log out or the session is terminated.</p>
 </div>
 <div class="paragraph">
 <p><strong>Cycles</strong> are specific intervals of time that are used to provide a logical separation of the trading session over time. They are continuous in that once a cycle ends, a new cycle starts. You can read more about this in the chapter <a href="#Managing_Cycles">Sessions, Channels, Streams and Cycles</a>.</p>
