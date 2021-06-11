@@ -1003,7 +1003,7 @@ p { margin-bottom: 1.25rem; }
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>VERSION 1.5</p>
+<p>VERSION 1.6</p>
 </div>
 </div>
 </div>
@@ -8528,8 +8528,49 @@ This allows us to form an overall view of positions.</p>
 <p>Request a new stream associated with a specified channel.</p>
 </div>
 <div class="paragraph">
-<p>Used to request a stream of messages.</p>
+<p>Used to request a stream of messages as described in the table below.</p>
 </div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">begin_sequence_number</th>
+<th class="tableblock halign-left valign-top">end_sequence_number</th>
+<th class="tableblock halign-left valign-top">Range of messages in stream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 (or <code>oldest_sequence_number</code> from <a href="#channel_added">channel_added</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 (<code>"none"</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All messages in the channel. The stream ends when the channel is closed (meaning no further messages will be added).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 (<code>"none"</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 (<code>"none"</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All new messages in the channel from the time of the request. The stream ends when the channel is closed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 (<code>"none"</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All messages in the channel starting from <code>begin_sequence_number</code>. The stream ends when the channel is closed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 (<code>"none"</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All new messages in the channel until the message numbered with <code>end_sequence_number</code>. The stream ends when the last message in the range is sent.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All messages in the channel starting from <code>begin_sequence_number</code> and ending with <code>end_sequence_number</code>. The stream ends when the last message in the range is sent.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>This message defines the following fields:</p>
 </div>
@@ -8551,23 +8592,22 @@ This allows us to form an overall view of positions.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>channel_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#channel_id">channel_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A valid Channel Id in a multi-channel connection, or 0 (<code>"none"</code>) if channels are not used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>begin_sequence_number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sequence_number">sequence_number</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number requested as the start of the half-open range [Begin,End).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number of the first message in the range of messages being requested, or 0 (<code>"none"</code>) to request only new messages.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>end_sequence_number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sequence_number">sequence_number</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number that closes the request’s half-open range [Begin,End):</p>
-<p class="tableblock"><strong>the number of the last message a client is interested in receiving, or <code>"none"</code> if a client wants all messages</strong>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number of the last message in the range of messages being requested, or 0 (<code>"none"</code>) to leave the stream open and receive all messages until the end of the channel.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>stream_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#stream_id">stream_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional, client-assigned stream identifier used for correlation with response messages.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An optional, client-assigned stream identifier used for correlation with response messages.</p></td>
 </tr>
 </tbody>
 </table>
@@ -8814,12 +8854,12 @@ This allows us to form an overall view of positions.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>channel_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#channel_id">channel_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A valid Channel Id in a multi-channel connection, or 0 (<code>"none"</code>) if channels are not used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>stream_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#stream_id">stream_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Client-assigned stream identifier used for correlation with a <a href="#request_stream">request_stream</a> message.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A client-assigned stream identifier used for correlation with a <a href="#request_stream">request_stream</a> message.</p></td>
 </tr>
 </tbody>
 </table>
@@ -8870,12 +8910,12 @@ This allows us to form an overall view of positions.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>channel_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#channel_id">channel_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Channel ID specified by the client in the <a href="#request_stream">request_stream</a> message.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>stream_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#stream_id">stream_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Client-assigned stream identifier used for correlation with a <a href="#request_stream">request_stream</a> message.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client-assigned stream identifier used for correlation with a <a href="#request_stream">request_stream</a> message.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
@@ -8932,17 +8972,17 @@ This allows us to form an overall view of positions.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>channel_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#channel_id">channel_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A valid Channel Id in a multi-channel connection, or 0 (<code>"none"</code>) if channels are not used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>next_sequence_number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sequence_number">sequence_number</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The next sequence number that will be transmitted as part of the stream.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number of the next message that will be transmitted as part of the stream.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>stream_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#stream_id">stream_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Client-assigned stream identifier used for correlation with a <a href="#request_stream">request_stream</a> message.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client-assigned stream identifier used for correlation with a <a href="#request_stream">request_stream</a> message.</p></td>
 </tr>
 </tbody>
 </table>
@@ -8994,22 +9034,22 @@ This allows us to form an overall view of positions.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>channel_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#channel_id">channel_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A valid Channel Id in a multi-channel connection, or 0 if a default channel exists or channels are not used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A valid Channel Id in a multi-channel connection, or 0 (<code>"none"</code>) if channels are not used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>begin_sequence_number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sequence_number">sequence_number</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number requested as the start of the half-open range [Begin,End).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number of the first message that will be transmitted as part of the stream.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>end_sequence_number</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sequence_number">sequence_number</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number that closes the request’s half-open range [Begin,End).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The sequence number of the last message that will be transmitted as part of the stream, or 0 (<code>"none"</code>) if the stream will remain open until the channel is closed.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>stream_id</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#stream_id">stream_id</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Client-assigned stream identifier used for correlation with a <a href="#request_stream">request_stream</a> message.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A client-assigned stream identifier used for correlation with a <a href="#request_stream">request_stream</a> message.</p></td>
 </tr>
 </tbody>
 </table>
@@ -11882,6 +11922,12 @@ The type also supports the following string constants:</p>
 <p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position is no longer held but is due a funding payment.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"open_orders"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p>
+<p class="tableblock">(ordinal value of <code>'O'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The position that represents the locked trading limit due to open orders.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -11988,6 +12034,12 @@ The type also supports the following string constants:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
 <p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a new funding rate.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"portfolio_risk_engine"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
+<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a message from a portfolio risk engine.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
@@ -12172,6 +12224,18 @@ The type also supports the following string constants:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
 <p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No product.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"available_trading_limit"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
+<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The current available trading limit.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"used_trading_limit"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p>
+<p class="tableblock">(ordinal value of <code>'U'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The current trading limit that is in use.</p></td>
 </tr>
 </tbody>
 </table>
