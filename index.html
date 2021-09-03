@@ -1019,7 +1019,7 @@ p { margin-bottom: 1.25rem; }
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>VERSION 1.65</p>
+<p>VERSION 1.66</p>
 </div>
 </div>
 </div>
@@ -12849,7 +12849,17 @@ The type also supports the following string constants:</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"timeout"</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The order timed out due to its TimeInForce attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order timed out due to its time_in_force attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"liquidation"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order was cancelled during account liquidation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"insufficient_account_balance"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order was cancelled due to an insufficient account balance.</p></td>
 </tr>
 </tbody>
 </table>
