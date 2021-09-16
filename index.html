@@ -871,54 +871,58 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#display_order_executed">5.2.22. display_order_executed</a></li>
 <li><a href="#display_order_updated">5.2.23. display_order_updated</a></li>
 <li><a href="#enter_order">5.2.24. enter_order</a></li>
-<li><a href="#enter_order_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.25. enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;</a></li>
-<li><a href="#enter_order_ltsimple_order_ltaccount_id_gt_gt">5.2.26. enter_order&lt;simple_order&lt;account_id&gt;&gt;</a></li>
-<li><a href="#funding_rate">5.2.27. funding_rate</a></li>
-<li><a href="#heartbeat">5.2.28. heartbeat</a></li>
-<li><a href="#login">5.2.29. login</a></li>
-<li><a href="#login_accepted">5.2.30. login_accepted</a></li>
-<li><a href="#login_rejected">5.2.31. login_rejected</a></li>
-<li><a href="#logout">5.2.32. logout</a></li>
-<li><a href="#multi_leg_display_order_added">5.2.33. multi_leg_display_order_added</a></li>
-<li><a href="#multi_leg_display_order_deleted">5.2.34. multi_leg_display_order_deleted</a></li>
-<li><a href="#multi_leg_display_order_executed">5.2.35. multi_leg_display_order_executed</a></li>
-<li><a href="#multi_leg_display_order_updated">5.2.36. multi_leg_display_order_updated</a></li>
-<li><a href="#order_action_rejected">5.2.37. order_action_rejected</a></li>
-<li><a href="#order_action_rejected_ltcancel_order_ltorder_id_gt_gt">5.2.38. order_action_rejected&lt;cancel_order&lt;order_id&gt;&gt;</a></li>
-<li><a href="#order_action_rejected_ltcancel_order_ltorder_token_gt_gt">5.2.39. order_action_rejected&lt;cancel_order&lt;order_token&gt;&gt;</a></li>
-<li><a href="#order_action_rejected_ltenter_order_ltmulti_leg_order_ltaccount_id_gt_gt_gt">5.2.40. order_action_rejected&lt;enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;&gt;</a></li>
-<li><a href="#order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt">5.2.41. order_action_rejected&lt;enter_order&lt;simple_order&lt;account_id&gt;&gt;&gt;</a></li>
-<li><a href="#order_cancelled">5.2.42. order_cancelled</a></li>
-<li><a href="#order_entered">5.2.43. order_entered</a></li>
-<li><a href="#order_entered_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.44. order_entered&lt;multi_leg_order&lt;account_id&gt;&gt;</a></li>
-<li><a href="#order_entered_ltsimple_order_ltaccount_id_gt_gt">5.2.45. order_entered&lt;simple_order&lt;account_id&gt;&gt;</a></li>
-<li><a href="#order_executed">5.2.46. order_executed</a></li>
-<li><a href="#order_execution_prevented">5.2.47. order_execution_prevented</a></li>
-<li><a href="#order_restated">5.2.48. order_restated</a></li>
-<li><a href="#order_restated_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.49. order_restated&lt;multi_leg_order&lt;account_id&gt;&gt;</a></li>
-<li><a href="#order_restated_ltsimple_order_ltaccount_id_gt_gt">5.2.50. order_restated&lt;simple_order&lt;account_id&gt;&gt;</a></li>
-<li><a href="#order_updated">5.2.51. order_updated</a></li>
-<li><a href="#position">5.2.52. position</a></li>
-<li><a href="#position_consistency_marker">5.2.53. position_consistency_marker</a></li>
-<li><a href="#position_risk">5.2.54. position_risk</a></li>
-<li><a href="#positions_greeks">5.2.55. positions_greeks</a></li>
-<li><a href="#positions_health">5.2.56. positions_health</a></li>
-<li><a href="#reference_price">5.2.57. reference_price</a></li>
-<li><a href="#request_stream">5.2.58. request_stream</a></li>
-<li><a href="#session_ended">5.2.59. session_ended</a></li>
-<li><a href="#session_started">5.2.60. session_started</a></li>
-<li><a href="#settlement_price">5.2.61. settlement_price</a></li>
-<li><a href="#stream_ended">5.2.62. stream_ended</a></li>
-<li><a href="#stream_rejected">5.2.63. stream_rejected</a></li>
-<li><a href="#stream_resumed">5.2.64. stream_resumed</a></li>
-<li><a href="#stream_started">5.2.65. stream_started</a></li>
-<li><a href="#time">5.2.66. time</a></li>
-<li><a href="#top_of_book">5.2.67. top_of_book</a></li>
-<li><a href="#trade">5.2.68. trade</a></li>
-<li><a href="#tradeable_entity">5.2.69. tradeable_entity</a></li>
-<li><a href="#tradeable_entity_ltsimple_market_gt">5.2.70. tradeable_entity&lt;simple_market&gt;</a></li>
-<li><a href="#trading_rule">5.2.71. trading_rule</a></li>
-<li><a href="#trading_state">5.2.72. trading_state</a></li>
+<li><a href="#enter_order_ltfull_order_ltaccount_id_gt_gt">5.2.25. enter_order&lt;full_order&lt;account_id&gt;&gt;</a></li>
+<li><a href="#enter_order_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.26. enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;</a></li>
+<li><a href="#enter_order_ltsimple_order_ltaccount_id_gt_gt">5.2.27. enter_order&lt;simple_order&lt;account_id&gt;&gt;</a></li>
+<li><a href="#funding_rate">5.2.28. funding_rate</a></li>
+<li><a href="#heartbeat">5.2.29. heartbeat</a></li>
+<li><a href="#login">5.2.30. login</a></li>
+<li><a href="#login_accepted">5.2.31. login_accepted</a></li>
+<li><a href="#login_rejected">5.2.32. login_rejected</a></li>
+<li><a href="#logout">5.2.33. logout</a></li>
+<li><a href="#multi_leg_display_order_added">5.2.34. multi_leg_display_order_added</a></li>
+<li><a href="#multi_leg_display_order_deleted">5.2.35. multi_leg_display_order_deleted</a></li>
+<li><a href="#multi_leg_display_order_executed">5.2.36. multi_leg_display_order_executed</a></li>
+<li><a href="#multi_leg_display_order_updated">5.2.37. multi_leg_display_order_updated</a></li>
+<li><a href="#order_action_rejected">5.2.38. order_action_rejected</a></li>
+<li><a href="#order_action_rejected_ltcancel_order_ltorder_id_gt_gt">5.2.39. order_action_rejected&lt;cancel_order&lt;order_id&gt;&gt;</a></li>
+<li><a href="#order_action_rejected_ltcancel_order_ltorder_token_gt_gt">5.2.40. order_action_rejected&lt;cancel_order&lt;order_token&gt;&gt;</a></li>
+<li><a href="#order_action_rejected_ltenter_order_ltfull_order_ltaccount_id_gt_gt_gt">5.2.41. order_action_rejected&lt;enter_order&lt;full_order&lt;account_id&gt;&gt;&gt;</a></li>
+<li><a href="#order_action_rejected_ltenter_order_ltmulti_leg_order_ltaccount_id_gt_gt_gt">5.2.42. order_action_rejected&lt;enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;&gt;</a></li>
+<li><a href="#order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt">5.2.43. order_action_rejected&lt;enter_order&lt;simple_order&lt;account_id&gt;&gt;&gt;</a></li>
+<li><a href="#order_cancelled">5.2.44. order_cancelled</a></li>
+<li><a href="#order_entered">5.2.45. order_entered</a></li>
+<li><a href="#order_entered_ltfull_order_ltaccount_id_gt_gt">5.2.46. order_entered&lt;full_order&lt;account_id&gt;&gt;</a></li>
+<li><a href="#order_entered_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.47. order_entered&lt;multi_leg_order&lt;account_id&gt;&gt;</a></li>
+<li><a href="#order_entered_ltsimple_order_ltaccount_id_gt_gt">5.2.48. order_entered&lt;simple_order&lt;account_id&gt;&gt;</a></li>
+<li><a href="#order_executed">5.2.49. order_executed</a></li>
+<li><a href="#order_execution_prevented">5.2.50. order_execution_prevented</a></li>
+<li><a href="#order_restated">5.2.51. order_restated</a></li>
+<li><a href="#order_restated_ltfull_order_ltaccount_id_gt_gt">5.2.52. order_restated&lt;full_order&lt;account_id&gt;&gt;</a></li>
+<li><a href="#order_restated_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.53. order_restated&lt;multi_leg_order&lt;account_id&gt;&gt;</a></li>
+<li><a href="#order_restated_ltsimple_order_ltaccount_id_gt_gt">5.2.54. order_restated&lt;simple_order&lt;account_id&gt;&gt;</a></li>
+<li><a href="#order_updated">5.2.55. order_updated</a></li>
+<li><a href="#position">5.2.56. position</a></li>
+<li><a href="#position_consistency_marker">5.2.57. position_consistency_marker</a></li>
+<li><a href="#position_risk">5.2.58. position_risk</a></li>
+<li><a href="#positions_greeks">5.2.59. positions_greeks</a></li>
+<li><a href="#positions_health">5.2.60. positions_health</a></li>
+<li><a href="#reference_price">5.2.61. reference_price</a></li>
+<li><a href="#request_stream">5.2.62. request_stream</a></li>
+<li><a href="#session_ended">5.2.63. session_ended</a></li>
+<li><a href="#session_started">5.2.64. session_started</a></li>
+<li><a href="#settlement_price">5.2.65. settlement_price</a></li>
+<li><a href="#stream_ended">5.2.66. stream_ended</a></li>
+<li><a href="#stream_rejected">5.2.67. stream_rejected</a></li>
+<li><a href="#stream_resumed">5.2.68. stream_resumed</a></li>
+<li><a href="#stream_started">5.2.69. stream_started</a></li>
+<li><a href="#time">5.2.70. time</a></li>
+<li><a href="#top_of_book">5.2.71. top_of_book</a></li>
+<li><a href="#trade">5.2.72. trade</a></li>
+<li><a href="#tradeable_entity">5.2.73. tradeable_entity</a></li>
+<li><a href="#tradeable_entity_ltsimple_market_gt">5.2.74. tradeable_entity&lt;simple_market&gt;</a></li>
+<li><a href="#trading_rule">5.2.75. trading_rule</a></li>
+<li><a href="#trading_state">5.2.76. trading_state</a></li>
 </ul>
 </li>
 <li><a href="#_structures">5.3. Structures</a>
@@ -928,19 +932,21 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#exchange_token">5.3.3. exchange_token</a></li>
 <li><a href="#exchange_trading_limit">5.3.4. exchange_trading_limit</a></li>
 <li><a href="#fiat_currency">5.3.5. fiat_currency</a></li>
-<li><a href="#future">5.3.6. future</a></li>
-<li><a href="#fx_spot">5.3.7. fx_spot</a></li>
-<li><a href="#greeks">5.3.8. greeks</a></li>
-<li><a href="#index">5.3.9. index</a></li>
-<li><a href="#multi_leg_order_ltaccount_id_gt">5.3.10. multi_leg_order&lt;account_id&gt;</a></li>
-<li><a href="#option">5.3.11. option</a></li>
-<li><a href="#perpetual_future">5.3.12. perpetual_future</a></li>
-<li><a href="#simple_market">5.3.13. simple_market</a></li>
-<li><a href="#simple_order_ltaccount_id_gt">5.3.14. simple_order&lt;account_id&gt;</a></li>
-<li><a href="#stable_token">5.3.15. stable_token</a></li>
-<li><a href="#time_of_day">5.3.16. time_of_day</a></li>
-<li><a href="#tradeable_entity_leg">5.3.17. tradeable_entity_leg</a></li>
-<li><a href="#zoned_datetime">5.3.18. zoned_datetime</a></li>
+<li><a href="#full_order_ltaccount_id_gt">5.3.6. full_order&lt;account_id&gt;</a></li>
+<li><a href="#future">5.3.7. future</a></li>
+<li><a href="#fx_spot">5.3.8. fx_spot</a></li>
+<li><a href="#greeks">5.3.9. greeks</a></li>
+<li><a href="#index">5.3.10. index</a></li>
+<li><a href="#multi_leg_order_ltaccount_id_gt">5.3.11. multi_leg_order&lt;account_id&gt;</a></li>
+<li><a href="#option">5.3.12. option</a></li>
+<li><a href="#perpetual_future">5.3.13. perpetual_future</a></li>
+<li><a href="#simple_market">5.3.14. simple_market</a></li>
+<li><a href="#simple_order_ltaccount_id_gt">5.3.15. simple_order&lt;account_id&gt;</a></li>
+<li><a href="#stable_token">5.3.16. stable_token</a></li>
+<li><a href="#time_of_day">5.3.17. time_of_day</a></li>
+<li><a href="#tradeable_entity_leg">5.3.18. tradeable_entity_leg</a></li>
+<li><a href="#trigger_instructions">5.3.19. trigger_instructions</a></li>
+<li><a href="#zoned_datetime">5.3.20. zoned_datetime</a></li>
 </ul>
 </li>
 <li><a href="#_types">5.4. Types</a>
@@ -1005,9 +1011,12 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#trade_price_type">5.4.58. trade_price_type</a></li>
 <li><a href="#tradeability">5.4.59. tradeability</a></li>
 <li><a href="#tradeable_entity_id">5.4.60. tradeable_entity_id</a></li>
-<li><a href="#utc_timestamp">5.4.61. utc_timestamp</a></li>
-<li><a href="#value">5.4.62. value</a></li>
-<li><a href="#year">5.4.63. year</a></li>
+<li><a href="#trigger_event_type">5.4.61. trigger_event_type</a></li>
+<li><a href="#trigger_price_direction">5.4.62. trigger_price_direction</a></li>
+<li><a href="#trigger_price_type">5.4.63. trigger_price_type</a></li>
+<li><a href="#utc_timestamp">5.4.64. utc_timestamp</a></li>
+<li><a href="#value">5.4.65. value</a></li>
+<li><a href="#year">5.4.66. year</a></li>
 </ul>
 </li>
 </ul>
@@ -1019,7 +1028,7 @@ p { margin-bottom: 1.25rem; }
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>VERSION 1.66</p>
+<p>VERSION 1.67</p>
 </div>
 </div>
 </div>
@@ -5134,6 +5143,10 @@ This allows us to form an overall view of positions.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#enter_order_ltmulti_leg_order_ltaccount_id_gt_gt">enter_order&lt;multi_leg_order&lt;account_id</a>&gt;&gt;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enters a new order.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#enter_order_ltfull_order_ltaccount_id_gt_gt">enter_order&lt;full_order&lt;account_id</a>&gt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enters a new order.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -5203,6 +5216,14 @@ This allows us to form an overall view of positions.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Notification that an order was restated.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_entered_ltfull_order_ltaccount_id_gt_gt">order_entered&lt;full_order&lt;account_id</a>&gt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a new order was entered.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_restated_ltfull_order_ltaccount_id_gt_gt">order_restated&lt;full_order&lt;account_id</a>&gt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that an order was restated.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_action_rejected_ltcancel_order_ltorder_id_gt_gt">order_action_rejected&lt;cancel_order&lt;order_id</a>&gt;&gt;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Notification that an order cancel was rejected.</p></td>
 </tr>
@@ -5216,6 +5237,10 @@ This allows us to form an overall view of positions.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_action_rejected_ltenter_order_ltmulti_leg_order_ltaccount_id_gt_gt_gt">order_action_rejected&lt;enter_order&lt;multi_leg_order&lt;account_id</a>&gt;&gt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a new order was rejected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_action_rejected_ltenter_order_ltfull_order_ltaccount_id_gt_gt_gt">order_action_rejected&lt;enter_order&lt;full_order&lt;account_id</a>&gt;&gt;&gt;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Notification that a new order was rejected.</p></td>
 </tr>
 </tbody>
@@ -5458,6 +5483,9 @@ This allows us to form an overall view of positions.</p>
 <p><a href="#enter_order">enter_order</a></p>
 </li>
 <li>
+<p><a href="#enter_order_ltfull_order_ltaccount_id_gt_gt">enter_order&lt;full_order&lt;account_id</a>&gt;&gt;</p>
+</li>
+<li>
 <p><a href="#enter_order_ltmulti_leg_order_ltaccount_id_gt_gt">enter_order&lt;multi_leg_order&lt;account_id</a>&gt;&gt;</p>
 </li>
 <li>
@@ -5503,6 +5531,9 @@ This allows us to form an overall view of positions.</p>
 <p><a href="#order_action_rejected_ltcancel_order_ltorder_token_gt_gt">order_action_rejected&lt;cancel_order&lt;order_token</a>&gt;&gt;</p>
 </li>
 <li>
+<p><a href="#order_action_rejected_ltenter_order_ltfull_order_ltaccount_id_gt_gt_gt">order_action_rejected&lt;enter_order&lt;full_order&lt;account_id</a>&gt;&gt;&gt;</p>
+</li>
+<li>
 <p><a href="#order_action_rejected_ltenter_order_ltmulti_leg_order_ltaccount_id_gt_gt_gt">order_action_rejected&lt;enter_order&lt;multi_leg_order&lt;account_id</a>&gt;&gt;&gt;</p>
 </li>
 <li>
@@ -5513,6 +5544,9 @@ This allows us to form an overall view of positions.</p>
 </li>
 <li>
 <p><a href="#order_entered">order_entered</a></p>
+</li>
+<li>
+<p><a href="#order_entered_ltfull_order_ltaccount_id_gt_gt">order_entered&lt;full_order&lt;account_id</a>&gt;&gt;</p>
 </li>
 <li>
 <p><a href="#order_entered_ltmulti_leg_order_ltaccount_id_gt_gt">order_entered&lt;multi_leg_order&lt;account_id</a>&gt;&gt;</p>
@@ -5528,6 +5562,9 @@ This allows us to form an overall view of positions.</p>
 </li>
 <li>
 <p><a href="#order_restated">order_restated</a></p>
+</li>
+<li>
+<p><a href="#order_restated_ltfull_order_ltaccount_id_gt_gt">order_restated&lt;full_order&lt;account_id</a>&gt;&gt;</p>
 </li>
 <li>
 <p><a href="#order_restated_ltmulti_leg_order_ltaccount_id_gt_gt">order_restated&lt;multi_leg_order&lt;account_id</a>&gt;&gt;</p>
@@ -7185,6 +7222,9 @@ This allows us to form an overall view of positions.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><a href="#enter_order_ltfull_order_ltaccount_id_gt_gt">enter_order&lt;full_order&lt;account_id</a>&gt;&gt;</p>
+</li>
+<li>
 <p><a href="#enter_order_ltmulti_leg_order_ltaccount_id_gt_gt">enter_order&lt;multi_leg_order&lt;account_id</a>&gt;&gt;</p>
 </li>
 <li>
@@ -7194,7 +7234,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enter_order_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.25. enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;</h4>
+<h4 id="enter_order_ltfull_order_ltaccount_id_gt_gt">5.2.25. enter_order&lt;full_order&lt;account_id&gt;&gt;</h4>
 <div class="paragraph">
 <p>Enters a new order.</p>
 </div>
@@ -7205,7 +7245,84 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 29. enter_order&lt;multi_leg_order&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 29. enter_order&lt;full_order&lt;account_id&gt;&gt; fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order_token</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_token">order_token</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated unique order identifier.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>client_reference</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A client-generated hash value that represents the client-side inputs to an order transaction.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new_order</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"full_order"</code> of type <a href="#full_order_ltaccount_id_gt">full_order&lt;account_id&gt;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New order attributes.</p></td>
+</tr>
+</tbody>
+</table>
+<div id="enter_order_ltfull_order_ltaccount_id_gt_gt_json_example" class="listingblock">
+<div class="title">JSON Example</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    <a href="#enter_order_ltfull_order_ltaccount_id_gt_gt">"enter_order"</a>:{
+        <a href="#order_token">"order_token"</a>:"123",
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        "new_order":{
+            <a href="#full_order_ltaccount_id_gt">"full_order"</a>:{
+                <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                <a href="#market_id">"market_id"</a>:"123",
+                <a href="#side">"side"</a>:"buy",
+                <a href="#time_in_force">"time_in_force"</a>:"good_for_cycles",
+                <a href="#time_to_live">"time_to_live"</a>:"123",
+                <a href="#quantity">"quantity"</a>:"123",
+                <a href="#price">"price"</a>:"123",
+                "party_data":{
+                    <a href="#account_id">"account_id"</a>:"123"
+                },
+                "trigger_instructions":{
+                    <a href="#trigger_event_type">"event_type"</a>:"partial_execution",
+                    <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                    <a href="#market_id">"market_id"</a>:"123",
+                    <a href="#trigger_price_type">"price_type"</a>:"best_bid",
+                    <a href="#trigger_price_direction">"price_direction"</a>:"up",
+                    <a href="#price">"price"</a>:"123"
+                }
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="enter_order_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.26. enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;</h4>
+<div class="paragraph">
+<p>Enters a new order.</p>
+</div>
+<div class="paragraph">
+<p>Requests entry of a new order.</p>
+</div>
+<div class="paragraph">
+<p>This message defines the following fields:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 30. enter_order&lt;multi_leg_order&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7269,7 +7386,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="enter_order_ltsimple_order_ltaccount_id_gt_gt">5.2.26. enter_order&lt;simple_order&lt;account_id&gt;&gt;</h4>
+<h4 id="enter_order_ltsimple_order_ltaccount_id_gt_gt">5.2.27. enter_order&lt;simple_order&lt;account_id&gt;&gt;</h4>
 <div class="paragraph">
 <p>Enters a new order.</p>
 </div>
@@ -7280,7 +7397,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 30. enter_order&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 31. enter_order&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7338,7 +7455,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="funding_rate">5.2.27. funding_rate</h4>
+<h4 id="funding_rate">5.2.28. funding_rate</h4>
 <div class="paragraph">
 <p>Notification of a funding rate update.</p>
 </div>
@@ -7349,7 +7466,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 31. funding_rate fields</caption>
+<caption class="title">Table 32. funding_rate fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7412,7 +7529,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="heartbeat">5.2.28. heartbeat</h4>
+<h4 id="heartbeat">5.2.29. heartbeat</h4>
 <div class="paragraph">
 <p>Heartbeat message used to keep a session alive.</p>
 </div>
@@ -7423,7 +7540,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 32. heartbeat fields</caption>
+<caption class="title">Table 33. heartbeat fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7456,7 +7573,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="login">5.2.29. login</h4>
+<h4 id="login">5.2.30. login</h4>
 <div class="paragraph">
 <p>Initiate user authentication.</p>
 </div>
@@ -7467,7 +7584,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 33. login fields</caption>
+<caption class="title">Table 34. login fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7506,7 +7623,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="login_accepted">5.2.30. login_accepted</h4>
+<h4 id="login_accepted">5.2.31. login_accepted</h4>
 <div class="paragraph">
 <p>Notification that a login was accepted.</p>
 </div>
@@ -7517,7 +7634,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 34. login_accepted fields</caption>
+<caption class="title">Table 35. login_accepted fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7550,7 +7667,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="login_rejected">5.2.31. login_rejected</h4>
+<h4 id="login_rejected">5.2.32. login_rejected</h4>
 <div class="paragraph">
 <p>Notification that a login was rejected.</p>
 </div>
@@ -7561,7 +7678,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 35. login_rejected fields</caption>
+<caption class="title">Table 36. login_rejected fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7594,7 +7711,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="logout">5.2.32. logout</h4>
+<h4 id="logout">5.2.33. logout</h4>
 <div class="paragraph">
 <p>End user authentication.</p>
 </div>
@@ -7615,7 +7732,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="multi_leg_display_order_added">5.2.33. multi_leg_display_order_added</h4>
+<h4 id="multi_leg_display_order_added">5.2.34. multi_leg_display_order_added</h4>
 <div class="paragraph">
 <p>Notification that a new multi-leg display order was added.</p>
 </div>
@@ -7626,7 +7743,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 36. multi_leg_display_order_added fields</caption>
+<caption class="title">Table 37. multi_leg_display_order_added fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7700,7 +7817,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="multi_leg_display_order_deleted">5.2.34. multi_leg_display_order_deleted</h4>
+<h4 id="multi_leg_display_order_deleted">5.2.35. multi_leg_display_order_deleted</h4>
 <div class="paragraph">
 <p>Notification that an existing multi-leg display order was deleted.</p>
 </div>
@@ -7711,7 +7828,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 37. multi_leg_display_order_deleted fields</caption>
+<caption class="title">Table 38. multi_leg_display_order_deleted fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7773,7 +7890,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="multi_leg_display_order_executed">5.2.35. multi_leg_display_order_executed</h4>
+<h4 id="multi_leg_display_order_executed">5.2.36. multi_leg_display_order_executed</h4>
 <div class="paragraph">
 <p>Notification that an existing multi-leg display order executed.</p>
 </div>
@@ -7784,7 +7901,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 38. multi_leg_display_order_executed fields</caption>
+<caption class="title">Table 39. multi_leg_display_order_executed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7858,7 +7975,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="multi_leg_display_order_updated">5.2.36. multi_leg_display_order_updated</h4>
+<h4 id="multi_leg_display_order_updated">5.2.37. multi_leg_display_order_updated</h4>
 <div class="paragraph">
 <p>Notification that an existing multi-leg display order was updated.</p>
 </div>
@@ -7869,7 +7986,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 39. multi_leg_display_order_updated fields</caption>
+<caption class="title">Table 40. multi_leg_display_order_updated fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -7949,7 +8066,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_action_rejected">5.2.37. order_action_rejected</h4>
+<h4 id="order_action_rejected">5.2.38. order_action_rejected</h4>
 <div class="paragraph">
 <p><code>order_action_rejected</code> may refer to one of the following messages:</p>
 </div>
@@ -7962,6 +8079,9 @@ This allows us to form an overall view of positions.</p>
 <p><a href="#order_action_rejected_ltcancel_order_ltorder_token_gt_gt">order_action_rejected&lt;cancel_order&lt;order_token</a>&gt;&gt;</p>
 </li>
 <li>
+<p><a href="#order_action_rejected_ltenter_order_ltfull_order_ltaccount_id_gt_gt_gt">order_action_rejected&lt;enter_order&lt;full_order&lt;account_id</a>&gt;&gt;&gt;</p>
+</li>
+<li>
 <p><a href="#order_action_rejected_ltenter_order_ltmulti_leg_order_ltaccount_id_gt_gt_gt">order_action_rejected&lt;enter_order&lt;multi_leg_order&lt;account_id</a>&gt;&gt;&gt;</p>
 </li>
 <li>
@@ -7971,7 +8091,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_action_rejected_ltcancel_order_ltorder_id_gt_gt">5.2.38. order_action_rejected&lt;cancel_order&lt;order_id&gt;&gt;</h4>
+<h4 id="order_action_rejected_ltcancel_order_ltorder_id_gt_gt">5.2.39. order_action_rejected&lt;cancel_order&lt;order_id&gt;&gt;</h4>
 <div class="paragraph">
 <p>Notification that an order cancel was rejected.</p>
 </div>
@@ -7982,7 +8102,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 40. order_action_rejected&lt;cancel_order&lt;order_id&gt;&gt; fields</caption>
+<caption class="title">Table 41. order_action_rejected&lt;cancel_order&lt;order_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8034,7 +8154,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_action_rejected_ltcancel_order_ltorder_token_gt_gt">5.2.39. order_action_rejected&lt;cancel_order&lt;order_token&gt;&gt;</h4>
+<h4 id="order_action_rejected_ltcancel_order_ltorder_token_gt_gt">5.2.40. order_action_rejected&lt;cancel_order&lt;order_token&gt;&gt;</h4>
 <div class="paragraph">
 <p>Notification that an order cancel was rejected.</p>
 </div>
@@ -8045,7 +8165,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 41. order_action_rejected&lt;cancel_order&lt;order_token&gt;&gt; fields</caption>
+<caption class="title">Table 42. order_action_rejected&lt;cancel_order&lt;order_token&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8097,7 +8217,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_action_rejected_ltenter_order_ltmulti_leg_order_ltaccount_id_gt_gt_gt">5.2.40. order_action_rejected&lt;enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;&gt;</h4>
+<h4 id="order_action_rejected_ltenter_order_ltfull_order_ltaccount_id_gt_gt_gt">5.2.41. order_action_rejected&lt;enter_order&lt;full_order&lt;account_id&gt;&gt;&gt;</h4>
 <div class="paragraph">
 <p>Notification that a new order was rejected.</p>
 </div>
@@ -8108,7 +8228,90 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 42. order_action_rejected&lt;enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;&gt; fields</caption>
+<caption class="title">Table 43. order_action_rejected&lt;enter_order&lt;full_order&lt;account_id&gt;&gt;&gt; fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the order action was rejected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>action</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"enter_order"</code> of type <a href="#enter_order_ltfull_order_ltaccount_id_gt_gt">enter_order&lt;full_order&lt;account_id&gt;&gt;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A copy of the order action that was rejected.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_action_reject_reason">order_action_reject_reason</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the order action was rejected.</p></td>
+</tr>
+</tbody>
+</table>
+<div id="order_action_rejected_ltenter_order_ltfull_order_ltaccount_id_gt_gt_gt_json_example" class="listingblock">
+<div class="title">JSON Example</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    <a href="#order_action_rejected_ltenter_order_ltfull_order_ltaccount_id_gt_gt_gt">"order_action_rejected"</a>:{
+        <a href="#utc_timestamp">"timestamp"</a>:"1618427227000000000",
+        "action":{
+            <a href="#enter_order_ltfull_order_ltaccount_id_gt_gt">"enter_order"</a>:{
+                <a href="#order_token">"order_token"</a>:"123",
+                "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+                "new_order":{
+                    <a href="#full_order_ltaccount_id_gt">"full_order"</a>:{
+                        <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                        <a href="#market_id">"market_id"</a>:"123",
+                        <a href="#side">"side"</a>:"buy",
+                        <a href="#time_in_force">"time_in_force"</a>:"good_for_cycles",
+                        <a href="#time_to_live">"time_to_live"</a>:"123",
+                        <a href="#quantity">"quantity"</a>:"123",
+                        <a href="#price">"price"</a>:"123",
+                        "party_data":{
+                            <a href="#account_id">"account_id"</a>:"123"
+                        },
+                        "trigger_instructions":{
+                            <a href="#trigger_event_type">"event_type"</a>:"partial_execution",
+                            <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                            <a href="#market_id">"market_id"</a>:"123",
+                            <a href="#trigger_price_type">"price_type"</a>:"best_bid",
+                            <a href="#trigger_price_direction">"price_direction"</a>:"up",
+                            <a href="#price">"price"</a>:"123"
+                        }
+                    }
+                }
+            }
+        },
+        <a href="#order_action_reject_reason">"reason"</a>:"invalid_tradeable_entity"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="order_action_rejected_ltenter_order_ltmulti_leg_order_ltaccount_id_gt_gt_gt">5.2.42. order_action_rejected&lt;enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;&gt;</h4>
+<div class="paragraph">
+<p>Notification that a new order was rejected.</p>
+</div>
+<div class="paragraph">
+<p>Generated as a response to indicate an action was rejected.</p>
+</div>
+<div class="paragraph">
+<p>This message defines the following fields:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 44. order_action_rejected&lt;enter_order&lt;multi_leg_order&lt;account_id&gt;&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8178,7 +8381,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt">5.2.41. order_action_rejected&lt;enter_order&lt;simple_order&lt;account_id&gt;&gt;&gt;</h4>
+<h4 id="order_action_rejected_ltenter_order_ltsimple_order_ltaccount_id_gt_gt_gt">5.2.43. order_action_rejected&lt;enter_order&lt;simple_order&lt;account_id&gt;&gt;&gt;</h4>
 <div class="paragraph">
 <p>Notification that a new order was rejected.</p>
 </div>
@@ -8189,7 +8392,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 43. order_action_rejected&lt;enter_order&lt;simple_order&lt;account_id&gt;&gt;&gt; fields</caption>
+<caption class="title">Table 45. order_action_rejected&lt;enter_order&lt;simple_order&lt;account_id&gt;&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8253,7 +8456,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_cancelled">5.2.42. order_cancelled</h4>
+<h4 id="order_cancelled">5.2.44. order_cancelled</h4>
 <div class="paragraph">
 <p>Notification that an existing order was cancelled.</p>
 </div>
@@ -8264,7 +8467,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 44. order_cancelled fields</caption>
+<caption class="title">Table 46. order_cancelled fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8327,12 +8530,15 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_entered">5.2.43. order_entered</h4>
+<h4 id="order_entered">5.2.45. order_entered</h4>
 <div class="paragraph">
 <p><code>order_entered</code> may refer to one of the following messages:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><a href="#order_entered_ltfull_order_ltaccount_id_gt_gt">order_entered&lt;full_order&lt;account_id</a>&gt;&gt;</p>
+</li>
 <li>
 <p><a href="#order_entered_ltmulti_leg_order_ltaccount_id_gt_gt">order_entered&lt;multi_leg_order&lt;account_id</a>&gt;&gt;</p>
 </li>
@@ -8343,7 +8549,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_entered_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.44. order_entered&lt;multi_leg_order&lt;account_id&gt;&gt;</h4>
+<h4 id="order_entered_ltfull_order_ltaccount_id_gt_gt">5.2.46. order_entered&lt;full_order&lt;account_id&gt;&gt;</h4>
 <div class="paragraph">
 <p>Notification that a new order was entered.</p>
 </div>
@@ -8354,7 +8560,108 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 45. order_entered&lt;multi_leg_order&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 47. order_entered&lt;full_order&lt;account_id&gt;&gt; fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the order was entered.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_id">order_id</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the order.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>display_order_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#display_order_id">display_order_id</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the display order.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order_token</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_token">order_token</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client-generated unique order identifier.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>client_reference</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client-generated hash value that represents the client-side inputs to an order transaction.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new_order</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"full_order"</code> of type <a href="#full_order_ltaccount_id_gt">full_order&lt;account_id&gt;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The entered order attributes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order_state</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_state">order_state</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the order is live or dead.</p></td>
+</tr>
+</tbody>
+</table>
+<div id="order_entered_ltfull_order_ltaccount_id_gt_gt_json_example" class="listingblock">
+<div class="title">JSON Example</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    <a href="#order_entered_ltfull_order_ltaccount_id_gt_gt">"order_entered"</a>:{
+        <a href="#utc_timestamp">"timestamp"</a>:"1618427227000000000",
+        <a href="#order_id">"order_id"</a>:"123",
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#order_token">"order_token"</a>:"123",
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        "new_order":{
+            <a href="#full_order_ltaccount_id_gt">"full_order"</a>:{
+                <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                <a href="#market_id">"market_id"</a>:"123",
+                <a href="#side">"side"</a>:"buy",
+                <a href="#time_in_force">"time_in_force"</a>:"good_for_cycles",
+                <a href="#time_to_live">"time_to_live"</a>:"123",
+                <a href="#quantity">"quantity"</a>:"123",
+                <a href="#price">"price"</a>:"123",
+                "party_data":{
+                    <a href="#account_id">"account_id"</a>:"123"
+                },
+                "trigger_instructions":{
+                    <a href="#trigger_event_type">"event_type"</a>:"partial_execution",
+                    <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                    <a href="#market_id">"market_id"</a>:"123",
+                    <a href="#trigger_price_type">"price_type"</a>:"best_bid",
+                    <a href="#trigger_price_direction">"price_direction"</a>:"up",
+                    <a href="#price">"price"</a>:"123"
+                }
+            }
+        },
+        <a href="#order_state">"order_state"</a>:"accepted"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="order_entered_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.47. order_entered&lt;multi_leg_order&lt;account_id&gt;&gt;</h4>
+<div class="paragraph">
+<p>Notification that a new order was entered.</p>
+</div>
+<div class="paragraph">
+<p>Generated in response to <a href="#enter_order">enter_order</a> to indicate that the order was successfully entered.</p>
+</div>
+<div class="paragraph">
+<p>This message defines the following fields:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 48. order_entered&lt;multi_leg_order&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8442,7 +8749,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_entered_ltsimple_order_ltaccount_id_gt_gt">5.2.45. order_entered&lt;simple_order&lt;account_id&gt;&gt;</h4>
+<h4 id="order_entered_ltsimple_order_ltaccount_id_gt_gt">5.2.48. order_entered&lt;simple_order&lt;account_id&gt;&gt;</h4>
 <div class="paragraph">
 <p>Notification that a new order was entered.</p>
 </div>
@@ -8453,7 +8760,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 46. order_entered&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 49. order_entered&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8535,7 +8842,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_executed">5.2.46. order_executed</h4>
+<h4 id="order_executed">5.2.49. order_executed</h4>
 <div class="paragraph">
 <p>Notification that an existing order executed.</p>
 </div>
@@ -8546,7 +8853,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 47. order_executed fields</caption>
+<caption class="title">Table 50. order_executed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8627,7 +8934,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_execution_prevented">5.2.47. order_execution_prevented</h4>
+<h4 id="order_execution_prevented">5.2.50. order_execution_prevented</h4>
 <div class="paragraph">
 <p>Notification that an existing order was prevented from executing.</p>
 </div>
@@ -8638,7 +8945,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 48. order_execution_prevented fields</caption>
+<caption class="title">Table 51. order_execution_prevented fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8725,12 +9032,15 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_restated">5.2.48. order_restated</h4>
+<h4 id="order_restated">5.2.51. order_restated</h4>
 <div class="paragraph">
 <p><code>order_restated</code> may refer to one of the following messages:</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><a href="#order_restated_ltfull_order_ltaccount_id_gt_gt">order_restated&lt;full_order&lt;account_id</a>&gt;&gt;</p>
+</li>
 <li>
 <p><a href="#order_restated_ltmulti_leg_order_ltaccount_id_gt_gt">order_restated&lt;multi_leg_order&lt;account_id</a>&gt;&gt;</p>
 </li>
@@ -8741,7 +9051,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_restated_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.49. order_restated&lt;multi_leg_order&lt;account_id&gt;&gt;</h4>
+<h4 id="order_restated_ltfull_order_ltaccount_id_gt_gt">5.2.52. order_restated&lt;full_order&lt;account_id&gt;&gt;</h4>
 <div class="paragraph">
 <p>Notification that an order was restated.</p>
 </div>
@@ -8752,7 +9062,120 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 49. order_restated&lt;multi_leg_order&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 52. order_restated&lt;full_order&lt;account_id&gt;&gt; fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the order was restated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_id">order_id</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the order.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>display_order_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#display_order_id">display_order_id</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The unique, exchange-assigned identifier for the display order.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order_token</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_token">order_token</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client-generated unique order identifier.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>client_reference</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bytes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client-generated hash value that represents the client-side inputs to an order transaction.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>original_timestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#utc_timestamp">utc_timestamp</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The time when the order was originally entered.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>original_order</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"full_order"</code> of type <a href="#full_order_ltaccount_id_gt">full_order&lt;account_id&gt;</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The original order attributes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>balance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#quantity">quantity</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The balance of the order that has not yet executed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>order_state</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#order_state">order_state</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the order is live or dead.</p></td>
+</tr>
+</tbody>
+</table>
+<div id="order_restated_ltfull_order_ltaccount_id_gt_gt_json_example" class="listingblock">
+<div class="title">JSON Example</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+    <a href="#order_restated_ltfull_order_ltaccount_id_gt_gt">"order_restated"</a>:{
+        <a href="#utc_timestamp">"timestamp"</a>:"1618427227000000000",
+        <a href="#order_id">"order_id"</a>:"123",
+        <a href="#display_order_id">"display_order_id"</a>:"123",
+        <a href="#order_token">"order_token"</a>:"123",
+        "client_reference":"0x0000000000000000000000000000000000000000000000000000000000000000",
+        <a href="#utc_timestamp">"original_timestamp"</a>:"123",
+        "original_order":{
+            <a href="#full_order_ltaccount_id_gt">"full_order"</a>:{
+                <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                <a href="#market_id">"market_id"</a>:"123",
+                <a href="#side">"side"</a>:"buy",
+                <a href="#time_in_force">"time_in_force"</a>:"good_for_cycles",
+                <a href="#time_to_live">"time_to_live"</a>:"123",
+                <a href="#quantity">"quantity"</a>:"123",
+                <a href="#price">"price"</a>:"123",
+                "party_data":{
+                    <a href="#account_id">"account_id"</a>:"123"
+                },
+                "trigger_instructions":{
+                    <a href="#trigger_event_type">"event_type"</a>:"partial_execution",
+                    <a href="#tradeable_entity_id">"tradeable_entity_id"</a>:"123",
+                    <a href="#market_id">"market_id"</a>:"123",
+                    <a href="#trigger_price_type">"price_type"</a>:"best_bid",
+                    <a href="#trigger_price_direction">"price_direction"</a>:"up",
+                    <a href="#price">"price"</a>:"123"
+                }
+            }
+        },
+        <a href="#quantity">"balance"</a>:"123",
+        <a href="#order_state">"order_state"</a>:"accepted"
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="order_restated_ltmulti_leg_order_ltaccount_id_gt_gt">5.2.53. order_restated&lt;multi_leg_order&lt;account_id&gt;&gt;</h4>
+<div class="paragraph">
+<p>Notification that an order was restated.</p>
+</div>
+<div class="paragraph">
+<p>Generated to restate an open order to a client.</p>
+</div>
+<div class="paragraph">
+<p>This message defines the following fields:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 53. order_restated&lt;multi_leg_order&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8852,7 +9275,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_restated_ltsimple_order_ltaccount_id_gt_gt">5.2.50. order_restated&lt;simple_order&lt;account_id&gt;&gt;</h4>
+<h4 id="order_restated_ltsimple_order_ltaccount_id_gt_gt">5.2.54. order_restated&lt;simple_order&lt;account_id&gt;&gt;</h4>
 <div class="paragraph">
 <p>Notification that an order was restated.</p>
 </div>
@@ -8863,7 +9286,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 50. order_restated&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
+<caption class="title">Table 54. order_restated&lt;simple_order&lt;account_id&gt;&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8957,7 +9380,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="order_updated">5.2.51. order_updated</h4>
+<h4 id="order_updated">5.2.55. order_updated</h4>
 <div class="paragraph">
 <p>Notification of an unsolicited change to an order&#8217;s state.</p>
 </div>
@@ -8968,7 +9391,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 51. order_updated fields</caption>
+<caption class="title">Table 55. order_updated fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9031,7 +9454,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="position">5.2.52. position</h4>
+<h4 id="position">5.2.56. position</h4>
 <div class="paragraph">
 <p>Position data for a current position.</p>
 </div>
@@ -9042,7 +9465,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 52. position fields</caption>
+<caption class="title">Table 56. position fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9147,7 +9570,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="position_consistency_marker">5.2.53. position_consistency_marker</h4>
+<h4 id="position_consistency_marker">5.2.57. position_consistency_marker</h4>
 <div class="paragraph">
 <p>Notification that the position messages are in a consistent state.</p>
 </div>
@@ -9158,7 +9581,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 53. position_consistency_marker fields</caption>
+<caption class="title">Table 57. position_consistency_marker fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9191,7 +9614,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="position_risk">5.2.54. position_risk</h4>
+<h4 id="position_risk">5.2.58. position_risk</h4>
 <div class="paragraph">
 <p>Notification of the current risk values (E.g. the Greeks) for a single position.</p>
 </div>
@@ -9202,7 +9625,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 54. position_risk fields</caption>
+<caption class="title">Table 58. position_risk fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9294,7 +9717,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="positions_greeks">5.2.55. positions_greeks</h4>
+<h4 id="positions_greeks">5.2.59. positions_greeks</h4>
 <div class="paragraph">
 <p>Notification of the current net greeks values for an account&#8217;s current positions.</p>
 </div>
@@ -9305,7 +9728,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 55. positions_greeks fields</caption>
+<caption class="title">Table 59. positions_greeks fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9355,7 +9778,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="positions_health">5.2.56. positions_health</h4>
+<h4 id="positions_health">5.2.60. positions_health</h4>
 <div class="paragraph">
 <p>Notification of the current net health score for an account&#8217;s current positions.</p>
 </div>
@@ -9366,7 +9789,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 56. positions_health fields</caption>
+<caption class="title">Table 60. positions_health fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9417,7 +9840,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="reference_price">5.2.57. reference_price</h4>
+<h4 id="reference_price">5.2.61. reference_price</h4>
 <div class="paragraph">
 <p>Notification of a reference price update.</p>
 </div>
@@ -9428,7 +9851,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 57. reference_price fields</caption>
+<caption class="title">Table 61. reference_price fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9485,7 +9908,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="request_stream">5.2.58. request_stream</h4>
+<h4 id="request_stream">5.2.62. request_stream</h4>
 <div class="paragraph">
 <p>Request a new stream associated with a specified channel.</p>
 </div>
@@ -9537,7 +9960,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 58. request_stream fields</caption>
+<caption class="title">Table 62. request_stream fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9588,7 +10011,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="session_ended">5.2.59. session_ended</h4>
+<h4 id="session_ended">5.2.63. session_ended</h4>
 <div class="paragraph">
 <p>Notification that the current session was ended.</p>
 </div>
@@ -9599,7 +10022,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 59. session_ended fields</caption>
+<caption class="title">Table 63. session_ended fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9638,7 +10061,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="session_started">5.2.60. session_started</h4>
+<h4 id="session_started">5.2.64. session_started</h4>
 <div class="paragraph">
 <p>Notification that a new session was started.</p>
 </div>
@@ -9649,7 +10072,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 60. session_started fields</caption>
+<caption class="title">Table 64. session_started fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9694,7 +10117,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="settlement_price">5.2.61. settlement_price</h4>
+<h4 id="settlement_price">5.2.65. settlement_price</h4>
 <div class="paragraph">
 <p>Notification of a settlement price update.</p>
 </div>
@@ -9705,7 +10128,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 61. settlement_price fields</caption>
+<caption class="title">Table 65. settlement_price fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9783,7 +10206,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="stream_ended">5.2.62. stream_ended</h4>
+<h4 id="stream_ended">5.2.66. stream_ended</h4>
 <div class="paragraph">
 <p>Notification that a stream has ended.</p>
 </div>
@@ -9794,7 +10217,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 62. stream_ended fields</caption>
+<caption class="title">Table 66. stream_ended fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9839,7 +10262,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="stream_rejected">5.2.63. stream_rejected</h4>
+<h4 id="stream_rejected">5.2.67. stream_rejected</h4>
 <div class="paragraph">
 <p>Notification that a stream request was rejected.</p>
 </div>
@@ -9850,7 +10273,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 63. stream_rejected fields</caption>
+<caption class="title">Table 67. stream_rejected fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9901,7 +10324,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="stream_resumed">5.2.64. stream_resumed</h4>
+<h4 id="stream_resumed">5.2.68. stream_resumed</h4>
 <div class="paragraph">
 <p>Notification that a stream has resumed.</p>
 </div>
@@ -9912,7 +10335,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 64. stream_resumed fields</caption>
+<caption class="title">Table 68. stream_resumed fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -9963,7 +10386,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="stream_started">5.2.65. stream_started</h4>
+<h4 id="stream_started">5.2.69. stream_started</h4>
 <div class="paragraph">
 <p>Notification that a stream has started.</p>
 </div>
@@ -9974,7 +10397,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 65. stream_started fields</caption>
+<caption class="title">Table 69. stream_started fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10031,7 +10454,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="time">5.2.66. time</h4>
+<h4 id="time">5.2.70. time</h4>
 <div class="paragraph">
 <p>Notification of an update to system time.</p>
 </div>
@@ -10042,7 +10465,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 66. time fields</caption>
+<caption class="title">Table 70. time fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10075,7 +10498,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="top_of_book">5.2.67. top_of_book</h4>
+<h4 id="top_of_book">5.2.71. top_of_book</h4>
 <div class="paragraph">
 <p>Notification of a change in the best bid and offer.</p>
 </div>
@@ -10086,7 +10509,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 67. top_of_book fields</caption>
+<caption class="title">Table 71. top_of_book fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10155,7 +10578,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="trade">5.2.68. trade</h4>
+<h4 id="trade">5.2.72. trade</h4>
 <div class="paragraph">
 <p>Notification that a new trade was generated.</p>
 </div>
@@ -10166,7 +10589,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 68. trade fields</caption>
+<caption class="title">Table 72. trade fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10247,7 +10670,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="tradeable_entity">5.2.69. tradeable_entity</h4>
+<h4 id="tradeable_entity">5.2.73. tradeable_entity</h4>
 <div class="paragraph">
 <p><code>tradeable_entity</code> may refer to one of the following messages:</p>
 </div>
@@ -10260,7 +10683,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="tradeable_entity_ltsimple_market_gt">5.2.70. tradeable_entity&lt;simple_market&gt;</h4>
+<h4 id="tradeable_entity_ltsimple_market_gt">5.2.74. tradeable_entity&lt;simple_market&gt;</h4>
 <div class="paragraph">
 <p>Reference data for a tradeable entity that is traded using a simple, single market.</p>
 </div>
@@ -10271,7 +10694,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 69. tradeable_entity&lt;simple_market&gt; fields</caption>
+<caption class="title">Table 73. tradeable_entity&lt;simple_market&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10384,7 +10807,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="trading_rule">5.2.71. trading_rule</h4>
+<h4 id="trading_rule">5.2.75. trading_rule</h4>
 <div class="paragraph">
 <p>A trading rule that determines order and trade validation.</p>
 </div>
@@ -10395,7 +10818,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 70. trading_rule fields</caption>
+<caption class="title">Table 74. trading_rule fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10482,7 +10905,7 @@ This allows us to form an overall view of positions.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="trading_state">5.2.72. trading_state</h4>
+<h4 id="trading_state">5.2.76. trading_state</h4>
 <div class="paragraph">
 <p>Reflects the current state of trading in the tradeable entity and market.</p>
 </div>
@@ -10493,7 +10916,7 @@ This allows us to form an overall view of positions.</p>
 <p>This message defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 71. trading_state fields</caption>
+<caption class="title">Table 75. trading_state fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10573,6 +10996,9 @@ This allows us to form an overall view of positions.</p>
 <p><a href="#fiat_currency">fiat_currency</a></p>
 </li>
 <li>
+<p><a href="#full_order_ltaccount_id_gt">full_order&lt;account_id</a>&gt;</p>
+</li>
+<li>
 <p><a href="#future">future</a></p>
 </li>
 <li>
@@ -10609,6 +11035,9 @@ This allows us to form an overall view of positions.</p>
 <p><a href="#tradeable_entity_leg">tradeable_entity_leg</a></p>
 </li>
 <li>
+<p><a href="#trigger_instructions">trigger_instructions</a></p>
+</li>
+<li>
 <p><a href="#zoned_datetime">zoned_datetime</a></p>
 </li>
 </ul>
@@ -10622,7 +11051,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 72. date fields</caption>
+<caption class="title">Table 76. date fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10663,7 +11092,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 73. datetime fields</caption>
+<caption class="title">Table 77. datetime fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10699,7 +11128,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 74. exchange_token fields</caption>
+<caption class="title">Table 78. exchange_token fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10745,7 +11174,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 75. exchange_trading_limit fields</caption>
+<caption class="title">Table 79. exchange_trading_limit fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10781,7 +11210,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 76. fiat_currency fields</caption>
+<caption class="title">Table 80. fiat_currency fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10819,7 +11248,78 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="future">5.3.6. future</h4>
+<h4 id="full_order_ltaccount_id_gt">5.3.6. full_order&lt;account_id&gt;</h4>
+<div class="paragraph">
+<p>Attributes used for full order entry.</p>
+</div>
+<div class="paragraph">
+<p>This structure defines the following fields:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 81. full_order&lt;account_id&gt; fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tradeable_entity_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#tradeable_entity_id">tradeable_entity_id</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the target tradeable entity for the order.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>market_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#market_id">market_id</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the target market for the order.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>side</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#side">side</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the order is a buy or sell.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>time_in_force</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#time_in_force">time_in_force</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how long the order remains valid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>time_to_live</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#time_to_live">time_to_live</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In conjunction with time_in_force, specifies how long the order remains valid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quantity</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#quantity">quantity</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The quantity of the order. The number of decimal places is determined by the symbol.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>price</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#price">price</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Order price. 9223372036854775807 ("none") denotes a market order. The number of decimal places is determined by the symbol.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>party_data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_id"</code> of type <a href="#account_id">account_id</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains attributes identifying the party associated with the order.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>trigger_instructions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional <a href="#trigger_instructions">trigger_instructions</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains optional instructions specifying how and when the order will be triggered.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="future">5.3.7. future</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single future entity.</p>
 </div>
@@ -10827,7 +11327,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 77. future fields</caption>
+<caption class="title">Table 82. future fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10890,7 +11390,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="fx_spot">5.3.7. fx_spot</h4>
+<h4 id="fx_spot">5.3.8. fx_spot</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single fx_spot entity.</p>
 </div>
@@ -10898,7 +11398,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 78. fx_spot fields</caption>
+<caption class="title">Table 83. fx_spot fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10931,7 +11431,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="greeks">5.3.8. greeks</h4>
+<h4 id="greeks">5.3.9. greeks</h4>
 <div class="paragraph">
 <p>Represents each of the greek values.</p>
 </div>
@@ -10939,7 +11439,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 79. greeks fields</caption>
+<caption class="title">Table 84. greeks fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -10977,7 +11477,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="index">5.3.9. index</h4>
+<h4 id="index">5.3.10. index</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single index entity.</p>
 </div>
@@ -10985,7 +11485,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 80. index fields</caption>
+<caption class="title">Table 85. index fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11013,7 +11513,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="multi_leg_order_ltaccount_id_gt">5.3.10. multi_leg_order&lt;account_id&gt;</h4>
+<h4 id="multi_leg_order_ltaccount_id_gt">5.3.11. multi_leg_order&lt;account_id&gt;</h4>
 <div class="paragraph">
 <p>Attributes used for simple order entry.</p>
 </div>
@@ -11021,7 +11521,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 81. multi_leg_order&lt;account_id&gt; fields</caption>
+<caption class="title">Table 86. multi_leg_order&lt;account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11084,7 +11584,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="option">5.3.11. option</h4>
+<h4 id="option">5.3.12. option</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single option entity.</p>
 </div>
@@ -11092,7 +11592,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 82. option fields</caption>
+<caption class="title">Table 87. option fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11180,7 +11680,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="perpetual_future">5.3.12. perpetual_future</h4>
+<h4 id="perpetual_future">5.3.13. perpetual_future</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single perpetual future.</p>
 </div>
@@ -11188,7 +11688,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 83. perpetual_future fields</caption>
+<caption class="title">Table 88. perpetual_future fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11256,7 +11756,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="simple_market">5.3.13. simple_market</h4>
+<h4 id="simple_market">5.3.14. simple_market</h4>
 <div class="paragraph">
 <p>Describes a simple, single market for trading in a tradeable entity.</p>
 </div>
@@ -11264,7 +11764,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 84. simple_market fields</caption>
+<caption class="title">Table 89. simple_market fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11292,7 +11792,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="simple_order_ltaccount_id_gt">5.3.14. simple_order&lt;account_id&gt;</h4>
+<h4 id="simple_order_ltaccount_id_gt">5.3.15. simple_order&lt;account_id&gt;</h4>
 <div class="paragraph">
 <p>Attributes used for simple order entry.</p>
 </div>
@@ -11300,7 +11800,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 85. simple_order&lt;account_id&gt; fields</caption>
+<caption class="title">Table 90. simple_order&lt;account_id&gt; fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11358,7 +11858,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stable_token">5.3.15. stable_token</h4>
+<h4 id="stable_token">5.3.16. stable_token</h4>
 <div class="paragraph">
 <p>Contains reference data associated with a single stable_token entity.</p>
 </div>
@@ -11366,7 +11866,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 86. stable_token fields</caption>
+<caption class="title">Table 91. stable_token fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11414,7 +11914,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="time_of_day">5.3.16. time_of_day</h4>
+<h4 id="time_of_day">5.3.17. time_of_day</h4>
 <div class="paragraph">
 <p>Represents a time of day.</p>
 </div>
@@ -11422,7 +11922,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 87. time_of_day fields</caption>
+<caption class="title">Table 92. time_of_day fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11460,7 +11960,7 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="tradeable_entity_leg">5.3.17. tradeable_entity_leg</h4>
+<h4 id="tradeable_entity_leg">5.3.18. tradeable_entity_leg</h4>
 <div class="paragraph">
 <p>Represents a single leg in a multi-leg order or strategy.</p>
 </div>
@@ -11468,7 +11968,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 88. tradeable_entity_leg fields</caption>
+<caption class="title">Table 93. tradeable_entity_leg fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11496,7 +11996,63 @@ This allows us to form an overall view of positions.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="zoned_datetime">5.3.18. zoned_datetime</h4>
+<h4 id="trigger_instructions">5.3.19. trigger_instructions</h4>
+<div class="paragraph">
+<p>Specifies how and when an order should be triggered.</p>
+</div>
+<div class="paragraph">
+<p>This structure defines the following fields:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 94. trigger_instructions fields</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>event_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#trigger_event_type">trigger_event_type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of event when the trigger will be hit.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tradeable_entity_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#tradeable_entity_id">tradeable_entity_id</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the tradeable entity against which the trigger price will be compared.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>market_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#market_id">market_id</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifies the market against which the trigger price will be compared.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>price_type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#trigger_price_type">trigger_price_type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of the price in the target tradeable entity and market that the price is compared to.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>price_direction</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#trigger_price_direction">trigger_price_direction</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the order is triggered based on a movement up or down through the trigger price.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>price</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#price">price</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The trigger price. The number of decimal places is determined by the tradeable entity.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="zoned_datetime">5.3.20. zoned_datetime</h4>
 <div class="paragraph">
 <p>Represents a zoned datetime.</p>
 </div>
@@ -11504,7 +12060,7 @@ This allows us to form an overall view of positions.</p>
 <p>This structure defines the following fields:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 89. zoned_datetime fields</caption>
+<caption class="title">Table 95. zoned_datetime fields</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11720,6 +12276,15 @@ This allows us to form an overall view of positions.</p>
 <p><a href="#tradeable_entity_id">tradeable_entity_id</a></p>
 </li>
 <li>
+<p><a href="#trigger_event_type">trigger_event_type</a></p>
+</li>
+<li>
+<p><a href="#trigger_price_direction">trigger_price_direction</a></p>
+</li>
+<li>
+<p><a href="#trigger_price_type">trigger_price_type</a></p>
+</li>
+<li>
 <p><a href="#utc_timestamp">utc_timestamp</a></p>
 </li>
 <li>
@@ -11740,7 +12305,7 @@ This allows us to form an overall view of positions.</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 90. account_id constants</caption>
+<caption class="title">Table 96. account_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11773,7 +12338,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 91. balance constants</caption>
+<caption class="title">Table 97. balance constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11806,7 +12371,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 92. basis_points constants</caption>
+<caption class="title">Table 98. basis_points constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11839,7 +12404,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 93. channel_id constants</caption>
+<caption class="title">Table 99. channel_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11871,7 +12436,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 94. contract_size constants</caption>
+<caption class="title">Table 100. contract_size constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11904,7 +12469,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 95. creation_source_id constants</caption>
+<caption class="title">Table 101. creation_source_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11937,7 +12502,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 96. day constants</caption>
+<caption class="title">Table 102. day constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -11970,7 +12535,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 97. decimal_places constants</caption>
+<caption class="title">Table 103. decimal_places constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12003,7 +12568,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 98. deliverable_id constants</caption>
+<caption class="title">Table 104. deliverable_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12035,7 +12600,7 @@ The type also supports the following string constants:</p>
 <p><code>delivery_style</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 99. delivery_style constants</caption>
+<caption class="title">Table 105. delivery_style constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12086,7 +12651,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 100. display_order_id constants</caption>
+<caption class="title">Table 106. display_order_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12118,7 +12683,7 @@ The type also supports the following string constants:</p>
 <p><code>expiry_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 101. expiry_status constants</caption>
+<caption class="title">Table 107. expiry_status constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12157,7 +12722,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 102. funding_spec_id constants</caption>
+<caption class="title">Table 108. funding_spec_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12190,7 +12755,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 103. hours constants</caption>
+<caption class="title">Table 109. hours constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12223,7 +12788,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 104. iso4217_currency_number constants</caption>
+<caption class="title">Table 110. iso4217_currency_number constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12256,7 +12821,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 105. leg_ratio constants</caption>
+<caption class="title">Table 111. leg_ratio constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12288,7 +12853,7 @@ The type also supports the following string constants:</p>
 <p><code>liquidity_flag</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 106. liquidity_flag constants</caption>
+<caption class="title">Table 112. liquidity_flag constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12326,7 +12891,7 @@ The type also supports the following string constants:</p>
 <p><code>listing_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 107. listing_status constants</caption>
+<caption class="title">Table 113. listing_status constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12365,7 +12930,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 108. margin_spec_id constants</caption>
+<caption class="title">Table 114. margin_spec_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12398,7 +12963,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 109. market_id constants</caption>
+<caption class="title">Table 115. market_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12431,7 +12996,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 110. minutes constants</caption>
+<caption class="title">Table 116. minutes constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12464,7 +13029,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 111. month constants</caption>
+<caption class="title">Table 117. month constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12497,7 +13062,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 112. nanoseconds constants</caption>
+<caption class="title">Table 118. nanoseconds constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12529,7 +13094,7 @@ The type also supports the following string constants:</p>
 <p><code>option_exercise_style</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 113. option_exercise_style constants</caption>
+<caption class="title">Table 119. option_exercise_style constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12561,7 +13126,7 @@ The type also supports the following string constants:</p>
 <p><code>option_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 114. option_type constants</caption>
+<caption class="title">Table 120. option_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12599,7 +13164,7 @@ The type also supports the following string constants:</p>
 <p><code>option_valuation_approach</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 115. option_valuation_approach constants</caption>
+<caption class="title">Table 121. option_valuation_approach constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12661,7 +13226,7 @@ The type also supports the following string constants:</p>
 <p><code>order_action_reject_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 116. order_action_reject_reason constants</caption>
+<caption class="title">Table 122. order_action_reject_reason constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12810,6 +13375,11 @@ The type also supports the following string constants:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>27</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The legs of the multi-leg order do not conform to the rules on tradeable entity ordering, uniqueness, and ratios.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"invalid_trigger_instructions"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>28</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The trigger instructions of the full order do not conform to the supported rules for triggered orders.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -12822,7 +13392,7 @@ The type also supports the following string constants:</p>
 <p><code>order_cancelled_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 117. order_cancelled_reason constants</caption>
+<caption class="title">Table 123. order_cancelled_reason constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12873,7 +13443,7 @@ The type also supports the following string constants:</p>
 <p><code>order_execution_prevented_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 118. order_execution_prevented_reason constants</caption>
+<caption class="title">Table 124. order_execution_prevented_reason constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12910,7 +13480,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 119. order_id constants</caption>
+<caption class="title">Table 125. order_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12942,7 +13512,7 @@ The type also supports the following string constants:</p>
 <p><code>order_state</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 120. order_state constants</caption>
+<caption class="title">Table 126. order_state constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -12969,6 +13539,12 @@ The type also supports the following string constants:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order is pending and not yet eligible for matching.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"untriggered"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p>
+<p class="tableblock">(ordinal value of <code>'U'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order is a triggered order and has not yet been triggered.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expired"</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
 <p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
@@ -12987,7 +13563,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 121. order_token constants</caption>
+<caption class="title">Table 127. order_token constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13020,7 +13596,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 122. percent constants</caption>
+<caption class="title">Table 128. percent constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13052,7 +13628,7 @@ The type also supports the following string constants:</p>
 <p><code>position_kind</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 123. position_kind constants</caption>
+<caption class="title">Table 129. position_kind constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13139,7 +13715,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 124. position_source_id constants</caption>
+<caption class="title">Table 130. position_source_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13171,7 +13747,7 @@ The type also supports the following string constants:</p>
 <p><code>position_source_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 125. position_source_type constants</caption>
+<caption class="title">Table 131. position_source_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13270,7 +13846,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 126. position_value constants</caption>
+<caption class="title">Table 132. position_value constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13302,7 +13878,7 @@ The type also supports the following string constants:</p>
 <p><code>positions_risk_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 127. positions_risk_status constants</caption>
+<caption class="title">Table 133. positions_risk_status constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13353,7 +13929,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 128. price constants</caption>
+<caption class="title">Table 134. price constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13385,7 +13961,7 @@ The type also supports the following string constants:</p>
 <p><code>product_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 129. product_type constants</caption>
+<caption class="title">Table 135. product_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13454,7 +14030,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 130. quantity constants</caption>
+<caption class="title">Table 136. quantity constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13486,7 +14062,7 @@ The type also supports the following string constants:</p>
 <p><code>reference_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 131. reference_price_type constants</caption>
+<caption class="title">Table 137. reference_price_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13525,7 +14101,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 132. scaled_fixed_point constants</caption>
+<caption class="title">Table 138. scaled_fixed_point constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13558,7 +14134,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 133. seconds constants</caption>
+<caption class="title">Table 139. seconds constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13591,7 +14167,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 134. sequence_number constants</caption>
+<caption class="title">Table 140. sequence_number constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13623,7 +14199,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 135. session_id constants</caption>
+<caption class="title">Table 141. session_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13654,7 +14230,7 @@ The type also supports the following string constants:</p>
 <p><code>settlement_event_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 136. settlement_event_type constants</caption>
+<caption class="title">Table 142. settlement_event_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13692,7 +14268,7 @@ The type also supports the following string constants:</p>
 <p><code>settlement_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 137. settlement_price_type constants</caption>
+<caption class="title">Table 143. settlement_price_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13730,7 +14306,7 @@ The type also supports the following string constants:</p>
 <p><code>side</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 138. side constants</caption>
+<caption class="title">Table 144. side constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13768,7 +14344,7 @@ The type also supports the following string constants:</p>
 <p><code>stabilisation_approach</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 139. stabilisation_approach constants</caption>
+<caption class="title">Table 145. stabilisation_approach constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13819,7 +14395,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 140. stream_id constants</caption>
+<caption class="title">Table 146. stream_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13850,7 +14426,7 @@ The type also supports the following string constants:</p>
 <p><code>stream_reject_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 141. stream_reject_reason constants</caption>
+<caption class="title">Table 147. stream_reject_reason constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13897,7 +14473,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 142. strikes_spec_id constants</caption>
+<caption class="title">Table 148. strikes_spec_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13929,7 +14505,7 @@ The type also supports the following string constants:</p>
 <p><code>suspension_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 143. suspension_status constants</caption>
+<caption class="title">Table 149. suspension_status constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -13967,7 +14543,7 @@ The type also supports the following string constants:</p>
 <p><code>time_in_force</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 144. time_in_force constants</caption>
+<caption class="title">Table 150. time_in_force constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14006,7 +14582,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 145. time_to_live constants</caption>
+<caption class="title">Table 151. time_to_live constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14039,7 +14615,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 146. trade_id constants</caption>
+<caption class="title">Table 152. trade_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14071,7 +14647,7 @@ The type also supports the following string constants:</p>
 <p><code>trade_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 147. trade_price_type constants</caption>
+<caption class="title">Table 153. trade_price_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14121,7 +14697,7 @@ The type also supports the following string constants:</p>
 <p><code>tradeability</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 148. tradeability constants</caption>
+<caption class="title">Table 154. tradeability constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14172,7 +14748,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 149. tradeable_entity_id constants</caption>
+<caption class="title">Table 155. tradeable_entity_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14196,7 +14772,127 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="utc_timestamp">5.4.61. utc_timestamp</h4>
+<h4 id="trigger_event_type">5.4.61. trigger_event_type</h4>
+<div class="paragraph">
+<p>Defines when the trigger will be hit.</p>
+</div>
+<div class="paragraph">
+<p><code>trigger_event_type</code> is an enumeration with the following well-known string constants:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 156. trigger_event_type constants</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"partial_execution"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
+<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order is triggered by partial execution at the trigger price.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"price_movement"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
+<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order is triggered by price movement to or through the specified price.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="trigger_price_direction">5.4.62. trigger_price_direction</h4>
+<div class="paragraph">
+<p>The side from which the trigger price is reached.</p>
+</div>
+<div class="paragraph">
+<p><code>trigger_price_direction</code> is an enumeration with the following well-known string constants:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 157. trigger_price_direction constants</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"up"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p>
+<p class="tableblock">(ordinal value of <code>'U'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order is triggered if the price goes up to or through the specified price.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"down"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p>
+<p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order is triggered if the price goes down to or through the specified price.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="trigger_price_type">5.4.63. trigger_price_type</h4>
+<div class="paragraph">
+<p>The type of price that the specified trigger price is compared to.</p>
+</div>
+<div class="paragraph">
+<p><code>trigger_price_type</code> is an enumeration with the following well-known string constants:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 158. trigger_price_type constants</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"best_bid"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
+<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified trigger price is compared against the best bid.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"best_offer"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p>
+<p class="tableblock">(ordinal value of <code>'O'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified trigger price is compared against the best offer.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"last_trade"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
+<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The specified trigger price is compared against the last trade.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="utc_timestamp">5.4.64. utc_timestamp</h4>
 <div class="paragraph">
 <p>A UTC timestamp expressed in nanoseconds since the epoch (1970-01-01 00:00:00).</p>
 </div>
@@ -14205,7 +14901,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 150. utc_timestamp constants</caption>
+<caption class="title">Table 159. utc_timestamp constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14229,7 +14925,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="value">5.4.62. value</h4>
+<h4 id="value">5.4.65. value</h4>
 <div class="paragraph">
 <p>A value.</p>
 </div>
@@ -14238,7 +14934,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 151. value constants</caption>
+<caption class="title">Table 160. value constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14262,7 +14958,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="year">5.4.63. year</h4>
+<h4 id="year">5.4.66. year</h4>
 <div class="paragraph">
 <p>The year (YYYY).</p>
 </div>
@@ -14271,7 +14967,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 152. year constants</caption>
+<caption class="title">Table 161. year constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
