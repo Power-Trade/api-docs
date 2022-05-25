@@ -1032,7 +1032,7 @@ p { margin-bottom: 1.25rem; }
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>VERSION 2.0</p>
+<p>VERSION 2.1</p>
 </div>
 </div>
 </div>
@@ -12708,7 +12708,7 @@ The type also supports the following string constants:</p>
 <p>Day of the month (1-31).</p>
 </div>
 <div class="paragraph">
-<p><code>day</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>day</code> is an unsigned 32-bit integer with supported values from <code>0</code> to <code>4294967295</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -12728,8 +12728,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
-<p class="tableblock">(max unsigned 8-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no day.</p></td>
 </tr>
 </tbody>
@@ -12741,7 +12740,7 @@ The type also supports the following string constants:</p>
 <p>Decimal Places.</p>
 </div>
 <div class="paragraph">
-<p><code>decimal_places</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>decimal_places</code> is an unsigned 32-bit integer with supported values from <code>0</code> to <code>4294967295</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -12761,8 +12760,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
-<p class="tableblock">(max unsigned 8-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no decimal places.</p></td>
 </tr>
 </tbody>
@@ -12826,26 +12824,22 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"physical"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
-<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The derivative settlement deliverable is the same as the quantity deliverable.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"cash"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
-<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The derivative settlement deliverable is a cash-style deliverable.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"non_deliverable"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
-<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The derivative is non-deliverable.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"elect_at_exercise"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
-<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The derivative&#8217;s delivery is elected at exercise.</p></td>
 </tr>
 </tbody>
@@ -12909,8 +12903,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"participate_do_not_initiate"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>54</code></p>
-<p class="tableblock">(ordinal value of <code>'6'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>54</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order will participate in a match only when it is a passive order. It will not initiate a match as an aggressor.</p></td>
 </tr>
 </tbody>
@@ -12941,14 +12934,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"active"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
-<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The entity is active.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expired"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
-<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The entity has expired.</p></td>
 </tr>
 </tbody>
@@ -12993,7 +12984,7 @@ The type also supports the following string constants:</p>
 <p>Hours.</p>
 </div>
 <div class="paragraph">
-<p><code>hours</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>hours</code> is an unsigned 32-bit integer with supported values from <code>0</code> to <code>4294967295</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -13013,8 +13004,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
-<p class="tableblock">(max unsigned 8-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no hours.</p></td>
 </tr>
 </tbody>
@@ -13111,20 +13101,17 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"added"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
-<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Liquidity was added</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"taken"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
-<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Liquidity was taken</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"neither"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
-<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Liquidity was neither added nor taken</p></td>
 </tr>
 </tbody>
@@ -13155,14 +13142,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"active"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
-<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An active deliverable.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"delisted"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>88</code></p>
-<p class="tableblock">(ordinal value of <code>'X'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>88</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The deliverable is marked for delisting.</p></td>
 </tr>
 </tbody>
@@ -13207,7 +13192,7 @@ The type also supports the following string constants:</p>
 <p>Uniquely identifies a market.</p>
 </div>
 <div class="paragraph">
-<p><code>market_id</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>market_id</code> is an unsigned 32-bit integer with supported values from <code>0</code> to <code>4294967295</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -13227,8 +13212,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
-<p class="tableblock">(max unsigned 8-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no market ID.</p></td>
 </tr>
 </tbody>
@@ -13240,7 +13224,7 @@ The type also supports the following string constants:</p>
 <p>Minutes.</p>
 </div>
 <div class="paragraph">
-<p><code>minutes</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>minutes</code> is an unsigned 32-bit integer with supported values from <code>0</code> to <code>4294967295</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -13260,8 +13244,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
-<p class="tableblock">(max unsigned 8-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no minutes.</p></td>
 </tr>
 </tbody>
@@ -13273,7 +13256,7 @@ The type also supports the following string constants:</p>
 <p>Month (1-12).</p>
 </div>
 <div class="paragraph">
-<p><code>month</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>month</code> is an unsigned 32-bit integer with supported values from <code>0</code> to <code>4294967295</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -13293,8 +13276,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
-<p class="tableblock">(max unsigned 8-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no month.</p></td>
 </tr>
 </tbody>
@@ -13358,8 +13340,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"european"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
-<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a European style option and can only be exercised on expiry.</p></td>
 </tr>
 </tbody>
@@ -13390,14 +13371,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"call"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
-<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Call option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"put"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
-<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Put option.</p></td>
 </tr>
 </tbody>
@@ -13428,38 +13407,32 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"vanilla"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>86</code></p>
-<p class="tableblock">(ordinal value of <code>'V'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>86</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a Vanilla option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"asian"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
-<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is an Asian option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"digital"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p>
-<p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is Digital (Binary) option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"barrier"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
-<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a Barrier option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"digital_barrier"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>71</code></p>
-<p class="tableblock">(ordinal value of <code>'G'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>71</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a Digital Barrier option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"loopback"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>76</code></p>
-<p class="tableblock">(ordinal value of <code>'L'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>76</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The option is a Loopback option.</p></td>
 </tr>
 </tbody>
@@ -13811,26 +13784,22 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"accepted"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
-<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order has been accepted and is eligible for matching.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"pending"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
-<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order is pending and not yet eligible for matching.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"untriggered"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p>
-<p class="tableblock">(ordinal value of <code>'U'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order is a triggered order and has not yet been triggered.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expired"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
-<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order has expired. No further messages will be generated for it.</p></td>
 </tr>
 </tbody>
@@ -13960,104 +13929,87 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"cash"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
-<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cash position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"realised"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
-<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Realised position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"unrealised"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p>
-<p class="tableblock">(ordinal value of <code>'U'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unrealised position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"margin"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>77</code></p>
-<p class="tableblock">(ordinal value of <code>'M'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>77</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Margin position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"payoff"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
-<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Payoff position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"payout"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
-<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Payout (funding) position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expired"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
-<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position is Expired but not yet realised.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"funding_due"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p>
-<p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position is no longer held but is due a funding payment.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"trading_limit"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
-<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position that represents the locked trading limit.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"risk"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>75</code></p>
-<p class="tableblock">(ordinal value of <code>'K'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>75</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The risk metrics (E.g. the Greeks) that are set for a position.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"unrealised_pending_orders"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>90</code></p>
-<p class="tableblock">(ordinal value of <code>'Z'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>90</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unrealised position based on pending orders.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"margin_pending_orders"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>89</code></p>
-<p class="tableblock">(ordinal value of <code>'Y'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>89</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Margin position based on pending orders.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"unrealised_open_orders"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>88</code></p>
-<p class="tableblock">(ordinal value of <code>'X'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>88</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Unrealised position based on open orders.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"margin_open_orders"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>87</code></p>
-<p class="tableblock">(ordinal value of <code>'W'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>87</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Margin position based on open orders.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"cash_pending_orders"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>72</code></p>
-<p class="tableblock">(ordinal value of <code>'H'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>72</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cash position based on pending orders.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"cash_open_orders"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p>
-<p class="tableblock">(ordinal value of <code>'S'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cash position based on open orders.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"cash_open_orders_committed"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
-<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cash position based on open orders commitments.</p></td>
 </tr>
 </tbody>
@@ -14121,80 +14073,67 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"deposit"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p>
-<p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a deposit.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"withdrawal"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>87</code></p>
-<p class="tableblock">(ordinal value of <code>'W'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>87</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a withdrawal.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"trade"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
-<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a trade.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expiry"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
-<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by an expiry.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"mark_to_market"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
-<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a mark to market settlement.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"mark_price"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>77</code></p>
-<p class="tableblock">(ordinal value of <code>'M'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>77</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a change in mark price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"settlement_price"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p>
-<p class="tableblock">(ordinal value of <code>'S'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a change in settlement price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"funding_rate"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
-<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a new funding rate.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"portfolio_risk_engine"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
-<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a message from a portfolio risk engine.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"holdings_data"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>72</code></p>
-<p class="tableblock">(ordinal value of <code>'H'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>72</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by a message from the holdings and registry facility.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"restatement"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>88</code></p>
-<p class="tableblock">(ordinal value of <code>'X'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>88</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was triggered by the start of a cycle.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"order"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p>
-<p class="tableblock">(ordinal value of <code>'O'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The position update was by a pending order.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
-<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no source type.</p></td>
 </tr>
 </tbody>
@@ -14258,26 +14197,22 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"normal"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
-<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The positions have a normal risk status.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"at_risk"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
-<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The positions are considered 'At Risk' and some restrictions will apply.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"critical"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
-<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The positions are considered 'Critical' and full trading restrictions will apply.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"liquidate"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>76</code></p>
-<p class="tableblock">(ordinal value of <code>'L'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>76</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The positions risk status has passed the 'Critical' level and the positions need to be liquidated.</p></td>
 </tr>
 </tbody>
@@ -14341,44 +14276,37 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"reference_balance"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
-<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Balance positions for the reference currency.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"balance"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
-<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Balance.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"spot"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p>
-<p class="tableblock">(ordinal value of <code>'S'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Spot.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"future"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
-<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Future.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"option"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p>
-<p class="tableblock">(ordinal value of <code>'O'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Option.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
-<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No product.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"trading_limit"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
-<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The current trading limit.</p></td>
 </tr>
 </tbody>
@@ -14442,14 +14370,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"reference"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p>
-<p class="tableblock">(ordinal value of <code>'R'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>82</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reference price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"close"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
-<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Close price.</p></td>
 </tr>
 </tbody>
@@ -14494,7 +14420,7 @@ The type also supports the following string constants:</p>
 <p>Seconds.</p>
 </div>
 <div class="paragraph">
-<p><code>seconds</code> is an unsigned 8-bit integer with supported values from <code>0</code> to <code>255</code> inclusive.
+<p><code>seconds</code> is an unsigned 32-bit integer with supported values from <code>0</code> to <code>4294967295</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -14514,8 +14440,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p>
-<p class="tableblock">(max unsigned 8-bit integer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>255</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no seconds.</p></td>
 </tr>
 </tbody>
@@ -14610,14 +14535,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"cyclical"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
-<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The settlement event is cyclical, such as a daily settlement.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"expiry"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
-<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The settlement event is associated with a deliverable&#8217;s expiry.</p></td>
 </tr>
 </tbody>
@@ -14648,14 +14571,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"interim_price"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>73</code></p>
-<p class="tableblock">(ordinal value of <code>'I'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>73</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Interim price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"final_price"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
-<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Final price.</p></td>
 </tr>
 </tbody>
@@ -14686,14 +14607,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"buy"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
-<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Buy order.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"sell"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p>
-<p class="tableblock">(ordinal value of <code>'S'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sell order.</p></td>
 </tr>
 </tbody>
@@ -14724,26 +14643,22 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"fiat_backed"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p>
-<p class="tableblock">(ordinal value of <code>'F'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>70</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The token is backed by a fiat currency, either directly, or by pegging, or against a basket.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"asset_backed"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
-<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The token is backed by an asset, such as commodities like gold price or other kinds of assets.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"token_backed"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
-<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The token is backed by other cryptoasset tokens, such as a diversified basket.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"unbacked"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p>
-<p class="tableblock">(ordinal value of <code>'U'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The token is a seigniorage-style, unbacked token that uses some form of algorithm to control supply and value.</p></td>
 </tr>
 </tbody>
@@ -14885,14 +14800,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"active"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p>
-<p class="tableblock">(ordinal value of <code>'A'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>65</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The entity is active.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"suspended"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p>
-<p class="tableblock">(ordinal value of <code>'S'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>83</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The entity is suspended.</p></td>
 </tr>
 </tbody>
@@ -14923,14 +14836,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"good_for_cycles"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p>
-<p class="tableblock">(ordinal value of <code>'C'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>67</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Good for the number of system cycles specified in <a href="#time_to_live">time_to_live</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"immediate_or_cancel"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>73</code></p>
-<p class="tableblock">(ordinal value of <code>'I'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>73</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Immediate or cancel order.</p></td>
 </tr>
 </tbody>
@@ -15027,26 +14938,22 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"passive"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
-<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The trade occurred during continuous matching and uses the price of the passive order.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"equilibrium"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
-<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The trade occurred during an auction and uses a calculated equilibrium price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"multi_leg_to_multi_leg"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>77</code></p>
-<p class="tableblock">(ordinal value of <code>'M'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>77</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The trade was between two multi-leg orders and uses a price derived from one of the legs.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"off_market"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p>
-<p class="tableblock">(ordinal value of <code>'O'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The trade occurred off-market and uses a reported price.</p></td>
 </tr>
 </tbody>
@@ -15077,26 +14984,22 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"tradeable"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
-<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Can enter orders.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"display_only"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p>
-<p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cannot enter orders, but we may publish market data.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"non_tradeable"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p>
-<p class="tableblock">(ordinal value of <code>'N'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>78</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cannot enter orders, no market data.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"delisted"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>88</code></p>
-<p class="tableblock">(ordinal value of <code>'X'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>88</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The tradeable entity is set to be removed from the market data.</p></td>
 </tr>
 </tbody>
@@ -15160,14 +15063,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"partial_execution"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p>
-<p class="tableblock">(ordinal value of <code>'E'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>69</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order is triggered by partial execution at the trigger price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"price_movement"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p>
-<p class="tableblock">(ordinal value of <code>'P'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>80</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order is triggered by price movement to or through the specified price.</p></td>
 </tr>
 </tbody>
@@ -15198,14 +15099,12 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"up"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p>
-<p class="tableblock">(ordinal value of <code>'U'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>85</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order is triggered if the price goes up to or through the specified price.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"down"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p>
-<p class="tableblock">(ordinal value of <code>'D'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order is triggered if the price goes down to or through the specified price.</p></td>
 </tr>
 </tbody>
@@ -15236,20 +15135,17 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"best_bid"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p>
-<p class="tableblock">(ordinal value of <code>'B'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>66</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The specified trigger price is compared against the best bid.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"best_offer"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p>
-<p class="tableblock">(ordinal value of <code>'O'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>79</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The specified trigger price is compared against the best offer.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"last_trade"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p>
-<p class="tableblock">(ordinal value of <code>'T'</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>84</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The specified trigger price is compared against the last trade.</p></td>
 </tr>
 </tbody>
@@ -15294,7 +15190,7 @@ The type also supports the following string constants:</p>
 <p>A value.</p>
 </div>
 <div class="paragraph">
-<p><code>value</code> is an unsigned 128-bit integer with supported values from <code>0</code> to <code>18446744073709551615</code> inclusive.
+<p><code>value</code> is an unsigned 128-bit integer with supported values from <code>-170141183460469231731687303715884105728</code> to <code>170141183460469231731687303715884105727</code> inclusive.
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
@@ -15314,7 +15210,7 @@ The type also supports the following string constants:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"none"</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>18446744073709551615</code></p>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>170141183460469231731687303715884105727</code></p>
 <p class="tableblock">(max unsigned 128-bit integer)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A constant used to specify no value.</p></td>
 </tr>
