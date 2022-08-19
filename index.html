@@ -1002,27 +1002,28 @@ p { margin-bottom: 1.25rem; }
 <li><a href="#scaled_fixed_point">5.4.44. scaled_fixed_point</a></li>
 <li><a href="#seconds">5.4.45. seconds</a></li>
 <li><a href="#sequence_number">5.4.46. sequence_number</a></li>
-<li><a href="#session_id">5.4.47. session_id</a></li>
-<li><a href="#settlement_event_type">5.4.48. settlement_event_type</a></li>
-<li><a href="#settlement_price_type">5.4.49. settlement_price_type</a></li>
-<li><a href="#side">5.4.50. side</a></li>
-<li><a href="#stabilisation_approach">5.4.51. stabilisation_approach</a></li>
-<li><a href="#stream_id">5.4.52. stream_id</a></li>
-<li><a href="#stream_reject_reason">5.4.53. stream_reject_reason</a></li>
-<li><a href="#strikes_spec_id">5.4.54. strikes_spec_id</a></li>
-<li><a href="#suspension_status">5.4.55. suspension_status</a></li>
-<li><a href="#time_in_force">5.4.56. time_in_force</a></li>
-<li><a href="#time_to_live">5.4.57. time_to_live</a></li>
-<li><a href="#trade_id">5.4.58. trade_id</a></li>
-<li><a href="#trade_price_type">5.4.59. trade_price_type</a></li>
-<li><a href="#tradeability">5.4.60. tradeability</a></li>
-<li><a href="#tradeable_entity_id">5.4.61. tradeable_entity_id</a></li>
-<li><a href="#trigger_event_type">5.4.62. trigger_event_type</a></li>
-<li><a href="#trigger_price_direction">5.4.63. trigger_price_direction</a></li>
-<li><a href="#trigger_price_type">5.4.64. trigger_price_type</a></li>
-<li><a href="#utc_timestamp">5.4.65. utc_timestamp</a></li>
-<li><a href="#value">5.4.66. value</a></li>
-<li><a href="#year">5.4.67. year</a></li>
+<li><a href="#session_end_reason">5.4.47. session_end_reason</a></li>
+<li><a href="#session_id">5.4.48. session_id</a></li>
+<li><a href="#settlement_event_type">5.4.49. settlement_event_type</a></li>
+<li><a href="#settlement_price_type">5.4.50. settlement_price_type</a></li>
+<li><a href="#side">5.4.51. side</a></li>
+<li><a href="#stabilisation_approach">5.4.52. stabilisation_approach</a></li>
+<li><a href="#stream_id">5.4.53. stream_id</a></li>
+<li><a href="#stream_reject_reason">5.4.54. stream_reject_reason</a></li>
+<li><a href="#strikes_spec_id">5.4.55. strikes_spec_id</a></li>
+<li><a href="#suspension_status">5.4.56. suspension_status</a></li>
+<li><a href="#time_in_force">5.4.57. time_in_force</a></li>
+<li><a href="#time_to_live">5.4.58. time_to_live</a></li>
+<li><a href="#trade_id">5.4.59. trade_id</a></li>
+<li><a href="#trade_price_type">5.4.60. trade_price_type</a></li>
+<li><a href="#tradeability">5.4.61. tradeability</a></li>
+<li><a href="#tradeable_entity_id">5.4.62. tradeable_entity_id</a></li>
+<li><a href="#trigger_event_type">5.4.63. trigger_event_type</a></li>
+<li><a href="#trigger_price_direction">5.4.64. trigger_price_direction</a></li>
+<li><a href="#trigger_price_type">5.4.65. trigger_price_type</a></li>
+<li><a href="#utc_timestamp">5.4.66. utc_timestamp</a></li>
+<li><a href="#value">5.4.67. value</a></li>
+<li><a href="#year">5.4.68. year</a></li>
 </ul>
 </li>
 </ul>
@@ -1035,7 +1036,7 @@ p { margin-bottom: 1.25rem; }
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>VERSION 2.2 (see <a href="#Revision_History">Revision History</a>)</p>
+<p>VERSION 2.3 (see <a href="#Revision_History">Revision History</a>)</p>
 </div>
 </div>
 </div>
@@ -10253,6 +10254,11 @@ This allows us to form an overall view of positions.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#session_id">session_id</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The unique, server-assigned identifier for the session.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reason</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#session_end_reason">session_end_reason</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The reason the session was ended.</p></td>
+</tr>
 </tbody>
 </table>
 <div id="session_ended_json_example" class="listingblock">
@@ -10261,7 +10267,8 @@ This allows us to form an overall view of positions.</p>
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
     <a href="#session_ended">"session_ended"</a>:{
         <a href="#utc_timestamp">"timestamp"</a>:"1618427227000000000",
-        <a href="#session_id">"session_id"</a>:"1"
+        <a href="#session_id">"session_id"</a>:"1",
+        <a href="#session_end_reason">"reason"</a>:"logout"
     }
 }</code></pre>
 </div>
@@ -12655,6 +12662,9 @@ This allows us to form an overall view of positions.</p>
 <p><a href="#sequence_number">sequence_number</a></p>
 </li>
 <li>
+<p><a href="#session_end_reason">session_end_reason</a></p>
+</li>
+<li>
 <p><a href="#session_id">session_id</a></p>
 </li>
 <li>
@@ -14698,7 +14708,53 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="session_id">5.4.47. session_id</h4>
+<h4 id="session_end_reason">5.4.47. session_end_reason</h4>
+<div class="paragraph">
+<p>Specifies why a session was ended.</p>
+</div>
+<div class="paragraph">
+<p><code>session_end_reason</code> is an enumeration with the following well-known string constants:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Table 147. session_end_reason constants</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Equivalent integer</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"logout"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session was ended due to a logout request from the client.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"timeout"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session was ended due to an inactivity timeout.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"stopped"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session was ended due to the server component being stopped.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"violation"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The session was ended due to a protocol violation by the client.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="session_id">5.4.48. session_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a session.</p>
 </div>
@@ -14707,7 +14763,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 147. session_id constants</caption>
+<caption class="title">Table 148. session_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14730,7 +14786,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="settlement_event_type">5.4.48. settlement_event_type</h4>
+<h4 id="settlement_event_type">5.4.49. settlement_event_type</h4>
 <div class="paragraph">
 <p>Specifies the type of settlement event.</p>
 </div>
@@ -14738,7 +14794,7 @@ The type also supports the following string constants:</p>
 <p><code>settlement_event_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 148. settlement_event_type constants</caption>
+<caption class="title">Table 149. settlement_event_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14766,7 +14822,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="settlement_price_type">5.4.49. settlement_price_type</h4>
+<h4 id="settlement_price_type">5.4.50. settlement_price_type</h4>
 <div class="paragraph">
 <p>Specifies the type of settlement price.</p>
 </div>
@@ -14774,7 +14830,7 @@ The type also supports the following string constants:</p>
 <p><code>settlement_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 149. settlement_price_type constants</caption>
+<caption class="title">Table 150. settlement_price_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14802,7 +14858,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="side">5.4.50. side</h4>
+<h4 id="side">5.4.51. side</h4>
 <div class="paragraph">
 <p>Specifies whether order is a buy or sell.</p>
 </div>
@@ -14810,7 +14866,7 @@ The type also supports the following string constants:</p>
 <p><code>side</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 150. side constants</caption>
+<caption class="title">Table 151. side constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14838,7 +14894,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stabilisation_approach">5.4.51. stabilisation_approach</h4>
+<h4 id="stabilisation_approach">5.4.52. stabilisation_approach</h4>
 <div class="paragraph">
 <p>Specifies the general approach used to stabilise the token.</p>
 </div>
@@ -14846,7 +14902,7 @@ The type also supports the following string constants:</p>
 <p><code>stabilisation_approach</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 151. stabilisation_approach constants</caption>
+<caption class="title">Table 152. stabilisation_approach constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14884,7 +14940,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stream_id">5.4.52. stream_id</h4>
+<h4 id="stream_id">5.4.53. stream_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a stream.</p>
 </div>
@@ -14893,7 +14949,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 152. stream_id constants</caption>
+<caption class="title">Table 153. stream_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14916,7 +14972,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="stream_reject_reason">5.4.53. stream_reject_reason</h4>
+<h4 id="stream_reject_reason">5.4.54. stream_reject_reason</h4>
 <div class="paragraph">
 <p>Specifies why a stream request was rejected.</p>
 </div>
@@ -14924,7 +14980,7 @@ The type also supports the following string constants:</p>
 <p><code>stream_reject_reason</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 153. stream_reject_reason constants</caption>
+<caption class="title">Table 154. stream_reject_reason constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14962,7 +15018,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="strikes_spec_id">5.4.54. strikes_spec_id</h4>
+<h4 id="strikes_spec_id">5.4.55. strikes_spec_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a strikes specification.</p>
 </div>
@@ -14971,7 +15027,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 154. strikes_spec_id constants</caption>
+<caption class="title">Table 155. strikes_spec_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -14995,7 +15051,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="suspension_status">5.4.55. suspension_status</h4>
+<h4 id="suspension_status">5.4.56. suspension_status</h4>
 <div class="paragraph">
 <p>Specifies whether an entity is suspended or active.</p>
 </div>
@@ -15003,7 +15059,7 @@ The type also supports the following string constants:</p>
 <p><code>suspension_status</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 155. suspension_status constants</caption>
+<caption class="title">Table 156. suspension_status constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15031,7 +15087,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="time_in_force">5.4.56. time_in_force</h4>
+<h4 id="time_in_force">5.4.57. time_in_force</h4>
 <div class="paragraph">
 <p>Specifies the duration of the order.</p>
 </div>
@@ -15039,7 +15095,7 @@ The type also supports the following string constants:</p>
 <p><code>time_in_force</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 156. time_in_force constants</caption>
+<caption class="title">Table 157. time_in_force constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15067,7 +15123,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="time_to_live">5.4.57. time_to_live</h4>
+<h4 id="time_to_live">5.4.58. time_to_live</h4>
 <div class="paragraph">
 <p>Used in conjunction with <a href="#time_in_force">time_in_force</a> to specify an order&#8217;s lifetime.</p>
 </div>
@@ -15076,7 +15132,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 157. time_to_live constants</caption>
+<caption class="title">Table 158. time_to_live constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15100,7 +15156,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="trade_id">5.4.58. trade_id</h4>
+<h4 id="trade_id">5.4.59. trade_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a trade.</p>
 </div>
@@ -15109,7 +15165,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 158. trade_id constants</caption>
+<caption class="title">Table 159. trade_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15133,7 +15189,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="trade_price_type">5.4.59. trade_price_type</h4>
+<h4 id="trade_price_type">5.4.60. trade_price_type</h4>
 <div class="paragraph">
 <p>Specifies how the price of a trade was determined.</p>
 </div>
@@ -15141,7 +15197,7 @@ The type also supports the following string constants:</p>
 <p><code>trade_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 159. trade_price_type constants</caption>
+<caption class="title">Table 160. trade_price_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15179,7 +15235,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="tradeability">5.4.60. tradeability</h4>
+<h4 id="tradeability">5.4.61. tradeability</h4>
 <div class="paragraph">
 <p>Specifies the tradeability of a tradeable_entity.</p>
 </div>
@@ -15187,7 +15243,7 @@ The type also supports the following string constants:</p>
 <p><code>tradeability</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 160. tradeability constants</caption>
+<caption class="title">Table 161. tradeability constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15225,7 +15281,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="tradeable_entity_id">5.4.61. tradeable_entity_id</h4>
+<h4 id="tradeable_entity_id">5.4.62. tradeable_entity_id</h4>
 <div class="paragraph">
 <p>Uniquely identifies a tradeable entity.</p>
 </div>
@@ -15234,7 +15290,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 161. tradeable_entity_id constants</caption>
+<caption class="title">Table 162. tradeable_entity_id constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15258,7 +15314,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="trigger_event_type">5.4.62. trigger_event_type</h4>
+<h4 id="trigger_event_type">5.4.63. trigger_event_type</h4>
 <div class="paragraph">
 <p>Defines when the trigger will be hit.</p>
 </div>
@@ -15266,7 +15322,7 @@ The type also supports the following string constants:</p>
 <p><code>trigger_event_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 162. trigger_event_type constants</caption>
+<caption class="title">Table 163. trigger_event_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15294,7 +15350,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="trigger_price_direction">5.4.63. trigger_price_direction</h4>
+<h4 id="trigger_price_direction">5.4.64. trigger_price_direction</h4>
 <div class="paragraph">
 <p>The side from which the trigger price is reached.</p>
 </div>
@@ -15302,7 +15358,7 @@ The type also supports the following string constants:</p>
 <p><code>trigger_price_direction</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 163. trigger_price_direction constants</caption>
+<caption class="title">Table 164. trigger_price_direction constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15330,7 +15386,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="trigger_price_type">5.4.64. trigger_price_type</h4>
+<h4 id="trigger_price_type">5.4.65. trigger_price_type</h4>
 <div class="paragraph">
 <p>The type of price that the specified trigger price is compared to.</p>
 </div>
@@ -15338,7 +15394,7 @@ The type also supports the following string constants:</p>
 <p><code>trigger_price_type</code> is an enumeration with the following well-known string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 164. trigger_price_type constants</caption>
+<caption class="title">Table 165. trigger_price_type constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15371,7 +15427,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="utc_timestamp">5.4.65. utc_timestamp</h4>
+<h4 id="utc_timestamp">5.4.66. utc_timestamp</h4>
 <div class="paragraph">
 <p>A UTC timestamp expressed in nanoseconds since the epoch (1970-01-01 00:00:00).</p>
 </div>
@@ -15380,7 +15436,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 165. utc_timestamp constants</caption>
+<caption class="title">Table 166. utc_timestamp constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15404,7 +15460,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="value">5.4.66. value</h4>
+<h4 id="value">5.4.67. value</h4>
 <div class="paragraph">
 <p>A value.</p>
 </div>
@@ -15413,7 +15469,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 166. value constants</caption>
+<caption class="title">Table 167. value constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15437,7 +15493,7 @@ The type also supports the following string constants:</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="year">5.4.67. year</h4>
+<h4 id="year">5.4.68. year</h4>
 <div class="paragraph">
 <p>The year (YYYY).</p>
 </div>
@@ -15446,7 +15502,7 @@ The type also supports the following string constants:</p>
 The type also supports the following string constants:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
-<caption class="title">Table 167. year constants</caption>
+<caption class="title">Table 168. year constants</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -15476,7 +15532,7 @@ The type also supports the following string constants:</p>
 <h2 id="_revision_history">6. <strong>Revision History</strong></h2>
 <div class="sectionbody">
 <table id="Revision_History" class="tableblock frame-all grid-all" style="width: 95%;">
-<caption class="title">Table 168. revision history:</caption>
+<caption class="title">Table 169. revision history:</caption>
 <colgroup>
 <col style="width: 5%;">
 <col style="width: 5%;">
@@ -15490,6 +15546,11 @@ The type also supports the following string constants:</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">2022/08/19</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">2.3</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Adding <a href="#session_end_reason">"reason"</a> into <a href="#session_ended">session_ended</a></p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">2022/08/14</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">2.2</p></td>
