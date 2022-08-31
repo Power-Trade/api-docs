@@ -1036,7 +1036,7 @@ p { margin-bottom: 1.25rem; }
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>VERSION 2.3 (see <a href="#Revision_History">Revision History</a>)</p>
+<p>VERSION 2.4 (see <a href="#Revision_History">Revision History</a>)</p>
 </div>
 </div>
 </div>
@@ -7517,7 +7517,10 @@ This allows us to form an overall view of positions.</p>
                 <a href="#price">"price"</a>:"10000000000000",
                 "party_data":{
                     <a href="#account_id">"account_id"</a>:"1234567890"
-                }
+                },
+                "execution_instructions":[
+                    "participate_do_not_initiate"
+                ]
             }
         }
     }
@@ -8569,7 +8572,10 @@ This allows us to form an overall view of positions.</p>
                         <a href="#price">"price"</a>:"10000000000000",
                         "party_data":{
                             <a href="#account_id">"account_id"</a>:"1234567890"
-                        }
+                        },
+                        "execution_instructions":[
+                            "participate_do_not_initiate"
+                        ]
                     }
                 }
             }
@@ -8943,7 +8949,10 @@ This allows us to form an overall view of positions.</p>
                 <a href="#price">"price"</a>:"10000000000000",
                 "party_data":{
                     <a href="#account_id">"account_id"</a>:"1234567890"
-                }
+                },
+                "execution_instructions":[
+                    "participate_do_not_initiate"
+                ]
             }
         },
         <a href="#order_state">"order_state"</a>:"accepted"
@@ -9472,7 +9481,10 @@ This allows us to form an overall view of positions.</p>
                 <a href="#price">"price"</a>:"10000000000000",
                 "party_data":{
                     <a href="#account_id">"account_id"</a>:"1234567890"
-                }
+                },
+                "execution_instructions":[
+                    "participate_do_not_initiate"
+                ]
             }
         },
         <a href="#quantity">"balance"</a>:"10000000000",
@@ -11977,6 +11989,11 @@ This allows us to form an overall view of positions.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">object with a single field <code>"account_id"</code> of type <a href="#account_id">account_id</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contains attributes identifying the party associated with the order.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>execution_instructions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional array of <a href="#execution_instruction">execution_instruction</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contains optional instructions specifying how an order should be handled.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -13100,6 +13117,11 @@ The type also supports the following string constants:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>54</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order will participate in a match only when it is a passive order. It will not initiate a match as an aggressor.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"do_not_participate"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>68</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order will be cancelled rather than participate in a match.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -13880,6 +13902,11 @@ The type also supports the following string constants:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>"would_initiate"</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>10</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The order was cancelled as it was marked participate-do-not-initiate and would have initiated a match.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"would_participate"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>11</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The order was cancelled as it was marked do-not-participate and would have entered the order book.</p></td>
 </tr>
 </tbody>
 </table>
@@ -15546,6 +15573,13 @@ The type also supports the following string constants:</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">2022/08/31</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">2.4</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Adding optional <code>"execution_instructions"</code> into <a href="#multi_leg_order_ltaccount_id_gt">"multi_leg_order"</a>;</p>
+<p class="tableblock">adding <code>"participate_do_not_initiate"</code> into <a href="#execution_instruction">execution_instruction</a>;</p>
+<p class="tableblock">adding <code>"would_participate"</code> into <a href="#order_cancelled_reason">order_cancelled_reason</a>.</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">2022/08/19</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">2.3</p></td>
